@@ -1,0 +1,56 @@
+package network;
+
+import  "MessageType.proto";
+
+message AuthMessage {
+    optional string login = 1;
+    optional string pass = 2;
+}
+
+message RegisterMessage {
+    optional string login = 1;
+    optional string pass = 2;
+    optional string firstname = 3;
+    optional string secondname = 4;
+    optional string lastname = 5;
+    optional string phonenumber = 6;
+    optional string passport = 7;
+
+}
+
+message RequestContext {
+    optional message_type message_type_ = 1;
+    optional AuthMessage  auth_message_ = 3;
+    optional RegisterMessage register_message_ = 4;
+
+    optional SessionInfo session_info = 5;
+}
+
+message RegisterMessageResponse
+{
+    optional string messageText = 1;
+    optional bool status = 2;
+}
+
+message AuthMessageResponse
+{
+    optional int32 role = 1;
+    optional int32 id_hotel = 2;
+    optional bool status = 3;
+    optional string messageText = 4;
+}
+
+message SessionInfo
+{
+    optional int64 user_id =1;
+    optional string session_id = 2;
+}
+
+message ResponseContext {
+    optional int32 error_code = 1;
+    optional message_type message_type_ = 2;
+
+    optional RegisterMessageResponse register_response = 3;
+    optional AuthMessageResponse auth_response = 4;
+    optional SessionInfo session_info = 5;
+}
