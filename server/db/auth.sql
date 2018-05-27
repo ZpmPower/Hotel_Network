@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS server_users;
-DROP TABLE IF EXISTS server_session;
+DROP TABLE IF EXISTS server_users CASCADE;
+DROP TABLE IF EXISTS server_session CASCADE;
 
 CREATE TABLE server_users (
     user_login text UNIQUE NOT NULL,
@@ -17,3 +17,5 @@ CREATE TABLE server_session (
     PRIMARY KEY(session),
     FOREIGN KEY(user_id) REFERENCES server_users (user_id)
 );
+
+

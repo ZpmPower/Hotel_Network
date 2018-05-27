@@ -130,29 +130,7 @@ INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition
 for five hotel
 */
 INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Leha','Yanovich','Kalima','+380956695326',5000,3,5);
-/*
-housekeepers
-*/
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Marina','Olegovna','Kortomisheva','+38050451285',5000,4,1);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Aleksey','Sergeevich','Dolmatov','+38096458921',5000,4,1);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Yana','Tarasovna','Chala','+380935545522',5000,4,1);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Olga','Ivanovna','Pitko','+380939853628',5000,4,1);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Marina','Radionovna','Mizga','+380986565258',5000,4,1);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Ivan','Ivanovich','Ivanov','+380939856345',5000,4,1);
 
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Petr','Petrovich','Petrov','+380939853628',3000,4,2);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Sergey','Sergeevich','Sergeev','+380939853628',3000,4,2);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Tamara','Ivanovna','Gluhaya','+380939853628',3000,4,2);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Vadim','Maksimovich','Procuror','+380939853628',3000,4,2);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Elene','Nikolayevna','Stepanenko','+380939853628',3000,4,2);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Evgeniy','Vaganovich','Petrosyan','+380939853628',3000,4,2);
-
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Pavel','Emelyanovich','Volya','+380939853628',4000,4,3);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Garik','Pahomovich','Harlamov','+380939853628',4000,4,3);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Ivan','Andreevich','Urgant','+380939853628',4000,4,3);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Oleg','Olegovich','Olegov','+380939853628',4000,4,3);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Dmitriy','Dmitrievich','Dimov','+380939853628',4000,4,3);
-INSERT INTO Employee(FirstName,SecondName,LastName,PhoneNumber,Salary,IdPosition,  IdHotel) VALUES('Nikolay','Ivanovich','Pitko','+380939853628',4000,4,3);
 
 
 INSERT INTO Guest(FirstName,SecondName,LastName,PhoneNumber,PassportNumber)VALUES('Pavel','Olegovich','Tarasov','+380939853628','КМ34542');
@@ -313,3 +291,35 @@ INSERT INTO RoomOrder(IdRoom, StartDate,EndDate,idEmployee,IdGuest) VALUES(14,'2
 INSERT INTO RoomOrder(IdRoom, StartDate,EndDate,idEmployee,IdGuest) VALUES(10,'2017-12-16','2017-12-25',12,3);
 INSERT INTO RoomOrder(IdRoom, StartDate,EndDate,idEmployee,IdGuest) VALUES(29,'2017-12-19','2017-12-25',12,7);
 INSERT INTO RoomOrder(IdRoom, StartDate,EndDate,idEmployee,IdGuest) VALUES(25,'2017-12-21','2017-12-23',6,2);
+
+
+
+
+GRANT ALL PRIVILEGES ON DATABASE hotelnet_database TO admin;
+GRANT SELECT, UPDATE, INSERT, DELETE ON employee TO manager;
+GRANT SELECT ON hotel TO manager;
+GRANT SELECT, UPDATE, INSERT, DELETE ON room TO manager;
+GRANT SELECT, UPDATE, INSERT, DELETE ON roomorder TO manager;
+GRANT SELECT, UPDATE, INSERT, DELETE ON guest TO manager;
+GRANT SELECT ON employeeposition TO manager;
+GRANT SELECT ON hoteltype TO manager;
+GRANT SELECT ON roomtype TO manager;
+
+GRANT SELECT ON employee TO receptionist;
+GRANT SELECT ON hotel TO receptionist;
+GRANT SELECT ON room TO receptionist;
+GRANT SELECT, UPDATE, INSERT, DELETE ON roomorder TO receptionist;
+GRANT SELECT, UPDATE, INSERT, DELETE ON guest TO receptionist;
+GRANT SELECT ON employeeposition TO receptionist;
+GRANT SELECT ON hoteltype TO receptionist;
+GRANT SELECT ON roomtype TO receptionist;
+
+GRANT SELECT ON hotel TO guest;
+GRANT SELECT ON room TO guest;
+GRANT SELECT, UPDATE, INSERT, DELETE ON roomorder TO guest;
+GRANT SELECT, UPDATE, INSERT, DELETE ON guest TO guest;
+GRANT SELECT ON hoteltype TO guest;
+GRANT SELECT ON roomtype TO guest;
+
+
+

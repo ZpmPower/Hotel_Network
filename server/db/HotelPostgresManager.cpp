@@ -54,7 +54,7 @@ ResponseCode HotelPostgresManager::getEmployeeInfo(int64_t user_id, EmployeeInfo
     {
         try
         {
-            db_connection_ptr connection = DBHelper::getManagerConnection();
+            db_connection_ptr connection = DBHelper::getAdminConnection();
 
             if(!connection)
             {
@@ -110,7 +110,7 @@ ResponseCode HotelPostgresManager::getGuestInfo(int64_t user_id, GuestInfo& gInf
 
             if(!DBHelper::getDBHelper().isPrepared("getGuest"))
             {
-                connection->prepare("getEmployee",
+                connection->prepare("getGuest",
                                     "SELECT * from guest where $1 = id;");
             }
 

@@ -49,15 +49,3 @@ Roles Helper::roleToInt(const std::string &role)
         return Roles::role_guest;
     }
 }
-
-//bool Helper::parceFromPostgres(const pqxx::tuple &data, NewUser &user)
-//{
-//    user.id = data["id"].as<int>();
-//    user.name = data["name"].as<std::string>();
-//    user.nick = data["nick"].as<std::string>();
-
-//    LOG_INFO("Parced user: " << user);
-
-//    return true;
-//}
-
