@@ -61,6 +61,7 @@ bool MessageManager::userAuth(const std::string &login, const std::string &passw
     CryptoHelper::md5_hash(password, hashedPass);
     authMess->set_pass(hashedPass);
     context.set_allocated_auth_message_(authMess);
+    LOG_INFO(hashedPass);
     execute(context.SerializeAsString());
 }
 
@@ -72,7 +73,9 @@ bool MessageManager::createUser(const std::string &login, const std::string &pas
 
     network::RegisterMessage* authMess = new network::RegisterMessage();
     authMess->set_login(login);
-    authMess->set_pass(password);
+    std::string hashPass;
+    CryptoHelper::md5_hash(password, hashPass);
+    authMess->set_pass(hashPass);
     authMess->set_firstname(fname);
     authMess->set_secondname(sname);
     authMess->set_lastname(lname);

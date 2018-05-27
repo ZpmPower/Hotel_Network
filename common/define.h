@@ -21,5 +21,11 @@ enum class ClientError {
     status_cannot_connect
 };
 
+enum class Roles {
+    role_admin = 0,
+    role_manager = 1,
+    role_receptionist = 2,
+    role_guest = 3
+};
 #endif // DEFINE
 

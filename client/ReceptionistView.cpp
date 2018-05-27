@@ -1,8 +1,8 @@
 #include "ReceptionistView.h"
 #include "ui_ReceptionistView.h"
 
-ReceptionistView::ReceptionistView(QWidget *parent) :
-    QWidget(parent),
+ReceptionistView::ReceptionistView(std::shared_ptr<MessageManager> message_manager, QWidget *parent) :
+    message_manager_(message_manager), QWidget(parent),
     ui(new Ui::ReceptionistView)
 {
     ui->setupUi(this);
@@ -11,4 +11,9 @@ ReceptionistView::ReceptionistView(QWidget *parent) :
 ReceptionistView::~ReceptionistView()
 {
     delete ui;
+}
+
+void ReceptionistView::on_ReceptionistView_destroyed()
+{
+    emit enableGb();
 }

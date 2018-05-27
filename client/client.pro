@@ -1,5 +1,6 @@
 QT += gui
 QT += widgets
+QT += sql
 
 TARGET = client
 CONFIG += console
@@ -35,7 +36,12 @@ SOURCES += main.cpp \
     $$PWD/Protobuf/Message.pb.cc \
     Protobuf/MessageType.pb.cc \
     authReg.cpp \
-    Crypto/CryptoHelper.cpp
+    Crypto/CryptoHelper.cpp \
+    GuestView.cpp \
+    AdminView.cpp \
+    ManagerView.cpp \
+    ReceptionistView.cpp \
+    RegisterView.cpp
 
 HEADERS += \
     ../common/Worker.h \
@@ -49,7 +55,12 @@ HEADERS += \
     $$PWD/Protobuf/Message.pb.h \
     Protobuf/MessageType.pb.h \
     authReg.h \
-    Crypto/CryptoHelper.h
+    Crypto/CryptoHelper.h \
+    GuestView.h \
+    AdminView.h \
+    ManagerView.h \
+    ReceptionistView.h \
+    RegisterView.h
 
 system(cp $$PWD/SSL/* $PWD/../build/MOBILE_CLIENT/debugs)
 system(cp $$PWD/Config/config.cfg $PWD/../build/MOBILE_CLIENT/debugs)
@@ -66,4 +77,9 @@ DISTFILES += \
     ../mobileoperator_proto/protoSourse/Message.proto
 
 FORMS += \
-    authReg.ui
+    authReg.ui \
+    GuestView.ui \
+    AdminView.ui \
+    ManagerView.ui \
+    ReceptionistView.ui \
+    RegisterView.ui
