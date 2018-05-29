@@ -8,6 +8,7 @@
 db_connection_ptr DBHelper::getAdminConnection()
 {
     postgres_role admin = GlobalsParams::getAdminRole();
+    std::cout << "NAME=" << admin.username << " " << "PASS=" << admin.password;
 
     return makeConnection(GlobalsParams::getPostgres_host(), GlobalsParams::getPostgres_port(),
                             admin.username, admin.password, admin.dbname);

@@ -41,7 +41,10 @@ SOURCES += main.cpp \
     db/SessionManagerPostgres.cpp \
     Types/AuthUserInfo.cpp \
     Types/GuestInfo.cpp \
-    Types/EmployeeInfo.cpp
+    Types/EmployeeInfo.cpp \
+    Logic/AdminLogic.cpp \
+    Types/HotelInfo.cpp \
+    Types/RoomInfo.cpp
 
 HEADERS += \
     ../common/Worker.h \
@@ -63,7 +66,10 @@ HEADERS += \
     db/SessionManagerPostgres.h \
     Types/AuthUserInfo.h \
     Types/GuestInfo.h \
-    Types/EmployeeInfo.h
+    Types/EmployeeInfo.h \
+    Logic/AdminLogic.h \
+    Types/HotelInfo.h \
+    Types/RoomInfo.h
 
 system(cp $$PWD/Config/config.cfg $PWD/../build/MOBILE_SERVER/debugs)
 system(cp $$PWD/SSL/* $PWD/../build/MOBILE_SERVER/debugs)

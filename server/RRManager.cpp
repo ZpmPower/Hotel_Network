@@ -1,6 +1,7 @@
 #include "RRManager.h"
 #include "Helper.h"
 #include "Logic/AuthLogic.h"
+#include "Logic/AdminLogic.h"
 
 RRManager::RRManager(Server& server)
 {
@@ -24,7 +25,7 @@ void RRManager::onConnected(ClientChannelPtr session)
                                             , this
                                             , std::placeholders::_1));
 }
-
+// /////////////////////////////////////
 void RRManager::readSessionBuffer(std::shared_ptr<ClientChannel> session, ByteBufferPtr buffPtr)
 {
     network::RequestContext reqContext;
@@ -39,6 +40,21 @@ void RRManager::readSessionBuffer(std::shared_ptr<ClientChannel> session, ByteBu
     case network::HN_REGISTER:
         responseCode = registerRR(reqContext, resContext);
         break;
+    case network::HN_REGISTER_EMPLOYEE:
+        responseCode = registerEmployeeRR(reqContext,resContext);
+        break;
+    case network::HN_GET_ALL_GUESTS:
+        responseCode = getGuestsRR(reqContext, resContext);
+        break;
+    case network::HN_GET_ALL_EMPLOYEES:
+        responseCode = getEmployeesRR(reqContext, resContext);
+        break;
+    case network::HN_GET_ALL_HOTELS:
+        responseCode = getHotelsRR(reqContext, resContext);
+        break;
+    case network::HN_GET_ALL_ROOMS:
+        responseCode = getRoomsRR(reqContext, resContext);
+        break;
     default:
         responseCode = ResponseCode::status_unknown_command;
         break;
@@ -48,7 +64,7 @@ void RRManager::readSessionBuffer(std::shared_ptr<ClientChannel> session, ByteBu
     resContext.set_message_type_(reqContext.message_type_());
     session->execute(resContext.SerializeAsString());
 }
-
+// /////////////////////////////
 void RRManager::disconectedSession(std::shared_ptr<ClientChannel> session)
 {
     LOG_INFO("Disconected!");
@@ -127,6 +143,109 @@ ResponseCode RRManager::registerRR(const network::RequestContext &requests, netw
         resultStatus = AuthLogic::createUser(authMessage, regRes);
 
         response.set_allocated_register_response(regRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::registerEmployeeRR(const network::RequestContext &requests, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        if(!requests.has_register_employee_message_())
+        {
+            LOG_ERR("Where is not register message!");
+            resultStatus = ResponseCode::status_bad_request;
+            break;
+        }
+
+        network::RegisterEmployeeMessage authMessage = requests.register_employee_message_();
+
+        if(!authMessage.has_login())
+        {
+            LOG_ERR("Where is not login value!");
+            resultStatus = ResponseCode::status_bad_request;
+            break;
+        }
+
+        if(!authMessage.has_pass())
+        {
+            LOG_ERR("Where is not password value!");
+            resultStatus = ResponseCode::status_bad_request;
+            break;
+        }
+        network::RegisterMessageResponse* regRes = new network::RegisterMessageResponse();
+
+        resultStatus = AuthLogic::createEmployee(authMessage, regRes);
+
+        response.set_allocated_register_response(regRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::getGuestsRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::GuestsMessageResponse* guestsRes = new network::GuestsMessageResponse();
+
+        resultStatus = AdminLogic::getGuests(guestsRes);
+        response.set_allocated_guests(guestsRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::getEmployeesRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::EmployeesMessageResponse* employeesRes = new network::EmployeesMessageResponse();
+
+        resultStatus = AdminLogic::getEmployees(employeesRes);
+        response.set_allocated_employees(employeesRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::getHotelsRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::HotelsMessageResponse* hotelsRes = new network::HotelsMessageResponse();
+
+        resultStatus = AdminLogic::getHotels(hotelsRes);
+        response.set_allocated_hotels(hotelsRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::getRoomsRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RoomsMessageResponse* roomsRes = new network::RoomsMessageResponse();
+
+        resultStatus = AdminLogic::getRooms(roomsRes);
+        response.set_allocated_rooms(roomsRes);
     }
     while(false);
 

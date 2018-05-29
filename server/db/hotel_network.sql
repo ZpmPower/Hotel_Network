@@ -296,6 +296,8 @@ INSERT INTO RoomOrder(IdRoom, StartDate,EndDate,idEmployee,IdGuest) VALUES(25,'2
 
 
 GRANT ALL PRIVILEGES ON DATABASE hotelnet_database TO admin;
+
+
 GRANT SELECT, UPDATE, INSERT, DELETE ON employee TO manager;
 GRANT SELECT ON hotel TO manager;
 GRANT SELECT, UPDATE, INSERT, DELETE ON room TO manager;

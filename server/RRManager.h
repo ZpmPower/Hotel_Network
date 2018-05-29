@@ -18,6 +18,11 @@ private:
 
     ResponseCode authRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode registerRR(const network::RequestContext& requests, network::ResponseContext &response);
+    ResponseCode registerEmployeeRR(const network::RequestContext& requests, network::ResponseContext &response);
+    ResponseCode getGuestsRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode getEmployeesRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode getHotelsRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode getRoomsRR(const network::RequestContext& request, network::ResponseContext &response);
 
     std::vector<ClientChannelPtr> sessions_;
 };

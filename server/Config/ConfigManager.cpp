@@ -67,12 +67,12 @@ void parse_db_params(const libconfig::Config& cfg)
     manager.password = cfg.lookup("application.postgres.manager.password").c_str();
     manager.username = cfg.lookup("application.postgres.manager.user").c_str();
 
-    GlobalsParams::setAdminRole(manager);
+    GlobalsParams::setManagerRole(manager);
 
     postgres_role receptionist;
     receptionist.dbname = cfg.lookup("application.postgres.receptionist.dbname").c_str();
     receptionist.password = cfg.lookup("application.postgres.receptionist.password").c_str();
     receptionist.username = cfg.lookup("application.postgres.receptionist.user").c_str();
 
-    GlobalsParams::setAdminRole(receptionist);
+    GlobalsParams::setReceptionistRole(receptionist);
 }
