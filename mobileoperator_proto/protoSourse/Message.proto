@@ -18,11 +18,87 @@ message RegisterMessage {
 
 }
 
+message RegisterEmployeeMessage {
+
+    optional string login = 1;
+    optional string pass = 2;
+    optional string firstname = 3;
+    optional string secondname = 4;
+    optional string lastname = 5;
+    optional string phonenumber = 6;
+    optional int32 salary = 7;
+    optional int32 position = 8;
+    optional int32 hotelId = 9;
+}
+
+message GuestInfo {
+    optional string firstname = 1;
+    optional string secondname = 2;
+    optional string lastname = 3;
+    optional string phonenumber = 4;
+    optional string passport = 5;
+}
+
+message GuestsMessageResponse {
+    repeated GuestInfo guests = 1;
+
+}
+
+message EmployeeInfo {
+
+    optional string firstname = 1;
+    optional string secondname = 2;
+    optional string lastname = 3;
+    optional string phonenumber = 4;
+    optional int32 salary = 5;
+    optional string position = 6;
+    optional int32 hotelId = 7;
+}
+
+message EmployeesMessageResponse {
+    repeated EmployeeInfo employees = 1;
+
+}
+
+message HotelInfo {
+
+    optional string name = 1;
+    optional string city = 2;
+    optional string street = 3;
+    optional string phonenumber = 4;
+    optional string email = 5;
+    optional int32 stars = 6;
+    optional string type = 7;
+}
+
+message HotelsMessageResponse {
+    repeated HotelInfo hotels = 1;
+
+}
+
+
+message RoomInfo {
+
+    optional int32 places = 1;
+    optional int32 price = 2;
+    optional int32 rating = 3;
+    optional bool status = 4;
+    optional int32 floor = 5;
+    optional string type = 6;
+    optional int32 hotelID = 7;
+}
+
+message RoomsMessageResponse {
+    repeated RoomInfo rooms = 1;
+
+}
+
+
 message RequestContext {
     optional message_type message_type_ = 1;
-    optional AuthMessage  auth_message_ = 3;
-    optional RegisterMessage register_message_ = 4;
-
+    optional AuthMessage  auth_message_ = 2;
+    optional RegisterMessage register_message_ = 3;
+    optional RegisterEmployeeMessage register_employee_message_ = 4;
     optional SessionInfo session_info = 5;
 }
 
@@ -53,4 +129,8 @@ message ResponseContext {
     optional RegisterMessageResponse register_response = 3;
     optional AuthMessageResponse auth_response = 4;
     optional SessionInfo session_info = 5;
+    optional GuestsMessageResponse guests = 6;
+    optional EmployeesMessageResponse employees = 7;
+    optional HotelsMessageResponse hotels = 8;
+    optional RoomsMessageResponse rooms = 9;
 }

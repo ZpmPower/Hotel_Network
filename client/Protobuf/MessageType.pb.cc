@@ -58,8 +58,11 @@ void protobuf_AddDesc_MessageType_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\021MessageType.proto\022\007network*,\n\014message_"
-    "type\022\017\n\013HN_REGISTER\020\000\022\013\n\007HN_AUTH\020\001", 74);
+    "\n\021MessageType.proto\022\007network*\244\001\n\014message"
+    "_type\022\017\n\013HN_REGISTER\020\000\022\013\n\007HN_AUTH\020\001\022\025\n\021H"
+    "N_GET_ALL_GUESTS\020\002\022\030\n\024HN_REGISTER_EMPLOY"
+    "EE\020\003\022\030\n\024HN_GET_ALL_EMPLOYEES\020\004\022\025\n\021HN_GET"
+    "_ALL_HOTELS\020\005\022\024\n\020HN_GET_ALL_ROOMS\020\006", 195);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MessageType.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_MessageType_2eproto);
@@ -79,6 +82,11 @@ bool message_type_IsValid(int value) {
   switch(value) {
     case 0:
     case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
       return true;
     default:
       return false;

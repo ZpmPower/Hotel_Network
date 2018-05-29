@@ -36,6 +36,15 @@ void protobuf_ShutdownFile_Message_2eproto();
 
 class AuthMessage;
 class RegisterMessage;
+class RegisterEmployeeMessage;
+class GuestInfo;
+class GuestsMessageResponse;
+class EmployeeInfo;
+class EmployeesMessageResponse;
+class HotelInfo;
+class HotelsMessageResponse;
+class RoomInfo;
+class RoomsMessageResponse;
 class RequestContext;
 class RegisterMessageResponse;
 class AuthMessageResponse;
@@ -317,6 +326,1144 @@ class RegisterMessage : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class RegisterEmployeeMessage : public ::google::protobuf::Message {
+ public:
+  RegisterEmployeeMessage();
+  virtual ~RegisterEmployeeMessage();
+
+  RegisterEmployeeMessage(const RegisterEmployeeMessage& from);
+
+  inline RegisterEmployeeMessage& operator=(const RegisterEmployeeMessage& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RegisterEmployeeMessage& default_instance();
+
+  void Swap(RegisterEmployeeMessage* other);
+
+  // implements Message ----------------------------------------------
+
+  RegisterEmployeeMessage* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RegisterEmployeeMessage& from);
+  void MergeFrom(const RegisterEmployeeMessage& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string login = 1;
+  inline bool has_login() const;
+  inline void clear_login();
+  static const int kLoginFieldNumber = 1;
+  inline const ::std::string& login() const;
+  inline void set_login(const ::std::string& value);
+  inline void set_login(const char* value);
+  inline void set_login(const char* value, size_t size);
+  inline ::std::string* mutable_login();
+  inline ::std::string* release_login();
+  inline void set_allocated_login(::std::string* login);
+
+  // optional string pass = 2;
+  inline bool has_pass() const;
+  inline void clear_pass();
+  static const int kPassFieldNumber = 2;
+  inline const ::std::string& pass() const;
+  inline void set_pass(const ::std::string& value);
+  inline void set_pass(const char* value);
+  inline void set_pass(const char* value, size_t size);
+  inline ::std::string* mutable_pass();
+  inline ::std::string* release_pass();
+  inline void set_allocated_pass(::std::string* pass);
+
+  // optional string firstname = 3;
+  inline bool has_firstname() const;
+  inline void clear_firstname();
+  static const int kFirstnameFieldNumber = 3;
+  inline const ::std::string& firstname() const;
+  inline void set_firstname(const ::std::string& value);
+  inline void set_firstname(const char* value);
+  inline void set_firstname(const char* value, size_t size);
+  inline ::std::string* mutable_firstname();
+  inline ::std::string* release_firstname();
+  inline void set_allocated_firstname(::std::string* firstname);
+
+  // optional string secondname = 4;
+  inline bool has_secondname() const;
+  inline void clear_secondname();
+  static const int kSecondnameFieldNumber = 4;
+  inline const ::std::string& secondname() const;
+  inline void set_secondname(const ::std::string& value);
+  inline void set_secondname(const char* value);
+  inline void set_secondname(const char* value, size_t size);
+  inline ::std::string* mutable_secondname();
+  inline ::std::string* release_secondname();
+  inline void set_allocated_secondname(::std::string* secondname);
+
+  // optional string lastname = 5;
+  inline bool has_lastname() const;
+  inline void clear_lastname();
+  static const int kLastnameFieldNumber = 5;
+  inline const ::std::string& lastname() const;
+  inline void set_lastname(const ::std::string& value);
+  inline void set_lastname(const char* value);
+  inline void set_lastname(const char* value, size_t size);
+  inline ::std::string* mutable_lastname();
+  inline ::std::string* release_lastname();
+  inline void set_allocated_lastname(::std::string* lastname);
+
+  // optional string phonenumber = 6;
+  inline bool has_phonenumber() const;
+  inline void clear_phonenumber();
+  static const int kPhonenumberFieldNumber = 6;
+  inline const ::std::string& phonenumber() const;
+  inline void set_phonenumber(const ::std::string& value);
+  inline void set_phonenumber(const char* value);
+  inline void set_phonenumber(const char* value, size_t size);
+  inline ::std::string* mutable_phonenumber();
+  inline ::std::string* release_phonenumber();
+  inline void set_allocated_phonenumber(::std::string* phonenumber);
+
+  // optional int32 salary = 7;
+  inline bool has_salary() const;
+  inline void clear_salary();
+  static const int kSalaryFieldNumber = 7;
+  inline ::google::protobuf::int32 salary() const;
+  inline void set_salary(::google::protobuf::int32 value);
+
+  // optional int32 position = 8;
+  inline bool has_position() const;
+  inline void clear_position();
+  static const int kPositionFieldNumber = 8;
+  inline ::google::protobuf::int32 position() const;
+  inline void set_position(::google::protobuf::int32 value);
+
+  // optional int32 hotelId = 9;
+  inline bool has_hotelid() const;
+  inline void clear_hotelid();
+  static const int kHotelIdFieldNumber = 9;
+  inline ::google::protobuf::int32 hotelid() const;
+  inline void set_hotelid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:network.RegisterEmployeeMessage)
+ private:
+  inline void set_has_login();
+  inline void clear_has_login();
+  inline void set_has_pass();
+  inline void clear_has_pass();
+  inline void set_has_firstname();
+  inline void clear_has_firstname();
+  inline void set_has_secondname();
+  inline void clear_has_secondname();
+  inline void set_has_lastname();
+  inline void clear_has_lastname();
+  inline void set_has_phonenumber();
+  inline void clear_has_phonenumber();
+  inline void set_has_salary();
+  inline void clear_has_salary();
+  inline void set_has_position();
+  inline void clear_has_position();
+  inline void set_has_hotelid();
+  inline void clear_has_hotelid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* login_;
+  ::std::string* pass_;
+  ::std::string* firstname_;
+  ::std::string* secondname_;
+  ::std::string* lastname_;
+  ::std::string* phonenumber_;
+  ::google::protobuf::int32 salary_;
+  ::google::protobuf::int32 position_;
+  ::google::protobuf::int32 hotelid_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static RegisterEmployeeMessage* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GuestInfo : public ::google::protobuf::Message {
+ public:
+  GuestInfo();
+  virtual ~GuestInfo();
+
+  GuestInfo(const GuestInfo& from);
+
+  inline GuestInfo& operator=(const GuestInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GuestInfo& default_instance();
+
+  void Swap(GuestInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  GuestInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GuestInfo& from);
+  void MergeFrom(const GuestInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string firstname = 1;
+  inline bool has_firstname() const;
+  inline void clear_firstname();
+  static const int kFirstnameFieldNumber = 1;
+  inline const ::std::string& firstname() const;
+  inline void set_firstname(const ::std::string& value);
+  inline void set_firstname(const char* value);
+  inline void set_firstname(const char* value, size_t size);
+  inline ::std::string* mutable_firstname();
+  inline ::std::string* release_firstname();
+  inline void set_allocated_firstname(::std::string* firstname);
+
+  // optional string secondname = 2;
+  inline bool has_secondname() const;
+  inline void clear_secondname();
+  static const int kSecondnameFieldNumber = 2;
+  inline const ::std::string& secondname() const;
+  inline void set_secondname(const ::std::string& value);
+  inline void set_secondname(const char* value);
+  inline void set_secondname(const char* value, size_t size);
+  inline ::std::string* mutable_secondname();
+  inline ::std::string* release_secondname();
+  inline void set_allocated_secondname(::std::string* secondname);
+
+  // optional string lastname = 3;
+  inline bool has_lastname() const;
+  inline void clear_lastname();
+  static const int kLastnameFieldNumber = 3;
+  inline const ::std::string& lastname() const;
+  inline void set_lastname(const ::std::string& value);
+  inline void set_lastname(const char* value);
+  inline void set_lastname(const char* value, size_t size);
+  inline ::std::string* mutable_lastname();
+  inline ::std::string* release_lastname();
+  inline void set_allocated_lastname(::std::string* lastname);
+
+  // optional string phonenumber = 4;
+  inline bool has_phonenumber() const;
+  inline void clear_phonenumber();
+  static const int kPhonenumberFieldNumber = 4;
+  inline const ::std::string& phonenumber() const;
+  inline void set_phonenumber(const ::std::string& value);
+  inline void set_phonenumber(const char* value);
+  inline void set_phonenumber(const char* value, size_t size);
+  inline ::std::string* mutable_phonenumber();
+  inline ::std::string* release_phonenumber();
+  inline void set_allocated_phonenumber(::std::string* phonenumber);
+
+  // optional string passport = 5;
+  inline bool has_passport() const;
+  inline void clear_passport();
+  static const int kPassportFieldNumber = 5;
+  inline const ::std::string& passport() const;
+  inline void set_passport(const ::std::string& value);
+  inline void set_passport(const char* value);
+  inline void set_passport(const char* value, size_t size);
+  inline ::std::string* mutable_passport();
+  inline ::std::string* release_passport();
+  inline void set_allocated_passport(::std::string* passport);
+
+  // @@protoc_insertion_point(class_scope:network.GuestInfo)
+ private:
+  inline void set_has_firstname();
+  inline void clear_has_firstname();
+  inline void set_has_secondname();
+  inline void clear_has_secondname();
+  inline void set_has_lastname();
+  inline void clear_has_lastname();
+  inline void set_has_phonenumber();
+  inline void clear_has_phonenumber();
+  inline void set_has_passport();
+  inline void clear_has_passport();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* firstname_;
+  ::std::string* secondname_;
+  ::std::string* lastname_;
+  ::std::string* phonenumber_;
+  ::std::string* passport_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static GuestInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GuestsMessageResponse : public ::google::protobuf::Message {
+ public:
+  GuestsMessageResponse();
+  virtual ~GuestsMessageResponse();
+
+  GuestsMessageResponse(const GuestsMessageResponse& from);
+
+  inline GuestsMessageResponse& operator=(const GuestsMessageResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GuestsMessageResponse& default_instance();
+
+  void Swap(GuestsMessageResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  GuestsMessageResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GuestsMessageResponse& from);
+  void MergeFrom(const GuestsMessageResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .network.GuestInfo guests = 1;
+  inline int guests_size() const;
+  inline void clear_guests();
+  static const int kGuestsFieldNumber = 1;
+  inline const ::network::GuestInfo& guests(int index) const;
+  inline ::network::GuestInfo* mutable_guests(int index);
+  inline ::network::GuestInfo* add_guests();
+  inline const ::google::protobuf::RepeatedPtrField< ::network::GuestInfo >&
+      guests() const;
+  inline ::google::protobuf::RepeatedPtrField< ::network::GuestInfo >*
+      mutable_guests();
+
+  // @@protoc_insertion_point(class_scope:network.GuestsMessageResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::network::GuestInfo > guests_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static GuestsMessageResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class EmployeeInfo : public ::google::protobuf::Message {
+ public:
+  EmployeeInfo();
+  virtual ~EmployeeInfo();
+
+  EmployeeInfo(const EmployeeInfo& from);
+
+  inline EmployeeInfo& operator=(const EmployeeInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const EmployeeInfo& default_instance();
+
+  void Swap(EmployeeInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  EmployeeInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const EmployeeInfo& from);
+  void MergeFrom(const EmployeeInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string firstname = 1;
+  inline bool has_firstname() const;
+  inline void clear_firstname();
+  static const int kFirstnameFieldNumber = 1;
+  inline const ::std::string& firstname() const;
+  inline void set_firstname(const ::std::string& value);
+  inline void set_firstname(const char* value);
+  inline void set_firstname(const char* value, size_t size);
+  inline ::std::string* mutable_firstname();
+  inline ::std::string* release_firstname();
+  inline void set_allocated_firstname(::std::string* firstname);
+
+  // optional string secondname = 2;
+  inline bool has_secondname() const;
+  inline void clear_secondname();
+  static const int kSecondnameFieldNumber = 2;
+  inline const ::std::string& secondname() const;
+  inline void set_secondname(const ::std::string& value);
+  inline void set_secondname(const char* value);
+  inline void set_secondname(const char* value, size_t size);
+  inline ::std::string* mutable_secondname();
+  inline ::std::string* release_secondname();
+  inline void set_allocated_secondname(::std::string* secondname);
+
+  // optional string lastname = 3;
+  inline bool has_lastname() const;
+  inline void clear_lastname();
+  static const int kLastnameFieldNumber = 3;
+  inline const ::std::string& lastname() const;
+  inline void set_lastname(const ::std::string& value);
+  inline void set_lastname(const char* value);
+  inline void set_lastname(const char* value, size_t size);
+  inline ::std::string* mutable_lastname();
+  inline ::std::string* release_lastname();
+  inline void set_allocated_lastname(::std::string* lastname);
+
+  // optional string phonenumber = 4;
+  inline bool has_phonenumber() const;
+  inline void clear_phonenumber();
+  static const int kPhonenumberFieldNumber = 4;
+  inline const ::std::string& phonenumber() const;
+  inline void set_phonenumber(const ::std::string& value);
+  inline void set_phonenumber(const char* value);
+  inline void set_phonenumber(const char* value, size_t size);
+  inline ::std::string* mutable_phonenumber();
+  inline ::std::string* release_phonenumber();
+  inline void set_allocated_phonenumber(::std::string* phonenumber);
+
+  // optional int32 salary = 5;
+  inline bool has_salary() const;
+  inline void clear_salary();
+  static const int kSalaryFieldNumber = 5;
+  inline ::google::protobuf::int32 salary() const;
+  inline void set_salary(::google::protobuf::int32 value);
+
+  // optional string position = 6;
+  inline bool has_position() const;
+  inline void clear_position();
+  static const int kPositionFieldNumber = 6;
+  inline const ::std::string& position() const;
+  inline void set_position(const ::std::string& value);
+  inline void set_position(const char* value);
+  inline void set_position(const char* value, size_t size);
+  inline ::std::string* mutable_position();
+  inline ::std::string* release_position();
+  inline void set_allocated_position(::std::string* position);
+
+  // optional int32 hotelId = 7;
+  inline bool has_hotelid() const;
+  inline void clear_hotelid();
+  static const int kHotelIdFieldNumber = 7;
+  inline ::google::protobuf::int32 hotelid() const;
+  inline void set_hotelid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:network.EmployeeInfo)
+ private:
+  inline void set_has_firstname();
+  inline void clear_has_firstname();
+  inline void set_has_secondname();
+  inline void clear_has_secondname();
+  inline void set_has_lastname();
+  inline void clear_has_lastname();
+  inline void set_has_phonenumber();
+  inline void clear_has_phonenumber();
+  inline void set_has_salary();
+  inline void clear_has_salary();
+  inline void set_has_position();
+  inline void clear_has_position();
+  inline void set_has_hotelid();
+  inline void clear_has_hotelid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* firstname_;
+  ::std::string* secondname_;
+  ::std::string* lastname_;
+  ::std::string* phonenumber_;
+  ::std::string* position_;
+  ::google::protobuf::int32 salary_;
+  ::google::protobuf::int32 hotelid_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static EmployeeInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class EmployeesMessageResponse : public ::google::protobuf::Message {
+ public:
+  EmployeesMessageResponse();
+  virtual ~EmployeesMessageResponse();
+
+  EmployeesMessageResponse(const EmployeesMessageResponse& from);
+
+  inline EmployeesMessageResponse& operator=(const EmployeesMessageResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const EmployeesMessageResponse& default_instance();
+
+  void Swap(EmployeesMessageResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  EmployeesMessageResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const EmployeesMessageResponse& from);
+  void MergeFrom(const EmployeesMessageResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .network.EmployeeInfo employees = 1;
+  inline int employees_size() const;
+  inline void clear_employees();
+  static const int kEmployeesFieldNumber = 1;
+  inline const ::network::EmployeeInfo& employees(int index) const;
+  inline ::network::EmployeeInfo* mutable_employees(int index);
+  inline ::network::EmployeeInfo* add_employees();
+  inline const ::google::protobuf::RepeatedPtrField< ::network::EmployeeInfo >&
+      employees() const;
+  inline ::google::protobuf::RepeatedPtrField< ::network::EmployeeInfo >*
+      mutable_employees();
+
+  // @@protoc_insertion_point(class_scope:network.EmployeesMessageResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::network::EmployeeInfo > employees_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static EmployeesMessageResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HotelInfo : public ::google::protobuf::Message {
+ public:
+  HotelInfo();
+  virtual ~HotelInfo();
+
+  HotelInfo(const HotelInfo& from);
+
+  inline HotelInfo& operator=(const HotelInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HotelInfo& default_instance();
+
+  void Swap(HotelInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  HotelInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HotelInfo& from);
+  void MergeFrom(const HotelInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string name = 1;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 1;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  inline void set_allocated_name(::std::string* name);
+
+  // optional string city = 2;
+  inline bool has_city() const;
+  inline void clear_city();
+  static const int kCityFieldNumber = 2;
+  inline const ::std::string& city() const;
+  inline void set_city(const ::std::string& value);
+  inline void set_city(const char* value);
+  inline void set_city(const char* value, size_t size);
+  inline ::std::string* mutable_city();
+  inline ::std::string* release_city();
+  inline void set_allocated_city(::std::string* city);
+
+  // optional string street = 3;
+  inline bool has_street() const;
+  inline void clear_street();
+  static const int kStreetFieldNumber = 3;
+  inline const ::std::string& street() const;
+  inline void set_street(const ::std::string& value);
+  inline void set_street(const char* value);
+  inline void set_street(const char* value, size_t size);
+  inline ::std::string* mutable_street();
+  inline ::std::string* release_street();
+  inline void set_allocated_street(::std::string* street);
+
+  // optional string phonenumber = 4;
+  inline bool has_phonenumber() const;
+  inline void clear_phonenumber();
+  static const int kPhonenumberFieldNumber = 4;
+  inline const ::std::string& phonenumber() const;
+  inline void set_phonenumber(const ::std::string& value);
+  inline void set_phonenumber(const char* value);
+  inline void set_phonenumber(const char* value, size_t size);
+  inline ::std::string* mutable_phonenumber();
+  inline ::std::string* release_phonenumber();
+  inline void set_allocated_phonenumber(::std::string* phonenumber);
+
+  // optional string email = 5;
+  inline bool has_email() const;
+  inline void clear_email();
+  static const int kEmailFieldNumber = 5;
+  inline const ::std::string& email() const;
+  inline void set_email(const ::std::string& value);
+  inline void set_email(const char* value);
+  inline void set_email(const char* value, size_t size);
+  inline ::std::string* mutable_email();
+  inline ::std::string* release_email();
+  inline void set_allocated_email(::std::string* email);
+
+  // optional int32 stars = 6;
+  inline bool has_stars() const;
+  inline void clear_stars();
+  static const int kStarsFieldNumber = 6;
+  inline ::google::protobuf::int32 stars() const;
+  inline void set_stars(::google::protobuf::int32 value);
+
+  // optional string type = 7;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 7;
+  inline const ::std::string& type() const;
+  inline void set_type(const ::std::string& value);
+  inline void set_type(const char* value);
+  inline void set_type(const char* value, size_t size);
+  inline ::std::string* mutable_type();
+  inline ::std::string* release_type();
+  inline void set_allocated_type(::std::string* type);
+
+  // @@protoc_insertion_point(class_scope:network.HotelInfo)
+ private:
+  inline void set_has_name();
+  inline void clear_has_name();
+  inline void set_has_city();
+  inline void clear_has_city();
+  inline void set_has_street();
+  inline void clear_has_street();
+  inline void set_has_phonenumber();
+  inline void clear_has_phonenumber();
+  inline void set_has_email();
+  inline void clear_has_email();
+  inline void set_has_stars();
+  inline void clear_has_stars();
+  inline void set_has_type();
+  inline void clear_has_type();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* name_;
+  ::std::string* city_;
+  ::std::string* street_;
+  ::std::string* phonenumber_;
+  ::std::string* email_;
+  ::std::string* type_;
+  ::google::protobuf::int32 stars_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static HotelInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HotelsMessageResponse : public ::google::protobuf::Message {
+ public:
+  HotelsMessageResponse();
+  virtual ~HotelsMessageResponse();
+
+  HotelsMessageResponse(const HotelsMessageResponse& from);
+
+  inline HotelsMessageResponse& operator=(const HotelsMessageResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HotelsMessageResponse& default_instance();
+
+  void Swap(HotelsMessageResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  HotelsMessageResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HotelsMessageResponse& from);
+  void MergeFrom(const HotelsMessageResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .network.HotelInfo hotels = 1;
+  inline int hotels_size() const;
+  inline void clear_hotels();
+  static const int kHotelsFieldNumber = 1;
+  inline const ::network::HotelInfo& hotels(int index) const;
+  inline ::network::HotelInfo* mutable_hotels(int index);
+  inline ::network::HotelInfo* add_hotels();
+  inline const ::google::protobuf::RepeatedPtrField< ::network::HotelInfo >&
+      hotels() const;
+  inline ::google::protobuf::RepeatedPtrField< ::network::HotelInfo >*
+      mutable_hotels();
+
+  // @@protoc_insertion_point(class_scope:network.HotelsMessageResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::network::HotelInfo > hotels_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static HotelsMessageResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RoomInfo : public ::google::protobuf::Message {
+ public:
+  RoomInfo();
+  virtual ~RoomInfo();
+
+  RoomInfo(const RoomInfo& from);
+
+  inline RoomInfo& operator=(const RoomInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RoomInfo& default_instance();
+
+  void Swap(RoomInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  RoomInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RoomInfo& from);
+  void MergeFrom(const RoomInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 places = 1;
+  inline bool has_places() const;
+  inline void clear_places();
+  static const int kPlacesFieldNumber = 1;
+  inline ::google::protobuf::int32 places() const;
+  inline void set_places(::google::protobuf::int32 value);
+
+  // optional int32 price = 2;
+  inline bool has_price() const;
+  inline void clear_price();
+  static const int kPriceFieldNumber = 2;
+  inline ::google::protobuf::int32 price() const;
+  inline void set_price(::google::protobuf::int32 value);
+
+  // optional int32 rating = 3;
+  inline bool has_rating() const;
+  inline void clear_rating();
+  static const int kRatingFieldNumber = 3;
+  inline ::google::protobuf::int32 rating() const;
+  inline void set_rating(::google::protobuf::int32 value);
+
+  // optional bool status = 4;
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 4;
+  inline bool status() const;
+  inline void set_status(bool value);
+
+  // optional int32 floor = 5;
+  inline bool has_floor() const;
+  inline void clear_floor();
+  static const int kFloorFieldNumber = 5;
+  inline ::google::protobuf::int32 floor() const;
+  inline void set_floor(::google::protobuf::int32 value);
+
+  // optional string type = 6;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 6;
+  inline const ::std::string& type() const;
+  inline void set_type(const ::std::string& value);
+  inline void set_type(const char* value);
+  inline void set_type(const char* value, size_t size);
+  inline ::std::string* mutable_type();
+  inline ::std::string* release_type();
+  inline void set_allocated_type(::std::string* type);
+
+  // optional int32 hotelID = 7;
+  inline bool has_hotelid() const;
+  inline void clear_hotelid();
+  static const int kHotelIDFieldNumber = 7;
+  inline ::google::protobuf::int32 hotelid() const;
+  inline void set_hotelid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:network.RoomInfo)
+ private:
+  inline void set_has_places();
+  inline void clear_has_places();
+  inline void set_has_price();
+  inline void clear_has_price();
+  inline void set_has_rating();
+  inline void clear_has_rating();
+  inline void set_has_status();
+  inline void clear_has_status();
+  inline void set_has_floor();
+  inline void clear_has_floor();
+  inline void set_has_type();
+  inline void clear_has_type();
+  inline void set_has_hotelid();
+  inline void clear_has_hotelid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 places_;
+  ::google::protobuf::int32 price_;
+  ::google::protobuf::int32 rating_;
+  bool status_;
+  ::std::string* type_;
+  ::google::protobuf::int32 floor_;
+  ::google::protobuf::int32 hotelid_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static RoomInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RoomsMessageResponse : public ::google::protobuf::Message {
+ public:
+  RoomsMessageResponse();
+  virtual ~RoomsMessageResponse();
+
+  RoomsMessageResponse(const RoomsMessageResponse& from);
+
+  inline RoomsMessageResponse& operator=(const RoomsMessageResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RoomsMessageResponse& default_instance();
+
+  void Swap(RoomsMessageResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  RoomsMessageResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RoomsMessageResponse& from);
+  void MergeFrom(const RoomsMessageResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .network.RoomInfo rooms = 1;
+  inline int rooms_size() const;
+  inline void clear_rooms();
+  static const int kRoomsFieldNumber = 1;
+  inline const ::network::RoomInfo& rooms(int index) const;
+  inline ::network::RoomInfo* mutable_rooms(int index);
+  inline ::network::RoomInfo* add_rooms();
+  inline const ::google::protobuf::RepeatedPtrField< ::network::RoomInfo >&
+      rooms() const;
+  inline ::google::protobuf::RepeatedPtrField< ::network::RoomInfo >*
+      mutable_rooms();
+
+  // @@protoc_insertion_point(class_scope:network.RoomsMessageResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::network::RoomInfo > rooms_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static RoomsMessageResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class RequestContext : public ::google::protobuf::Message {
  public:
   RequestContext();
@@ -377,23 +1524,32 @@ class RequestContext : public ::google::protobuf::Message {
   inline ::network::message_type message_type_() const;
   inline void set_message_type_(::network::message_type value);
 
-  // optional .network.AuthMessage auth_message_ = 3;
+  // optional .network.AuthMessage auth_message_ = 2;
   inline bool has_auth_message_() const;
   inline void clear_auth_message_();
-  static const int kAuthMessageFieldNumber = 3;
+  static const int kAuthMessageFieldNumber = 2;
   inline const ::network::AuthMessage& auth_message_() const;
   inline ::network::AuthMessage* mutable_auth_message_();
   inline ::network::AuthMessage* release_auth_message_();
   inline void set_allocated_auth_message_(::network::AuthMessage* auth_message_);
 
-  // optional .network.RegisterMessage register_message_ = 4;
+  // optional .network.RegisterMessage register_message_ = 3;
   inline bool has_register_message_() const;
   inline void clear_register_message_();
-  static const int kRegisterMessageFieldNumber = 4;
+  static const int kRegisterMessageFieldNumber = 3;
   inline const ::network::RegisterMessage& register_message_() const;
   inline ::network::RegisterMessage* mutable_register_message_();
   inline ::network::RegisterMessage* release_register_message_();
   inline void set_allocated_register_message_(::network::RegisterMessage* register_message_);
+
+  // optional .network.RegisterEmployeeMessage register_employee_message_ = 4;
+  inline bool has_register_employee_message_() const;
+  inline void clear_register_employee_message_();
+  static const int kRegisterEmployeeMessageFieldNumber = 4;
+  inline const ::network::RegisterEmployeeMessage& register_employee_message_() const;
+  inline ::network::RegisterEmployeeMessage* mutable_register_employee_message_();
+  inline ::network::RegisterEmployeeMessage* release_register_employee_message_();
+  inline void set_allocated_register_employee_message_(::network::RegisterEmployeeMessage* register_employee_message_);
 
   // optional .network.SessionInfo session_info = 5;
   inline bool has_session_info() const;
@@ -412,6 +1568,8 @@ class RequestContext : public ::google::protobuf::Message {
   inline void clear_has_auth_message_();
   inline void set_has_register_message_();
   inline void clear_has_register_message_();
+  inline void set_has_register_employee_message_();
+  inline void clear_has_register_employee_message_();
   inline void set_has_session_info();
   inline void clear_has_session_info();
 
@@ -421,6 +1579,7 @@ class RequestContext : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::network::AuthMessage* auth_message__;
   ::network::RegisterMessage* register_message__;
+  ::network::RegisterEmployeeMessage* register_employee_message__;
   ::network::SessionInfo* session_info_;
   int message_type__;
   friend void  protobuf_AddDesc_Message_2eproto();
@@ -828,6 +1987,42 @@ class ResponseContext : public ::google::protobuf::Message {
   inline ::network::SessionInfo* release_session_info();
   inline void set_allocated_session_info(::network::SessionInfo* session_info);
 
+  // optional .network.GuestsMessageResponse guests = 6;
+  inline bool has_guests() const;
+  inline void clear_guests();
+  static const int kGuestsFieldNumber = 6;
+  inline const ::network::GuestsMessageResponse& guests() const;
+  inline ::network::GuestsMessageResponse* mutable_guests();
+  inline ::network::GuestsMessageResponse* release_guests();
+  inline void set_allocated_guests(::network::GuestsMessageResponse* guests);
+
+  // optional .network.EmployeesMessageResponse employees = 7;
+  inline bool has_employees() const;
+  inline void clear_employees();
+  static const int kEmployeesFieldNumber = 7;
+  inline const ::network::EmployeesMessageResponse& employees() const;
+  inline ::network::EmployeesMessageResponse* mutable_employees();
+  inline ::network::EmployeesMessageResponse* release_employees();
+  inline void set_allocated_employees(::network::EmployeesMessageResponse* employees);
+
+  // optional .network.HotelsMessageResponse hotels = 8;
+  inline bool has_hotels() const;
+  inline void clear_hotels();
+  static const int kHotelsFieldNumber = 8;
+  inline const ::network::HotelsMessageResponse& hotels() const;
+  inline ::network::HotelsMessageResponse* mutable_hotels();
+  inline ::network::HotelsMessageResponse* release_hotels();
+  inline void set_allocated_hotels(::network::HotelsMessageResponse* hotels);
+
+  // optional .network.RoomsMessageResponse rooms = 9;
+  inline bool has_rooms() const;
+  inline void clear_rooms();
+  static const int kRoomsFieldNumber = 9;
+  inline const ::network::RoomsMessageResponse& rooms() const;
+  inline ::network::RoomsMessageResponse* mutable_rooms();
+  inline ::network::RoomsMessageResponse* release_rooms();
+  inline void set_allocated_rooms(::network::RoomsMessageResponse* rooms);
+
   // @@protoc_insertion_point(class_scope:network.ResponseContext)
  private:
   inline void set_has_error_code();
@@ -840,6 +2035,14 @@ class ResponseContext : public ::google::protobuf::Message {
   inline void clear_has_auth_response();
   inline void set_has_session_info();
   inline void clear_has_session_info();
+  inline void set_has_guests();
+  inline void clear_has_guests();
+  inline void set_has_employees();
+  inline void clear_has_employees();
+  inline void set_has_hotels();
+  inline void clear_has_hotels();
+  inline void set_has_rooms();
+  inline void clear_has_rooms();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -850,6 +2053,10 @@ class ResponseContext : public ::google::protobuf::Message {
   ::network::RegisterMessageResponse* register_response_;
   ::network::AuthMessageResponse* auth_response_;
   ::network::SessionInfo* session_info_;
+  ::network::GuestsMessageResponse* guests_;
+  ::network::EmployeesMessageResponse* employees_;
+  ::network::HotelsMessageResponse* hotels_;
+  ::network::RoomsMessageResponse* rooms_;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
   friend void protobuf_ShutdownFile_Message_2eproto();
@@ -1554,6 +2761,2198 @@ inline void RegisterMessage::set_allocated_passport(::std::string* passport) {
 
 // -------------------------------------------------------------------
 
+// RegisterEmployeeMessage
+
+// optional string login = 1;
+inline bool RegisterEmployeeMessage::has_login() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RegisterEmployeeMessage::set_has_login() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RegisterEmployeeMessage::clear_has_login() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RegisterEmployeeMessage::clear_login() {
+  if (login_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    login_->clear();
+  }
+  clear_has_login();
+}
+inline const ::std::string& RegisterEmployeeMessage::login() const {
+  // @@protoc_insertion_point(field_get:network.RegisterEmployeeMessage.login)
+  return *login_;
+}
+inline void RegisterEmployeeMessage::set_login(const ::std::string& value) {
+  set_has_login();
+  if (login_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    login_ = new ::std::string;
+  }
+  login_->assign(value);
+  // @@protoc_insertion_point(field_set:network.RegisterEmployeeMessage.login)
+}
+inline void RegisterEmployeeMessage::set_login(const char* value) {
+  set_has_login();
+  if (login_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    login_ = new ::std::string;
+  }
+  login_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.RegisterEmployeeMessage.login)
+}
+inline void RegisterEmployeeMessage::set_login(const char* value, size_t size) {
+  set_has_login();
+  if (login_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    login_ = new ::std::string;
+  }
+  login_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.RegisterEmployeeMessage.login)
+}
+inline ::std::string* RegisterEmployeeMessage::mutable_login() {
+  set_has_login();
+  if (login_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    login_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.RegisterEmployeeMessage.login)
+  return login_;
+}
+inline ::std::string* RegisterEmployeeMessage::release_login() {
+  clear_has_login();
+  if (login_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = login_;
+    login_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RegisterEmployeeMessage::set_allocated_login(::std::string* login) {
+  if (login_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete login_;
+  }
+  if (login) {
+    set_has_login();
+    login_ = login;
+  } else {
+    clear_has_login();
+    login_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RegisterEmployeeMessage.login)
+}
+
+// optional string pass = 2;
+inline bool RegisterEmployeeMessage::has_pass() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RegisterEmployeeMessage::set_has_pass() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RegisterEmployeeMessage::clear_has_pass() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RegisterEmployeeMessage::clear_pass() {
+  if (pass_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    pass_->clear();
+  }
+  clear_has_pass();
+}
+inline const ::std::string& RegisterEmployeeMessage::pass() const {
+  // @@protoc_insertion_point(field_get:network.RegisterEmployeeMessage.pass)
+  return *pass_;
+}
+inline void RegisterEmployeeMessage::set_pass(const ::std::string& value) {
+  set_has_pass();
+  if (pass_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    pass_ = new ::std::string;
+  }
+  pass_->assign(value);
+  // @@protoc_insertion_point(field_set:network.RegisterEmployeeMessage.pass)
+}
+inline void RegisterEmployeeMessage::set_pass(const char* value) {
+  set_has_pass();
+  if (pass_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    pass_ = new ::std::string;
+  }
+  pass_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.RegisterEmployeeMessage.pass)
+}
+inline void RegisterEmployeeMessage::set_pass(const char* value, size_t size) {
+  set_has_pass();
+  if (pass_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    pass_ = new ::std::string;
+  }
+  pass_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.RegisterEmployeeMessage.pass)
+}
+inline ::std::string* RegisterEmployeeMessage::mutable_pass() {
+  set_has_pass();
+  if (pass_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    pass_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.RegisterEmployeeMessage.pass)
+  return pass_;
+}
+inline ::std::string* RegisterEmployeeMessage::release_pass() {
+  clear_has_pass();
+  if (pass_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = pass_;
+    pass_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RegisterEmployeeMessage::set_allocated_pass(::std::string* pass) {
+  if (pass_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete pass_;
+  }
+  if (pass) {
+    set_has_pass();
+    pass_ = pass;
+  } else {
+    clear_has_pass();
+    pass_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RegisterEmployeeMessage.pass)
+}
+
+// optional string firstname = 3;
+inline bool RegisterEmployeeMessage::has_firstname() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RegisterEmployeeMessage::set_has_firstname() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RegisterEmployeeMessage::clear_has_firstname() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RegisterEmployeeMessage::clear_firstname() {
+  if (firstname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_->clear();
+  }
+  clear_has_firstname();
+}
+inline const ::std::string& RegisterEmployeeMessage::firstname() const {
+  // @@protoc_insertion_point(field_get:network.RegisterEmployeeMessage.firstname)
+  return *firstname_;
+}
+inline void RegisterEmployeeMessage::set_firstname(const ::std::string& value) {
+  set_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_ = new ::std::string;
+  }
+  firstname_->assign(value);
+  // @@protoc_insertion_point(field_set:network.RegisterEmployeeMessage.firstname)
+}
+inline void RegisterEmployeeMessage::set_firstname(const char* value) {
+  set_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_ = new ::std::string;
+  }
+  firstname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.RegisterEmployeeMessage.firstname)
+}
+inline void RegisterEmployeeMessage::set_firstname(const char* value, size_t size) {
+  set_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_ = new ::std::string;
+  }
+  firstname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.RegisterEmployeeMessage.firstname)
+}
+inline ::std::string* RegisterEmployeeMessage::mutable_firstname() {
+  set_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.RegisterEmployeeMessage.firstname)
+  return firstname_;
+}
+inline ::std::string* RegisterEmployeeMessage::release_firstname() {
+  clear_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = firstname_;
+    firstname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RegisterEmployeeMessage::set_allocated_firstname(::std::string* firstname) {
+  if (firstname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete firstname_;
+  }
+  if (firstname) {
+    set_has_firstname();
+    firstname_ = firstname;
+  } else {
+    clear_has_firstname();
+    firstname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RegisterEmployeeMessage.firstname)
+}
+
+// optional string secondname = 4;
+inline bool RegisterEmployeeMessage::has_secondname() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RegisterEmployeeMessage::set_has_secondname() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RegisterEmployeeMessage::clear_has_secondname() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RegisterEmployeeMessage::clear_secondname() {
+  if (secondname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_->clear();
+  }
+  clear_has_secondname();
+}
+inline const ::std::string& RegisterEmployeeMessage::secondname() const {
+  // @@protoc_insertion_point(field_get:network.RegisterEmployeeMessage.secondname)
+  return *secondname_;
+}
+inline void RegisterEmployeeMessage::set_secondname(const ::std::string& value) {
+  set_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_ = new ::std::string;
+  }
+  secondname_->assign(value);
+  // @@protoc_insertion_point(field_set:network.RegisterEmployeeMessage.secondname)
+}
+inline void RegisterEmployeeMessage::set_secondname(const char* value) {
+  set_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_ = new ::std::string;
+  }
+  secondname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.RegisterEmployeeMessage.secondname)
+}
+inline void RegisterEmployeeMessage::set_secondname(const char* value, size_t size) {
+  set_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_ = new ::std::string;
+  }
+  secondname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.RegisterEmployeeMessage.secondname)
+}
+inline ::std::string* RegisterEmployeeMessage::mutable_secondname() {
+  set_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.RegisterEmployeeMessage.secondname)
+  return secondname_;
+}
+inline ::std::string* RegisterEmployeeMessage::release_secondname() {
+  clear_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = secondname_;
+    secondname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RegisterEmployeeMessage::set_allocated_secondname(::std::string* secondname) {
+  if (secondname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete secondname_;
+  }
+  if (secondname) {
+    set_has_secondname();
+    secondname_ = secondname;
+  } else {
+    clear_has_secondname();
+    secondname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RegisterEmployeeMessage.secondname)
+}
+
+// optional string lastname = 5;
+inline bool RegisterEmployeeMessage::has_lastname() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void RegisterEmployeeMessage::set_has_lastname() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void RegisterEmployeeMessage::clear_has_lastname() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void RegisterEmployeeMessage::clear_lastname() {
+  if (lastname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_->clear();
+  }
+  clear_has_lastname();
+}
+inline const ::std::string& RegisterEmployeeMessage::lastname() const {
+  // @@protoc_insertion_point(field_get:network.RegisterEmployeeMessage.lastname)
+  return *lastname_;
+}
+inline void RegisterEmployeeMessage::set_lastname(const ::std::string& value) {
+  set_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_ = new ::std::string;
+  }
+  lastname_->assign(value);
+  // @@protoc_insertion_point(field_set:network.RegisterEmployeeMessage.lastname)
+}
+inline void RegisterEmployeeMessage::set_lastname(const char* value) {
+  set_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_ = new ::std::string;
+  }
+  lastname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.RegisterEmployeeMessage.lastname)
+}
+inline void RegisterEmployeeMessage::set_lastname(const char* value, size_t size) {
+  set_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_ = new ::std::string;
+  }
+  lastname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.RegisterEmployeeMessage.lastname)
+}
+inline ::std::string* RegisterEmployeeMessage::mutable_lastname() {
+  set_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.RegisterEmployeeMessage.lastname)
+  return lastname_;
+}
+inline ::std::string* RegisterEmployeeMessage::release_lastname() {
+  clear_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = lastname_;
+    lastname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RegisterEmployeeMessage::set_allocated_lastname(::std::string* lastname) {
+  if (lastname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete lastname_;
+  }
+  if (lastname) {
+    set_has_lastname();
+    lastname_ = lastname;
+  } else {
+    clear_has_lastname();
+    lastname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RegisterEmployeeMessage.lastname)
+}
+
+// optional string phonenumber = 6;
+inline bool RegisterEmployeeMessage::has_phonenumber() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void RegisterEmployeeMessage::set_has_phonenumber() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void RegisterEmployeeMessage::clear_has_phonenumber() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void RegisterEmployeeMessage::clear_phonenumber() {
+  if (phonenumber_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_->clear();
+  }
+  clear_has_phonenumber();
+}
+inline const ::std::string& RegisterEmployeeMessage::phonenumber() const {
+  // @@protoc_insertion_point(field_get:network.RegisterEmployeeMessage.phonenumber)
+  return *phonenumber_;
+}
+inline void RegisterEmployeeMessage::set_phonenumber(const ::std::string& value) {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  phonenumber_->assign(value);
+  // @@protoc_insertion_point(field_set:network.RegisterEmployeeMessage.phonenumber)
+}
+inline void RegisterEmployeeMessage::set_phonenumber(const char* value) {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  phonenumber_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.RegisterEmployeeMessage.phonenumber)
+}
+inline void RegisterEmployeeMessage::set_phonenumber(const char* value, size_t size) {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  phonenumber_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.RegisterEmployeeMessage.phonenumber)
+}
+inline ::std::string* RegisterEmployeeMessage::mutable_phonenumber() {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.RegisterEmployeeMessage.phonenumber)
+  return phonenumber_;
+}
+inline ::std::string* RegisterEmployeeMessage::release_phonenumber() {
+  clear_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = phonenumber_;
+    phonenumber_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RegisterEmployeeMessage::set_allocated_phonenumber(::std::string* phonenumber) {
+  if (phonenumber_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete phonenumber_;
+  }
+  if (phonenumber) {
+    set_has_phonenumber();
+    phonenumber_ = phonenumber;
+  } else {
+    clear_has_phonenumber();
+    phonenumber_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RegisterEmployeeMessage.phonenumber)
+}
+
+// optional int32 salary = 7;
+inline bool RegisterEmployeeMessage::has_salary() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void RegisterEmployeeMessage::set_has_salary() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void RegisterEmployeeMessage::clear_has_salary() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void RegisterEmployeeMessage::clear_salary() {
+  salary_ = 0;
+  clear_has_salary();
+}
+inline ::google::protobuf::int32 RegisterEmployeeMessage::salary() const {
+  // @@protoc_insertion_point(field_get:network.RegisterEmployeeMessage.salary)
+  return salary_;
+}
+inline void RegisterEmployeeMessage::set_salary(::google::protobuf::int32 value) {
+  set_has_salary();
+  salary_ = value;
+  // @@protoc_insertion_point(field_set:network.RegisterEmployeeMessage.salary)
+}
+
+// optional int32 position = 8;
+inline bool RegisterEmployeeMessage::has_position() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void RegisterEmployeeMessage::set_has_position() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void RegisterEmployeeMessage::clear_has_position() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void RegisterEmployeeMessage::clear_position() {
+  position_ = 0;
+  clear_has_position();
+}
+inline ::google::protobuf::int32 RegisterEmployeeMessage::position() const {
+  // @@protoc_insertion_point(field_get:network.RegisterEmployeeMessage.position)
+  return position_;
+}
+inline void RegisterEmployeeMessage::set_position(::google::protobuf::int32 value) {
+  set_has_position();
+  position_ = value;
+  // @@protoc_insertion_point(field_set:network.RegisterEmployeeMessage.position)
+}
+
+// optional int32 hotelId = 9;
+inline bool RegisterEmployeeMessage::has_hotelid() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void RegisterEmployeeMessage::set_has_hotelid() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void RegisterEmployeeMessage::clear_has_hotelid() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void RegisterEmployeeMessage::clear_hotelid() {
+  hotelid_ = 0;
+  clear_has_hotelid();
+}
+inline ::google::protobuf::int32 RegisterEmployeeMessage::hotelid() const {
+  // @@protoc_insertion_point(field_get:network.RegisterEmployeeMessage.hotelId)
+  return hotelid_;
+}
+inline void RegisterEmployeeMessage::set_hotelid(::google::protobuf::int32 value) {
+  set_has_hotelid();
+  hotelid_ = value;
+  // @@protoc_insertion_point(field_set:network.RegisterEmployeeMessage.hotelId)
+}
+
+// -------------------------------------------------------------------
+
+// GuestInfo
+
+// optional string firstname = 1;
+inline bool GuestInfo::has_firstname() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void GuestInfo::set_has_firstname() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void GuestInfo::clear_has_firstname() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void GuestInfo::clear_firstname() {
+  if (firstname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_->clear();
+  }
+  clear_has_firstname();
+}
+inline const ::std::string& GuestInfo::firstname() const {
+  // @@protoc_insertion_point(field_get:network.GuestInfo.firstname)
+  return *firstname_;
+}
+inline void GuestInfo::set_firstname(const ::std::string& value) {
+  set_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_ = new ::std::string;
+  }
+  firstname_->assign(value);
+  // @@protoc_insertion_point(field_set:network.GuestInfo.firstname)
+}
+inline void GuestInfo::set_firstname(const char* value) {
+  set_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_ = new ::std::string;
+  }
+  firstname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.GuestInfo.firstname)
+}
+inline void GuestInfo::set_firstname(const char* value, size_t size) {
+  set_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_ = new ::std::string;
+  }
+  firstname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.GuestInfo.firstname)
+}
+inline ::std::string* GuestInfo::mutable_firstname() {
+  set_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.GuestInfo.firstname)
+  return firstname_;
+}
+inline ::std::string* GuestInfo::release_firstname() {
+  clear_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = firstname_;
+    firstname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GuestInfo::set_allocated_firstname(::std::string* firstname) {
+  if (firstname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete firstname_;
+  }
+  if (firstname) {
+    set_has_firstname();
+    firstname_ = firstname;
+  } else {
+    clear_has_firstname();
+    firstname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.GuestInfo.firstname)
+}
+
+// optional string secondname = 2;
+inline bool GuestInfo::has_secondname() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void GuestInfo::set_has_secondname() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void GuestInfo::clear_has_secondname() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void GuestInfo::clear_secondname() {
+  if (secondname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_->clear();
+  }
+  clear_has_secondname();
+}
+inline const ::std::string& GuestInfo::secondname() const {
+  // @@protoc_insertion_point(field_get:network.GuestInfo.secondname)
+  return *secondname_;
+}
+inline void GuestInfo::set_secondname(const ::std::string& value) {
+  set_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_ = new ::std::string;
+  }
+  secondname_->assign(value);
+  // @@protoc_insertion_point(field_set:network.GuestInfo.secondname)
+}
+inline void GuestInfo::set_secondname(const char* value) {
+  set_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_ = new ::std::string;
+  }
+  secondname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.GuestInfo.secondname)
+}
+inline void GuestInfo::set_secondname(const char* value, size_t size) {
+  set_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_ = new ::std::string;
+  }
+  secondname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.GuestInfo.secondname)
+}
+inline ::std::string* GuestInfo::mutable_secondname() {
+  set_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.GuestInfo.secondname)
+  return secondname_;
+}
+inline ::std::string* GuestInfo::release_secondname() {
+  clear_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = secondname_;
+    secondname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GuestInfo::set_allocated_secondname(::std::string* secondname) {
+  if (secondname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete secondname_;
+  }
+  if (secondname) {
+    set_has_secondname();
+    secondname_ = secondname;
+  } else {
+    clear_has_secondname();
+    secondname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.GuestInfo.secondname)
+}
+
+// optional string lastname = 3;
+inline bool GuestInfo::has_lastname() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void GuestInfo::set_has_lastname() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void GuestInfo::clear_has_lastname() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void GuestInfo::clear_lastname() {
+  if (lastname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_->clear();
+  }
+  clear_has_lastname();
+}
+inline const ::std::string& GuestInfo::lastname() const {
+  // @@protoc_insertion_point(field_get:network.GuestInfo.lastname)
+  return *lastname_;
+}
+inline void GuestInfo::set_lastname(const ::std::string& value) {
+  set_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_ = new ::std::string;
+  }
+  lastname_->assign(value);
+  // @@protoc_insertion_point(field_set:network.GuestInfo.lastname)
+}
+inline void GuestInfo::set_lastname(const char* value) {
+  set_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_ = new ::std::string;
+  }
+  lastname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.GuestInfo.lastname)
+}
+inline void GuestInfo::set_lastname(const char* value, size_t size) {
+  set_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_ = new ::std::string;
+  }
+  lastname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.GuestInfo.lastname)
+}
+inline ::std::string* GuestInfo::mutable_lastname() {
+  set_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.GuestInfo.lastname)
+  return lastname_;
+}
+inline ::std::string* GuestInfo::release_lastname() {
+  clear_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = lastname_;
+    lastname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GuestInfo::set_allocated_lastname(::std::string* lastname) {
+  if (lastname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete lastname_;
+  }
+  if (lastname) {
+    set_has_lastname();
+    lastname_ = lastname;
+  } else {
+    clear_has_lastname();
+    lastname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.GuestInfo.lastname)
+}
+
+// optional string phonenumber = 4;
+inline bool GuestInfo::has_phonenumber() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void GuestInfo::set_has_phonenumber() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void GuestInfo::clear_has_phonenumber() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void GuestInfo::clear_phonenumber() {
+  if (phonenumber_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_->clear();
+  }
+  clear_has_phonenumber();
+}
+inline const ::std::string& GuestInfo::phonenumber() const {
+  // @@protoc_insertion_point(field_get:network.GuestInfo.phonenumber)
+  return *phonenumber_;
+}
+inline void GuestInfo::set_phonenumber(const ::std::string& value) {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  phonenumber_->assign(value);
+  // @@protoc_insertion_point(field_set:network.GuestInfo.phonenumber)
+}
+inline void GuestInfo::set_phonenumber(const char* value) {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  phonenumber_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.GuestInfo.phonenumber)
+}
+inline void GuestInfo::set_phonenumber(const char* value, size_t size) {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  phonenumber_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.GuestInfo.phonenumber)
+}
+inline ::std::string* GuestInfo::mutable_phonenumber() {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.GuestInfo.phonenumber)
+  return phonenumber_;
+}
+inline ::std::string* GuestInfo::release_phonenumber() {
+  clear_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = phonenumber_;
+    phonenumber_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GuestInfo::set_allocated_phonenumber(::std::string* phonenumber) {
+  if (phonenumber_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete phonenumber_;
+  }
+  if (phonenumber) {
+    set_has_phonenumber();
+    phonenumber_ = phonenumber;
+  } else {
+    clear_has_phonenumber();
+    phonenumber_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.GuestInfo.phonenumber)
+}
+
+// optional string passport = 5;
+inline bool GuestInfo::has_passport() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void GuestInfo::set_has_passport() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void GuestInfo::clear_has_passport() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void GuestInfo::clear_passport() {
+  if (passport_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    passport_->clear();
+  }
+  clear_has_passport();
+}
+inline const ::std::string& GuestInfo::passport() const {
+  // @@protoc_insertion_point(field_get:network.GuestInfo.passport)
+  return *passport_;
+}
+inline void GuestInfo::set_passport(const ::std::string& value) {
+  set_has_passport();
+  if (passport_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    passport_ = new ::std::string;
+  }
+  passport_->assign(value);
+  // @@protoc_insertion_point(field_set:network.GuestInfo.passport)
+}
+inline void GuestInfo::set_passport(const char* value) {
+  set_has_passport();
+  if (passport_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    passport_ = new ::std::string;
+  }
+  passport_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.GuestInfo.passport)
+}
+inline void GuestInfo::set_passport(const char* value, size_t size) {
+  set_has_passport();
+  if (passport_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    passport_ = new ::std::string;
+  }
+  passport_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.GuestInfo.passport)
+}
+inline ::std::string* GuestInfo::mutable_passport() {
+  set_has_passport();
+  if (passport_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    passport_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.GuestInfo.passport)
+  return passport_;
+}
+inline ::std::string* GuestInfo::release_passport() {
+  clear_has_passport();
+  if (passport_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = passport_;
+    passport_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GuestInfo::set_allocated_passport(::std::string* passport) {
+  if (passport_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete passport_;
+  }
+  if (passport) {
+    set_has_passport();
+    passport_ = passport;
+  } else {
+    clear_has_passport();
+    passport_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.GuestInfo.passport)
+}
+
+// -------------------------------------------------------------------
+
+// GuestsMessageResponse
+
+// repeated .network.GuestInfo guests = 1;
+inline int GuestsMessageResponse::guests_size() const {
+  return guests_.size();
+}
+inline void GuestsMessageResponse::clear_guests() {
+  guests_.Clear();
+}
+inline const ::network::GuestInfo& GuestsMessageResponse::guests(int index) const {
+  // @@protoc_insertion_point(field_get:network.GuestsMessageResponse.guests)
+  return guests_.Get(index);
+}
+inline ::network::GuestInfo* GuestsMessageResponse::mutable_guests(int index) {
+  // @@protoc_insertion_point(field_mutable:network.GuestsMessageResponse.guests)
+  return guests_.Mutable(index);
+}
+inline ::network::GuestInfo* GuestsMessageResponse::add_guests() {
+  // @@protoc_insertion_point(field_add:network.GuestsMessageResponse.guests)
+  return guests_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::network::GuestInfo >&
+GuestsMessageResponse::guests() const {
+  // @@protoc_insertion_point(field_list:network.GuestsMessageResponse.guests)
+  return guests_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::network::GuestInfo >*
+GuestsMessageResponse::mutable_guests() {
+  // @@protoc_insertion_point(field_mutable_list:network.GuestsMessageResponse.guests)
+  return &guests_;
+}
+
+// -------------------------------------------------------------------
+
+// EmployeeInfo
+
+// optional string firstname = 1;
+inline bool EmployeeInfo::has_firstname() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void EmployeeInfo::set_has_firstname() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void EmployeeInfo::clear_has_firstname() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void EmployeeInfo::clear_firstname() {
+  if (firstname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_->clear();
+  }
+  clear_has_firstname();
+}
+inline const ::std::string& EmployeeInfo::firstname() const {
+  // @@protoc_insertion_point(field_get:network.EmployeeInfo.firstname)
+  return *firstname_;
+}
+inline void EmployeeInfo::set_firstname(const ::std::string& value) {
+  set_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_ = new ::std::string;
+  }
+  firstname_->assign(value);
+  // @@protoc_insertion_point(field_set:network.EmployeeInfo.firstname)
+}
+inline void EmployeeInfo::set_firstname(const char* value) {
+  set_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_ = new ::std::string;
+  }
+  firstname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.EmployeeInfo.firstname)
+}
+inline void EmployeeInfo::set_firstname(const char* value, size_t size) {
+  set_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_ = new ::std::string;
+  }
+  firstname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.EmployeeInfo.firstname)
+}
+inline ::std::string* EmployeeInfo::mutable_firstname() {
+  set_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    firstname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.EmployeeInfo.firstname)
+  return firstname_;
+}
+inline ::std::string* EmployeeInfo::release_firstname() {
+  clear_has_firstname();
+  if (firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = firstname_;
+    firstname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void EmployeeInfo::set_allocated_firstname(::std::string* firstname) {
+  if (firstname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete firstname_;
+  }
+  if (firstname) {
+    set_has_firstname();
+    firstname_ = firstname;
+  } else {
+    clear_has_firstname();
+    firstname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.EmployeeInfo.firstname)
+}
+
+// optional string secondname = 2;
+inline bool EmployeeInfo::has_secondname() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void EmployeeInfo::set_has_secondname() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void EmployeeInfo::clear_has_secondname() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void EmployeeInfo::clear_secondname() {
+  if (secondname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_->clear();
+  }
+  clear_has_secondname();
+}
+inline const ::std::string& EmployeeInfo::secondname() const {
+  // @@protoc_insertion_point(field_get:network.EmployeeInfo.secondname)
+  return *secondname_;
+}
+inline void EmployeeInfo::set_secondname(const ::std::string& value) {
+  set_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_ = new ::std::string;
+  }
+  secondname_->assign(value);
+  // @@protoc_insertion_point(field_set:network.EmployeeInfo.secondname)
+}
+inline void EmployeeInfo::set_secondname(const char* value) {
+  set_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_ = new ::std::string;
+  }
+  secondname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.EmployeeInfo.secondname)
+}
+inline void EmployeeInfo::set_secondname(const char* value, size_t size) {
+  set_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_ = new ::std::string;
+  }
+  secondname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.EmployeeInfo.secondname)
+}
+inline ::std::string* EmployeeInfo::mutable_secondname() {
+  set_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    secondname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.EmployeeInfo.secondname)
+  return secondname_;
+}
+inline ::std::string* EmployeeInfo::release_secondname() {
+  clear_has_secondname();
+  if (secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = secondname_;
+    secondname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void EmployeeInfo::set_allocated_secondname(::std::string* secondname) {
+  if (secondname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete secondname_;
+  }
+  if (secondname) {
+    set_has_secondname();
+    secondname_ = secondname;
+  } else {
+    clear_has_secondname();
+    secondname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.EmployeeInfo.secondname)
+}
+
+// optional string lastname = 3;
+inline bool EmployeeInfo::has_lastname() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void EmployeeInfo::set_has_lastname() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void EmployeeInfo::clear_has_lastname() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void EmployeeInfo::clear_lastname() {
+  if (lastname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_->clear();
+  }
+  clear_has_lastname();
+}
+inline const ::std::string& EmployeeInfo::lastname() const {
+  // @@protoc_insertion_point(field_get:network.EmployeeInfo.lastname)
+  return *lastname_;
+}
+inline void EmployeeInfo::set_lastname(const ::std::string& value) {
+  set_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_ = new ::std::string;
+  }
+  lastname_->assign(value);
+  // @@protoc_insertion_point(field_set:network.EmployeeInfo.lastname)
+}
+inline void EmployeeInfo::set_lastname(const char* value) {
+  set_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_ = new ::std::string;
+  }
+  lastname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.EmployeeInfo.lastname)
+}
+inline void EmployeeInfo::set_lastname(const char* value, size_t size) {
+  set_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_ = new ::std::string;
+  }
+  lastname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.EmployeeInfo.lastname)
+}
+inline ::std::string* EmployeeInfo::mutable_lastname() {
+  set_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    lastname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.EmployeeInfo.lastname)
+  return lastname_;
+}
+inline ::std::string* EmployeeInfo::release_lastname() {
+  clear_has_lastname();
+  if (lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = lastname_;
+    lastname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void EmployeeInfo::set_allocated_lastname(::std::string* lastname) {
+  if (lastname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete lastname_;
+  }
+  if (lastname) {
+    set_has_lastname();
+    lastname_ = lastname;
+  } else {
+    clear_has_lastname();
+    lastname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.EmployeeInfo.lastname)
+}
+
+// optional string phonenumber = 4;
+inline bool EmployeeInfo::has_phonenumber() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void EmployeeInfo::set_has_phonenumber() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void EmployeeInfo::clear_has_phonenumber() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void EmployeeInfo::clear_phonenumber() {
+  if (phonenumber_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_->clear();
+  }
+  clear_has_phonenumber();
+}
+inline const ::std::string& EmployeeInfo::phonenumber() const {
+  // @@protoc_insertion_point(field_get:network.EmployeeInfo.phonenumber)
+  return *phonenumber_;
+}
+inline void EmployeeInfo::set_phonenumber(const ::std::string& value) {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  phonenumber_->assign(value);
+  // @@protoc_insertion_point(field_set:network.EmployeeInfo.phonenumber)
+}
+inline void EmployeeInfo::set_phonenumber(const char* value) {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  phonenumber_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.EmployeeInfo.phonenumber)
+}
+inline void EmployeeInfo::set_phonenumber(const char* value, size_t size) {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  phonenumber_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.EmployeeInfo.phonenumber)
+}
+inline ::std::string* EmployeeInfo::mutable_phonenumber() {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.EmployeeInfo.phonenumber)
+  return phonenumber_;
+}
+inline ::std::string* EmployeeInfo::release_phonenumber() {
+  clear_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = phonenumber_;
+    phonenumber_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void EmployeeInfo::set_allocated_phonenumber(::std::string* phonenumber) {
+  if (phonenumber_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete phonenumber_;
+  }
+  if (phonenumber) {
+    set_has_phonenumber();
+    phonenumber_ = phonenumber;
+  } else {
+    clear_has_phonenumber();
+    phonenumber_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.EmployeeInfo.phonenumber)
+}
+
+// optional int32 salary = 5;
+inline bool EmployeeInfo::has_salary() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void EmployeeInfo::set_has_salary() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void EmployeeInfo::clear_has_salary() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void EmployeeInfo::clear_salary() {
+  salary_ = 0;
+  clear_has_salary();
+}
+inline ::google::protobuf::int32 EmployeeInfo::salary() const {
+  // @@protoc_insertion_point(field_get:network.EmployeeInfo.salary)
+  return salary_;
+}
+inline void EmployeeInfo::set_salary(::google::protobuf::int32 value) {
+  set_has_salary();
+  salary_ = value;
+  // @@protoc_insertion_point(field_set:network.EmployeeInfo.salary)
+}
+
+// optional string position = 6;
+inline bool EmployeeInfo::has_position() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void EmployeeInfo::set_has_position() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void EmployeeInfo::clear_has_position() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void EmployeeInfo::clear_position() {
+  if (position_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    position_->clear();
+  }
+  clear_has_position();
+}
+inline const ::std::string& EmployeeInfo::position() const {
+  // @@protoc_insertion_point(field_get:network.EmployeeInfo.position)
+  return *position_;
+}
+inline void EmployeeInfo::set_position(const ::std::string& value) {
+  set_has_position();
+  if (position_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    position_ = new ::std::string;
+  }
+  position_->assign(value);
+  // @@protoc_insertion_point(field_set:network.EmployeeInfo.position)
+}
+inline void EmployeeInfo::set_position(const char* value) {
+  set_has_position();
+  if (position_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    position_ = new ::std::string;
+  }
+  position_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.EmployeeInfo.position)
+}
+inline void EmployeeInfo::set_position(const char* value, size_t size) {
+  set_has_position();
+  if (position_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    position_ = new ::std::string;
+  }
+  position_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.EmployeeInfo.position)
+}
+inline ::std::string* EmployeeInfo::mutable_position() {
+  set_has_position();
+  if (position_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    position_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.EmployeeInfo.position)
+  return position_;
+}
+inline ::std::string* EmployeeInfo::release_position() {
+  clear_has_position();
+  if (position_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = position_;
+    position_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void EmployeeInfo::set_allocated_position(::std::string* position) {
+  if (position_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete position_;
+  }
+  if (position) {
+    set_has_position();
+    position_ = position;
+  } else {
+    clear_has_position();
+    position_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.EmployeeInfo.position)
+}
+
+// optional int32 hotelId = 7;
+inline bool EmployeeInfo::has_hotelid() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void EmployeeInfo::set_has_hotelid() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void EmployeeInfo::clear_has_hotelid() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void EmployeeInfo::clear_hotelid() {
+  hotelid_ = 0;
+  clear_has_hotelid();
+}
+inline ::google::protobuf::int32 EmployeeInfo::hotelid() const {
+  // @@protoc_insertion_point(field_get:network.EmployeeInfo.hotelId)
+  return hotelid_;
+}
+inline void EmployeeInfo::set_hotelid(::google::protobuf::int32 value) {
+  set_has_hotelid();
+  hotelid_ = value;
+  // @@protoc_insertion_point(field_set:network.EmployeeInfo.hotelId)
+}
+
+// -------------------------------------------------------------------
+
+// EmployeesMessageResponse
+
+// repeated .network.EmployeeInfo employees = 1;
+inline int EmployeesMessageResponse::employees_size() const {
+  return employees_.size();
+}
+inline void EmployeesMessageResponse::clear_employees() {
+  employees_.Clear();
+}
+inline const ::network::EmployeeInfo& EmployeesMessageResponse::employees(int index) const {
+  // @@protoc_insertion_point(field_get:network.EmployeesMessageResponse.employees)
+  return employees_.Get(index);
+}
+inline ::network::EmployeeInfo* EmployeesMessageResponse::mutable_employees(int index) {
+  // @@protoc_insertion_point(field_mutable:network.EmployeesMessageResponse.employees)
+  return employees_.Mutable(index);
+}
+inline ::network::EmployeeInfo* EmployeesMessageResponse::add_employees() {
+  // @@protoc_insertion_point(field_add:network.EmployeesMessageResponse.employees)
+  return employees_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::network::EmployeeInfo >&
+EmployeesMessageResponse::employees() const {
+  // @@protoc_insertion_point(field_list:network.EmployeesMessageResponse.employees)
+  return employees_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::network::EmployeeInfo >*
+EmployeesMessageResponse::mutable_employees() {
+  // @@protoc_insertion_point(field_mutable_list:network.EmployeesMessageResponse.employees)
+  return &employees_;
+}
+
+// -------------------------------------------------------------------
+
+// HotelInfo
+
+// optional string name = 1;
+inline bool HotelInfo::has_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HotelInfo::set_has_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HotelInfo::clear_has_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HotelInfo::clear_name() {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_->clear();
+  }
+  clear_has_name();
+}
+inline const ::std::string& HotelInfo::name() const {
+  // @@protoc_insertion_point(field_get:network.HotelInfo.name)
+  return *name_;
+}
+inline void HotelInfo::set_name(const ::std::string& value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+  // @@protoc_insertion_point(field_set:network.HotelInfo.name)
+}
+inline void HotelInfo::set_name(const char* value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.HotelInfo.name)
+}
+inline void HotelInfo::set_name(const char* value, size_t size) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.HotelInfo.name)
+}
+inline ::std::string* HotelInfo::mutable_name() {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    name_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.HotelInfo.name)
+  return name_;
+}
+inline ::std::string* HotelInfo::release_name() {
+  clear_has_name();
+  if (name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_;
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void HotelInfo::set_allocated_name(::std::string* name) {
+  if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete name_;
+  }
+  if (name) {
+    set_has_name();
+    name_ = name;
+  } else {
+    clear_has_name();
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.HotelInfo.name)
+}
+
+// optional string city = 2;
+inline bool HotelInfo::has_city() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HotelInfo::set_has_city() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HotelInfo::clear_has_city() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HotelInfo::clear_city() {
+  if (city_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    city_->clear();
+  }
+  clear_has_city();
+}
+inline const ::std::string& HotelInfo::city() const {
+  // @@protoc_insertion_point(field_get:network.HotelInfo.city)
+  return *city_;
+}
+inline void HotelInfo::set_city(const ::std::string& value) {
+  set_has_city();
+  if (city_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    city_ = new ::std::string;
+  }
+  city_->assign(value);
+  // @@protoc_insertion_point(field_set:network.HotelInfo.city)
+}
+inline void HotelInfo::set_city(const char* value) {
+  set_has_city();
+  if (city_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    city_ = new ::std::string;
+  }
+  city_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.HotelInfo.city)
+}
+inline void HotelInfo::set_city(const char* value, size_t size) {
+  set_has_city();
+  if (city_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    city_ = new ::std::string;
+  }
+  city_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.HotelInfo.city)
+}
+inline ::std::string* HotelInfo::mutable_city() {
+  set_has_city();
+  if (city_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    city_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.HotelInfo.city)
+  return city_;
+}
+inline ::std::string* HotelInfo::release_city() {
+  clear_has_city();
+  if (city_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = city_;
+    city_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void HotelInfo::set_allocated_city(::std::string* city) {
+  if (city_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete city_;
+  }
+  if (city) {
+    set_has_city();
+    city_ = city;
+  } else {
+    clear_has_city();
+    city_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.HotelInfo.city)
+}
+
+// optional string street = 3;
+inline bool HotelInfo::has_street() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void HotelInfo::set_has_street() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void HotelInfo::clear_has_street() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void HotelInfo::clear_street() {
+  if (street_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    street_->clear();
+  }
+  clear_has_street();
+}
+inline const ::std::string& HotelInfo::street() const {
+  // @@protoc_insertion_point(field_get:network.HotelInfo.street)
+  return *street_;
+}
+inline void HotelInfo::set_street(const ::std::string& value) {
+  set_has_street();
+  if (street_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    street_ = new ::std::string;
+  }
+  street_->assign(value);
+  // @@protoc_insertion_point(field_set:network.HotelInfo.street)
+}
+inline void HotelInfo::set_street(const char* value) {
+  set_has_street();
+  if (street_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    street_ = new ::std::string;
+  }
+  street_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.HotelInfo.street)
+}
+inline void HotelInfo::set_street(const char* value, size_t size) {
+  set_has_street();
+  if (street_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    street_ = new ::std::string;
+  }
+  street_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.HotelInfo.street)
+}
+inline ::std::string* HotelInfo::mutable_street() {
+  set_has_street();
+  if (street_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    street_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.HotelInfo.street)
+  return street_;
+}
+inline ::std::string* HotelInfo::release_street() {
+  clear_has_street();
+  if (street_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = street_;
+    street_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void HotelInfo::set_allocated_street(::std::string* street) {
+  if (street_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete street_;
+  }
+  if (street) {
+    set_has_street();
+    street_ = street;
+  } else {
+    clear_has_street();
+    street_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.HotelInfo.street)
+}
+
+// optional string phonenumber = 4;
+inline bool HotelInfo::has_phonenumber() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void HotelInfo::set_has_phonenumber() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void HotelInfo::clear_has_phonenumber() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void HotelInfo::clear_phonenumber() {
+  if (phonenumber_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_->clear();
+  }
+  clear_has_phonenumber();
+}
+inline const ::std::string& HotelInfo::phonenumber() const {
+  // @@protoc_insertion_point(field_get:network.HotelInfo.phonenumber)
+  return *phonenumber_;
+}
+inline void HotelInfo::set_phonenumber(const ::std::string& value) {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  phonenumber_->assign(value);
+  // @@protoc_insertion_point(field_set:network.HotelInfo.phonenumber)
+}
+inline void HotelInfo::set_phonenumber(const char* value) {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  phonenumber_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.HotelInfo.phonenumber)
+}
+inline void HotelInfo::set_phonenumber(const char* value, size_t size) {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  phonenumber_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.HotelInfo.phonenumber)
+}
+inline ::std::string* HotelInfo::mutable_phonenumber() {
+  set_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    phonenumber_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.HotelInfo.phonenumber)
+  return phonenumber_;
+}
+inline ::std::string* HotelInfo::release_phonenumber() {
+  clear_has_phonenumber();
+  if (phonenumber_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = phonenumber_;
+    phonenumber_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void HotelInfo::set_allocated_phonenumber(::std::string* phonenumber) {
+  if (phonenumber_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete phonenumber_;
+  }
+  if (phonenumber) {
+    set_has_phonenumber();
+    phonenumber_ = phonenumber;
+  } else {
+    clear_has_phonenumber();
+    phonenumber_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.HotelInfo.phonenumber)
+}
+
+// optional string email = 5;
+inline bool HotelInfo::has_email() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void HotelInfo::set_has_email() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void HotelInfo::clear_has_email() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void HotelInfo::clear_email() {
+  if (email_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    email_->clear();
+  }
+  clear_has_email();
+}
+inline const ::std::string& HotelInfo::email() const {
+  // @@protoc_insertion_point(field_get:network.HotelInfo.email)
+  return *email_;
+}
+inline void HotelInfo::set_email(const ::std::string& value) {
+  set_has_email();
+  if (email_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    email_ = new ::std::string;
+  }
+  email_->assign(value);
+  // @@protoc_insertion_point(field_set:network.HotelInfo.email)
+}
+inline void HotelInfo::set_email(const char* value) {
+  set_has_email();
+  if (email_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    email_ = new ::std::string;
+  }
+  email_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.HotelInfo.email)
+}
+inline void HotelInfo::set_email(const char* value, size_t size) {
+  set_has_email();
+  if (email_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    email_ = new ::std::string;
+  }
+  email_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.HotelInfo.email)
+}
+inline ::std::string* HotelInfo::mutable_email() {
+  set_has_email();
+  if (email_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    email_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.HotelInfo.email)
+  return email_;
+}
+inline ::std::string* HotelInfo::release_email() {
+  clear_has_email();
+  if (email_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = email_;
+    email_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void HotelInfo::set_allocated_email(::std::string* email) {
+  if (email_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete email_;
+  }
+  if (email) {
+    set_has_email();
+    email_ = email;
+  } else {
+    clear_has_email();
+    email_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.HotelInfo.email)
+}
+
+// optional int32 stars = 6;
+inline bool HotelInfo::has_stars() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void HotelInfo::set_has_stars() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void HotelInfo::clear_has_stars() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void HotelInfo::clear_stars() {
+  stars_ = 0;
+  clear_has_stars();
+}
+inline ::google::protobuf::int32 HotelInfo::stars() const {
+  // @@protoc_insertion_point(field_get:network.HotelInfo.stars)
+  return stars_;
+}
+inline void HotelInfo::set_stars(::google::protobuf::int32 value) {
+  set_has_stars();
+  stars_ = value;
+  // @@protoc_insertion_point(field_set:network.HotelInfo.stars)
+}
+
+// optional string type = 7;
+inline bool HotelInfo::has_type() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void HotelInfo::set_has_type() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void HotelInfo::clear_has_type() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void HotelInfo::clear_type() {
+  if (type_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    type_->clear();
+  }
+  clear_has_type();
+}
+inline const ::std::string& HotelInfo::type() const {
+  // @@protoc_insertion_point(field_get:network.HotelInfo.type)
+  return *type_;
+}
+inline void HotelInfo::set_type(const ::std::string& value) {
+  set_has_type();
+  if (type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    type_ = new ::std::string;
+  }
+  type_->assign(value);
+  // @@protoc_insertion_point(field_set:network.HotelInfo.type)
+}
+inline void HotelInfo::set_type(const char* value) {
+  set_has_type();
+  if (type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    type_ = new ::std::string;
+  }
+  type_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.HotelInfo.type)
+}
+inline void HotelInfo::set_type(const char* value, size_t size) {
+  set_has_type();
+  if (type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    type_ = new ::std::string;
+  }
+  type_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.HotelInfo.type)
+}
+inline ::std::string* HotelInfo::mutable_type() {
+  set_has_type();
+  if (type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    type_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.HotelInfo.type)
+  return type_;
+}
+inline ::std::string* HotelInfo::release_type() {
+  clear_has_type();
+  if (type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = type_;
+    type_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void HotelInfo::set_allocated_type(::std::string* type) {
+  if (type_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete type_;
+  }
+  if (type) {
+    set_has_type();
+    type_ = type;
+  } else {
+    clear_has_type();
+    type_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.HotelInfo.type)
+}
+
+// -------------------------------------------------------------------
+
+// HotelsMessageResponse
+
+// repeated .network.HotelInfo hotels = 1;
+inline int HotelsMessageResponse::hotels_size() const {
+  return hotels_.size();
+}
+inline void HotelsMessageResponse::clear_hotels() {
+  hotels_.Clear();
+}
+inline const ::network::HotelInfo& HotelsMessageResponse::hotels(int index) const {
+  // @@protoc_insertion_point(field_get:network.HotelsMessageResponse.hotels)
+  return hotels_.Get(index);
+}
+inline ::network::HotelInfo* HotelsMessageResponse::mutable_hotels(int index) {
+  // @@protoc_insertion_point(field_mutable:network.HotelsMessageResponse.hotels)
+  return hotels_.Mutable(index);
+}
+inline ::network::HotelInfo* HotelsMessageResponse::add_hotels() {
+  // @@protoc_insertion_point(field_add:network.HotelsMessageResponse.hotels)
+  return hotels_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::network::HotelInfo >&
+HotelsMessageResponse::hotels() const {
+  // @@protoc_insertion_point(field_list:network.HotelsMessageResponse.hotels)
+  return hotels_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::network::HotelInfo >*
+HotelsMessageResponse::mutable_hotels() {
+  // @@protoc_insertion_point(field_mutable_list:network.HotelsMessageResponse.hotels)
+  return &hotels_;
+}
+
+// -------------------------------------------------------------------
+
+// RoomInfo
+
+// optional int32 places = 1;
+inline bool RoomInfo::has_places() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RoomInfo::set_has_places() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RoomInfo::clear_has_places() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RoomInfo::clear_places() {
+  places_ = 0;
+  clear_has_places();
+}
+inline ::google::protobuf::int32 RoomInfo::places() const {
+  // @@protoc_insertion_point(field_get:network.RoomInfo.places)
+  return places_;
+}
+inline void RoomInfo::set_places(::google::protobuf::int32 value) {
+  set_has_places();
+  places_ = value;
+  // @@protoc_insertion_point(field_set:network.RoomInfo.places)
+}
+
+// optional int32 price = 2;
+inline bool RoomInfo::has_price() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RoomInfo::set_has_price() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RoomInfo::clear_has_price() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RoomInfo::clear_price() {
+  price_ = 0;
+  clear_has_price();
+}
+inline ::google::protobuf::int32 RoomInfo::price() const {
+  // @@protoc_insertion_point(field_get:network.RoomInfo.price)
+  return price_;
+}
+inline void RoomInfo::set_price(::google::protobuf::int32 value) {
+  set_has_price();
+  price_ = value;
+  // @@protoc_insertion_point(field_set:network.RoomInfo.price)
+}
+
+// optional int32 rating = 3;
+inline bool RoomInfo::has_rating() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RoomInfo::set_has_rating() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RoomInfo::clear_has_rating() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RoomInfo::clear_rating() {
+  rating_ = 0;
+  clear_has_rating();
+}
+inline ::google::protobuf::int32 RoomInfo::rating() const {
+  // @@protoc_insertion_point(field_get:network.RoomInfo.rating)
+  return rating_;
+}
+inline void RoomInfo::set_rating(::google::protobuf::int32 value) {
+  set_has_rating();
+  rating_ = value;
+  // @@protoc_insertion_point(field_set:network.RoomInfo.rating)
+}
+
+// optional bool status = 4;
+inline bool RoomInfo::has_status() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RoomInfo::set_has_status() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RoomInfo::clear_has_status() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RoomInfo::clear_status() {
+  status_ = false;
+  clear_has_status();
+}
+inline bool RoomInfo::status() const {
+  // @@protoc_insertion_point(field_get:network.RoomInfo.status)
+  return status_;
+}
+inline void RoomInfo::set_status(bool value) {
+  set_has_status();
+  status_ = value;
+  // @@protoc_insertion_point(field_set:network.RoomInfo.status)
+}
+
+// optional int32 floor = 5;
+inline bool RoomInfo::has_floor() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void RoomInfo::set_has_floor() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void RoomInfo::clear_has_floor() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void RoomInfo::clear_floor() {
+  floor_ = 0;
+  clear_has_floor();
+}
+inline ::google::protobuf::int32 RoomInfo::floor() const {
+  // @@protoc_insertion_point(field_get:network.RoomInfo.floor)
+  return floor_;
+}
+inline void RoomInfo::set_floor(::google::protobuf::int32 value) {
+  set_has_floor();
+  floor_ = value;
+  // @@protoc_insertion_point(field_set:network.RoomInfo.floor)
+}
+
+// optional string type = 6;
+inline bool RoomInfo::has_type() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void RoomInfo::set_has_type() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void RoomInfo::clear_has_type() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void RoomInfo::clear_type() {
+  if (type_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    type_->clear();
+  }
+  clear_has_type();
+}
+inline const ::std::string& RoomInfo::type() const {
+  // @@protoc_insertion_point(field_get:network.RoomInfo.type)
+  return *type_;
+}
+inline void RoomInfo::set_type(const ::std::string& value) {
+  set_has_type();
+  if (type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    type_ = new ::std::string;
+  }
+  type_->assign(value);
+  // @@protoc_insertion_point(field_set:network.RoomInfo.type)
+}
+inline void RoomInfo::set_type(const char* value) {
+  set_has_type();
+  if (type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    type_ = new ::std::string;
+  }
+  type_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.RoomInfo.type)
+}
+inline void RoomInfo::set_type(const char* value, size_t size) {
+  set_has_type();
+  if (type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    type_ = new ::std::string;
+  }
+  type_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.RoomInfo.type)
+}
+inline ::std::string* RoomInfo::mutable_type() {
+  set_has_type();
+  if (type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    type_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.RoomInfo.type)
+  return type_;
+}
+inline ::std::string* RoomInfo::release_type() {
+  clear_has_type();
+  if (type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = type_;
+    type_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RoomInfo::set_allocated_type(::std::string* type) {
+  if (type_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete type_;
+  }
+  if (type) {
+    set_has_type();
+    type_ = type;
+  } else {
+    clear_has_type();
+    type_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RoomInfo.type)
+}
+
+// optional int32 hotelID = 7;
+inline bool RoomInfo::has_hotelid() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void RoomInfo::set_has_hotelid() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void RoomInfo::clear_has_hotelid() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void RoomInfo::clear_hotelid() {
+  hotelid_ = 0;
+  clear_has_hotelid();
+}
+inline ::google::protobuf::int32 RoomInfo::hotelid() const {
+  // @@protoc_insertion_point(field_get:network.RoomInfo.hotelID)
+  return hotelid_;
+}
+inline void RoomInfo::set_hotelid(::google::protobuf::int32 value) {
+  set_has_hotelid();
+  hotelid_ = value;
+  // @@protoc_insertion_point(field_set:network.RoomInfo.hotelID)
+}
+
+// -------------------------------------------------------------------
+
+// RoomsMessageResponse
+
+// repeated .network.RoomInfo rooms = 1;
+inline int RoomsMessageResponse::rooms_size() const {
+  return rooms_.size();
+}
+inline void RoomsMessageResponse::clear_rooms() {
+  rooms_.Clear();
+}
+inline const ::network::RoomInfo& RoomsMessageResponse::rooms(int index) const {
+  // @@protoc_insertion_point(field_get:network.RoomsMessageResponse.rooms)
+  return rooms_.Get(index);
+}
+inline ::network::RoomInfo* RoomsMessageResponse::mutable_rooms(int index) {
+  // @@protoc_insertion_point(field_mutable:network.RoomsMessageResponse.rooms)
+  return rooms_.Mutable(index);
+}
+inline ::network::RoomInfo* RoomsMessageResponse::add_rooms() {
+  // @@protoc_insertion_point(field_add:network.RoomsMessageResponse.rooms)
+  return rooms_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::network::RoomInfo >&
+RoomsMessageResponse::rooms() const {
+  // @@protoc_insertion_point(field_list:network.RoomsMessageResponse.rooms)
+  return rooms_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::network::RoomInfo >*
+RoomsMessageResponse::mutable_rooms() {
+  // @@protoc_insertion_point(field_mutable_list:network.RoomsMessageResponse.rooms)
+  return &rooms_;
+}
+
+// -------------------------------------------------------------------
+
 // RequestContext
 
 // optional .network.message_type message_type_ = 1;
@@ -1581,7 +4980,7 @@ inline void RequestContext::set_message_type_(::network::message_type value) {
   // @@protoc_insertion_point(field_set:network.RequestContext.message_type_)
 }
 
-// optional .network.AuthMessage auth_message_ = 3;
+// optional .network.AuthMessage auth_message_ = 2;
 inline bool RequestContext::has_auth_message_() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1622,7 +5021,7 @@ inline void RequestContext::set_allocated_auth_message_(::network::AuthMessage* 
   // @@protoc_insertion_point(field_set_allocated:network.RequestContext.auth_message_)
 }
 
-// optional .network.RegisterMessage register_message_ = 4;
+// optional .network.RegisterMessage register_message_ = 3;
 inline bool RequestContext::has_register_message_() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1663,15 +5062,56 @@ inline void RequestContext::set_allocated_register_message_(::network::RegisterM
   // @@protoc_insertion_point(field_set_allocated:network.RequestContext.register_message_)
 }
 
-// optional .network.SessionInfo session_info = 5;
-inline bool RequestContext::has_session_info() const {
+// optional .network.RegisterEmployeeMessage register_employee_message_ = 4;
+inline bool RequestContext::has_register_employee_message_() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void RequestContext::set_has_session_info() {
+inline void RequestContext::set_has_register_employee_message_() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void RequestContext::clear_has_session_info() {
+inline void RequestContext::clear_has_register_employee_message_() {
   _has_bits_[0] &= ~0x00000008u;
+}
+inline void RequestContext::clear_register_employee_message_() {
+  if (register_employee_message__ != NULL) register_employee_message__->::network::RegisterEmployeeMessage::Clear();
+  clear_has_register_employee_message_();
+}
+inline const ::network::RegisterEmployeeMessage& RequestContext::register_employee_message_() const {
+  // @@protoc_insertion_point(field_get:network.RequestContext.register_employee_message_)
+  return register_employee_message__ != NULL ? *register_employee_message__ : *default_instance_->register_employee_message__;
+}
+inline ::network::RegisterEmployeeMessage* RequestContext::mutable_register_employee_message_() {
+  set_has_register_employee_message_();
+  if (register_employee_message__ == NULL) register_employee_message__ = new ::network::RegisterEmployeeMessage;
+  // @@protoc_insertion_point(field_mutable:network.RequestContext.register_employee_message_)
+  return register_employee_message__;
+}
+inline ::network::RegisterEmployeeMessage* RequestContext::release_register_employee_message_() {
+  clear_has_register_employee_message_();
+  ::network::RegisterEmployeeMessage* temp = register_employee_message__;
+  register_employee_message__ = NULL;
+  return temp;
+}
+inline void RequestContext::set_allocated_register_employee_message_(::network::RegisterEmployeeMessage* register_employee_message_) {
+  delete register_employee_message__;
+  register_employee_message__ = register_employee_message_;
+  if (register_employee_message_) {
+    set_has_register_employee_message_();
+  } else {
+    clear_has_register_employee_message_();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RequestContext.register_employee_message_)
+}
+
+// optional .network.SessionInfo session_info = 5;
+inline bool RequestContext::has_session_info() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void RequestContext::set_has_session_info() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void RequestContext::clear_has_session_info() {
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void RequestContext::clear_session_info() {
   if (session_info_ != NULL) session_info_->::network::SessionInfo::Clear();
@@ -2238,6 +5678,170 @@ inline void ResponseContext::set_allocated_session_info(::network::SessionInfo* 
     clear_has_session_info();
   }
   // @@protoc_insertion_point(field_set_allocated:network.ResponseContext.session_info)
+}
+
+// optional .network.GuestsMessageResponse guests = 6;
+inline bool ResponseContext::has_guests() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void ResponseContext::set_has_guests() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void ResponseContext::clear_has_guests() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void ResponseContext::clear_guests() {
+  if (guests_ != NULL) guests_->::network::GuestsMessageResponse::Clear();
+  clear_has_guests();
+}
+inline const ::network::GuestsMessageResponse& ResponseContext::guests() const {
+  // @@protoc_insertion_point(field_get:network.ResponseContext.guests)
+  return guests_ != NULL ? *guests_ : *default_instance_->guests_;
+}
+inline ::network::GuestsMessageResponse* ResponseContext::mutable_guests() {
+  set_has_guests();
+  if (guests_ == NULL) guests_ = new ::network::GuestsMessageResponse;
+  // @@protoc_insertion_point(field_mutable:network.ResponseContext.guests)
+  return guests_;
+}
+inline ::network::GuestsMessageResponse* ResponseContext::release_guests() {
+  clear_has_guests();
+  ::network::GuestsMessageResponse* temp = guests_;
+  guests_ = NULL;
+  return temp;
+}
+inline void ResponseContext::set_allocated_guests(::network::GuestsMessageResponse* guests) {
+  delete guests_;
+  guests_ = guests;
+  if (guests) {
+    set_has_guests();
+  } else {
+    clear_has_guests();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.ResponseContext.guests)
+}
+
+// optional .network.EmployeesMessageResponse employees = 7;
+inline bool ResponseContext::has_employees() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ResponseContext::set_has_employees() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ResponseContext::clear_has_employees() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ResponseContext::clear_employees() {
+  if (employees_ != NULL) employees_->::network::EmployeesMessageResponse::Clear();
+  clear_has_employees();
+}
+inline const ::network::EmployeesMessageResponse& ResponseContext::employees() const {
+  // @@protoc_insertion_point(field_get:network.ResponseContext.employees)
+  return employees_ != NULL ? *employees_ : *default_instance_->employees_;
+}
+inline ::network::EmployeesMessageResponse* ResponseContext::mutable_employees() {
+  set_has_employees();
+  if (employees_ == NULL) employees_ = new ::network::EmployeesMessageResponse;
+  // @@protoc_insertion_point(field_mutable:network.ResponseContext.employees)
+  return employees_;
+}
+inline ::network::EmployeesMessageResponse* ResponseContext::release_employees() {
+  clear_has_employees();
+  ::network::EmployeesMessageResponse* temp = employees_;
+  employees_ = NULL;
+  return temp;
+}
+inline void ResponseContext::set_allocated_employees(::network::EmployeesMessageResponse* employees) {
+  delete employees_;
+  employees_ = employees;
+  if (employees) {
+    set_has_employees();
+  } else {
+    clear_has_employees();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.ResponseContext.employees)
+}
+
+// optional .network.HotelsMessageResponse hotels = 8;
+inline bool ResponseContext::has_hotels() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void ResponseContext::set_has_hotels() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void ResponseContext::clear_has_hotels() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void ResponseContext::clear_hotels() {
+  if (hotels_ != NULL) hotels_->::network::HotelsMessageResponse::Clear();
+  clear_has_hotels();
+}
+inline const ::network::HotelsMessageResponse& ResponseContext::hotels() const {
+  // @@protoc_insertion_point(field_get:network.ResponseContext.hotels)
+  return hotels_ != NULL ? *hotels_ : *default_instance_->hotels_;
+}
+inline ::network::HotelsMessageResponse* ResponseContext::mutable_hotels() {
+  set_has_hotels();
+  if (hotels_ == NULL) hotels_ = new ::network::HotelsMessageResponse;
+  // @@protoc_insertion_point(field_mutable:network.ResponseContext.hotels)
+  return hotels_;
+}
+inline ::network::HotelsMessageResponse* ResponseContext::release_hotels() {
+  clear_has_hotels();
+  ::network::HotelsMessageResponse* temp = hotels_;
+  hotels_ = NULL;
+  return temp;
+}
+inline void ResponseContext::set_allocated_hotels(::network::HotelsMessageResponse* hotels) {
+  delete hotels_;
+  hotels_ = hotels;
+  if (hotels) {
+    set_has_hotels();
+  } else {
+    clear_has_hotels();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.ResponseContext.hotels)
+}
+
+// optional .network.RoomsMessageResponse rooms = 9;
+inline bool ResponseContext::has_rooms() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void ResponseContext::set_has_rooms() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void ResponseContext::clear_has_rooms() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void ResponseContext::clear_rooms() {
+  if (rooms_ != NULL) rooms_->::network::RoomsMessageResponse::Clear();
+  clear_has_rooms();
+}
+inline const ::network::RoomsMessageResponse& ResponseContext::rooms() const {
+  // @@protoc_insertion_point(field_get:network.ResponseContext.rooms)
+  return rooms_ != NULL ? *rooms_ : *default_instance_->rooms_;
+}
+inline ::network::RoomsMessageResponse* ResponseContext::mutable_rooms() {
+  set_has_rooms();
+  if (rooms_ == NULL) rooms_ = new ::network::RoomsMessageResponse;
+  // @@protoc_insertion_point(field_mutable:network.ResponseContext.rooms)
+  return rooms_;
+}
+inline ::network::RoomsMessageResponse* ResponseContext::release_rooms() {
+  clear_has_rooms();
+  ::network::RoomsMessageResponse* temp = rooms_;
+  rooms_ = NULL;
+  return temp;
+}
+inline void ResponseContext::set_allocated_rooms(::network::RoomsMessageResponse* rooms) {
+  delete rooms_;
+  rooms_ = rooms;
+  if (rooms) {
+    set_has_rooms();
+  } else {
+    clear_has_rooms();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.ResponseContext.rooms)
 }
 
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>563</width>
-    <height>415</height>
+    <width>602</width>
+    <height>435</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,15 +16,151 @@
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>10</x>
      <y>0</y>
-     <width>571</width>
-     <height>411</height>
+     <width>581</width>
+     <height>431</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>3</number>
    </property>
+   <widget class="QWidget" name="tabGuests">
+    <attribute name="title">
+     <string>Guests</string>
+    </attribute>
+    <widget class="QTableWidget" name="GuestTbl">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>80</y>
+       <width>561</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="allGuestsBtn">
+     <property name="geometry">
+      <rect>
+       <x>249</x>
+       <y>30</y>
+       <width>81</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>ALL GUESTS</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tabEmployees">
+    <attribute name="title">
+     <string>Employees</string>
+    </attribute>
+    <widget class="QTableWidget" name="EmployeesTbl">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>561</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="allEmployeeBtn">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>30</y>
+       <width>111</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>ALL EMPLOYEES</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tabHotels">
+    <attribute name="title">
+     <string>Hotels</string>
+    </attribute>
+    <widget class="QTableWidget" name="HotelsTbl">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>561</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="allHotelsBtn">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>30</y>
+       <width>80</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>ALL HOTELS</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tabRooms">
+    <attribute name="title">
+     <string>Rooms</string>
+    </attribute>
+    <widget class="QTableWidget" name="RoomsTbl">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>561</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="allRoomsBtn">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>30</y>
+       <width>80</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>ALL ROOMS</string>
+     </property>
+    </widget>
+   </widget>
    <widget class="QWidget" name="tabRegister">
     <attribute name="title">
      <string>Register</string>
@@ -37,14 +173,14 @@
       <rect>
        <x>200</x>
        <y>-10</y>
-       <width>351</width>
+       <width>331</width>
        <height>381</height>
       </rect>
      </property>
      <property name="title">
       <string/>
      </property>
-     <widget class="QPlainTextEdit" name="plainTextEdit">
+     <widget class="QPlainTextEdit" name="loginGPT">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -54,7 +190,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_2">
+     <widget class="QPlainTextEdit" name="passwordGPT">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -64,7 +200,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_3">
+     <widget class="QPlainTextEdit" name="firstNGPT">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -74,7 +210,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_4">
+     <widget class="QPlainTextEdit" name="secondNGPT">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -84,7 +220,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_5">
+     <widget class="QPlainTextEdit" name="lastNGPT">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -94,7 +230,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_6">
+     <widget class="QPlainTextEdit" name="phoneGPT">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -104,7 +240,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_7">
+     <widget class="QPlainTextEdit" name="passportGPT">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -229,66 +365,27 @@
       </rect>
      </property>
      <property name="text">
-      <string>Switch position</string>
+      <string>Switch position:</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="managerRB">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>120</y>
-       <width>96</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Manager</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="receptionistBtn">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>150</y>
-       <width>96</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Receptionist</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="radioButton_3">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>180</y>
-       <width>96</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Guest</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_9">
+    <widget class="QLabel" name="regLabel">
      <property name="geometry">
       <rect>
        <x>70</x>
-       <y>260</y>
+       <y>200</y>
        <width>54</width>
        <height>17</height>
       </rect>
      </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string/>
      </property>
     </widget>
     <widget class="QPushButton" name="okBtn">
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>220</y>
+       <y>160</y>
        <width>101</width>
        <height>25</height>
       </rect>
@@ -297,33 +394,464 @@
       <string>OK</string>
      </property>
     </widget>
-    <zorder>label</zorder>
-    <zorder>groupBox</zorder>
-    <zorder>managerRB</zorder>
-    <zorder>receptionistBtn</zorder>
-    <zorder>radioButton_3</zorder>
-    <zorder>label_9</zorder>
-    <zorder>okBtn</zorder>
-   </widget>
-   <widget class="QWidget" name="tabGuests">
-    <attribute name="title">
-     <string>Guests</string>
-    </attribute>
-    <widget class="QTableWidget" name="tableWidget">
+    <widget class="QComboBox" name="comboBox">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>70</y>
-       <width>551</width>
-       <height>301</height>
+       <x>40</x>
+       <y>130</y>
+       <width>121</width>
+       <height>25</height>
       </rect>
      </property>
+     <item>
+      <property name="text">
+       <string>Guest</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Manager</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Receptionist</string>
+      </property>
+     </item>
     </widget>
-   </widget>
-   <widget class="QWidget" name="tab">
-    <attribute name="title">
-     <string>Страница</string>
-    </attribute>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>-20</y>
+       <width>321</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QPlainTextEdit" name="loginRPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>30</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="passwordRPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>70</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="firstNRPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>110</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="secondNRPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>150</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="lastNRPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>190</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="phoneRPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>230</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>LOGIN</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PASSWORD</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>130</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>FirstName</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>160</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>SecondName</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_23">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>200</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>LastName</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_24">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>240</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PhoneNumber</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_25">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>280</y>
+        <width>54</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Salary</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="salaryRPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>270</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="hotelIDRPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>320</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_26">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>330</y>
+        <width>81</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Hotel number</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="regReceptBtn">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>360</y>
+        <width>101</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>OK</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>-20</y>
+       <width>341</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QPlainTextEdit" name="loginMPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>30</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="passwordMPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>70</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="firstNMPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>110</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="secondNMPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>150</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="lastNMPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>190</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="phoneMPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>230</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_27">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>LOGIN</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PASSWORD</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_29">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>130</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>FirstName</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_30">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>160</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>SecondName</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_31">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>200</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>LastName</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_32">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>240</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PhoneNumber</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_33">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>280</y>
+        <width>54</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Salary</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="salaryMPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>270</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="hotelIDMPT">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>320</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_34">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>330</y>
+        <width>81</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Hotel number</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="regManagerBtn">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>360</y>
+        <width>101</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>OK</string>
+      </property>
+     </widget>
+    </widget>
+    <zorder>label</zorder>
+    <zorder>groupBox</zorder>
+    <zorder>regLabel</zorder>
+    <zorder>okBtn</zorder>
+    <zorder>comboBox</zorder>
+    <zorder>groupBox_2</zorder>
+    <zorder>groupBox_3</zorder>
    </widget>
   </widget>
  </widget>

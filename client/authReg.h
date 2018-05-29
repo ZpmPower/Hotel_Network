@@ -27,6 +27,10 @@ private slots:
     void on_testBtn_clicked();
     void on_regBtn_clicked();
     void enableGb();
+    void onReadData(std::string data);
+
+signals:
+    void readData(std::string);
 
 private:
     Ui::authReg *ui;
@@ -41,7 +45,6 @@ private:
     void disconnectError();
 
     void userAuth(const network::AuthMessageResponse& responce);
-    QTimer* timer_;
 };
 
 #endif // AUTHREG_H

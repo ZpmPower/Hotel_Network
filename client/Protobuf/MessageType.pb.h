@@ -35,11 +35,16 @@ void protobuf_ShutdownFile_MessageType_2eproto();
 
 enum message_type {
   HN_REGISTER = 0,
-  HN_AUTH = 1
+  HN_AUTH = 1,
+  HN_GET_ALL_GUESTS = 2,
+  HN_REGISTER_EMPLOYEE = 3,
+  HN_GET_ALL_EMPLOYEES = 4,
+  HN_GET_ALL_HOTELS = 5,
+  HN_GET_ALL_ROOMS = 6
 };
 bool message_type_IsValid(int value);
 const message_type message_type_MIN = HN_REGISTER;
-const message_type message_type_MAX = HN_AUTH;
+const message_type message_type_MAX = HN_GET_ALL_ROOMS;
 const int message_type_ARRAYSIZE = message_type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* message_type_descriptor();

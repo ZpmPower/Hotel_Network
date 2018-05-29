@@ -82,8 +82,59 @@ bool MessageManager::createUser(const std::string &login, const std::string &pas
     authMess->set_phonenumber(phone);
     authMess->set_passport(passport);
 
-
     context.set_allocated_register_message_(authMess);
 
+    execute(context.SerializeAsString());
+}
+
+bool MessageManager::createEmployee(const std::string &login, const std::string &password, const std::string &fname, const std::string &sname, const std::string &lname,
+                                    const std::string &phone, int64_t salary, int32_t position, int32_t hotelid)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_REGISTER_EMPLOYEE);
+
+    network::RegisterEmployeeMessage* regMess = new network::RegisterEmployeeMessage();
+    regMess->set_login(login);
+    std::string hashPass;
+    CryptoHelper::md5_hash(password, hashPass);
+    regMess->set_pass(hashPass);
+    regMess->set_firstname(fname);
+    regMess->set_secondname(sname);
+    regMess->set_lastname(lname);
+    regMess->set_phonenumber(phone);
+    regMess->set_salary(salary);
+    regMess->set_position(position);
+    regMess->set_hotelid(hotelid);
+
+    context.set_allocated_register_employee_message_(regMess);
+
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::getGuests()
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_ALL_GUESTS);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::getEmployees()
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_ALL_EMPLOYEES);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::getHotels()
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_ALL_HOTELS);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::getRooms()
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_ALL_ROOMS);
     execute(context.SerializeAsString());
 }

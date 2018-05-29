@@ -3,22 +3,19 @@
 #include "GlobalParams.h"
 #include "QMessageBox"
 #include "Helper.h"
-#include <QTimer>
 
 authReg::authReg(std::shared_ptr<MessageManager> message_manager, QWidget *parent) :
     message_manager_(message_manager),
     QWidget(parent), ui(new Ui::authReg)
     {
+    qRegisterMetaType<std::string>("std::string");
     ui->setupUi(this);
     if(message_manager)
     {
         message_manager_->setOnErrorCB(std::bind(&authReg::onError, this, std::placeholders::_1));
         message_manager->setOnReadCB(std::bind(&authReg::onRead, this, std::placeholders::_1));
     }
-    timer_ = new QTimer();
-    timer_->setInterval(1000);
-    connect(timer_, SIGNAL(timeout()), this, SLOT(updateTime()));
-    timer_->start();
+    connect(this, SIGNAL(readData(std::string)), this, SLOT(onReadData(std::string)));
 }
 
 authReg::~authReg()
@@ -42,13 +39,7 @@ void authReg::onError(ClientError error)
 
 void authReg::onRead(const network::ResponseContext & response)
 {
-    switch (response.message_type_()) {
-    case network::HN_AUTH: {
-        network::AuthMessageResponse authRes = response.auth_response();
-        userAuth(authRes);
-        break;
-    }
-    }
+    emit readData(response.SerializeAsString());
 }
 
 
@@ -67,17 +58,14 @@ void authReg::userAuth(const network::AuthMessageResponse &responce)
 {
     ui->authL->setText(QString::fromStdString(responce.messagetext()));
     Roles role = static_cast<Roles>(responce.role());
-    LOG_INFO("sfdffffffff="+std::to_string(responce.role()));
     switch (role) {
     case Roles::role_admin:
         adminView_ = std::make_shared<AdminView>(message_manager_);
         connect(adminView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
-        adminView_->setAttribute(Qt::WA_DeleteOnClose, true);
         adminView_->show();
         break;
     case Roles::role_guest:
         guestView_ = std::make_shared<GuestView>(message_manager_);
-        LOG_INFO("HEELELELEELEL");
         connect(guestView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
         guestView_->setAttribute(Qt::WA_DeleteOnClose, true);
         guestView_->show();
@@ -124,4 +112,17 @@ void authReg::on_regBtn_clicked()
 void authReg::enableGb()
 {
     ui->groupBox->setEnabled(true);
+}
+
+void authReg::onReadData(std::string data)
+{
+    network::ResponseContext response;
+    response.ParseFromString(data);
+    switch (response.message_type_()) {
+    case network::HN_AUTH: {
+        network::AuthMessageResponse authRes = response.auth_response();
+        userAuth(authRes);
+        break;
+    }
+    }
 }

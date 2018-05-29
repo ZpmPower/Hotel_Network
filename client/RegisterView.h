@@ -25,6 +25,7 @@ private:
     Ui::RegisterView *ui;
     std::shared_ptr<MessageManager> message_manager_;
     void userRegister(const network::RegisterMessageResponse& response);
+
     void onRead(const network::ResponseContext & response);
     void closeEvent(QCloseEvent *bar);
 };

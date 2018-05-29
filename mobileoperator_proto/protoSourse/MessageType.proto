@@ -3,4 +3,9 @@ package network;
 enum message_type{
     HN_REGISTER = 0;
     HN_AUTH = 1;
+    HN_GET_ALL_GUESTS = 2;
+    HN_REGISTER_EMPLOYEE = 3;
+    HN_GET_ALL_EMPLOYEES = 4;
+    HN_GET_ALL_HOTELS = 5;
+    HN_GET_ALL_ROOMS = 6;
 }
