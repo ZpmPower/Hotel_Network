@@ -7,6 +7,7 @@
 #include "Types/EmployeeInfo.h"
 #include "Types/GuestInfo.h"
 #include "Helper.h"
+#include "db/SessionManagerPostgres.h"
 
 ResponseCode AuthLogic::createUser(const network::RegisterMessage &authData, network::RegisterMessageResponse* response)//guest
 {
@@ -45,7 +46,7 @@ ResponseCode AuthLogic::createUser(const network::RegisterMessage &authData, net
         CryptoHelper::md5_hash(passWithSalt + uniqSalt, hashedPass);
         LOG_INFO(authData.pass());
         int64_t user_id;
-        if(AuthPostgresManager::createUser(authData.login(), hashedPass, uniqSalt, user_id) != ResponseCode::status_success)
+        if(AuthPostgresManager::createUser(authData.login(), hashedPass, uniqSalt, user_id,authData.role()) != ResponseCode::status_success)
         {
             if(response)
             {
@@ -107,7 +108,7 @@ ResponseCode AuthLogic::createEmployee(const network::RegisterEmployeeMessage &a
         CryptoHelper::md5_hash(passWithSalt + uniqSalt, hashedPass);
         LOG_INFO(authData.pass());
         int64_t user_id;
-        if(AuthPostgresManager::createUser(authData.login(), hashedPass, uniqSalt, user_id) != ResponseCode::status_success)
+        if(AuthPostgresManager::createUser(authData.login(), hashedPass, uniqSalt, user_id, authData.role()) != ResponseCode::status_success)
         {
             if(response)
             {
@@ -133,7 +134,7 @@ ResponseCode AuthLogic::createEmployee(const network::RegisterEmployeeMessage &a
     return result;
 }
 
-ResponseCode AuthLogic::authUser(const network::AuthMessage &authData, network::AuthMessageResponse *response)
+ResponseCode AuthLogic::authUser(const network::AuthMessage &authData, network::AuthMessageResponse *response, network::SessionInfo *sessionInfo)
 {
     ResponseCode result = ResponseCode::status_internal_error;
 
@@ -161,49 +162,46 @@ ResponseCode AuthLogic::authUser(const network::AuthMessage &authData, network::
         std::string passWithSalt = authData.pass() + GlobalsParams::getPostgres_default_solt();
         std::string uniqSalt = uInfo.salt;
         std::string hashedPass;
+        std::string session;
         CryptoHelper::md5_hash(passWithSalt + uniqSalt, hashedPass);
         LOG_INFO(uInfo.pass);
         LOG_INFO(hashedPass);
         if(uInfo.pass == hashedPass)
         {
-           ResponseCode resEmployee = h_manager.getEmployeeInfo(uInfo.user_id,eInfo);
-           ResponseCode resGuest = h_manager.getGuestInfo(uInfo.user_id,gInfo);
-           Roles role;
-           if(resEmployee == ResponseCode::status_does_not_exist)
-           {
-               if(resGuest == ResponseCode::status_does_not_exist)
-               {
-                   if(uInfo.user_login == "admin")
-                   {
-                       role = Helper::roleToInt("Admin");
-                        response->set_messagetext("Succes Admin");
-                   }
-               }
-               else
-               {
-                   role = Helper::roleToInt("Guest");
-                   response->set_messagetext("Succes Guest");
-               }
-           }
-           else
-           {
-                role = Helper::roleToInt(eInfo.position);
-                if(role == Helper::roleToInt("Manager"))
-                {
-                    response->set_messagetext("Succes Manager");
-                }
-                if(role == Helper::roleToInt("Receptionist"))
-                {
-                    response->set_messagetext("Succes Receptionist");
-                }
-                response->set_id_hotel(eInfo.hotel_id);
+            bool isExist;
+            SessionManagerPostgres::isExistSession(uInfo.user_id,isExist);
+            if(isExist)
+            {
+                SessionManagerPostgres::removeSession(uInfo.user_id);
+            }
+            session = CryptoHelper::gen_random_string(25);
+            SessionManagerPostgres::createSession(uInfo.user_id, session);
+            sessionInfo->set_session_id(session);
+            sessionInfo->set_login(uInfo.user_login);
+            sessionInfo->set_userid(uInfo.user_id);
+            sessionInfo->set_role(uInfo.role);
 
+           switch (static_cast<Roles>(uInfo.role))
+           {
+           case Roles::role_guest:
+           {
+               ResponseCode resGuest = h_manager.getGuestInfo(uInfo.user_id,gInfo);
+               response->set_messagetext("Succes Guest");
+               break;
            }
-           LOG_INFO("Manager=" + std::to_string(static_cast<int32_t>(Roles::role_manager)) + "\n");
-           LOG_INFO("Admin=" + std::to_string(static_cast<int32_t>(Roles::role_admin)) + "\n");
-           LOG_INFO("Guest=" + std::to_string(static_cast<int32_t>(Roles::role_guest)) + "\n");
-           LOG_INFO("Recept=" + std::to_string(static_cast<int32_t>(Roles::role_receptionist)) + "\n");
-           response->set_role(static_cast<int32_t>(role));
+           case Roles::role_admin:
+           {
+               response->set_messagetext("Succes Admin");
+               break;
+           }
+           default:
+           {
+               ResponseCode resEmployee = h_manager.getEmployeeInfo(uInfo.user_id,eInfo);
+               response->set_id_hotel(eInfo.hotel_id);
+               break;
+           }
+           }
+           response->set_role(static_cast<int32_t>(uInfo.role));
            response->set_status(true);
         }
         else

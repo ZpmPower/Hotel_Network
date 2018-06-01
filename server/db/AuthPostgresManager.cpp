@@ -43,7 +43,7 @@ ResponseCode AuthPostgresManager::isUserExist(const std::string &login, bool &ex
     return result;
 }
 
-ResponseCode AuthPostgresManager::createUser(const std::string &login, const std::string pass, const std::string& salt, int64_t& user_id)
+ResponseCode AuthPostgresManager::createUser(const std::string &login, const std::string pass, const std::string& salt, int64_t& user_id, uint32_t role)
 {
 
     ResponseCode result = ResponseCode::status_internal_error;
@@ -63,13 +63,13 @@ ResponseCode AuthPostgresManager::createUser(const std::string &login, const std
             if(!DBHelper::getDBHelper().isPrepared("CreateUser"))
             {
                 connection->prepare("CreateUser",
-                                   "INSERT INTO server_users(user_id, user_login, password, creation_time, salt) "
-                                   "VALUES (DEFAULT, $1::varchar, $2::varchar, DEFAULT, $3::varchar) RETURNING user_id;");
+                                   "INSERT INTO server_users(user_id, user_login, password, creation_time, salt, role) "
+                                   "VALUES (DEFAULT, $1::varchar, $2::varchar, DEFAULT, $3::varchar, $4) RETURNING user_id;");
             }
 
             pqxx::work work(*connection, "CreateUser");
 
-            pqxx::result res = work.prepared("CreateUser")(login)(pass)(salt).exec();
+            pqxx::result res = work.prepared("CreateUser")(login)(pass)(salt)(role).exec();
 
             user_id = res[0][0].as<int64_t>();
 
@@ -106,7 +106,7 @@ ResponseCode AuthPostgresManager::getUser(const std::string &login, AuthUserInfo
             if(!DBHelper::getDBHelper().isPrepared("getUser"))
             {
                 connection->prepare("getUser",
-                                    " SELECT user_login, password, user_id, salt "
+                                    " SELECT user_login, password, user_id, salt, role "
                                     "FROM server_users WHERE user_login = $1::varchar;");
             }
 

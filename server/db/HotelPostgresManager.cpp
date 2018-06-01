@@ -5,6 +5,34 @@
 #include "Types/RoomInfo.h"
 
 
+db_connection_ptr HotelPostgresManager::checkConnection(uint32_t role)
+{
+    switch (static_cast<Roles>(role))
+    {
+        case Roles::role_admin:
+        {
+            return DBHelper::getAdminConnection();
+            break;
+        }
+        case Roles::role_guest:
+        {
+            return DBHelper::getGuestConnection();
+            break;
+        }
+        case Roles::role_manager:
+        {
+            return DBHelper::getManagerConnection();
+            break;
+        }
+        case Roles::role_receptionist:
+        {
+         return DBHelper::getReceptionistConnection();
+         break;
+        }
+
+    }
+}
+
 ResponseCode HotelPostgresManager::createGuest(int64_t user_id,
                                                const std::string fname, const std::string sname, const std::string lname,
                                                const std::string phone, const std::string passport)
@@ -281,6 +309,57 @@ ResponseCode HotelPostgresManager::getEmployees(std::vector<EmployeeInfo> &emplo
     return result;
 }
 
+ResponseCode HotelPostgresManager::getHotelEmployees(std::vector<EmployeeInfo> &employees, uint32_t hotelid, uint32_t role)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    LOG_INFO(hotelid);
+    do
+    {
+        try
+        {
+
+            db_connection_ptr connection = checkConnection(role);
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("getHotelEmployees"))
+            {
+                connection->prepare("getHotelEmployees",
+                                    "SELECT employee.id,firstname,secondname,lastname,phonenumber,salary, name, idhotel from employee "
+                                    "INNER JOIN employeeposition ON idposition=employeeposition.id WHERE idhotel=$1;");
+            }
+
+            pqxx::work work(*connection, "getHotelEmployees");
+
+            pqxx::result res = work.prepared("getHotelEmployees")(hotelid).exec();
+            if(res.empty())
+            {
+                result = ResponseCode::status_does_not_exist;
+                break;
+            }
+            for(const pqxx::tuple& value: res)
+            {
+                EmployeeInfo eInfo;
+                eInfo.parse_from_hn_employee(value);
+                employees.emplace_back(eInfo);
+            }
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query getHotelEmployees err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+
+    return result;
+}
+
 ResponseCode HotelPostgresManager::getHotels(std::vector<HotelInfo> &hotels)
 {
     ResponseCode result = ResponseCode::status_internal_error;
@@ -375,6 +454,47 @@ ResponseCode HotelPostgresManager::getRooms(std::vector<RoomInfo> &rooms)
         catch(const std::exception& e)
         {
             LOG_ERR("Failure: trying to query getGuests err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+
+    return result;
+}
+
+ResponseCode HotelPostgresManager::editEmployee(int64_t user_id, const std::string fname, const std::string sname, const std::string lname,
+                                                const std::string phone, int64_t salary, uint32_t position, int32_t hotelid, uint32_t role)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+
+    do
+    {
+        try
+        {
+            db_connection_ptr connection = checkConnection(role);
+
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("editEmployee"))
+            {
+                connection->prepare("editEmployee",
+                                    "UPDATE employee SET firstname = $2::varchar, secondname = $3::varchar, lastname= $4::varchar,"
+                                    "phonenumber = $5::varchar, salary = $6 WHERE id = $1;");
+            }
+
+            pqxx::work work(*connection, "editEmployee");
+
+            pqxx::result res = work.prepared("editEmployee")(user_id)(fname)(sname)(lname)(phone)(salary).exec();
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query editEmployee err: " << e.what());
             break;
         }
     }

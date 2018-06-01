@@ -12,6 +12,7 @@ struct RoomInfo;
 class HotelPostgresManager
 {
 public:
+    static db_connection_ptr checkConnection(uint32_t role);
     static ResponseCode createGuest(int64_t user_id, const std::string fname, const std::string sname, const std::string lname,
                                     const std::string phone, const std::string passport);
     static ResponseCode createEmployee(int64_t user_id, const std::string fname, const std::string sname, const std::string lname,
@@ -20,8 +21,11 @@ public:
     static ResponseCode getGuestInfo(int64_t user_id, GuestInfo &gInfo);
     static ResponseCode getGuests(std::vector<GuestInfo>& guests);
     static ResponseCode getEmployees(std::vector<EmployeeInfo>& employees);
+    static ResponseCode getHotelEmployees(std::vector<EmployeeInfo>& employees, uint32_t hotelid, uint32_t role);
     static ResponseCode getHotels(std::vector<HotelInfo>& hotels);
     static ResponseCode getRooms(std::vector<RoomInfo>& rooms);
+    static ResponseCode editEmployee(int64_t user_id, const std::string fname, const std::string sname, const std::string lname,
+                                     const std::string phone, int64_t salary, uint32_t position, int32_t hotelid, uint32_t role);
 
 };
 

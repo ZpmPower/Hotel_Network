@@ -10,6 +10,7 @@ struct AuthUserInfo
     std::string pass;
     uint64_t user_id;
     std::string salt;
+    uint32_t role;
 
     void parse_from_auth_db(const pqxx::tuple& value);
 };

@@ -7,6 +7,7 @@ CREATE TABLE server_users (
     user_id BIGSERIAL NOT NULL,
     creation_time timestamp DEFAULT NOW(),
     salt text NOT NULL,
+    role int NOT NULL,
     PRIMARY KEY(user_id)
 );
 

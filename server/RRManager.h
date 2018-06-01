@@ -23,6 +23,8 @@ private:
     ResponseCode getEmployeesRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getHotelsRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getRoomsRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode getHotelEmployeesRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode editEmployee(const network::RequestContext& request, network::ResponseContext &response);
 
     std::vector<ClientChannelPtr> sessions_;
 };
