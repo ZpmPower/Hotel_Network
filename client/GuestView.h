@@ -13,13 +13,13 @@ class GuestView : public QWidget
     Q_OBJECT
 
 public:
-    explicit GuestView(std::shared_ptr<MessageManager> message_manager,QWidget *parent = 0);
+    explicit GuestView(std::shared_ptr<MessageManager> message_manager, QWidget *parent = 0);
     ~GuestView();    
     void onRead(const network::ResponseContext &response);
 
 private:
     Ui::GuestView *ui;
-
+    network::SessionInfo sessionInfo_;
     std::shared_ptr<MessageManager> message_manager_;
 };
 

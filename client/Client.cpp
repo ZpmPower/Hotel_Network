@@ -51,12 +51,6 @@ void Client::handleResolveEndPoint(asio::error_code error, asio::ip::tcp::resolv
 
     if(!error)
     {
-//        asio::ip::tcp::endpoint endPoint = *iterator;
-//        socket_.async_connect(endPoint
-//                              , std::bind(&Client::handleConnect
-//                                          , shared_from_this()
-//                                          , std::placeholders::_1
-//                                          , ++iterator));
         asio::async_connect(socket_.lowest_layer(), iterator, std::bind(&Client::handleConnect
                                                                         , shared_from_this()
                                                                         , std::placeholders::_1

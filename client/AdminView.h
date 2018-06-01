@@ -2,11 +2,23 @@
 #define ADMINVIEW_H
 
 #include <QWidget>
+#include <QTableWidgetItem>
 #include "MessageManager.h"
 
 namespace Ui {
 class AdminView;
 }
+
+class TableItemHotels: public QTableWidgetItem
+{
+public:
+    TableItemHotels();
+    TableItemHotels(QString str)
+        :QTableWidgetItem(str){
+
+    }
+    network::HotelInfo info;
+};
 
 class AdminView : public QWidget
 {
@@ -29,7 +41,6 @@ private slots:
     void on_regGuestBnt_clicked();
 
     void on_regReceptBtn_clicked();
-
     void on_regManagerBtn_clicked();
 
     void on_allEmployeeBtn_clicked();
@@ -37,6 +48,8 @@ private slots:
     void on_allHotelsBtn_clicked();
 
     void on_allRoomsBtn_clicked();
+
+    void on_HotelsTbl_itemClicked(QTableWidgetItem *item);
 
 private:
     Ui::AdminView *ui;
@@ -46,6 +59,8 @@ private:
     void getHotels(const network::HotelsMessageResponse& response);
     void getRooms(const network::RoomsMessageResponse& response);
     void guestRegister(const network::RegisterMessageResponse &response);
+
+    network::HotelInfo currHotel;
 
 };
 

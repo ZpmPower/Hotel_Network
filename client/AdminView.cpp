@@ -10,7 +10,7 @@ AdminView::AdminView(std::shared_ptr<MessageManager> message_manager, QWidget *p
     if(message_manager)
     {
         //message_manager_->setOnErrorCB(std::bind(&authReg::onError, this, std::placeholders::_1));
-        message_manager->setOnReadCB(std::bind(&AdminView::onRead, this, std::placeholders::_1));
+        message_manager_->setOnReadCB(std::bind(&AdminView::onRead, this, std::placeholders::_1));
     }
     connect(ui->okBtn, SIGNAL(clicked()), this, SLOT(onClick()));
 
@@ -163,13 +163,17 @@ void AdminView::getHotels(const network::HotelsMessageResponse &response)
         ui->HotelsTbl->setHorizontalHeaderItem(5, new QTableWidgetItem("Type"));
         ui->HotelsTbl->setHorizontalHeaderItem(6, new QTableWidgetItem("Stars"));
 
-        ui->HotelsTbl->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(info.name())));
+        TableItemHotels* item1 = new TableItemHotels(QString::fromStdString(info.name()));
+        item1->info = info;
+        ui->HotelsTbl->setItem(i, 0, static_cast<QTableWidgetItem*>(item1));
         ui->HotelsTbl->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(info.city())));
         ui->HotelsTbl->setItem(i, 2, new QTableWidgetItem(QString::fromStdString(info.street())));
         ui->HotelsTbl->setItem(i, 3, new QTableWidgetItem(QString::fromStdString(info.phonenumber())));
         ui->HotelsTbl->setItem(i, 4, new QTableWidgetItem(QString::fromStdString(info.email())));
         ui->HotelsTbl->setItem(i, 5, new QTableWidgetItem(QString::fromStdString(info.type())));
         ui->HotelsTbl->setItem(i, 6, new QTableWidgetItem(QString::fromStdString(std::to_string(info.stars()))));
+
+
     }
 
     ui->HotelsTbl->resizeColumnsToContents();
@@ -229,7 +233,7 @@ void AdminView::on_regGuestBnt_clicked()
         std::string lname = ui->lastNGPT->toPlainText().toStdString();
         std::string phone = ui->phoneGPT->toPlainText().toStdString();
         std::string passport = ui->passportGPT->toPlainText().toStdString();
-        message_manager_->createUser(login, password, fname,sname,lname,phone,passport);
+        message_manager_->createGuest(login, password, fname,sname,lname,phone,passport,static_cast<uint32_t>(Roles::role_guest));
     }
 }
 
@@ -243,10 +247,10 @@ void AdminView::on_regReceptBtn_clicked()
         std::string sname = ui->secondNRPT->toPlainText().toStdString();
         std::string lname = ui->lastNRPT->toPlainText().toStdString();
         std::string phone = ui->phoneRPT->toPlainText().toStdString();
-        uint32_t position = 3;
+        uint32_t position = static_cast<uint32_t>(Roles::role_manager);
         uint64_t salary = ui->salaryRPT->toPlainText().toInt(new bool,10);
         uint32_t hotelID = ui->hotelIDRPT->toPlainText().toInt(new bool,10);
-        message_manager_->createEmployee(login, password, fname,sname,lname,phone,salary,position,hotelID);
+        message_manager_->createEmployee(login, password, fname,sname,lname,phone,salary,position,hotelID,static_cast<uint32_t>(Roles::role_receptionist));
     }
 }
 
@@ -260,10 +264,10 @@ void AdminView::on_regManagerBtn_clicked()
         std::string sname = ui->secondNMPT->toPlainText().toStdString();
         std::string lname = ui->lastNMPT->toPlainText().toStdString();
         std::string phone = ui->phoneMPT->toPlainText().toStdString();
-        uint32_t position = 2;
+        uint32_t position = static_cast<uint32_t>(Roles::role_receptionist);
         uint64_t salary = ui->salaryMPT->toPlainText().toInt(new bool,10);
         uint32_t hotelID = ui->hotelIDMPT->toPlainText().toInt(new bool,10);
-        message_manager_->createEmployee(login, password, fname,sname,lname,phone,salary,position,hotelID);
+        message_manager_->createEmployee(login, password, fname,sname,lname,phone,salary,position,hotelID,static_cast<uint32_t>(Roles::role_manager));
     }
 }
 
@@ -280,4 +284,18 @@ void AdminView::on_allHotelsBtn_clicked()
 void AdminView::on_allRoomsBtn_clicked()
 {
     message_manager_->getRooms();
+}
+
+void AdminView::on_HotelsTbl_itemClicked(QTableWidgetItem *item)
+{
+    int row  = item->row();
+    TableItemHotels *item1 = static_cast<TableItemHotels *>(ui->HotelsTbl->item(row, 0));
+    LOG_INFO(item1->info.name());
+    currHotel = item1->info;
+    ui->HotelsTbl->item(row, 1);
+    ui->HotelsTbl->item(row, 2);
+    ui->HotelsTbl->item(row, 3);
+    ui->HotelsTbl->item(row, 4);
+    ui->HotelsTbl->item(row, 5);
+    ui->HotelsTbl->item(row, 6);
 }

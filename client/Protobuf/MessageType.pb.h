@@ -40,11 +40,13 @@ enum message_type {
   HN_REGISTER_EMPLOYEE = 3,
   HN_GET_ALL_EMPLOYEES = 4,
   HN_GET_ALL_HOTELS = 5,
-  HN_GET_ALL_ROOMS = 6
+  HN_GET_ALL_ROOMS = 6,
+  HN_GET_HOTEL_EMPLOYEES = 7,
+  HN_EDIT_EMPLOYEE = 8
 };
 bool message_type_IsValid(int value);
 const message_type message_type_MIN = HN_REGISTER;
-const message_type message_type_MAX = HN_GET_ALL_ROOMS;
+const message_type message_type_MAX = HN_EDIT_EMPLOYEE;
 const int message_type_ARRAYSIZE = message_type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* message_type_descriptor();

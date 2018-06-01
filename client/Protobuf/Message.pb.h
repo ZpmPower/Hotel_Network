@@ -41,6 +41,7 @@ class GuestInfo;
 class GuestsMessageResponse;
 class EmployeeInfo;
 class EmployeesMessageResponse;
+class HotelId;
 class HotelInfo;
 class HotelsMessageResponse;
 class RoomInfo;
@@ -289,6 +290,13 @@ class RegisterMessage : public ::google::protobuf::Message {
   inline ::std::string* release_passport();
   inline void set_allocated_passport(::std::string* passport);
 
+  // optional int32 role = 8;
+  inline bool has_role() const;
+  inline void clear_role();
+  static const int kRoleFieldNumber = 8;
+  inline ::google::protobuf::int32 role() const;
+  inline void set_role(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:network.RegisterMessage)
  private:
   inline void set_has_login();
@@ -305,6 +313,8 @@ class RegisterMessage : public ::google::protobuf::Message {
   inline void clear_has_phonenumber();
   inline void set_has_passport();
   inline void clear_has_passport();
+  inline void set_has_role();
+  inline void clear_has_role();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -317,6 +327,7 @@ class RegisterMessage : public ::google::protobuf::Message {
   ::std::string* lastname_;
   ::std::string* phonenumber_;
   ::std::string* passport_;
+  ::google::protobuf::int32 role_;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
   friend void protobuf_ShutdownFile_Message_2eproto();
@@ -472,6 +483,13 @@ class RegisterEmployeeMessage : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 hotelid() const;
   inline void set_hotelid(::google::protobuf::int32 value);
 
+  // optional int32 role = 10;
+  inline bool has_role() const;
+  inline void clear_role();
+  static const int kRoleFieldNumber = 10;
+  inline ::google::protobuf::int32 role() const;
+  inline void set_role(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:network.RegisterEmployeeMessage)
  private:
   inline void set_has_login();
@@ -492,6 +510,8 @@ class RegisterEmployeeMessage : public ::google::protobuf::Message {
   inline void clear_has_position();
   inline void set_has_hotelid();
   inline void clear_has_hotelid();
+  inline void set_has_role();
+  inline void clear_has_role();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -506,6 +526,7 @@ class RegisterEmployeeMessage : public ::google::protobuf::Message {
   ::google::protobuf::int32 salary_;
   ::google::protobuf::int32 position_;
   ::google::protobuf::int32 hotelid_;
+  ::google::protobuf::int32 role_;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
   friend void protobuf_ShutdownFile_Message_2eproto();
@@ -868,6 +889,13 @@ class EmployeeInfo : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 hotelid() const;
   inline void set_hotelid(::google::protobuf::int32 value);
 
+  // optional int32 id = 8;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 8;
+  inline ::google::protobuf::int32 id() const;
+  inline void set_id(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:network.EmployeeInfo)
  private:
   inline void set_has_firstname();
@@ -884,6 +912,8 @@ class EmployeeInfo : public ::google::protobuf::Message {
   inline void clear_has_position();
   inline void set_has_hotelid();
   inline void clear_has_hotelid();
+  inline void set_has_id();
+  inline void clear_has_id();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -896,6 +926,7 @@ class EmployeeInfo : public ::google::protobuf::Message {
   ::std::string* position_;
   ::google::protobuf::int32 salary_;
   ::google::protobuf::int32 hotelid_;
+  ::google::protobuf::int32 id_;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
   friend void protobuf_ShutdownFile_Message_2eproto();
@@ -984,6 +1015,85 @@ class EmployeesMessageResponse : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static EmployeesMessageResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HotelId : public ::google::protobuf::Message {
+ public:
+  HotelId();
+  virtual ~HotelId();
+
+  HotelId(const HotelId& from);
+
+  inline HotelId& operator=(const HotelId& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HotelId& default_instance();
+
+  void Swap(HotelId* other);
+
+  // implements Message ----------------------------------------------
+
+  HotelId* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HotelId& from);
+  void MergeFrom(const HotelId& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 hotelId = 1;
+  inline bool has_hotelid() const;
+  inline void clear_hotelid();
+  static const int kHotelIdFieldNumber = 1;
+  inline ::google::protobuf::int32 hotelid() const;
+  inline void set_hotelid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:network.HotelId)
+ private:
+  inline void set_has_hotelid();
+  inline void clear_has_hotelid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 hotelid_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static HotelId* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -1560,6 +1670,24 @@ class RequestContext : public ::google::protobuf::Message {
   inline ::network::SessionInfo* release_session_info();
   inline void set_allocated_session_info(::network::SessionInfo* session_info);
 
+  // optional .network.HotelId hotel_id = 6;
+  inline bool has_hotel_id() const;
+  inline void clear_hotel_id();
+  static const int kHotelIdFieldNumber = 6;
+  inline const ::network::HotelId& hotel_id() const;
+  inline ::network::HotelId* mutable_hotel_id();
+  inline ::network::HotelId* release_hotel_id();
+  inline void set_allocated_hotel_id(::network::HotelId* hotel_id);
+
+  // optional .network.EmployeeInfo employee_info = 7;
+  inline bool has_employee_info() const;
+  inline void clear_employee_info();
+  static const int kEmployeeInfoFieldNumber = 7;
+  inline const ::network::EmployeeInfo& employee_info() const;
+  inline ::network::EmployeeInfo* mutable_employee_info();
+  inline ::network::EmployeeInfo* release_employee_info();
+  inline void set_allocated_employee_info(::network::EmployeeInfo* employee_info);
+
   // @@protoc_insertion_point(class_scope:network.RequestContext)
  private:
   inline void set_has_message_type_();
@@ -1572,6 +1700,10 @@ class RequestContext : public ::google::protobuf::Message {
   inline void clear_has_register_employee_message_();
   inline void set_has_session_info();
   inline void clear_has_session_info();
+  inline void set_has_hotel_id();
+  inline void clear_has_hotel_id();
+  inline void set_has_employee_info();
+  inline void clear_has_employee_info();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -1581,6 +1713,8 @@ class RequestContext : public ::google::protobuf::Message {
   ::network::RegisterMessage* register_message__;
   ::network::RegisterEmployeeMessage* register_employee_message__;
   ::network::SessionInfo* session_info_;
+  ::network::HotelId* hotel_id_;
+  ::network::EmployeeInfo* employee_info_;
   int message_type__;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
@@ -1852,17 +1986,36 @@ class SessionInfo : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional int64 user_id = 1;
-  inline bool has_user_id() const;
-  inline void clear_user_id();
-  static const int kUserIdFieldNumber = 1;
-  inline ::google::protobuf::int64 user_id() const;
-  inline void set_user_id(::google::protobuf::int64 value);
+  // optional string login = 1;
+  inline bool has_login() const;
+  inline void clear_login();
+  static const int kLoginFieldNumber = 1;
+  inline const ::std::string& login() const;
+  inline void set_login(const ::std::string& value);
+  inline void set_login(const char* value);
+  inline void set_login(const char* value, size_t size);
+  inline ::std::string* mutable_login();
+  inline ::std::string* release_login();
+  inline void set_allocated_login(::std::string* login);
 
-  // optional string session_id = 2;
+  // optional int64 userId = 2;
+  inline bool has_userid() const;
+  inline void clear_userid();
+  static const int kUserIdFieldNumber = 2;
+  inline ::google::protobuf::int64 userid() const;
+  inline void set_userid(::google::protobuf::int64 value);
+
+  // optional int32 role = 3;
+  inline bool has_role() const;
+  inline void clear_role();
+  static const int kRoleFieldNumber = 3;
+  inline ::google::protobuf::int32 role() const;
+  inline void set_role(::google::protobuf::int32 value);
+
+  // optional string session_id = 4;
   inline bool has_session_id() const;
   inline void clear_session_id();
-  static const int kSessionIdFieldNumber = 2;
+  static const int kSessionIdFieldNumber = 4;
   inline const ::std::string& session_id() const;
   inline void set_session_id(const ::std::string& value);
   inline void set_session_id(const char* value);
@@ -1873,8 +2026,12 @@ class SessionInfo : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:network.SessionInfo)
  private:
-  inline void set_has_user_id();
-  inline void clear_has_user_id();
+  inline void set_has_login();
+  inline void clear_has_login();
+  inline void set_has_userid();
+  inline void clear_has_userid();
+  inline void set_has_role();
+  inline void clear_has_role();
   inline void set_has_session_id();
   inline void clear_has_session_id();
 
@@ -1882,8 +2039,10 @@ class SessionInfo : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::int64 user_id_;
+  ::std::string* login_;
+  ::google::protobuf::int64 userid_;
   ::std::string* session_id_;
+  ::google::protobuf::int32 role_;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
   friend void protobuf_ShutdownFile_Message_2eproto();
@@ -2759,6 +2918,30 @@ inline void RegisterMessage::set_allocated_passport(::std::string* passport) {
   // @@protoc_insertion_point(field_set_allocated:network.RegisterMessage.passport)
 }
 
+// optional int32 role = 8;
+inline bool RegisterMessage::has_role() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void RegisterMessage::set_has_role() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void RegisterMessage::clear_has_role() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void RegisterMessage::clear_role() {
+  role_ = 0;
+  clear_has_role();
+}
+inline ::google::protobuf::int32 RegisterMessage::role() const {
+  // @@protoc_insertion_point(field_get:network.RegisterMessage.role)
+  return role_;
+}
+inline void RegisterMessage::set_role(::google::protobuf::int32 value) {
+  set_has_role();
+  role_ = value;
+  // @@protoc_insertion_point(field_set:network.RegisterMessage.role)
+}
+
 // -------------------------------------------------------------------
 
 // RegisterEmployeeMessage
@@ -3289,6 +3472,30 @@ inline void RegisterEmployeeMessage::set_hotelid(::google::protobuf::int32 value
   set_has_hotelid();
   hotelid_ = value;
   // @@protoc_insertion_point(field_set:network.RegisterEmployeeMessage.hotelId)
+}
+
+// optional int32 role = 10;
+inline bool RegisterEmployeeMessage::has_role() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void RegisterEmployeeMessage::set_has_role() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void RegisterEmployeeMessage::clear_has_role() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void RegisterEmployeeMessage::clear_role() {
+  role_ = 0;
+  clear_has_role();
+}
+inline ::google::protobuf::int32 RegisterEmployeeMessage::role() const {
+  // @@protoc_insertion_point(field_get:network.RegisterEmployeeMessage.role)
+  return role_;
+}
+inline void RegisterEmployeeMessage::set_role(::google::protobuf::int32 value) {
+  set_has_role();
+  role_ = value;
+  // @@protoc_insertion_point(field_set:network.RegisterEmployeeMessage.role)
 }
 
 // -------------------------------------------------------------------
@@ -4141,6 +4348,30 @@ inline void EmployeeInfo::set_hotelid(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:network.EmployeeInfo.hotelId)
 }
 
+// optional int32 id = 8;
+inline bool EmployeeInfo::has_id() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void EmployeeInfo::set_has_id() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void EmployeeInfo::clear_has_id() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void EmployeeInfo::clear_id() {
+  id_ = 0;
+  clear_has_id();
+}
+inline ::google::protobuf::int32 EmployeeInfo::id() const {
+  // @@protoc_insertion_point(field_get:network.EmployeeInfo.id)
+  return id_;
+}
+inline void EmployeeInfo::set_id(::google::protobuf::int32 value) {
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:network.EmployeeInfo.id)
+}
+
 // -------------------------------------------------------------------
 
 // EmployeesMessageResponse
@@ -4173,6 +4404,34 @@ inline ::google::protobuf::RepeatedPtrField< ::network::EmployeeInfo >*
 EmployeesMessageResponse::mutable_employees() {
   // @@protoc_insertion_point(field_mutable_list:network.EmployeesMessageResponse.employees)
   return &employees_;
+}
+
+// -------------------------------------------------------------------
+
+// HotelId
+
+// optional int32 hotelId = 1;
+inline bool HotelId::has_hotelid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HotelId::set_has_hotelid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HotelId::clear_has_hotelid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HotelId::clear_hotelid() {
+  hotelid_ = 0;
+  clear_has_hotelid();
+}
+inline ::google::protobuf::int32 HotelId::hotelid() const {
+  // @@protoc_insertion_point(field_get:network.HotelId.hotelId)
+  return hotelid_;
+}
+inline void HotelId::set_hotelid(::google::protobuf::int32 value) {
+  set_has_hotelid();
+  hotelid_ = value;
+  // @@protoc_insertion_point(field_set:network.HotelId.hotelId)
 }
 
 // -------------------------------------------------------------------
@@ -5144,6 +5403,88 @@ inline void RequestContext::set_allocated_session_info(::network::SessionInfo* s
   // @@protoc_insertion_point(field_set_allocated:network.RequestContext.session_info)
 }
 
+// optional .network.HotelId hotel_id = 6;
+inline bool RequestContext::has_hotel_id() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void RequestContext::set_has_hotel_id() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void RequestContext::clear_has_hotel_id() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void RequestContext::clear_hotel_id() {
+  if (hotel_id_ != NULL) hotel_id_->::network::HotelId::Clear();
+  clear_has_hotel_id();
+}
+inline const ::network::HotelId& RequestContext::hotel_id() const {
+  // @@protoc_insertion_point(field_get:network.RequestContext.hotel_id)
+  return hotel_id_ != NULL ? *hotel_id_ : *default_instance_->hotel_id_;
+}
+inline ::network::HotelId* RequestContext::mutable_hotel_id() {
+  set_has_hotel_id();
+  if (hotel_id_ == NULL) hotel_id_ = new ::network::HotelId;
+  // @@protoc_insertion_point(field_mutable:network.RequestContext.hotel_id)
+  return hotel_id_;
+}
+inline ::network::HotelId* RequestContext::release_hotel_id() {
+  clear_has_hotel_id();
+  ::network::HotelId* temp = hotel_id_;
+  hotel_id_ = NULL;
+  return temp;
+}
+inline void RequestContext::set_allocated_hotel_id(::network::HotelId* hotel_id) {
+  delete hotel_id_;
+  hotel_id_ = hotel_id;
+  if (hotel_id) {
+    set_has_hotel_id();
+  } else {
+    clear_has_hotel_id();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RequestContext.hotel_id)
+}
+
+// optional .network.EmployeeInfo employee_info = 7;
+inline bool RequestContext::has_employee_info() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void RequestContext::set_has_employee_info() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void RequestContext::clear_has_employee_info() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void RequestContext::clear_employee_info() {
+  if (employee_info_ != NULL) employee_info_->::network::EmployeeInfo::Clear();
+  clear_has_employee_info();
+}
+inline const ::network::EmployeeInfo& RequestContext::employee_info() const {
+  // @@protoc_insertion_point(field_get:network.RequestContext.employee_info)
+  return employee_info_ != NULL ? *employee_info_ : *default_instance_->employee_info_;
+}
+inline ::network::EmployeeInfo* RequestContext::mutable_employee_info() {
+  set_has_employee_info();
+  if (employee_info_ == NULL) employee_info_ = new ::network::EmployeeInfo;
+  // @@protoc_insertion_point(field_mutable:network.RequestContext.employee_info)
+  return employee_info_;
+}
+inline ::network::EmployeeInfo* RequestContext::release_employee_info() {
+  clear_has_employee_info();
+  ::network::EmployeeInfo* temp = employee_info_;
+  employee_info_ = NULL;
+  return temp;
+}
+inline void RequestContext::set_allocated_employee_info(::network::EmployeeInfo* employee_info) {
+  delete employee_info_;
+  employee_info_ = employee_info;
+  if (employee_info) {
+    set_has_employee_info();
+  } else {
+    clear_has_employee_info();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RequestContext.employee_info)
+}
+
 // -------------------------------------------------------------------
 
 // RegisterMessageResponse
@@ -5404,39 +5745,139 @@ inline void AuthMessageResponse::set_allocated_messagetext(::std::string* messag
 
 // SessionInfo
 
-// optional int64 user_id = 1;
-inline bool SessionInfo::has_user_id() const {
+// optional string login = 1;
+inline bool SessionInfo::has_login() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void SessionInfo::set_has_user_id() {
+inline void SessionInfo::set_has_login() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void SessionInfo::clear_has_user_id() {
+inline void SessionInfo::clear_has_login() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void SessionInfo::clear_user_id() {
-  user_id_ = GOOGLE_LONGLONG(0);
-  clear_has_user_id();
+inline void SessionInfo::clear_login() {
+  if (login_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    login_->clear();
+  }
+  clear_has_login();
 }
-inline ::google::protobuf::int64 SessionInfo::user_id() const {
-  // @@protoc_insertion_point(field_get:network.SessionInfo.user_id)
-  return user_id_;
+inline const ::std::string& SessionInfo::login() const {
+  // @@protoc_insertion_point(field_get:network.SessionInfo.login)
+  return *login_;
 }
-inline void SessionInfo::set_user_id(::google::protobuf::int64 value) {
-  set_has_user_id();
-  user_id_ = value;
-  // @@protoc_insertion_point(field_set:network.SessionInfo.user_id)
+inline void SessionInfo::set_login(const ::std::string& value) {
+  set_has_login();
+  if (login_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    login_ = new ::std::string;
+  }
+  login_->assign(value);
+  // @@protoc_insertion_point(field_set:network.SessionInfo.login)
+}
+inline void SessionInfo::set_login(const char* value) {
+  set_has_login();
+  if (login_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    login_ = new ::std::string;
+  }
+  login_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.SessionInfo.login)
+}
+inline void SessionInfo::set_login(const char* value, size_t size) {
+  set_has_login();
+  if (login_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    login_ = new ::std::string;
+  }
+  login_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.SessionInfo.login)
+}
+inline ::std::string* SessionInfo::mutable_login() {
+  set_has_login();
+  if (login_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    login_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.SessionInfo.login)
+  return login_;
+}
+inline ::std::string* SessionInfo::release_login() {
+  clear_has_login();
+  if (login_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = login_;
+    login_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void SessionInfo::set_allocated_login(::std::string* login) {
+  if (login_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete login_;
+  }
+  if (login) {
+    set_has_login();
+    login_ = login;
+  } else {
+    clear_has_login();
+    login_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.SessionInfo.login)
 }
 
-// optional string session_id = 2;
-inline bool SessionInfo::has_session_id() const {
+// optional int64 userId = 2;
+inline bool SessionInfo::has_userid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void SessionInfo::set_has_session_id() {
+inline void SessionInfo::set_has_userid() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void SessionInfo::clear_has_session_id() {
+inline void SessionInfo::clear_has_userid() {
   _has_bits_[0] &= ~0x00000002u;
+}
+inline void SessionInfo::clear_userid() {
+  userid_ = GOOGLE_LONGLONG(0);
+  clear_has_userid();
+}
+inline ::google::protobuf::int64 SessionInfo::userid() const {
+  // @@protoc_insertion_point(field_get:network.SessionInfo.userId)
+  return userid_;
+}
+inline void SessionInfo::set_userid(::google::protobuf::int64 value) {
+  set_has_userid();
+  userid_ = value;
+  // @@protoc_insertion_point(field_set:network.SessionInfo.userId)
+}
+
+// optional int32 role = 3;
+inline bool SessionInfo::has_role() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SessionInfo::set_has_role() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SessionInfo::clear_has_role() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SessionInfo::clear_role() {
+  role_ = 0;
+  clear_has_role();
+}
+inline ::google::protobuf::int32 SessionInfo::role() const {
+  // @@protoc_insertion_point(field_get:network.SessionInfo.role)
+  return role_;
+}
+inline void SessionInfo::set_role(::google::protobuf::int32 value) {
+  set_has_role();
+  role_ = value;
+  // @@protoc_insertion_point(field_set:network.SessionInfo.role)
+}
+
+// optional string session_id = 4;
+inline bool SessionInfo::has_session_id() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void SessionInfo::set_has_session_id() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void SessionInfo::clear_has_session_id() {
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void SessionInfo::clear_session_id() {
   if (session_id_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {

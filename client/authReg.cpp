@@ -54,14 +54,16 @@ void authReg::disconnectError()
     QMessageBox::critical(this, "Error", "You was disconnected! Restart application for connecting");
 }
 
-void authReg::userAuth(const network::AuthMessageResponse &responce)
+void authReg::userAuth(const network::AuthMessageResponse &responce, const network::SessionInfo &sessionInfo)
 {
     ui->authL->setText(QString::fromStdString(responce.messagetext()));
     Roles role = static_cast<Roles>(responce.role());
+    message_manager_->setSession(sessionInfo);
     switch (role) {
     case Roles::role_admin:
         adminView_ = std::make_shared<AdminView>(message_manager_);
         connect(adminView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
+        adminView_->setAttribute(Qt::WA_DeleteOnClose, true);
         adminView_->show();
         break;
     case Roles::role_guest:
@@ -71,13 +73,13 @@ void authReg::userAuth(const network::AuthMessageResponse &responce)
         guestView_->show();
         break;
     case Roles::role_manager:
-        managerView_ = std::make_shared<ManagerView>(message_manager_);
+        managerView_ = std::make_shared<ManagerView>(message_manager_,responce.id_hotel());
         connect(managerView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
         managerView_->setAttribute(Qt::WA_DeleteOnClose, true);
         managerView_->show();
         break;
     case Roles::role_receptionist:
-        receptionistView_ = std::make_shared<ReceptionistView>(message_manager_);
+        receptionistView_ = std::make_shared<ReceptionistView>(message_manager_,responce.id_hotel());
         connect(receptionistView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
         receptionistView_->setAttribute(Qt::WA_DeleteOnClose, true);
         receptionistView_->show();
@@ -112,6 +114,8 @@ void authReg::on_regBtn_clicked()
 void authReg::enableGb()
 {
     ui->groupBox->setEnabled(true);
+
+    message_manager_->setOnReadCB(std::bind(&authReg::onRead, this, std::placeholders::_1));
 }
 
 void authReg::onReadData(std::string data)
@@ -121,7 +125,7 @@ void authReg::onReadData(std::string data)
     switch (response.message_type_()) {
     case network::HN_AUTH: {
         network::AuthMessageResponse authRes = response.auth_response();
-        userAuth(authRes);
+        userAuth(authRes,response.session_info());
         break;
     }
     }

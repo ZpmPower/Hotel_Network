@@ -13,7 +13,7 @@ class ReceptionistView : public QWidget
     Q_OBJECT
 
 public:
-    explicit ReceptionistView(std::shared_ptr<MessageManager> message_manager, QWidget *parent = 0);
+    explicit ReceptionistView(std::shared_ptr<MessageManager> message_manager, uint32_t hotelid,  QWidget *parent = 0);
     ~ReceptionistView();
     void onRead(const network::ResponseContext &response);
 
@@ -24,6 +24,8 @@ signals:
     void enableGb();
 private:
     Ui::ReceptionistView *ui;
+    uint32_t hotelID_;
+    network::SessionInfo sessionInfo_;
     std::shared_ptr<MessageManager> message_manager_;
 };
 

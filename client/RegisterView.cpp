@@ -43,6 +43,7 @@ void RegisterView::onRead(const network::ResponseContext &response)
 void RegisterView::closeEvent(QCloseEvent *bar)
 {
     emit enableGb();
+
 }
 
 void RegisterView::on_testBtn_2_clicked()
@@ -56,6 +57,6 @@ void RegisterView::on_testBtn_2_clicked()
         std::string lname = ui->lastN->toPlainText().toStdString();
         std::string phone = ui->phoneTE->toPlainText().toStdString();
         std::string passport = ui->passportTE->toPlainText().toStdString();
-        message_manager_->createUser(login, password, fname,sname,lname,phone,passport);
+        message_manager_->createGuest(login, password, fname,sname,lname,phone,passport,static_cast<uint32_t>(Roles::role_guest));
     }
 }

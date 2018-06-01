@@ -65,30 +65,30 @@ bool MessageManager::userAuth(const std::string &login, const std::string &passw
     execute(context.SerializeAsString());
 }
 
-bool MessageManager::createUser(const std::string &login, const std::string &password, const std::string &fname, const std::string &sname, const std::string &lname,
-                                const std::string &phone, const std::string &passport)
+bool MessageManager::createGuest(const std::string &login, const std::string &password, const std::string &fname, const std::string &sname, const std::string &lname,
+                                const std::string &phone, const std::string &passport, uint32_t role)
 {
     network::RequestContext context;
     context.set_message_type_(network::message_type::HN_REGISTER);
 
-    network::RegisterMessage* authMess = new network::RegisterMessage();
-    authMess->set_login(login);
+    network::RegisterMessage* regMess = new network::RegisterMessage();
+    regMess->set_login(login);
     std::string hashPass;
     CryptoHelper::md5_hash(password, hashPass);
-    authMess->set_pass(hashPass);
-    authMess->set_firstname(fname);
-    authMess->set_secondname(sname);
-    authMess->set_lastname(lname);
-    authMess->set_phonenumber(phone);
-    authMess->set_passport(passport);
-
-    context.set_allocated_register_message_(authMess);
+    regMess->set_pass(hashPass);
+    regMess->set_firstname(fname);
+    regMess->set_secondname(sname);
+    regMess->set_lastname(lname);
+    regMess->set_phonenumber(phone);
+    regMess->set_passport(passport);
+    regMess->set_role(role);
+    context.set_allocated_register_message_(regMess);
 
     execute(context.SerializeAsString());
 }
 
 bool MessageManager::createEmployee(const std::string &login, const std::string &password, const std::string &fname, const std::string &sname, const std::string &lname,
-                                    const std::string &phone, int64_t salary, int32_t position, int32_t hotelid)
+                                    const std::string &phone, int64_t salary, int32_t position, int32_t hotelid, uint32_t role)
 {
     network::RequestContext context;
     context.set_message_type_(network::message_type::HN_REGISTER_EMPLOYEE);
@@ -105,8 +105,34 @@ bool MessageManager::createEmployee(const std::string &login, const std::string 
     regMess->set_salary(salary);
     regMess->set_position(position);
     regMess->set_hotelid(hotelid);
+    regMess->set_role(role);
 
     context.set_allocated_register_employee_message_(regMess);
+
+    execute(context.SerializeAsString());
+}
+
+bool MessageManager::editEmployee(uint32_t employeeId, const std::string &fname, const std::string &sname, const std::string &lname, const std::string &phone,
+                                  int64_t salary, const std::string& position, int32_t hotelid)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_EDIT_EMPLOYEE);
+
+    network::EmployeeInfo* employeeData = new network::EmployeeInfo();
+    network::SessionInfo* session = new network::SessionInfo();
+    session->set_session_id(getSession().session_id());
+
+    employeeData->set_firstname(fname);
+    employeeData->set_secondname(sname);
+    employeeData->set_lastname(lname);
+    employeeData->set_phonenumber(phone);
+    employeeData->set_salary(salary);
+    employeeData->set_position(position);
+    employeeData->set_hotelid(hotelid);
+    employeeData->set_id(employeeId);
+
+    context.set_allocated_session_info(session);
+    context.set_allocated_employee_info(employeeData);
 
     execute(context.SerializeAsString());
 }
@@ -125,6 +151,19 @@ void MessageManager::getEmployees()
     execute(context.SerializeAsString());
 }
 
+void MessageManager::getHotelEmployees(uint32_t hotelid)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_HOTEL_EMPLOYEES);
+    network::HotelId* hotelId = new network::HotelId();
+    network::SessionInfo* sessionInfo = new network::SessionInfo();
+    sessionInfo->set_session_id(getSession().session_id());
+    hotelId->set_hotelid(hotelid);
+    context.set_allocated_hotel_id(hotelId);
+    context.set_allocated_session_info(sessionInfo);
+    execute(context.SerializeAsString());
+}
+
 void MessageManager::getHotels()
 {
     network::RequestContext context;
@@ -133,6 +172,13 @@ void MessageManager::getHotels()
 }
 
 void MessageManager::getRooms()
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_ALL_ROOMS);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::deleteEmployee(uint32_t employeeId)
 {
     network::RequestContext context;
     context.set_message_type_(network::message_type::HN_GET_ALL_ROOMS);

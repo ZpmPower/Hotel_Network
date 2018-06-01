@@ -44,7 +44,7 @@ private:
     void cannotConnectError();
     void disconnectError();
 
-    void userAuth(const network::AuthMessageResponse& responce);
+    void userAuth(const network::AuthMessageResponse& responce, const network::SessionInfo &sessionInfo);
 };
 
 #endif // AUTHREG_H
