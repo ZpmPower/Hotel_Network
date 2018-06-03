@@ -132,5 +132,44 @@ ResponseCode AuthPostgresManager::getUser(const std::string &login, AuthUserInfo
         }
     }
     while(false);
+    return result;
 
+}
+
+ResponseCode AuthPostgresManager::deleteUser(uint32_t id)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+
+    do
+    {
+        try
+        {
+            db_connection_ptr connection = DBHelper::getAuthConnection();
+
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("deleteUser"))
+            {
+                connection->prepare("deleteUser",
+                                    "DELETE FROM server_users WHERE user_id = $1;");
+            }
+
+            pqxx::work work(*connection, "deleteUser");
+
+            pqxx::result res = work.prepared("deleteUser")(id).exec();
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query deleteUser err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+    return result;
 }

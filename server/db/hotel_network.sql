@@ -158,7 +158,6 @@ INSERT INTO Guest(FirstName,SecondName,LastName,PhoneNumber,PassportNumber)VALUE
 INSERT INTO RoomType(Name) VALUES('Luxury');
 INSERT INTO RoomType(Name) VALUES('VIP');
 INSERT INTO RoomType(Name) VALUES('Family');
-INSERT INTO RoomType(Name) VALUES('ForOne');
 
 -- ROOMS
 
@@ -178,18 +177,6 @@ INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(3,
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(4,3500,7,3,1,false,2);
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(2,4000,7,3,1,false,2);
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(2,4000,9,3,1,true,2);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,3000,6,4,1,true,2);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,3000,6,4,1,false,2);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,3020,6,4,1,true,2);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,6,4,1,false,2);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,3000,5,4,1,true,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,3000,5,4,1,false,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2800,5,4,1,true,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,3000,5,4,1,false,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,3000,10,4,1,true,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,3000,7,4,1,false,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,3000,7,4,1,false,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,3000,8,4,1,false,3);
 
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(5,8000,9,2,2,true,1);
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(6,8000,9,2,2,false,1);
@@ -207,23 +194,9 @@ INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(4,
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(2,4000,9,3,2,true,3);
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(2,4000,4,3,2,true,3);
 
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,7,4,2,true,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,7,4,2,true,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,7,4,2,true,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,6,4,2,false,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,6,4,2,false,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,6,4,2,false,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,6,4,2,false,4);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,9,4,2,false,4);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,9,4,2,true,4);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,9,4,2,true,4);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,8,4,2,true,4);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2500,8,4,2,true,4);
 
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(7,8000,5,2,3,true,1);
 
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(3,4500,4,3,3,true,1);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(3,4500,4,3,3,false,1);
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(2,3500,5,3,3,false,2);
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(3,4500,6,3,3,false,2);
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(2,3500,2,3,3,true,2);
@@ -232,21 +205,9 @@ INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(2,
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(3,4500,8,3,3,false,2);
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(3,4500,1,3,3,true,2);
 
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,7,4,3,true,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,3,4,3,true,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,6,4,3,false,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,5,4,3,false,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,2,4,3,false,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,9,4,3,false,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,10,4,3,false,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,8,4,3,true,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,8,4,3,true,3);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,1,4,3,true,4);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,4,4,3,true,4);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,8,4,3,true,4);
+
 
 INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(2,2700,8,3,5,true,1);
-INSERT INTO Room(Places, Price, Rating, IdType,IdHotel, Status, Floor) VALUES(1,2700,8,4,5,true,1);
 
 --here
 --RoomOrders
@@ -283,8 +244,6 @@ INSERT INTO RoomOrder(IdRoom,StartDate,EndDate,idEmployee,IdGuest ) VALUES(37,'2
 INSERT INTO RoomOrder(IdRoom,StartDate,EndDate,idEmployee,IdGuest ) VALUES(38,'2017-11-29','2017-12-10',9,21);
 INSERT INTO RoomOrder(IdRoom,StartDate,EndDate,idEmployee,IdGuest ) VALUES(38,'2017-12-10','2017-12-20',9,21);
 INSERT INTO RoomOrder(IdRoom,StartDate,EndDate,idEmployee,IdGuest ) VALUES(39,'2017-11-30','2017-12-19',10,4);
-INSERT INTO RoomOrder(IdRoom,StartDate,EndDate,idEmployee,IdGuest ) VALUES(40,'2017-11-21','2017-12-01',10,2);
-INSERT INTO RoomOrder(IdRoom,StartDate,EndDate,idEmployee,IdGuest ) VALUES(77,'2017-11-21','2017-12-01',13,4);
 
 INSERT INTO RoomOrder(IdRoom, StartDate,EndDate,idEmployee,IdGuest) VALUES(25,'2017-12-15','2017-12-20',12,2);
 INSERT INTO RoomOrder(IdRoom, StartDate,EndDate,idEmployee,IdGuest) VALUES(14,'2017-12-07','2017-12-10',12,6);
@@ -306,6 +265,8 @@ GRANT SELECT, UPDATE, INSERT, DELETE ON guest TO manager;
 GRANT SELECT ON employeeposition TO manager;
 GRANT SELECT ON hoteltype TO manager;
 GRANT SELECT ON roomtype TO manager;
+GRANT ALL PRIVILEGES ON room_id_seq TO manager;
+
 
 GRANT SELECT ON employee TO receptionist;
 GRANT SELECT ON hotel TO receptionist;
@@ -315,6 +276,8 @@ GRANT SELECT, UPDATE, INSERT, DELETE ON guest TO receptionist;
 GRANT SELECT ON employeeposition TO receptionist;
 GRANT SELECT ON hoteltype TO receptionist;
 GRANT SELECT ON roomtype TO receptionist;
+GRANT ALL PRIVILEGES ON room_id_seq TO receptionist;
+
 
 GRANT SELECT ON hotel TO guest;
 GRANT SELECT ON room TO guest;

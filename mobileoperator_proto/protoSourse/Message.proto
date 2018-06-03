@@ -93,10 +93,30 @@ message RoomInfo {
     optional int32 floor = 5;
     optional string type = 6;
     optional int32 hotelID = 7;
+    optional int32 id = 8;
 }
 
 message RoomsMessageResponse {
     repeated RoomInfo rooms = 1;
+
+}
+
+
+message OrderInfo {
+
+    optional int32 id = 1;
+    optional string startdate = 2;
+    optional string enddate = 3;
+    optional int32 idroom = 4;
+    optional string employee_secondname = 5;
+    optional string guest_secondname = 6;
+    optional int32 hotelID = 7;
+    optional int32 employee_id = 8;
+    optional int32 guest_id = 9;
+}
+
+message OrdersMessageResponse {
+    repeated OrderInfo orders = 1;
 
 }
 
@@ -109,6 +129,7 @@ message RequestContext {
     optional SessionInfo session_info = 5;
     optional HotelId hotel_id = 6;
     optional EmployeeInfo employee_info = 7;
+    optional RoomInfo room_info = 8;
 }
 
 message RegisterMessageResponse
@@ -133,6 +154,23 @@ message SessionInfo
     optional string session_id = 4;
 }
 
+message RoomTypesMessageResponse {
+    repeated string types = 1;
+
+}
+
+message HotelType
+{
+    optional int32 id= 1;
+    optional string name= 2;
+}
+
+message HotelTypesMessageResponse {
+    repeated HotelType types = 1;
+
+
+}
+
 message ResponseContext {
     optional int32 error_code = 1;
     optional message_type message_type_ = 2;
@@ -144,4 +182,7 @@ message ResponseContext {
     optional EmployeesMessageResponse employees = 7;
     optional HotelsMessageResponse hotels = 8;
     optional RoomsMessageResponse rooms = 9;
+    optional RoomTypesMessageResponse types = 10;
+    optional OrdersMessageResponse orders = 11;
+    optional HotelTypesMessageResponse hotel_types = 12;
 }

@@ -56,11 +56,35 @@ void RRManager::readSessionBuffer(std::shared_ptr<ClientChannel> session, ByteBu
     case network::HN_GET_ALL_ROOMS:
         responseCode = getRoomsRR(reqContext, resContext);
         break;
+    case network::HN_GET_HOTEL_ROOMS:
+        responseCode = getHotelRoomsRR(reqContext, resContext);
+        break;
     case network::HN_GET_HOTEL_EMPLOYEES:
         responseCode = getHotelEmployeesRR(reqContext, resContext);
         break;
     case network::HN_EDIT_EMPLOYEE:
-        responseCode = editEmployee(reqContext, resContext);
+        responseCode = editEmployeeRR(reqContext, resContext);
+        break;
+    case network::HN_DELETE_EMPLOYEE:
+        responseCode = deleteEmployeeRR(reqContext, resContext);
+        break;
+    case network::HN_DELETE_ROOM:
+        responseCode = deleteRoomRR(reqContext, resContext);
+        break;
+    case network::HN_GET_ROOM_TYPES:
+        responseCode = getRoomTypesRR(reqContext, resContext);
+        break;
+    case network::HN_ADD_HOTEL_ROOM:
+        responseCode = addHotelRoomRR(reqContext, resContext);
+        break;
+    case network::HN_EDIT_HOTEL_ROOM:
+        responseCode = editHotelRoomRR(reqContext, resContext);
+        break;
+    case network::HN_GET_HOTEL_ORDERS:
+        responseCode = getHotelOrdersRR(reqContext, resContext);
+        break;
+    case network::HN_GET_HOTEL_TYPES:
+        responseCode = getHotelTypesRR(reqContext, resContext);
         break;
     default:
         responseCode = ResponseCode::status_unknown_command;
@@ -245,7 +269,55 @@ ResponseCode RRManager::getHotelEmployeesRR(const network::RequestContext &reque
     return resultStatus;
 }
 
-ResponseCode RRManager::editEmployee(const network::RequestContext &request, network::ResponseContext &response)
+ResponseCode RRManager::getRoomTypesRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RoomTypesMessageResponse* typesRes = new network::RoomTypesMessageResponse();
+
+        resultStatus = ManagerLogic::getRoomTypes(typesRes,request);
+        response.set_allocated_types(typesRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::getHotelTypesRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::HotelTypesMessageResponse* typesRes = new network::HotelTypesMessageResponse();
+
+        resultStatus = ManagerLogic::getHotelTypes(typesRes,request);
+        response.set_allocated_hotel_types(typesRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::getHotelOrdersRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::OrdersMessageResponse* ordersRes = new network::OrdersMessageResponse();
+
+        resultStatus = ManagerLogic::getHotelOrders(ordersRes,request);
+        response.set_allocated_orders(ordersRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::editEmployeeRR(const network::RequestContext &request, network::ResponseContext &response)
 {
     ResponseCode resultStatus = ResponseCode::status_internal_error;
     do
@@ -253,6 +325,68 @@ ResponseCode RRManager::editEmployee(const network::RequestContext &request, net
         network::RegisterMessageResponse* regRes = new network::RegisterMessageResponse();
 
         resultStatus = ManagerLogic::editEmployee(regRes,request);
+        response.set_allocated_register_response(regRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::editHotelRoomRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+    do
+    {
+        network::RegisterMessageResponse* regRes = new network::RegisterMessageResponse();
+
+        resultStatus = ManagerLogic::editHotelRoom(regRes,request);
+        response.set_allocated_register_response(regRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::deleteEmployeeRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+    do
+    {
+        network::RegisterMessageResponse* regRes = new network::RegisterMessageResponse();
+
+        resultStatus = ManagerLogic::deleteEmployee(regRes,request);
+        response.set_allocated_register_response(regRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::deleteRoomRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+    do
+    {
+        network::RegisterMessageResponse* regRes = new network::RegisterMessageResponse();
+
+        resultStatus = ManagerLogic::deleteRoom(regRes,request);
+        response.set_allocated_register_response(regRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::addHotelRoomRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RegisterMessageResponse* regRes = new network::RegisterMessageResponse();
+
+        resultStatus = ManagerLogic::addHotelRoom(regRes,request);
+
         response.set_allocated_register_response(regRes);
     }
     while(false);
@@ -285,6 +419,22 @@ ResponseCode RRManager::getRoomsRR(const network::RequestContext &request, netwo
         network::RoomsMessageResponse* roomsRes = new network::RoomsMessageResponse();
 
         resultStatus = AdminLogic::getRooms(roomsRes);
+        response.set_allocated_rooms(roomsRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::getHotelRoomsRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RoomsMessageResponse* roomsRes = new network::RoomsMessageResponse();
+
+        resultStatus = ManagerLogic::getHotelRooms(roomsRes,request);
         response.set_allocated_rooms(roomsRes);
     }
     while(false);
