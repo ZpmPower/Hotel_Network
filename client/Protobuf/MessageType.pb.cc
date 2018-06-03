@@ -58,13 +58,17 @@ void protobuf_AddDesc_MessageType_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\021MessageType.proto\022\007network*\326\001\n\014message"
+    "\n\021MessageType.proto\022\007network*\221\003\n\014message"
     "_type\022\017\n\013HN_REGISTER\020\000\022\013\n\007HN_AUTH\020\001\022\025\n\021H"
     "N_GET_ALL_GUESTS\020\002\022\030\n\024HN_REGISTER_EMPLOY"
     "EE\020\003\022\030\n\024HN_GET_ALL_EMPLOYEES\020\004\022\025\n\021HN_GET"
     "_ALL_HOTELS\020\005\022\024\n\020HN_GET_ALL_ROOMS\020\006\022\032\n\026H"
     "N_GET_HOTEL_EMPLOYEES\020\007\022\024\n\020HN_EDIT_EMPLO"
-    "YEE\020\010", 245);
+    "YEE\020\010\022\026\n\022HN_DELETE_EMPLOYEE\020\t\022\026\n\022HN_GET_"
+    "HOTEL_ROOMS\020\n\022\022\n\016HN_DELETE_ROOM\020\013\022\025\n\021HN_"
+    "GET_ROOM_TYPES\020\014\022\025\n\021HN_ADD_HOTEL_ROOM\020\r\022"
+    "\026\n\022HN_EDIT_HOTEL_ROOM\020\016\022\027\n\023HN_GET_HOTEL_"
+    "ORDERS\020\017\022\026\n\022HN_GET_HOTEL_TYPES\020\020", 432);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "MessageType.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_MessageType_2eproto);
@@ -91,6 +95,14 @@ bool message_type_IsValid(int value) {
     case 6:
     case 7:
     case 8:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+    case 16:
       return true;
     default:
       return false;

@@ -120,7 +120,9 @@ bool MessageManager::editEmployee(uint32_t employeeId, const std::string &fname,
 
     network::EmployeeInfo* employeeData = new network::EmployeeInfo();
     network::SessionInfo* session = new network::SessionInfo();
-    session->set_session_id(getSession().session_id());
+    session->set_session_id(getSession().session_id());   
+    context.set_allocated_session_info(session);
+
 
     employeeData->set_firstname(fname);
     employeeData->set_secondname(sname);
@@ -131,7 +133,6 @@ bool MessageManager::editEmployee(uint32_t employeeId, const std::string &fname,
     employeeData->set_hotelid(hotelid);
     employeeData->set_id(employeeId);
 
-    context.set_allocated_session_info(session);
     context.set_allocated_employee_info(employeeData);
 
     execute(context.SerializeAsString());
@@ -178,9 +179,126 @@ void MessageManager::getRooms()
     execute(context.SerializeAsString());
 }
 
+void MessageManager::getHotelRooms(uint32_t hotelid)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_HOTEL_ROOMS);
+    network::HotelId* hotelId = new network::HotelId();
+    network::SessionInfo* sessionInfo = new network::SessionInfo();
+    sessionInfo->set_session_id(getSession().session_id());
+    hotelId->set_hotelid(hotelid);
+    context.set_allocated_hotel_id(hotelId);
+    context.set_allocated_session_info(sessionInfo);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::getHotelOrders(uint32_t hotelid)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_HOTEL_ORDERS);
+    network::HotelId* hotelId = new network::HotelId();
+    network::SessionInfo* sessionInfo = new network::SessionInfo();
+    sessionInfo->set_session_id(getSession().session_id());
+    hotelId->set_hotelid(hotelid);
+    context.set_allocated_hotel_id(hotelId);
+    context.set_allocated_session_info(sessionInfo);
+    execute(context.SerializeAsString());
+}
+
 void MessageManager::deleteEmployee(uint32_t employeeId)
 {
     network::RequestContext context;
-    context.set_message_type_(network::message_type::HN_GET_ALL_ROOMS);
+    network::EmployeeInfo* employeeData = new network::EmployeeInfo();
+    network::SessionInfo* session = new network::SessionInfo();
+    employeeData->set_id(employeeId);
+    session->set_session_id(getSession().session_id());
+
+
+    context.set_message_type_(network::message_type::HN_DELETE_EMPLOYEE);
+    context.set_allocated_session_info(session);
+    context.set_allocated_employee_info(employeeData);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::deleteRoom(uint32_t roomId)
+{
+    network::RequestContext context;
+    network::RoomInfo* roomData = new network::RoomInfo();
+    network::SessionInfo* session = new network::SessionInfo();
+    roomData->set_id(roomId);
+    session->set_session_id(getSession().session_id());   
+    context.set_allocated_session_info(session);
+
+    context.set_message_type_(network::message_type::HN_DELETE_ROOM);
+    context.set_allocated_room_info(roomData);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::getRoomTypes()
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_ROOM_TYPES);
+    network::SessionInfo* session = new network::SessionInfo();
+    session->set_session_id(getSession().session_id());
+    context.set_allocated_session_info(session);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::getHotelTypes()
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_HOTEL_TYPES);
+    network::SessionInfo* session = new network::SessionInfo();
+    session->set_session_id(getSession().session_id());
+    context.set_allocated_session_info(session);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::addRoom(uint32_t places, uint32_t price, uint32_t rating, bool status, uint32_t floor, const std::string &type, uint32_t hotel_id)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_ADD_HOTEL_ROOM);
+    network::SessionInfo* session = new network::SessionInfo();
+    session->set_session_id(getSession().session_id());
+
+
+    network::RoomInfo* room = new network::RoomInfo();
+    room->set_places(places);
+    room->set_price(price);
+    room->set_rating(rating);
+    room->set_status(status);
+    room->set_floor(floor);
+    room->set_type(type);
+    room->set_hotelid(hotel_id);
+
+
+    context.set_allocated_room_info(room);
+    context.set_allocated_session_info(session);
+
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::editRoom(uint32_t id, uint32_t places, uint32_t price, uint32_t rating, bool status, uint32_t floor, const std::string &type, uint32_t hotel_id)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_EDIT_HOTEL_ROOM);
+
+    network::RoomInfo* roomData = new network::RoomInfo();
+    network::SessionInfo* session = new network::SessionInfo();
+    session->set_session_id(getSession().session_id());
+    context.set_allocated_session_info(session);
+
+
+    roomData->set_places(places);
+    roomData->set_price(price);
+    roomData->set_rating(rating);
+    roomData->set_status(status);
+    roomData->set_floor(floor);
+    roomData->set_type(type);
+    roomData->set_hotelid(hotel_id);
+    roomData->set_id(id);
+
+    context.set_allocated_room_info(roomData);
+
     execute(context.SerializeAsString());
 }

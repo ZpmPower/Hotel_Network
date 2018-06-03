@@ -26,9 +26,16 @@ public:
     void getHotelEmployees(uint32_t hotelid);
     void getHotels();
     void getRooms();
+    void getHotelRooms(uint32_t hotelid);
+    void getHotelOrders(uint32_t hotelid);
     void deleteEmployee(uint32_t employeeId);
+    void deleteRoom(uint32_t roomId);
     network::SessionInfo& getSession() {return sessionInfo_;}
     void setSession(const network::SessionInfo& session) { sessionInfo_ = session;}
+    void getRoomTypes();
+    void getHotelTypes();
+    void addRoom(uint32_t places,uint32_t price,uint32_t rating, bool status, uint32_t floor,const std::string& type, uint32_t hotel_id);
+    void editRoom(uint32_t id,uint32_t places,uint32_t price,uint32_t rating, bool status, uint32_t floor,const std::string& type, uint32_t hotel_id);
 private:
 
     std::shared_ptr<RRMananger> clientChatPtr_;
