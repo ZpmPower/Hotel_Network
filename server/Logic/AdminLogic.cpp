@@ -22,6 +22,7 @@ ResponseCode AdminLogic::getGuests(network::GuestsMessageResponse *response)
             guest->set_lastname(info.lastN);
             guest->set_phonenumber(info.phone);
             guest->set_passport(info.passport);
+            guest->set_id(info.guest_id);
         }
     }
      while(false);

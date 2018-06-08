@@ -63,6 +63,35 @@ ResponseCode ManagerLogic::getHotelRooms(network::RoomsMessageResponse *responce
      return result;
 }
 
+ResponseCode ManagerLogic::getVacantRooms(network::RoomsMessageResponse *responce, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        std::vector<RoomInfo> rooms;
+        uint32_t role;
+        network::VacantRooms vacant = request.data();
+        SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
+        result = HotelPostgresManager::getVacantRooms(rooms,vacant.datebegin(),vacant.dateend(),vacant.places(),vacant.begin_price(),vacant.end_price(),
+                                                      vacant.begin_rating(),vacant.end_rating(),vacant.room_type(),vacant.hotelid(),role);
+        for(RoomInfo info: rooms)
+        {
+
+            network::RoomInfo* room = responce->add_rooms();
+            room->set_places(info.places);
+            room->set_price(info.price);
+            room->set_rating(info.rating);
+            room->set_status(info.status);
+            room->set_floor(info.floor);
+            room->set_type(info.type);
+            room->set_hotelid(info.hotelID);
+            room->set_id(info.room_id);
+        }
+    }
+     while(false);
+     return result;
+}
+
 ResponseCode ManagerLogic::editEmployee(network::RegisterMessageResponse *responce, const network::RequestContext &request)
 {
     ResponseCode result = ResponseCode::status_internal_error;
@@ -217,6 +246,23 @@ ResponseCode ManagerLogic::addHotelRoom(network::RegisterMessageResponse *respon
         SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
         network::RoomInfo room = request.room_info();
         result = HotelPostgresManager::addHotelRoom(room.places(),room.price(),room.rating(),room.status(),room.floor(),room.type(),room.hotelid(),role);
+        responce->set_messagetext("Success");
+        responce->set_status(true);
+
+    }
+     while(false);
+     return result;
+}
+
+ResponseCode ManagerLogic::makeOrder(network::RegisterMessageResponse *responce, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        uint32_t role;
+        SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
+        network::MakeOrderInfo info = request.make_order_info();
+        result = HotelPostgresManager::makeOrder(info.startdate(),info.enddate(),info.idroom(),info.idemployee(),info.idguest(),role);
         responce->set_messagetext("Success");
         responce->set_status(true);
 

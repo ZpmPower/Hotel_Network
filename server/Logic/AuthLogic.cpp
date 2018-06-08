@@ -198,6 +198,7 @@ ResponseCode AuthLogic::authUser(const network::AuthMessage &authData, network::
            {
                ResponseCode resEmployee = h_manager.getEmployeeInfo(uInfo.user_id,eInfo);
                response->set_id_hotel(eInfo.hotel_id);
+               response->set_id_user(eInfo.employee_id);
                break;
            }
            }

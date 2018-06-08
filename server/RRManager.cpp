@@ -86,6 +86,12 @@ void RRManager::readSessionBuffer(std::shared_ptr<ClientChannel> session, ByteBu
     case network::HN_GET_HOTEL_TYPES:
         responseCode = getHotelTypesRR(reqContext, resContext);
         break;
+    case network::HN_GET_VACANT_ROOMS:
+        responseCode = getVacantRoomsRR(reqContext, resContext);
+        break;
+    case network::HN_MAKE_ORDER:
+        responseCode = makeOrderRR(reqContext, resContext);
+        break;
     default:
         responseCode = ResponseCode::status_unknown_command;
         break;
@@ -394,6 +400,23 @@ ResponseCode RRManager::addHotelRoomRR(const network::RequestContext &request, n
     return resultStatus;
 }
 
+ResponseCode RRManager::makeOrderRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RegisterMessageResponse* regRes = new network::RegisterMessageResponse();
+
+        resultStatus = ManagerLogic::makeOrder(regRes,request);
+
+        response.set_allocated_register_response(regRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
 ResponseCode RRManager::getHotelsRR(const network::RequestContext &request, network::ResponseContext &response)
 {
     ResponseCode resultStatus = ResponseCode::status_internal_error;
@@ -435,6 +458,22 @@ ResponseCode RRManager::getHotelRoomsRR(const network::RequestContext &request, 
         network::RoomsMessageResponse* roomsRes = new network::RoomsMessageResponse();
 
         resultStatus = ManagerLogic::getHotelRooms(roomsRes,request);
+        response.set_allocated_rooms(roomsRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::getVacantRoomsRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RoomsMessageResponse* roomsRes = new network::RoomsMessageResponse();
+
+        resultStatus = ManagerLogic::getVacantRooms(roomsRes,request);
         response.set_allocated_rooms(roomsRes);
     }
     while(false);

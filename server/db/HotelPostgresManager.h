@@ -27,6 +27,8 @@ public:
     static ResponseCode getHotels(std::vector<HotelInfo>& hotels);
     static ResponseCode getRooms(std::vector<RoomInfo>& rooms);
     static ResponseCode getHotelRooms(std::vector<RoomInfo>& rooms, uint32_t hotelid, uint32_t role);
+    static ResponseCode getVacantRooms(std::vector<RoomInfo>& rooms, const std::string &datebegin, const std::string &dateend, uint32_t capacity, uint32_t startPrice, uint32_t endPrice,
+                                       uint32_t startRating, uint32_t endRating, const std::string &room_type, uint32_t hotel_id,uint32_t role);
     static ResponseCode getHotelOrders(std::vector<OrderInfo> &orders, uint32_t hotelid, uint32_t role);
     static ResponseCode editEmployee(int64_t user_id, const std::string fname, const std::string sname, const std::string lname,
                                      const std::string phone, int64_t salary, uint32_t position, int32_t hotelid, uint32_t role);
@@ -36,6 +38,7 @@ public:
     static ResponseCode getRoomTypes(std::vector<std::string>& types, uint32_t role);
     static ResponseCode getHotelTypes(std::vector<HotelType> &types, uint32_t role);
     static ResponseCode addHotelRoom(uint32_t places, uint32_t price, uint32_t rating, bool status, uint32_t floor, const std::string &type, uint32_t hotel_id, uint32_t role);
+    static ResponseCode makeOrder(const std::string &datebegin, const std::string &dateend, uint32_t idroom, uint32_t idemployee, uint32_t idguest, uint32_t role);
 
 };
 

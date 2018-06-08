@@ -18,4 +18,6 @@ enum message_type{
     HN_EDIT_HOTEL_ROOM = 14;
     HN_GET_HOTEL_ORDERS = 15;
     HN_GET_HOTEL_TYPES = 16;
+    HN_GET_VACANT_ROOMS = 17;
+    HN_MAKE_ORDER = 18;
 }

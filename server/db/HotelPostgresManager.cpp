@@ -514,6 +514,68 @@ ResponseCode HotelPostgresManager::getHotelRooms(std::vector<RoomInfo> &rooms, u
     return result;
 }
 
+ResponseCode HotelPostgresManager::getVacantRooms(std::vector<RoomInfo> &rooms, const std::string &datebegin, const std::string &dateend, uint32_t capacity,
+                                                  uint32_t startPrice, uint32_t endPrice,
+                                                  uint32_t startRating, uint32_t endRating, const std::string &room_type, uint32_t hotel_id, uint32_t role)
+{
+    LOG_INFO(datebegin + " " + dateend + " " + std::to_string(capacity) + " " + std::to_string(startPrice) + " " + std::to_string(endPrice) + " " +
+             std::to_string(startRating) + " " + std::to_string(endRating) + " " + room_type + " " + std::to_string(hotel_id));
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        try
+        {
+
+            db_connection_ptr connection = checkConnection(role);
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("getVacantRooms"))
+            {
+                connection->prepare("getVacantRooms",
+                                    "select id,places,price,rating,status,floor,idhotel, (Select name from roomtype where name = $8) as type from room "
+                                    "where id not in (select distinct on(room.id) idroom from room join roomorder as ro on room.id = ro.id "
+                                    "where to_timestamp($1::varchar,'YYYY-MM-DD') >= ro.startdate and "
+                                    "to_timestamp($1::varchar,'YYYY-MM-DD') <= ro.enddate and to_timestamp($2::varchar,'YYYY-MM-DD') >= ro.startdate and to_timestamp($2::varchar,'YYYY-MM-DD') <= ro.enddate)"
+                                    "and places=$3 and "
+                                    "price BETWEEN $4 AND $5 and "
+                                    "rating BETWEEN $6 and $7 and "
+                                    "idtype = (Select id from roomtype WHERE name=$8::varchar) and "
+                                    "idhotel = $9;");
+            }
+
+            pqxx::work work(*connection, "getVacantRooms");
+
+            pqxx::result res = work.prepared("getVacantRooms")(datebegin)(dateend)(capacity)(startPrice)(endPrice)(startRating)(endRating)(room_type)(hotel_id).exec();
+            if(res.empty())
+            {
+                result = ResponseCode::status_does_not_exist;
+                break;
+            }
+            for(const pqxx::tuple& value: res)
+            {
+                RoomInfo rInfo;
+                rInfo.parse_from_hn_room(value);
+                rooms.emplace_back(rInfo);
+            }
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query getVacantRooms err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+
+    return result;
+}
+
+
 ResponseCode HotelPostgresManager::getHotelOrders(std::vector<OrderInfo> &orders, uint32_t hotelid, uint32_t role)
 {
     ResponseCode result = ResponseCode::status_internal_error;
@@ -852,6 +914,44 @@ ResponseCode HotelPostgresManager::addHotelRoom(uint32_t places, uint32_t price,
         catch(const std::exception& e)
         {
             LOG_ERR("Failure: trying to query addHotelRoom err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+
+    return result;
+}
+
+ResponseCode HotelPostgresManager::makeOrder(const std::string &datebegin, const std::string &dateend, uint32_t idroom, uint32_t idemployee, uint32_t idguest, uint32_t role)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        try
+        {
+            db_connection_ptr connection = checkConnection(role);
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("makeOrder"))
+            {
+                connection->prepare("makeOrder",
+                                    "INSERT INTO roomorder VALUES (DEFAULT,to_timestamp($1::varchar,'YYYY-MM-DD'),to_timestamp($2::varchar,'YYYY-MM-DD'),$3,$4,$5);");
+            }
+
+            pqxx::work work(*connection, "makeOrder");
+
+            work.prepared("makeOrder")(datebegin)(dateend)(idroom)(idemployee)(idguest).exec();
+
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query makeOrder err: " << e.what());
             break;
         }
     }

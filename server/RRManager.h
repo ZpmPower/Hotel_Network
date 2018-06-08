@@ -24,6 +24,7 @@ private:
     ResponseCode getHotelsRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getRoomsRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getHotelRoomsRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode getVacantRoomsRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getHotelEmployeesRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getRoomTypesRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getHotelTypesRR(const network::RequestContext& request, network::ResponseContext &response);
@@ -33,6 +34,7 @@ private:
     ResponseCode deleteEmployeeRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode deleteRoomRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode addHotelRoomRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode makeOrderRR(const network::RequestContext& request, network::ResponseContext &response);
 
     std::vector<ClientChannelPtr> sessions_;
 };
