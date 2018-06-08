@@ -5,6 +5,7 @@
 #include "Types/RoomInfo.h"
 #include "Types/OrderInfo.h"
 #include "Types/HotelType.h"
+#include "Types/GuestOrder.h"
 
 
 db_connection_ptr HotelPostgresManager::checkConnection(uint32_t role)
@@ -260,6 +261,58 @@ ResponseCode HotelPostgresManager::getGuests(std::vector<GuestInfo> &guests)
     return result;
 }
 
+ResponseCode HotelPostgresManager::getCurrentGuests(std::vector<GuestOrder> &guests, uint32_t hotel_id)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+
+    do
+    {
+        try
+        {
+            db_connection_ptr connection = DBHelper::getAdminConnection();
+
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("getCurrentGuests"))
+            {
+                connection->prepare("getCurrentGuests",
+                                    "SELECT guest.firstname,guest.secondname,guest.lastname,startdate,enddate,room.id FROM Room INNER JOIN Roomorder ON room.id=roomorder.idroom "
+                                    "JOIN GUEST ON idguest=guest.id WHERE NOW() BETWEEN "
+                                    "STARTDATE AND ENDDATE AND idhotel=$1;");
+            }
+
+            pqxx::work work(*connection, "getCurrentGuests");
+
+            pqxx::result res = work.prepared("getCurrentGuests")(hotel_id).exec();
+            if(res.empty())
+            {
+                result = ResponseCode::status_does_not_exist;
+                break;
+            }
+            for(const pqxx::tuple& value: res)
+            {
+                GuestOrder gInfo;
+                gInfo.parse_from_hn_guest_order(value);
+                guests.push_back(gInfo);
+            }
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query getGuests err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+
+    return result;
+}
+
 ResponseCode HotelPostgresManager::getEmployees(std::vector<EmployeeInfo> &employees)
 {
     ResponseCode result = ResponseCode::status_internal_error;
@@ -462,6 +515,222 @@ ResponseCode HotelPostgresManager::getRooms(std::vector<RoomInfo> &rooms)
     while(false);
 
     return result;
+}
+
+ResponseCode HotelPostgresManager::countHotelRooms(uint32_t& countRooms,uint32_t hotelid, uint32_t role)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        try
+        {
+
+            db_connection_ptr connection = checkConnection(role);
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("countHotelRooms"))
+            {
+                connection->prepare("countHotelRooms",
+                                    "Select count(*) from room where idhotel=$1;");
+            }
+
+            pqxx::work work(*connection, "countHotelRooms");
+
+            pqxx::result res = work.prepared("countHotelRooms")(hotelid).exec();
+            if(res.empty())
+            {
+                result = ResponseCode::status_does_not_exist;
+                break;
+            }
+            countRooms = res[0][0].as<int>();
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query countHotelRooms err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+
+    return result;
+}
+
+ResponseCode HotelPostgresManager::countHotelEmployees(uint32_t &countEmployees, uint32_t hotelid, uint32_t role)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        try
+        {
+
+            db_connection_ptr connection = checkConnection(role);
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("countHotelEmployees"))
+            {
+                connection->prepare("countHotelEmployees",
+                                    "Select count(*) from employee where idhotel=$1;");
+            }
+
+            pqxx::work work(*connection, "countHotelEmployees");
+
+            pqxx::result res = work.prepared("countHotelEmployees")(hotelid).exec();
+            if(res.empty())
+            {
+                result = ResponseCode::status_does_not_exist;
+                break;
+            }
+            countEmployees = res[0][0].as<int>();
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query countHotelEmployees err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+
+    return result;
+}
+
+ResponseCode HotelPostgresManager::countHotelOrders(uint32_t &countOrders, uint32_t hotelid, uint32_t role)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        try
+        {
+
+            db_connection_ptr connection = checkConnection(role);
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("countHotelOrders"))
+            {
+                connection->prepare("countHotelOrders",
+                                    "Select count(*) from roomorder join room on room.id=idroom where idhotel=$1;");
+            }
+
+            pqxx::work work(*connection, "countHotelOrders");
+
+            pqxx::result res = work.prepared("countHotelOrders")(hotelid).exec();
+            if(res.empty())
+            {
+                result = ResponseCode::status_does_not_exist;
+                break;
+            }
+            countOrders = res[0][0].as<int>();
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query countHotelOrders err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+}
+
+ResponseCode HotelPostgresManager::avgResidenceTime(double &avgTime, uint32_t hotelid, uint32_t role)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        try
+        {
+
+            db_connection_ptr connection = checkConnection(role);
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("avgResidenceTime"))
+            {
+                connection->prepare("avgResidenceTime",
+                                    "SELECT AVG(EXTRACT(day from EndDate-StartDate)) FROM Room "
+                                    "INNER JOIN RoomOrder ON idroom=Room.id where idhotel=$1;");
+            }
+
+            pqxx::work work(*connection, "avgResidenceTime");
+
+            pqxx::result res = work.prepared("avgResidenceTime")(hotelid).exec();
+            if(res.empty())
+            {
+                result = ResponseCode::status_does_not_exist;
+                break;
+            }
+            avgTime = res[0][0].as<double>();
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query avgResidenceTime err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+}
+
+ResponseCode HotelPostgresManager::avgRoomRating(double &avgRating, uint32_t hotelid, uint32_t role)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        try
+        {
+
+            db_connection_ptr connection = checkConnection(role);
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("avgRoomRating"))
+            {
+                connection->prepare("avgRoomRating",
+                                    "select AVG(rating) from room where idhotel = $1;");
+            }
+
+            pqxx::work work(*connection, "avgRoomRating");
+
+            pqxx::result res = work.prepared("avgRoomRating")(hotelid).exec();
+            if(res.empty())
+            {
+                result = ResponseCode::status_does_not_exist;
+                break;
+            }
+            avgRating = res[0][0].as<double>();
+
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query avgResidenceTime err: " << e.what());
+            break;
+        }
+    }
+    while(false);
 }
 
 ResponseCode HotelPostgresManager::getHotelRooms(std::vector<RoomInfo> &rooms, uint32_t hotelid, uint32_t role)

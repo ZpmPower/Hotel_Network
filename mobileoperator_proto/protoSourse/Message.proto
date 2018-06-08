@@ -133,6 +133,21 @@ message OrdersMessageResponse {
 
 }
 
+message GuestOrderInfo {
+
+    optional string startdate = 1;
+    optional string enddate = 2;
+    optional int32 idroom = 3;
+    optional string guest_firstname = 4;
+    optional string guest_secondname = 5;
+    optional string guest_lastname = 6;
+}
+
+message GuestOrdersMessageResponse {
+    repeated GuestOrderInfo orders = 1;
+
+}
+
 
 message MakeOrderInfo {
 
@@ -210,4 +225,5 @@ message ResponseContext {
     optional RoomTypesMessageResponse types = 10;
     optional OrdersMessageResponse orders = 11;
     optional HotelTypesMessageResponse hotel_types = 12;
+    optional GuestOrdersMessageResponse guest_orders = 13;
 }

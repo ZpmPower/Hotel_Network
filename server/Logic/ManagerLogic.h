@@ -19,6 +19,12 @@ public:
     static ResponseCode getHotelOrders(network::OrdersMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode addHotelRoom(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode makeOrder(network::RegisterMessageResponse *responce, const network::RequestContext &request);
+    static ResponseCode countHotelRooms(network::RegisterMessageResponse *responce, const network::RequestContext &request);
+    static ResponseCode countHotelEmployeess(network::RegisterMessageResponse *responce, const network::RequestContext &request);
+    static ResponseCode countHotelOrders(network::RegisterMessageResponse *responce, const network::RequestContext &request);
+    static ResponseCode getCurrentGuestsRR(network::GuestOrdersMessageResponse *response, const network::RequestContext &request);
+    static ResponseCode avgResidenceTime(network::RegisterMessageResponse *responce, const network::RequestContext &request);
+    static ResponseCode avgRoomRating(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static uint32_t positionToInt(const std::string& pos);
 };
 

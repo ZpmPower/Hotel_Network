@@ -92,6 +92,24 @@ void RRManager::readSessionBuffer(std::shared_ptr<ClientChannel> session, ByteBu
     case network::HN_MAKE_ORDER:
         responseCode = makeOrderRR(reqContext, resContext);
         break;
+    case network::HN_GET_CURRENT_GUESTS:
+        responseCode = getCurrentGuestsRR(reqContext, resContext);
+        break;
+    case network::HN_COUNT_HOTEL_ROOMS:
+        responseCode = countHotelRoomsRR(reqContext, resContext);
+        break;
+    case network::HN_COUNT_HOTEL_EMPLOYEES:
+        responseCode = countHotelEmployeesRR(reqContext, resContext);
+        break;
+    case network::HN_COUNT_HOTEL_ORDERS:
+        responseCode = countHotelOrdersRR(reqContext, resContext);
+        break;
+    case network::HN_AVG_RESIDENCE_TIME:
+        responseCode = avgResTimeRR(reqContext, resContext);
+        break;
+    case network::HN_AVG_ROOM_RATING:
+        responseCode = avgRoomRatingRR(reqContext, resContext);
+        break;
     default:
         responseCode = ResponseCode::status_unknown_command;
         break;
@@ -411,6 +429,102 @@ ResponseCode RRManager::makeOrderRR(const network::RequestContext &request, netw
         resultStatus = ManagerLogic::makeOrder(regRes,request);
 
         response.set_allocated_register_response(regRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::getCurrentGuestsRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::GuestOrdersMessageResponse* guestRes = new network::GuestOrdersMessageResponse();
+
+        resultStatus = ManagerLogic::getCurrentGuestsRR(guestRes,request);
+        response.set_allocated_guest_orders(guestRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::countHotelRoomsRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RegisterMessageResponse* countRoom = new network::RegisterMessageResponse();
+
+        resultStatus = ManagerLogic::countHotelRooms(countRoom,request);
+        response.set_allocated_register_response(countRoom);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::countHotelEmployeesRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RegisterMessageResponse* countEmployees = new network::RegisterMessageResponse();
+
+        resultStatus = ManagerLogic::countHotelEmployeess(countEmployees,request);
+        response.set_allocated_register_response(countEmployees);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::countHotelOrdersRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RegisterMessageResponse* countOrders = new network::RegisterMessageResponse();
+
+        resultStatus = ManagerLogic::countHotelOrders(countOrders,request);
+        response.set_allocated_register_response(countOrders);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::avgResTimeRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RegisterMessageResponse* avgTime = new network::RegisterMessageResponse();
+
+        resultStatus = ManagerLogic::avgResidenceTime(avgTime,request);
+        response.set_allocated_register_response(avgTime);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::avgRoomRatingRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RegisterMessageResponse* avgRating = new network::RegisterMessageResponse();
+
+        resultStatus = ManagerLogic::avgRoomRating(avgRating,request);
+        response.set_allocated_register_response(avgRating);
     }
     while(false);
 

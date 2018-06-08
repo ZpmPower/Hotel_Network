@@ -35,6 +35,12 @@ private:
     ResponseCode deleteRoomRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode addHotelRoomRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode makeOrderRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode getCurrentGuestsRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode countHotelRoomsRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode countHotelEmployeesRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode countHotelOrdersRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode avgResTimeRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode avgRoomRatingRR(const network::RequestContext& request, network::ResponseContext &response);
 
     std::vector<ClientChannelPtr> sessions_;
 };

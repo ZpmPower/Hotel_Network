@@ -6,6 +6,7 @@
 #include "Types/RoomInfo.h"
 #include "Types/OrderInfo.h"
 #include "Types/HotelType.h"
+#include "Types/GuestOrder.h"
 #include "db/SessionManagerPostgres.h"
 #include "db/AuthPostgresManager.h"
 
@@ -264,6 +265,137 @@ ResponseCode ManagerLogic::makeOrder(network::RegisterMessageResponse *responce,
         network::MakeOrderInfo info = request.make_order_info();
         result = HotelPostgresManager::makeOrder(info.startdate(),info.enddate(),info.idroom(),info.idemployee(),info.idguest(),role);
         responce->set_messagetext("Success");
+        responce->set_status(true);
+
+    }
+     while(false);
+     return result;
+}
+
+ResponseCode ManagerLogic::countHotelRooms(network::RegisterMessageResponse *responce, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        uint32_t role;
+        SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
+        network::HotelId info = request.hotel_id();
+        uint32_t countRooms=0;
+        result = HotelPostgresManager::countHotelRooms(countRooms,info.hotelid(),role);
+        responce->set_messagetext(std::to_string(countRooms));
+        responce->set_status(true);
+
+    }
+     while(false);
+     return result;
+}
+
+ResponseCode ManagerLogic::countHotelEmployeess(network::RegisterMessageResponse *responce, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        uint32_t role;
+        SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
+        network::HotelId info = request.hotel_id();
+        uint32_t countEmployees=0;
+        result = HotelPostgresManager::countHotelEmployees(countEmployees,info.hotelid(),role);
+        responce->set_messagetext(std::to_string(countEmployees));
+        responce->set_status(true);
+
+    }
+     while(false);
+     return result;
+}
+
+ResponseCode ManagerLogic::countHotelOrders(network::RegisterMessageResponse *responce, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        uint32_t role;
+        SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
+        network::HotelId info = request.hotel_id();
+        uint32_t countOrders=0;
+        result = HotelPostgresManager::countHotelOrders(countOrders,info.hotelid(),role);
+        responce->set_messagetext(std::to_string(countOrders));
+        responce->set_status(true);
+
+    }
+     while(false);
+     return result;
+}
+
+ResponseCode ManagerLogic::getCurrentGuestsRR(network::GuestOrdersMessageResponse *response, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+
+    do
+    {
+        std::vector<GuestOrder> guestsOrders;
+        result = HotelPostgresManager::getCurrentGuests(guestsOrders,request.hotel_id().hotelid());
+        for(GuestOrder info: guestsOrders)
+        {
+
+            network::GuestOrderInfo* guest = response->add_orders();
+            guest->set_guest_firstname(info.firstN);
+            guest->set_guest_secondname(info.secondN);
+            guest->set_guest_lastname(info.lastN);
+            guest->set_startdate(info.startdate);
+            guest->set_enddate(info.enddate);
+            guest->set_idroom(info.idroom);
+        }
+    }
+     while(false);
+
+     return result;
+}
+
+ResponseCode ManagerLogic::avgResidenceTime(network::RegisterMessageResponse *responce, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        uint32_t role;
+        SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
+        network::HotelId info = request.hotel_id();
+        double avgTime=0;
+        result = HotelPostgresManager::avgResidenceTime(avgTime,info.hotelid(),role);
+        std::string s;
+            std::stringstream sstream;
+            sstream.setf(std::ios::fixed);
+            sstream.precision(2);
+            sstream << avgTime;
+
+            s = sstream.str();
+
+        responce->set_messagetext(s);
+        responce->set_status(true);
+
+    }
+     while(false);
+     return result;
+}
+
+ResponseCode ManagerLogic::avgRoomRating(network::RegisterMessageResponse *responce, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        uint32_t role;
+        SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
+        network::HotelId info = request.hotel_id();
+        double avgRating=0;
+        result = HotelPostgresManager::avgRoomRating(avgRating,info.hotelid(),role);
+        std::string s;
+            std::stringstream sstream;
+            sstream.setf(std::ios::fixed);
+            sstream.precision(2);
+            sstream << avgRating;
+
+            s = sstream.str();
+
+        responce->set_messagetext(s);
         responce->set_status(true);
 
     }

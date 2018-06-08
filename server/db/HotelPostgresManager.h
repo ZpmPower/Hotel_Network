@@ -10,6 +10,7 @@ struct HotelInfo;
 struct RoomInfo;
 struct OrderInfo;
 struct HotelType;
+struct GuestOrder;
 
 class HotelPostgresManager
 {
@@ -22,10 +23,16 @@ public:
     static ResponseCode getEmployeeInfo(int64_t user_id,EmployeeInfo &eInfo);
     static ResponseCode getGuestInfo(int64_t user_id, GuestInfo &gInfo);
     static ResponseCode getGuests(std::vector<GuestInfo>& guests);
+    static ResponseCode getCurrentGuests(std::vector<GuestOrder>& guests, uint32_t hotel_id);
     static ResponseCode getEmployees(std::vector<EmployeeInfo>& employees);
     static ResponseCode getHotelEmployees(std::vector<EmployeeInfo>& employees, uint32_t hotelid, uint32_t role);
     static ResponseCode getHotels(std::vector<HotelInfo>& hotels);
     static ResponseCode getRooms(std::vector<RoomInfo>& rooms);
+    static ResponseCode countHotelRooms(uint32_t &countRooms, uint32_t hotelid, uint32_t role);
+    static ResponseCode countHotelEmployees(uint32_t &countEmployees, uint32_t hotelid, uint32_t role);
+    static ResponseCode countHotelOrders(uint32_t &countOrders, uint32_t hotelid, uint32_t role);
+    static ResponseCode avgResidenceTime(double &avgTime, uint32_t hotelid, uint32_t role);
+    static ResponseCode avgRoomRating(double &avgRating, uint32_t hotelid, uint32_t role);
     static ResponseCode getHotelRooms(std::vector<RoomInfo>& rooms, uint32_t hotelid, uint32_t role);
     static ResponseCode getVacantRooms(std::vector<RoomInfo>& rooms, const std::string &datebegin, const std::string &dateend, uint32_t capacity, uint32_t startPrice, uint32_t endPrice,
                                        uint32_t startRating, uint32_t endRating, const std::string &room_type, uint32_t hotel_id,uint32_t role);
