@@ -49,6 +49,8 @@ class RoomsMessageResponse;
 class VacantRooms;
 class OrderInfo;
 class OrdersMessageResponse;
+class GuestOrderInfo;
+class GuestOrdersMessageResponse;
 class MakeOrderInfo;
 class RequestContext;
 class RegisterMessageResponse;
@@ -2036,6 +2038,242 @@ class OrdersMessageResponse : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class GuestOrderInfo : public ::google::protobuf::Message {
+ public:
+  GuestOrderInfo();
+  virtual ~GuestOrderInfo();
+
+  GuestOrderInfo(const GuestOrderInfo& from);
+
+  inline GuestOrderInfo& operator=(const GuestOrderInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GuestOrderInfo& default_instance();
+
+  void Swap(GuestOrderInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  GuestOrderInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GuestOrderInfo& from);
+  void MergeFrom(const GuestOrderInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string startdate = 1;
+  inline bool has_startdate() const;
+  inline void clear_startdate();
+  static const int kStartdateFieldNumber = 1;
+  inline const ::std::string& startdate() const;
+  inline void set_startdate(const ::std::string& value);
+  inline void set_startdate(const char* value);
+  inline void set_startdate(const char* value, size_t size);
+  inline ::std::string* mutable_startdate();
+  inline ::std::string* release_startdate();
+  inline void set_allocated_startdate(::std::string* startdate);
+
+  // optional string enddate = 2;
+  inline bool has_enddate() const;
+  inline void clear_enddate();
+  static const int kEnddateFieldNumber = 2;
+  inline const ::std::string& enddate() const;
+  inline void set_enddate(const ::std::string& value);
+  inline void set_enddate(const char* value);
+  inline void set_enddate(const char* value, size_t size);
+  inline ::std::string* mutable_enddate();
+  inline ::std::string* release_enddate();
+  inline void set_allocated_enddate(::std::string* enddate);
+
+  // optional int32 idroom = 3;
+  inline bool has_idroom() const;
+  inline void clear_idroom();
+  static const int kIdroomFieldNumber = 3;
+  inline ::google::protobuf::int32 idroom() const;
+  inline void set_idroom(::google::protobuf::int32 value);
+
+  // optional string guest_firstname = 4;
+  inline bool has_guest_firstname() const;
+  inline void clear_guest_firstname();
+  static const int kGuestFirstnameFieldNumber = 4;
+  inline const ::std::string& guest_firstname() const;
+  inline void set_guest_firstname(const ::std::string& value);
+  inline void set_guest_firstname(const char* value);
+  inline void set_guest_firstname(const char* value, size_t size);
+  inline ::std::string* mutable_guest_firstname();
+  inline ::std::string* release_guest_firstname();
+  inline void set_allocated_guest_firstname(::std::string* guest_firstname);
+
+  // optional string guest_secondname = 5;
+  inline bool has_guest_secondname() const;
+  inline void clear_guest_secondname();
+  static const int kGuestSecondnameFieldNumber = 5;
+  inline const ::std::string& guest_secondname() const;
+  inline void set_guest_secondname(const ::std::string& value);
+  inline void set_guest_secondname(const char* value);
+  inline void set_guest_secondname(const char* value, size_t size);
+  inline ::std::string* mutable_guest_secondname();
+  inline ::std::string* release_guest_secondname();
+  inline void set_allocated_guest_secondname(::std::string* guest_secondname);
+
+  // optional string guest_lastname = 6;
+  inline bool has_guest_lastname() const;
+  inline void clear_guest_lastname();
+  static const int kGuestLastnameFieldNumber = 6;
+  inline const ::std::string& guest_lastname() const;
+  inline void set_guest_lastname(const ::std::string& value);
+  inline void set_guest_lastname(const char* value);
+  inline void set_guest_lastname(const char* value, size_t size);
+  inline ::std::string* mutable_guest_lastname();
+  inline ::std::string* release_guest_lastname();
+  inline void set_allocated_guest_lastname(::std::string* guest_lastname);
+
+  // @@protoc_insertion_point(class_scope:network.GuestOrderInfo)
+ private:
+  inline void set_has_startdate();
+  inline void clear_has_startdate();
+  inline void set_has_enddate();
+  inline void clear_has_enddate();
+  inline void set_has_idroom();
+  inline void clear_has_idroom();
+  inline void set_has_guest_firstname();
+  inline void clear_has_guest_firstname();
+  inline void set_has_guest_secondname();
+  inline void clear_has_guest_secondname();
+  inline void set_has_guest_lastname();
+  inline void clear_has_guest_lastname();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* startdate_;
+  ::std::string* enddate_;
+  ::std::string* guest_firstname_;
+  ::std::string* guest_secondname_;
+  ::std::string* guest_lastname_;
+  ::google::protobuf::int32 idroom_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static GuestOrderInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class GuestOrdersMessageResponse : public ::google::protobuf::Message {
+ public:
+  GuestOrdersMessageResponse();
+  virtual ~GuestOrdersMessageResponse();
+
+  GuestOrdersMessageResponse(const GuestOrdersMessageResponse& from);
+
+  inline GuestOrdersMessageResponse& operator=(const GuestOrdersMessageResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GuestOrdersMessageResponse& default_instance();
+
+  void Swap(GuestOrdersMessageResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  GuestOrdersMessageResponse* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const GuestOrdersMessageResponse& from);
+  void MergeFrom(const GuestOrdersMessageResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .network.GuestOrderInfo orders = 1;
+  inline int orders_size() const;
+  inline void clear_orders();
+  static const int kOrdersFieldNumber = 1;
+  inline const ::network::GuestOrderInfo& orders(int index) const;
+  inline ::network::GuestOrderInfo* mutable_orders(int index);
+  inline ::network::GuestOrderInfo* add_orders();
+  inline const ::google::protobuf::RepeatedPtrField< ::network::GuestOrderInfo >&
+      orders() const;
+  inline ::google::protobuf::RepeatedPtrField< ::network::GuestOrderInfo >*
+      mutable_orders();
+
+  // @@protoc_insertion_point(class_scope:network.GuestOrdersMessageResponse)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::network::GuestOrderInfo > orders_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static GuestOrdersMessageResponse* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class MakeOrderInfo : public ::google::protobuf::Message {
  public:
   MakeOrderInfo();
@@ -3108,6 +3346,15 @@ class ResponseContext : public ::google::protobuf::Message {
   inline ::network::HotelTypesMessageResponse* release_hotel_types();
   inline void set_allocated_hotel_types(::network::HotelTypesMessageResponse* hotel_types);
 
+  // optional .network.GuestOrdersMessageResponse guest_orders = 13;
+  inline bool has_guest_orders() const;
+  inline void clear_guest_orders();
+  static const int kGuestOrdersFieldNumber = 13;
+  inline const ::network::GuestOrdersMessageResponse& guest_orders() const;
+  inline ::network::GuestOrdersMessageResponse* mutable_guest_orders();
+  inline ::network::GuestOrdersMessageResponse* release_guest_orders();
+  inline void set_allocated_guest_orders(::network::GuestOrdersMessageResponse* guest_orders);
+
   // @@protoc_insertion_point(class_scope:network.ResponseContext)
  private:
   inline void set_has_error_code();
@@ -3134,6 +3381,8 @@ class ResponseContext : public ::google::protobuf::Message {
   inline void clear_has_orders();
   inline void set_has_hotel_types();
   inline void clear_has_hotel_types();
+  inline void set_has_guest_orders();
+  inline void clear_has_guest_orders();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -3151,6 +3400,7 @@ class ResponseContext : public ::google::protobuf::Message {
   ::network::RoomTypesMessageResponse* types_;
   ::network::OrdersMessageResponse* orders_;
   ::network::HotelTypesMessageResponse* hotel_types_;
+  ::network::GuestOrdersMessageResponse* guest_orders_;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
   friend void protobuf_ShutdownFile_Message_2eproto();
@@ -7033,6 +7283,448 @@ OrdersMessageResponse::mutable_orders() {
 
 // -------------------------------------------------------------------
 
+// GuestOrderInfo
+
+// optional string startdate = 1;
+inline bool GuestOrderInfo::has_startdate() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void GuestOrderInfo::set_has_startdate() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void GuestOrderInfo::clear_has_startdate() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void GuestOrderInfo::clear_startdate() {
+  if (startdate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    startdate_->clear();
+  }
+  clear_has_startdate();
+}
+inline const ::std::string& GuestOrderInfo::startdate() const {
+  // @@protoc_insertion_point(field_get:network.GuestOrderInfo.startdate)
+  return *startdate_;
+}
+inline void GuestOrderInfo::set_startdate(const ::std::string& value) {
+  set_has_startdate();
+  if (startdate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    startdate_ = new ::std::string;
+  }
+  startdate_->assign(value);
+  // @@protoc_insertion_point(field_set:network.GuestOrderInfo.startdate)
+}
+inline void GuestOrderInfo::set_startdate(const char* value) {
+  set_has_startdate();
+  if (startdate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    startdate_ = new ::std::string;
+  }
+  startdate_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.GuestOrderInfo.startdate)
+}
+inline void GuestOrderInfo::set_startdate(const char* value, size_t size) {
+  set_has_startdate();
+  if (startdate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    startdate_ = new ::std::string;
+  }
+  startdate_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.GuestOrderInfo.startdate)
+}
+inline ::std::string* GuestOrderInfo::mutable_startdate() {
+  set_has_startdate();
+  if (startdate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    startdate_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.GuestOrderInfo.startdate)
+  return startdate_;
+}
+inline ::std::string* GuestOrderInfo::release_startdate() {
+  clear_has_startdate();
+  if (startdate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = startdate_;
+    startdate_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GuestOrderInfo::set_allocated_startdate(::std::string* startdate) {
+  if (startdate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete startdate_;
+  }
+  if (startdate) {
+    set_has_startdate();
+    startdate_ = startdate;
+  } else {
+    clear_has_startdate();
+    startdate_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.GuestOrderInfo.startdate)
+}
+
+// optional string enddate = 2;
+inline bool GuestOrderInfo::has_enddate() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void GuestOrderInfo::set_has_enddate() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void GuestOrderInfo::clear_has_enddate() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void GuestOrderInfo::clear_enddate() {
+  if (enddate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    enddate_->clear();
+  }
+  clear_has_enddate();
+}
+inline const ::std::string& GuestOrderInfo::enddate() const {
+  // @@protoc_insertion_point(field_get:network.GuestOrderInfo.enddate)
+  return *enddate_;
+}
+inline void GuestOrderInfo::set_enddate(const ::std::string& value) {
+  set_has_enddate();
+  if (enddate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    enddate_ = new ::std::string;
+  }
+  enddate_->assign(value);
+  // @@protoc_insertion_point(field_set:network.GuestOrderInfo.enddate)
+}
+inline void GuestOrderInfo::set_enddate(const char* value) {
+  set_has_enddate();
+  if (enddate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    enddate_ = new ::std::string;
+  }
+  enddate_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.GuestOrderInfo.enddate)
+}
+inline void GuestOrderInfo::set_enddate(const char* value, size_t size) {
+  set_has_enddate();
+  if (enddate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    enddate_ = new ::std::string;
+  }
+  enddate_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.GuestOrderInfo.enddate)
+}
+inline ::std::string* GuestOrderInfo::mutable_enddate() {
+  set_has_enddate();
+  if (enddate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    enddate_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.GuestOrderInfo.enddate)
+  return enddate_;
+}
+inline ::std::string* GuestOrderInfo::release_enddate() {
+  clear_has_enddate();
+  if (enddate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = enddate_;
+    enddate_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GuestOrderInfo::set_allocated_enddate(::std::string* enddate) {
+  if (enddate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete enddate_;
+  }
+  if (enddate) {
+    set_has_enddate();
+    enddate_ = enddate;
+  } else {
+    clear_has_enddate();
+    enddate_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.GuestOrderInfo.enddate)
+}
+
+// optional int32 idroom = 3;
+inline bool GuestOrderInfo::has_idroom() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void GuestOrderInfo::set_has_idroom() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void GuestOrderInfo::clear_has_idroom() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void GuestOrderInfo::clear_idroom() {
+  idroom_ = 0;
+  clear_has_idroom();
+}
+inline ::google::protobuf::int32 GuestOrderInfo::idroom() const {
+  // @@protoc_insertion_point(field_get:network.GuestOrderInfo.idroom)
+  return idroom_;
+}
+inline void GuestOrderInfo::set_idroom(::google::protobuf::int32 value) {
+  set_has_idroom();
+  idroom_ = value;
+  // @@protoc_insertion_point(field_set:network.GuestOrderInfo.idroom)
+}
+
+// optional string guest_firstname = 4;
+inline bool GuestOrderInfo::has_guest_firstname() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void GuestOrderInfo::set_has_guest_firstname() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void GuestOrderInfo::clear_has_guest_firstname() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void GuestOrderInfo::clear_guest_firstname() {
+  if (guest_firstname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_firstname_->clear();
+  }
+  clear_has_guest_firstname();
+}
+inline const ::std::string& GuestOrderInfo::guest_firstname() const {
+  // @@protoc_insertion_point(field_get:network.GuestOrderInfo.guest_firstname)
+  return *guest_firstname_;
+}
+inline void GuestOrderInfo::set_guest_firstname(const ::std::string& value) {
+  set_has_guest_firstname();
+  if (guest_firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_firstname_ = new ::std::string;
+  }
+  guest_firstname_->assign(value);
+  // @@protoc_insertion_point(field_set:network.GuestOrderInfo.guest_firstname)
+}
+inline void GuestOrderInfo::set_guest_firstname(const char* value) {
+  set_has_guest_firstname();
+  if (guest_firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_firstname_ = new ::std::string;
+  }
+  guest_firstname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.GuestOrderInfo.guest_firstname)
+}
+inline void GuestOrderInfo::set_guest_firstname(const char* value, size_t size) {
+  set_has_guest_firstname();
+  if (guest_firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_firstname_ = new ::std::string;
+  }
+  guest_firstname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.GuestOrderInfo.guest_firstname)
+}
+inline ::std::string* GuestOrderInfo::mutable_guest_firstname() {
+  set_has_guest_firstname();
+  if (guest_firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_firstname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.GuestOrderInfo.guest_firstname)
+  return guest_firstname_;
+}
+inline ::std::string* GuestOrderInfo::release_guest_firstname() {
+  clear_has_guest_firstname();
+  if (guest_firstname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = guest_firstname_;
+    guest_firstname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GuestOrderInfo::set_allocated_guest_firstname(::std::string* guest_firstname) {
+  if (guest_firstname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete guest_firstname_;
+  }
+  if (guest_firstname) {
+    set_has_guest_firstname();
+    guest_firstname_ = guest_firstname;
+  } else {
+    clear_has_guest_firstname();
+    guest_firstname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.GuestOrderInfo.guest_firstname)
+}
+
+// optional string guest_secondname = 5;
+inline bool GuestOrderInfo::has_guest_secondname() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void GuestOrderInfo::set_has_guest_secondname() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void GuestOrderInfo::clear_has_guest_secondname() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void GuestOrderInfo::clear_guest_secondname() {
+  if (guest_secondname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_secondname_->clear();
+  }
+  clear_has_guest_secondname();
+}
+inline const ::std::string& GuestOrderInfo::guest_secondname() const {
+  // @@protoc_insertion_point(field_get:network.GuestOrderInfo.guest_secondname)
+  return *guest_secondname_;
+}
+inline void GuestOrderInfo::set_guest_secondname(const ::std::string& value) {
+  set_has_guest_secondname();
+  if (guest_secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_secondname_ = new ::std::string;
+  }
+  guest_secondname_->assign(value);
+  // @@protoc_insertion_point(field_set:network.GuestOrderInfo.guest_secondname)
+}
+inline void GuestOrderInfo::set_guest_secondname(const char* value) {
+  set_has_guest_secondname();
+  if (guest_secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_secondname_ = new ::std::string;
+  }
+  guest_secondname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.GuestOrderInfo.guest_secondname)
+}
+inline void GuestOrderInfo::set_guest_secondname(const char* value, size_t size) {
+  set_has_guest_secondname();
+  if (guest_secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_secondname_ = new ::std::string;
+  }
+  guest_secondname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.GuestOrderInfo.guest_secondname)
+}
+inline ::std::string* GuestOrderInfo::mutable_guest_secondname() {
+  set_has_guest_secondname();
+  if (guest_secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_secondname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.GuestOrderInfo.guest_secondname)
+  return guest_secondname_;
+}
+inline ::std::string* GuestOrderInfo::release_guest_secondname() {
+  clear_has_guest_secondname();
+  if (guest_secondname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = guest_secondname_;
+    guest_secondname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GuestOrderInfo::set_allocated_guest_secondname(::std::string* guest_secondname) {
+  if (guest_secondname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete guest_secondname_;
+  }
+  if (guest_secondname) {
+    set_has_guest_secondname();
+    guest_secondname_ = guest_secondname;
+  } else {
+    clear_has_guest_secondname();
+    guest_secondname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.GuestOrderInfo.guest_secondname)
+}
+
+// optional string guest_lastname = 6;
+inline bool GuestOrderInfo::has_guest_lastname() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void GuestOrderInfo::set_has_guest_lastname() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void GuestOrderInfo::clear_has_guest_lastname() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void GuestOrderInfo::clear_guest_lastname() {
+  if (guest_lastname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_lastname_->clear();
+  }
+  clear_has_guest_lastname();
+}
+inline const ::std::string& GuestOrderInfo::guest_lastname() const {
+  // @@protoc_insertion_point(field_get:network.GuestOrderInfo.guest_lastname)
+  return *guest_lastname_;
+}
+inline void GuestOrderInfo::set_guest_lastname(const ::std::string& value) {
+  set_has_guest_lastname();
+  if (guest_lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_lastname_ = new ::std::string;
+  }
+  guest_lastname_->assign(value);
+  // @@protoc_insertion_point(field_set:network.GuestOrderInfo.guest_lastname)
+}
+inline void GuestOrderInfo::set_guest_lastname(const char* value) {
+  set_has_guest_lastname();
+  if (guest_lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_lastname_ = new ::std::string;
+  }
+  guest_lastname_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.GuestOrderInfo.guest_lastname)
+}
+inline void GuestOrderInfo::set_guest_lastname(const char* value, size_t size) {
+  set_has_guest_lastname();
+  if (guest_lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_lastname_ = new ::std::string;
+  }
+  guest_lastname_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.GuestOrderInfo.guest_lastname)
+}
+inline ::std::string* GuestOrderInfo::mutable_guest_lastname() {
+  set_has_guest_lastname();
+  if (guest_lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    guest_lastname_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.GuestOrderInfo.guest_lastname)
+  return guest_lastname_;
+}
+inline ::std::string* GuestOrderInfo::release_guest_lastname() {
+  clear_has_guest_lastname();
+  if (guest_lastname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = guest_lastname_;
+    guest_lastname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void GuestOrderInfo::set_allocated_guest_lastname(::std::string* guest_lastname) {
+  if (guest_lastname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete guest_lastname_;
+  }
+  if (guest_lastname) {
+    set_has_guest_lastname();
+    guest_lastname_ = guest_lastname;
+  } else {
+    clear_has_guest_lastname();
+    guest_lastname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.GuestOrderInfo.guest_lastname)
+}
+
+// -------------------------------------------------------------------
+
+// GuestOrdersMessageResponse
+
+// repeated .network.GuestOrderInfo orders = 1;
+inline int GuestOrdersMessageResponse::orders_size() const {
+  return orders_.size();
+}
+inline void GuestOrdersMessageResponse::clear_orders() {
+  orders_.Clear();
+}
+inline const ::network::GuestOrderInfo& GuestOrdersMessageResponse::orders(int index) const {
+  // @@protoc_insertion_point(field_get:network.GuestOrdersMessageResponse.orders)
+  return orders_.Get(index);
+}
+inline ::network::GuestOrderInfo* GuestOrdersMessageResponse::mutable_orders(int index) {
+  // @@protoc_insertion_point(field_mutable:network.GuestOrdersMessageResponse.orders)
+  return orders_.Mutable(index);
+}
+inline ::network::GuestOrderInfo* GuestOrdersMessageResponse::add_orders() {
+  // @@protoc_insertion_point(field_add:network.GuestOrdersMessageResponse.orders)
+  return orders_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::network::GuestOrderInfo >&
+GuestOrdersMessageResponse::orders() const {
+  // @@protoc_insertion_point(field_list:network.GuestOrdersMessageResponse.orders)
+  return orders_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::network::GuestOrderInfo >*
+GuestOrdersMessageResponse::mutable_orders() {
+  // @@protoc_insertion_point(field_mutable_list:network.GuestOrdersMessageResponse.orders)
+  return &orders_;
+}
+
+// -------------------------------------------------------------------
+
 // MakeOrderInfo
 
 // optional string startdate = 1;
@@ -8798,6 +9490,47 @@ inline void ResponseContext::set_allocated_hotel_types(::network::HotelTypesMess
     clear_has_hotel_types();
   }
   // @@protoc_insertion_point(field_set_allocated:network.ResponseContext.hotel_types)
+}
+
+// optional .network.GuestOrdersMessageResponse guest_orders = 13;
+inline bool ResponseContext::has_guest_orders() const {
+  return (_has_bits_[0] & 0x00001000u) != 0;
+}
+inline void ResponseContext::set_has_guest_orders() {
+  _has_bits_[0] |= 0x00001000u;
+}
+inline void ResponseContext::clear_has_guest_orders() {
+  _has_bits_[0] &= ~0x00001000u;
+}
+inline void ResponseContext::clear_guest_orders() {
+  if (guest_orders_ != NULL) guest_orders_->::network::GuestOrdersMessageResponse::Clear();
+  clear_has_guest_orders();
+}
+inline const ::network::GuestOrdersMessageResponse& ResponseContext::guest_orders() const {
+  // @@protoc_insertion_point(field_get:network.ResponseContext.guest_orders)
+  return guest_orders_ != NULL ? *guest_orders_ : *default_instance_->guest_orders_;
+}
+inline ::network::GuestOrdersMessageResponse* ResponseContext::mutable_guest_orders() {
+  set_has_guest_orders();
+  if (guest_orders_ == NULL) guest_orders_ = new ::network::GuestOrdersMessageResponse;
+  // @@protoc_insertion_point(field_mutable:network.ResponseContext.guest_orders)
+  return guest_orders_;
+}
+inline ::network::GuestOrdersMessageResponse* ResponseContext::release_guest_orders() {
+  clear_has_guest_orders();
+  ::network::GuestOrdersMessageResponse* temp = guest_orders_;
+  guest_orders_ = NULL;
+  return temp;
+}
+inline void ResponseContext::set_allocated_guest_orders(::network::GuestOrdersMessageResponse* guest_orders) {
+  delete guest_orders_;
+  guest_orders_ = guest_orders;
+  if (guest_orders) {
+    set_has_guest_orders();
+  } else {
+    clear_has_guest_orders();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.ResponseContext.guest_orders)
 }
 
 

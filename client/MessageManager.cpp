@@ -179,6 +179,71 @@ void MessageManager::getRooms()
     execute(context.SerializeAsString());
 }
 
+void MessageManager::countHotelRooms(uint32_t hotelid)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_COUNT_HOTEL_ROOMS);
+    network::HotelId* hotelId = new network::HotelId();
+    network::SessionInfo* sessionInfo = new network::SessionInfo();
+    sessionInfo->set_session_id(getSession().session_id());
+    hotelId->set_hotelid(hotelid);
+    context.set_allocated_hotel_id(hotelId);
+    context.set_allocated_session_info(sessionInfo);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::countHotelEmployees(uint32_t hotelid)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_COUNT_HOTEL_EMPLOYEES);
+    network::HotelId* hotelId = new network::HotelId();
+    network::SessionInfo* sessionInfo = new network::SessionInfo();
+    sessionInfo->set_session_id(getSession().session_id());
+    hotelId->set_hotelid(hotelid);
+    context.set_allocated_hotel_id(hotelId);
+    context.set_allocated_session_info(sessionInfo);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::countHotelOrders(uint32_t hotelid)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_COUNT_HOTEL_ORDERS);
+    network::HotelId* hotelId = new network::HotelId();
+    network::SessionInfo* sessionInfo = new network::SessionInfo();
+    sessionInfo->set_session_id(getSession().session_id());
+    hotelId->set_hotelid(hotelid);
+    context.set_allocated_hotel_id(hotelId);
+    context.set_allocated_session_info(sessionInfo);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::avgResidenceTime(uint32_t hotelid)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_AVG_RESIDENCE_TIME);
+    network::HotelId* hotelId = new network::HotelId();
+    network::SessionInfo* sessionInfo = new network::SessionInfo();
+    sessionInfo->set_session_id(getSession().session_id());
+    hotelId->set_hotelid(hotelid);
+    context.set_allocated_hotel_id(hotelId);
+    context.set_allocated_session_info(sessionInfo);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::avgRoomRating(uint32_t hotelid)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_AVG_ROOM_RATING);
+    network::HotelId* hotelId = new network::HotelId();
+    network::SessionInfo* sessionInfo = new network::SessionInfo();
+    sessionInfo->set_session_id(getSession().session_id());
+    hotelId->set_hotelid(hotelid);
+    context.set_allocated_hotel_id(hotelId);
+    context.set_allocated_session_info(sessionInfo);
+    execute(context.SerializeAsString());
+}
+
 void MessageManager::getHotelRooms(uint32_t hotelid)
 {
     network::RequestContext context;
@@ -250,6 +315,19 @@ void MessageManager::getHotelTypes()
     context.set_message_type_(network::message_type::HN_GET_HOTEL_TYPES);
     network::SessionInfo* session = new network::SessionInfo();
     session->set_session_id(getSession().session_id());
+    context.set_allocated_session_info(session);
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::getCurrentGuests(uint32_t hotel_id)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_CURRENT_GUESTS);
+    network::HotelId* hotelId = new network::HotelId();
+    network::SessionInfo* session = new network::SessionInfo();
+    session->set_session_id(getSession().session_id());
+    hotelId->set_hotelid(hotel_id);
+    context.set_allocated_hotel_id(hotelId);
     context.set_allocated_session_info(session);
     execute(context.SerializeAsString());
 }

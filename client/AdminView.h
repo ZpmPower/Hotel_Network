@@ -49,7 +49,7 @@ private slots:
 
     void on_allRoomsBtn_clicked();
 
-    void on_HotelsTbl_itemClicked(QTableWidgetItem *item);
+    //void on_HotelsTbl_itemClicked(QTableWidgetItem *item);
 
 private:
     Ui::AdminView *ui;

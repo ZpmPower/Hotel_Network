@@ -106,6 +106,8 @@ private slots:
 
     void on_tabWidget_currentChanged(int index);
 
+    void on_currentGuests_clicked();
+
 private:
     Ui::ManagerView *ui;
     uint32_t hotelID_;
@@ -119,6 +121,7 @@ private:
     void getHotels(const network::HotelsMessageResponse &response);
     void getHotelTypes(const network::HotelTypesMessageResponse &response);
     void getHotelOrders(const network::OrdersMessageResponse &response);
+    void getGuestOrders(const network::GuestOrdersMessageResponse &response);
     void receptionistRegister(const network::RegisterMessageResponse &response);
     uint32_t stringToRole(const std::string& role);
     void isUpdated(const network::RegisterMessageResponse &responce);
@@ -126,6 +129,11 @@ private:
     void isDeleteRoom(const network::RegisterMessageResponse &responce);
     std::string statusToString(uint32_t status);
     void setRoomTypes(const network::RoomTypesMessageResponse &responce);
+    void setCountRooms(const network::RegisterMessageResponse &responce);
+    void setCountEmployees(const network::RegisterMessageResponse &responce);
+    void setCountOrders(const network::RegisterMessageResponse &responce);
+    void setAvgResTime(const network::RegisterMessageResponse &responce);
+    void setAvgRoomRating(const network::RegisterMessageResponse &responce);
     void setRoomTypesGen(const network::RoomTypesMessageResponse &responce);
     //void setRoomTypesOrders(const network::RoomTypesMessageResponse &responce);
     std::string getStringDate(QDate date);

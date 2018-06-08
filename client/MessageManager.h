@@ -26,6 +26,13 @@ public:
     void getHotelEmployees(uint32_t hotelid);
     void getHotels();
     void getRooms();
+
+    void countHotelRooms(uint32_t hotelid);
+    void countHotelEmployees(uint32_t hotelid);
+    void countHotelOrders(uint32_t hotelid);
+    void avgResidenceTime(uint32_t hotelid);
+    void avgRoomRating(uint32_t hotelid);
+
     void getHotelRooms(uint32_t hotelid);
     void getHotelOrders(uint32_t hotelid);
     void deleteEmployee(uint32_t employeeId);
@@ -34,6 +41,7 @@ public:
     void setSession(const network::SessionInfo& session) { sessionInfo_ = session;}
     void getRoomTypes();
     void getHotelTypes();
+    void getCurrentGuests(uint32_t hotel_id);
     void getVacantRooms(const std::string& datebegin,const std::string& dateend, uint32_t capacity,uint32_t startPrice, uint32_t endPrice,
                         uint32_t startRating, uint32_t endRating, const std::string& room_type, uint32_t hotel_id);
     void makeOrder(const std::string& datebegin,const std::string& dateend,uint32_t idroom,uint32_t idemployee, uint32_t idguest);

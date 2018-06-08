@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>915</width>
+    <width>937</width>
     <height>506</height>
    </rect>
   </property>
@@ -18,12 +18,12 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1031</width>
+     <width>921</width>
      <height>501</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tabEmployee">
     <attribute name="title">
@@ -535,19 +535,6 @@
      </property>
      <property name="text">
       <string>DELETE</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="deleteRoomLbl">
-     <property name="geometry">
-      <rect>
-       <x>290</x>
-       <y>430</y>
-       <width>54</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>TextLabel</string>
      </property>
     </widget>
     <widget class="QComboBox" name="comboBox_2">
@@ -1164,10 +1151,222 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QWidget" name="tabGuests_2">
+   <widget class="QWidget" name="tabGuests">
     <attribute name="title">
      <string>Guests</string>
     </attribute>
+    <widget class="QTableWidget" name="currGuestsTbl">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>621</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="currentGuests">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>360</y>
+       <width>121</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Current Guests</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>70</y>
+       <width>251</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>People which lives in the HoteL</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>670</x>
+       <y>80</y>
+       <width>221</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLabel" name="avgResidenceLbl">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>120</y>
+        <width>54</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>141</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Average residence time:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>71</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Order count:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="roomCountLbl">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>60</y>
+        <width>54</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>101</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Employee count:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="orderCountLbl">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>90</y>
+        <width>54</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="employeeCountLbl">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>30</y>
+        <width>54</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>81</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Room count:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>0</y>
+        <width>71</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Statistics</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>150</y>
+        <width>141</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Average room rating:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="avgRoomRatingLbl">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>150</y>
+        <width>54</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
    </widget>
    <widget class="QWidget" name="tabOrders">
     <attribute name="title">
@@ -1191,7 +1390,7 @@
       <rect>
        <x>0</x>
        <y>250</y>
-       <width>421</width>
+       <width>411</width>
        <height>181</height>
       </rect>
      </property>
@@ -1668,7 +1867,7 @@
     <widget class="QPlainTextEdit" name="loginGPT_2">
      <property name="geometry">
       <rect>
-       <x>480</x>
+       <x>500</x>
        <y>250</y>
        <width>151</width>
        <height>31</height>
@@ -1691,7 +1890,7 @@
     <widget class="QPlainTextEdit" name="passwordGPT_2">
      <property name="geometry">
       <rect>
-       <x>720</x>
+       <x>740</x>
        <y>250</y>
        <width>151</width>
        <height>31</height>
@@ -1701,7 +1900,7 @@
     <widget class="QLabel" name="label_18">
      <property name="geometry">
       <rect>
-       <x>640</x>
+       <x>660</x>
        <y>260</y>
        <width>91</width>
        <height>17</height>
@@ -1729,7 +1928,7 @@
       <rect>
        <x>500</x>
        <y>300</y>
-       <width>131</width>
+       <width>151</width>
        <height>31</height>
       </rect>
      </property>
@@ -1737,9 +1936,9 @@
     <widget class="QPlainTextEdit" name="secondNGPT_2">
      <property name="geometry">
       <rect>
-       <x>510</x>
+       <x>500</x>
        <y>350</y>
-       <width>121</width>
+       <width>151</width>
        <height>31</height>
       </rect>
      </property>
@@ -1747,7 +1946,7 @@
     <widget class="QLabel" name="label_27">
      <property name="geometry">
       <rect>
-       <x>430</x>
+       <x>420</x>
        <y>360</y>
        <width>91</width>
        <height>16</height>
@@ -1773,7 +1972,7 @@
     <widget class="QPlainTextEdit" name="lastNGPT_2">
      <property name="geometry">
       <rect>
-       <x>720</x>
+       <x>740</x>
        <y>300</y>
        <width>151</width>
        <height>31</height>
@@ -1806,7 +2005,7 @@
     <widget class="QLabel" name="label_49">
      <property name="geometry">
       <rect>
-       <x>640</x>
+       <x>660</x>
        <y>310</y>
        <width>91</width>
        <height>17</height>
@@ -1819,7 +2018,7 @@
     <widget class="QPlainTextEdit" name="passportGPT_2">
      <property name="geometry">
       <rect>
-       <x>720</x>
+       <x>740</x>
        <y>350</y>
        <width>151</width>
        <height>31</height>
@@ -1829,7 +2028,7 @@
     <widget class="QLabel" name="label_51">
      <property name="geometry">
       <rect>
-       <x>640</x>
+       <x>660</x>
        <y>360</y>
        <width>91</width>
        <height>17</height>
@@ -1860,10 +2059,10 @@
     <widget class="QTableWidget" name="HotelsTbl">
      <property name="geometry">
       <rect>
-       <x>60</x>
-       <y>40</y>
-       <width>791</width>
-       <height>151</height>
+       <x>10</x>
+       <y>30</y>
+       <width>701</width>
+       <height>171</height>
       </rect>
      </property>
      <property name="editTriggers">
@@ -1877,9 +2076,9 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>260</y>
+       <y>240</y>
        <width>291</width>
-       <height>171</height>
+       <height>201</height>
       </rect>
      </property>
      <property name="editTriggers">
@@ -1892,8 +2091,8 @@
     <widget class="QLabel" name="label_9">
      <property name="geometry">
       <rect>
-       <x>360</x>
-       <y>230</y>
+       <x>770</x>
+       <y>10</y>
        <width>71</width>
        <height>17</height>
       </rect>
@@ -1918,8 +2117,8 @@
     <widget class="QTableWidget" name="RoomTypesTbl">
      <property name="geometry">
       <rect>
-       <x>320</x>
-       <y>260</y>
+       <x>720</x>
+       <y>30</y>
        <width>171</width>
        <height>171</height>
       </rect>
@@ -1935,7 +2134,7 @@
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>230</y>
+       <y>220</y>
        <width>71</width>
        <height>17</height>
       </rect>
@@ -1947,10 +2146,10 @@
     <widget class="QTableWidget" name="OrdersTbl">
      <property name="geometry">
       <rect>
-       <x>500</x>
-       <y>260</y>
-       <width>401</width>
-       <height>171</height>
+       <x>350</x>
+       <y>240</y>
+       <width>541</width>
+       <height>201</height>
       </rect>
      </property>
      <property name="editTriggers">
@@ -1963,8 +2162,8 @@
     <widget class="QLabel" name="label_14">
      <property name="geometry">
       <rect>
-       <x>650</x>
-       <y>230</y>
+       <x>590</x>
+       <y>220</y>
        <width>71</width>
        <height>17</height>
       </rect>

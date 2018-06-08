@@ -65,6 +65,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* OrdersMessageResponse_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   OrdersMessageResponse_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GuestOrderInfo_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GuestOrderInfo_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GuestOrdersMessageResponse_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  GuestOrdersMessageResponse_reflection_ = NULL;
 const ::google::protobuf::Descriptor* MakeOrderInfo_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MakeOrderInfo_reflection_ = NULL;
@@ -385,7 +391,42 @@ void protobuf_AssignDesc_Message_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(OrdersMessageResponse));
-  MakeOrderInfo_descriptor_ = file->message_type(15);
+  GuestOrderInfo_descriptor_ = file->message_type(15);
+  static const int GuestOrderInfo_offsets_[6] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuestOrderInfo, startdate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuestOrderInfo, enddate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuestOrderInfo, idroom_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuestOrderInfo, guest_firstname_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuestOrderInfo, guest_secondname_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuestOrderInfo, guest_lastname_),
+  };
+  GuestOrderInfo_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      GuestOrderInfo_descriptor_,
+      GuestOrderInfo::default_instance_,
+      GuestOrderInfo_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuestOrderInfo, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuestOrderInfo, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(GuestOrderInfo));
+  GuestOrdersMessageResponse_descriptor_ = file->message_type(16);
+  static const int GuestOrdersMessageResponse_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuestOrdersMessageResponse, orders_),
+  };
+  GuestOrdersMessageResponse_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      GuestOrdersMessageResponse_descriptor_,
+      GuestOrdersMessageResponse::default_instance_,
+      GuestOrdersMessageResponse_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuestOrdersMessageResponse, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GuestOrdersMessageResponse, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(GuestOrdersMessageResponse));
+  MakeOrderInfo_descriptor_ = file->message_type(17);
   static const int MakeOrderInfo_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MakeOrderInfo, startdate_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MakeOrderInfo, enddate_),
@@ -404,7 +445,7 @@ void protobuf_AssignDesc_Message_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MakeOrderInfo));
-  RequestContext_descriptor_ = file->message_type(16);
+  RequestContext_descriptor_ = file->message_type(18);
   static const int RequestContext_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RequestContext, message_type__),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RequestContext, auth_message__),
@@ -428,7 +469,7 @@ void protobuf_AssignDesc_Message_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RequestContext));
-  RegisterMessageResponse_descriptor_ = file->message_type(17);
+  RegisterMessageResponse_descriptor_ = file->message_type(19);
   static const int RegisterMessageResponse_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegisterMessageResponse, messagetext_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegisterMessageResponse, status_),
@@ -444,7 +485,7 @@ void protobuf_AssignDesc_Message_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RegisterMessageResponse));
-  AuthMessageResponse_descriptor_ = file->message_type(18);
+  AuthMessageResponse_descriptor_ = file->message_type(20);
   static const int AuthMessageResponse_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthMessageResponse, role_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AuthMessageResponse, id_hotel_),
@@ -463,7 +504,7 @@ void protobuf_AssignDesc_Message_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AuthMessageResponse));
-  SessionInfo_descriptor_ = file->message_type(19);
+  SessionInfo_descriptor_ = file->message_type(21);
   static const int SessionInfo_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SessionInfo, login_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SessionInfo, userid_),
@@ -481,7 +522,7 @@ void protobuf_AssignDesc_Message_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SessionInfo));
-  RoomTypesMessageResponse_descriptor_ = file->message_type(20);
+  RoomTypesMessageResponse_descriptor_ = file->message_type(22);
   static const int RoomTypesMessageResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RoomTypesMessageResponse, types_),
   };
@@ -496,7 +537,7 @@ void protobuf_AssignDesc_Message_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RoomTypesMessageResponse));
-  HotelType_descriptor_ = file->message_type(21);
+  HotelType_descriptor_ = file->message_type(23);
   static const int HotelType_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HotelType, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HotelType, name_),
@@ -512,7 +553,7 @@ void protobuf_AssignDesc_Message_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(HotelType));
-  HotelTypesMessageResponse_descriptor_ = file->message_type(22);
+  HotelTypesMessageResponse_descriptor_ = file->message_type(24);
   static const int HotelTypesMessageResponse_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HotelTypesMessageResponse, types_),
   };
@@ -527,8 +568,8 @@ void protobuf_AssignDesc_Message_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(HotelTypesMessageResponse));
-  ResponseContext_descriptor_ = file->message_type(23);
-  static const int ResponseContext_offsets_[12] = {
+  ResponseContext_descriptor_ = file->message_type(25);
+  static const int ResponseContext_offsets_[13] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, error_code_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, message_type__),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, register_response_),
@@ -541,6 +582,7 @@ void protobuf_AssignDesc_Message_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, types_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, orders_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, hotel_types_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, guest_orders_),
   };
   ResponseContext_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -596,6 +638,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     OrdersMessageResponse_descriptor_, &OrdersMessageResponse::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    GuestOrderInfo_descriptor_, &GuestOrderInfo::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    GuestOrdersMessageResponse_descriptor_, &GuestOrdersMessageResponse::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     MakeOrderInfo_descriptor_, &MakeOrderInfo::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     RequestContext_descriptor_, &RequestContext::default_instance());
@@ -648,6 +694,10 @@ void protobuf_ShutdownFile_Message_2eproto() {
   delete OrderInfo_reflection_;
   delete OrdersMessageResponse::default_instance_;
   delete OrdersMessageResponse_reflection_;
+  delete GuestOrderInfo::default_instance_;
+  delete GuestOrderInfo_reflection_;
+  delete GuestOrdersMessageResponse::default_instance_;
+  delete GuestOrdersMessageResponse_reflection_;
   delete MakeOrderInfo::default_instance_;
   delete MakeOrderInfo_reflection_;
   delete RequestContext::default_instance_;
@@ -718,46 +768,53 @@ void protobuf_AddDesc_Message_2eproto() {
     "t_secondname\030\006 \001(\t\022\017\n\007hotelID\030\007 \001(\005\022\023\n\013e"
     "mployee_id\030\010 \001(\005\022\020\n\010guest_id\030\t \001(\005\";\n\025Or"
     "dersMessageResponse\022\"\n\006orders\030\001 \003(\0132\022.ne"
-    "twork.OrderInfo\"h\n\rMakeOrderInfo\022\021\n\tstar"
-    "tdate\030\001 \001(\t\022\017\n\007enddate\030\002 \001(\t\022\016\n\006idroom\030\003"
-    " \001(\005\022\022\n\nidemployee\030\004 \001(\005\022\017\n\007idguest\030\005 \001("
-    "\005\"\337\003\n\016RequestContext\022,\n\rmessage_type_\030\001 "
-    "\001(\0162\025.network.message_type\022+\n\rauth_messa"
-    "ge_\030\002 \001(\0132\024.network.AuthMessage\0223\n\021regis"
-    "ter_message_\030\003 \001(\0132\030.network.RegisterMes"
-    "sage\022D\n\032register_employee_message_\030\004 \001(\013"
-    "2 .network.RegisterEmployeeMessage\022*\n\014se"
-    "ssion_info\030\005 \001(\0132\024.network.SessionInfo\022\""
-    "\n\010hotel_id\030\006 \001(\0132\020.network.HotelId\022,\n\rem"
-    "ployee_info\030\007 \001(\0132\025.network.EmployeeInfo"
-    "\022$\n\troom_info\030\010 \001(\0132\021.network.RoomInfo\022\""
-    "\n\004data\030\t \001(\0132\024.network.VacantRooms\022/\n\017ma"
-    "ke_order_info\030\n \001(\0132\026.network.MakeOrderI"
-    "nfo\">\n\027RegisterMessageResponse\022\023\n\013messag"
-    "eText\030\001 \001(\t\022\016\n\006status\030\002 \001(\010\"k\n\023AuthMessa"
-    "geResponse\022\014\n\004role\030\001 \001(\005\022\020\n\010id_hotel\030\002 \001"
-    "(\005\022\016\n\006status\030\003 \001(\010\022\023\n\013messageText\030\004 \001(\t\022"
-    "\017\n\007id_user\030\005 \001(\005\"N\n\013SessionInfo\022\r\n\005login"
-    "\030\001 \001(\t\022\016\n\006userId\030\002 \001(\003\022\014\n\004role\030\003 \001(\005\022\022\n\n"
-    "session_id\030\004 \001(\t\")\n\030RoomTypesMessageResp"
-    "onse\022\r\n\005types\030\001 \003(\t\"%\n\tHotelType\022\n\n\002id\030\001"
-    " \001(\005\022\014\n\004name\030\002 \001(\t\">\n\031HotelTypesMessageR"
-    "esponse\022!\n\005types\030\001 \003(\0132\022.network.HotelTy"
-    "pe\"\320\004\n\017ResponseContext\022\022\n\nerror_code\030\001 \001"
-    "(\005\022,\n\rmessage_type_\030\002 \001(\0162\025.network.mess"
-    "age_type\022;\n\021register_response\030\003 \001(\0132 .ne"
-    "twork.RegisterMessageResponse\0223\n\rauth_re"
-    "sponse\030\004 \001(\0132\034.network.AuthMessageRespon"
-    "se\022*\n\014session_info\030\005 \001(\0132\024.network.Sessi"
-    "onInfo\022.\n\006guests\030\006 \001(\0132\036.network.GuestsM"
-    "essageResponse\0224\n\temployees\030\007 \001(\0132!.netw"
-    "ork.EmployeesMessageResponse\022.\n\006hotels\030\010"
-    " \001(\0132\036.network.HotelsMessageResponse\022,\n\005"
-    "rooms\030\t \001(\0132\035.network.RoomsMessageRespon"
-    "se\0220\n\005types\030\n \001(\0132!.network.RoomTypesMes"
-    "sageResponse\022.\n\006orders\030\013 \001(\0132\036.network.O"
-    "rdersMessageResponse\0227\n\013hotel_types\030\014 \001("
-    "\0132\".network.HotelTypesMessageResponse", 3277);
+    "twork.OrderInfo\"\217\001\n\016GuestOrderInfo\022\021\n\tst"
+    "artdate\030\001 \001(\t\022\017\n\007enddate\030\002 \001(\t\022\016\n\006idroom"
+    "\030\003 \001(\005\022\027\n\017guest_firstname\030\004 \001(\t\022\030\n\020guest"
+    "_secondname\030\005 \001(\t\022\026\n\016guest_lastname\030\006 \001("
+    "\t\"E\n\032GuestOrdersMessageResponse\022\'\n\006order"
+    "s\030\001 \003(\0132\027.network.GuestOrderInfo\"h\n\rMake"
+    "OrderInfo\022\021\n\tstartdate\030\001 \001(\t\022\017\n\007enddate\030"
+    "\002 \001(\t\022\016\n\006idroom\030\003 \001(\005\022\022\n\nidemployee\030\004 \001("
+    "\005\022\017\n\007idguest\030\005 \001(\005\"\337\003\n\016RequestContext\022,\n"
+    "\rmessage_type_\030\001 \001(\0162\025.network.message_t"
+    "ype\022+\n\rauth_message_\030\002 \001(\0132\024.network.Aut"
+    "hMessage\0223\n\021register_message_\030\003 \001(\0132\030.ne"
+    "twork.RegisterMessage\022D\n\032register_employ"
+    "ee_message_\030\004 \001(\0132 .network.RegisterEmpl"
+    "oyeeMessage\022*\n\014session_info\030\005 \001(\0132\024.netw"
+    "ork.SessionInfo\022\"\n\010hotel_id\030\006 \001(\0132\020.netw"
+    "ork.HotelId\022,\n\remployee_info\030\007 \001(\0132\025.net"
+    "work.EmployeeInfo\022$\n\troom_info\030\010 \001(\0132\021.n"
+    "etwork.RoomInfo\022\"\n\004data\030\t \001(\0132\024.network."
+    "VacantRooms\022/\n\017make_order_info\030\n \001(\0132\026.n"
+    "etwork.MakeOrderInfo\">\n\027RegisterMessageR"
+    "esponse\022\023\n\013messageText\030\001 \001(\t\022\016\n\006status\030\002"
+    " \001(\010\"k\n\023AuthMessageResponse\022\014\n\004role\030\001 \001("
+    "\005\022\020\n\010id_hotel\030\002 \001(\005\022\016\n\006status\030\003 \001(\010\022\023\n\013m"
+    "essageText\030\004 \001(\t\022\017\n\007id_user\030\005 \001(\005\"N\n\013Ses"
+    "sionInfo\022\r\n\005login\030\001 \001(\t\022\016\n\006userId\030\002 \001(\003\022"
+    "\014\n\004role\030\003 \001(\005\022\022\n\nsession_id\030\004 \001(\t\")\n\030Roo"
+    "mTypesMessageResponse\022\r\n\005types\030\001 \003(\t\"%\n\t"
+    "HotelType\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\">\n\031H"
+    "otelTypesMessageResponse\022!\n\005types\030\001 \003(\0132"
+    "\022.network.HotelType\"\213\005\n\017ResponseContext\022"
+    "\022\n\nerror_code\030\001 \001(\005\022,\n\rmessage_type_\030\002 \001"
+    "(\0162\025.network.message_type\022;\n\021register_re"
+    "sponse\030\003 \001(\0132 .network.RegisterMessageRe"
+    "sponse\0223\n\rauth_response\030\004 \001(\0132\034.network."
+    "AuthMessageResponse\022*\n\014session_info\030\005 \001("
+    "\0132\024.network.SessionInfo\022.\n\006guests\030\006 \001(\0132"
+    "\036.network.GuestsMessageResponse\0224\n\templo"
+    "yees\030\007 \001(\0132!.network.EmployeesMessageRes"
+    "ponse\022.\n\006hotels\030\010 \001(\0132\036.network.HotelsMe"
+    "ssageResponse\022,\n\005rooms\030\t \001(\0132\035.network.R"
+    "oomsMessageResponse\0220\n\005types\030\n \001(\0132!.net"
+    "work.RoomTypesMessageResponse\022.\n\006orders\030"
+    "\013 \001(\0132\036.network.OrdersMessageResponse\0227\n"
+    "\013hotel_types\030\014 \001(\0132\".network.HotelTypesM"
+    "essageResponse\0229\n\014guest_orders\030\r \001(\0132#.n"
+    "etwork.GuestOrdersMessageResponse", 3553);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Message.proto", &protobuf_RegisterTypes);
   AuthMessage::default_instance_ = new AuthMessage();
@@ -775,6 +832,8 @@ void protobuf_AddDesc_Message_2eproto() {
   VacantRooms::default_instance_ = new VacantRooms();
   OrderInfo::default_instance_ = new OrderInfo();
   OrdersMessageResponse::default_instance_ = new OrdersMessageResponse();
+  GuestOrderInfo::default_instance_ = new GuestOrderInfo();
+  GuestOrdersMessageResponse::default_instance_ = new GuestOrdersMessageResponse();
   MakeOrderInfo::default_instance_ = new MakeOrderInfo();
   RequestContext::default_instance_ = new RequestContext();
   RegisterMessageResponse::default_instance_ = new RegisterMessageResponse();
@@ -799,6 +858,8 @@ void protobuf_AddDesc_Message_2eproto() {
   VacantRooms::default_instance_->InitAsDefaultInstance();
   OrderInfo::default_instance_->InitAsDefaultInstance();
   OrdersMessageResponse::default_instance_->InitAsDefaultInstance();
+  GuestOrderInfo::default_instance_->InitAsDefaultInstance();
+  GuestOrdersMessageResponse::default_instance_->InitAsDefaultInstance();
   MakeOrderInfo::default_instance_->InitAsDefaultInstance();
   RequestContext::default_instance_->InitAsDefaultInstance();
   RegisterMessageResponse::default_instance_->InitAsDefaultInstance();
@@ -7271,6 +7332,745 @@ void OrdersMessageResponse::Swap(OrdersMessageResponse* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int GuestOrderInfo::kStartdateFieldNumber;
+const int GuestOrderInfo::kEnddateFieldNumber;
+const int GuestOrderInfo::kIdroomFieldNumber;
+const int GuestOrderInfo::kGuestFirstnameFieldNumber;
+const int GuestOrderInfo::kGuestSecondnameFieldNumber;
+const int GuestOrderInfo::kGuestLastnameFieldNumber;
+#endif  // !_MSC_VER
+
+GuestOrderInfo::GuestOrderInfo()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:network.GuestOrderInfo)
+}
+
+void GuestOrderInfo::InitAsDefaultInstance() {
+}
+
+GuestOrderInfo::GuestOrderInfo(const GuestOrderInfo& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:network.GuestOrderInfo)
+}
+
+void GuestOrderInfo::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  startdate_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  enddate_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  idroom_ = 0;
+  guest_firstname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  guest_secondname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  guest_lastname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+GuestOrderInfo::~GuestOrderInfo() {
+  // @@protoc_insertion_point(destructor:network.GuestOrderInfo)
+  SharedDtor();
+}
+
+void GuestOrderInfo::SharedDtor() {
+  if (startdate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete startdate_;
+  }
+  if (enddate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete enddate_;
+  }
+  if (guest_firstname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete guest_firstname_;
+  }
+  if (guest_secondname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete guest_secondname_;
+  }
+  if (guest_lastname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete guest_lastname_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void GuestOrderInfo::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GuestOrderInfo::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GuestOrderInfo_descriptor_;
+}
+
+const GuestOrderInfo& GuestOrderInfo::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Message_2eproto();
+  return *default_instance_;
+}
+
+GuestOrderInfo* GuestOrderInfo::default_instance_ = NULL;
+
+GuestOrderInfo* GuestOrderInfo::New() const {
+  return new GuestOrderInfo;
+}
+
+void GuestOrderInfo::Clear() {
+  if (_has_bits_[0 / 32] & 63) {
+    if (has_startdate()) {
+      if (startdate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        startdate_->clear();
+      }
+    }
+    if (has_enddate()) {
+      if (enddate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        enddate_->clear();
+      }
+    }
+    idroom_ = 0;
+    if (has_guest_firstname()) {
+      if (guest_firstname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        guest_firstname_->clear();
+      }
+    }
+    if (has_guest_secondname()) {
+      if (guest_secondname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        guest_secondname_->clear();
+      }
+    }
+    if (has_guest_lastname()) {
+      if (guest_lastname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        guest_lastname_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool GuestOrderInfo::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:network.GuestOrderInfo)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string startdate = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_startdate()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->startdate().data(), this->startdate().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "startdate");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_enddate;
+        break;
+      }
+
+      // optional string enddate = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_enddate:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_enddate()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->enddate().data(), this->enddate().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "enddate");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_idroom;
+        break;
+      }
+
+      // optional int32 idroom = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_idroom:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &idroom_)));
+          set_has_idroom();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_guest_firstname;
+        break;
+      }
+
+      // optional string guest_firstname = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_guest_firstname:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_guest_firstname()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->guest_firstname().data(), this->guest_firstname().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "guest_firstname");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(42)) goto parse_guest_secondname;
+        break;
+      }
+
+      // optional string guest_secondname = 5;
+      case 5: {
+        if (tag == 42) {
+         parse_guest_secondname:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_guest_secondname()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->guest_secondname().data(), this->guest_secondname().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "guest_secondname");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(50)) goto parse_guest_lastname;
+        break;
+      }
+
+      // optional string guest_lastname = 6;
+      case 6: {
+        if (tag == 50) {
+         parse_guest_lastname:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_guest_lastname()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->guest_lastname().data(), this->guest_lastname().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "guest_lastname");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:network.GuestOrderInfo)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:network.GuestOrderInfo)
+  return false;
+#undef DO_
+}
+
+void GuestOrderInfo::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:network.GuestOrderInfo)
+  // optional string startdate = 1;
+  if (has_startdate()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->startdate().data(), this->startdate().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "startdate");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->startdate(), output);
+  }
+
+  // optional string enddate = 2;
+  if (has_enddate()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->enddate().data(), this->enddate().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "enddate");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->enddate(), output);
+  }
+
+  // optional int32 idroom = 3;
+  if (has_idroom()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->idroom(), output);
+  }
+
+  // optional string guest_firstname = 4;
+  if (has_guest_firstname()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->guest_firstname().data(), this->guest_firstname().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "guest_firstname");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->guest_firstname(), output);
+  }
+
+  // optional string guest_secondname = 5;
+  if (has_guest_secondname()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->guest_secondname().data(), this->guest_secondname().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "guest_secondname");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      5, this->guest_secondname(), output);
+  }
+
+  // optional string guest_lastname = 6;
+  if (has_guest_lastname()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->guest_lastname().data(), this->guest_lastname().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "guest_lastname");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      6, this->guest_lastname(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:network.GuestOrderInfo)
+}
+
+::google::protobuf::uint8* GuestOrderInfo::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:network.GuestOrderInfo)
+  // optional string startdate = 1;
+  if (has_startdate()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->startdate().data(), this->startdate().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "startdate");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->startdate(), target);
+  }
+
+  // optional string enddate = 2;
+  if (has_enddate()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->enddate().data(), this->enddate().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "enddate");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->enddate(), target);
+  }
+
+  // optional int32 idroom = 3;
+  if (has_idroom()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->idroom(), target);
+  }
+
+  // optional string guest_firstname = 4;
+  if (has_guest_firstname()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->guest_firstname().data(), this->guest_firstname().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "guest_firstname");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->guest_firstname(), target);
+  }
+
+  // optional string guest_secondname = 5;
+  if (has_guest_secondname()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->guest_secondname().data(), this->guest_secondname().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "guest_secondname");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->guest_secondname(), target);
+  }
+
+  // optional string guest_lastname = 6;
+  if (has_guest_lastname()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->guest_lastname().data(), this->guest_lastname().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "guest_lastname");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        6, this->guest_lastname(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:network.GuestOrderInfo)
+  return target;
+}
+
+int GuestOrderInfo::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional string startdate = 1;
+    if (has_startdate()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->startdate());
+    }
+
+    // optional string enddate = 2;
+    if (has_enddate()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->enddate());
+    }
+
+    // optional int32 idroom = 3;
+    if (has_idroom()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->idroom());
+    }
+
+    // optional string guest_firstname = 4;
+    if (has_guest_firstname()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->guest_firstname());
+    }
+
+    // optional string guest_secondname = 5;
+    if (has_guest_secondname()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->guest_secondname());
+    }
+
+    // optional string guest_lastname = 6;
+    if (has_guest_lastname()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->guest_lastname());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GuestOrderInfo::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const GuestOrderInfo* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const GuestOrderInfo*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GuestOrderInfo::MergeFrom(const GuestOrderInfo& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_startdate()) {
+      set_startdate(from.startdate());
+    }
+    if (from.has_enddate()) {
+      set_enddate(from.enddate());
+    }
+    if (from.has_idroom()) {
+      set_idroom(from.idroom());
+    }
+    if (from.has_guest_firstname()) {
+      set_guest_firstname(from.guest_firstname());
+    }
+    if (from.has_guest_secondname()) {
+      set_guest_secondname(from.guest_secondname());
+    }
+    if (from.has_guest_lastname()) {
+      set_guest_lastname(from.guest_lastname());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void GuestOrderInfo::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GuestOrderInfo::CopyFrom(const GuestOrderInfo& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GuestOrderInfo::IsInitialized() const {
+
+  return true;
+}
+
+void GuestOrderInfo::Swap(GuestOrderInfo* other) {
+  if (other != this) {
+    std::swap(startdate_, other->startdate_);
+    std::swap(enddate_, other->enddate_);
+    std::swap(idroom_, other->idroom_);
+    std::swap(guest_firstname_, other->guest_firstname_);
+    std::swap(guest_secondname_, other->guest_secondname_);
+    std::swap(guest_lastname_, other->guest_lastname_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata GuestOrderInfo::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GuestOrderInfo_descriptor_;
+  metadata.reflection = GuestOrderInfo_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int GuestOrdersMessageResponse::kOrdersFieldNumber;
+#endif  // !_MSC_VER
+
+GuestOrdersMessageResponse::GuestOrdersMessageResponse()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:network.GuestOrdersMessageResponse)
+}
+
+void GuestOrdersMessageResponse::InitAsDefaultInstance() {
+}
+
+GuestOrdersMessageResponse::GuestOrdersMessageResponse(const GuestOrdersMessageResponse& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:network.GuestOrdersMessageResponse)
+}
+
+void GuestOrdersMessageResponse::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+GuestOrdersMessageResponse::~GuestOrdersMessageResponse() {
+  // @@protoc_insertion_point(destructor:network.GuestOrdersMessageResponse)
+  SharedDtor();
+}
+
+void GuestOrdersMessageResponse::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void GuestOrdersMessageResponse::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* GuestOrdersMessageResponse::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return GuestOrdersMessageResponse_descriptor_;
+}
+
+const GuestOrdersMessageResponse& GuestOrdersMessageResponse::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Message_2eproto();
+  return *default_instance_;
+}
+
+GuestOrdersMessageResponse* GuestOrdersMessageResponse::default_instance_ = NULL;
+
+GuestOrdersMessageResponse* GuestOrdersMessageResponse::New() const {
+  return new GuestOrdersMessageResponse;
+}
+
+void GuestOrdersMessageResponse::Clear() {
+  orders_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool GuestOrdersMessageResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:network.GuestOrdersMessageResponse)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .network.GuestOrderInfo orders = 1;
+      case 1: {
+        if (tag == 10) {
+         parse_orders:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_orders()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(10)) goto parse_orders;
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:network.GuestOrdersMessageResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:network.GuestOrdersMessageResponse)
+  return false;
+#undef DO_
+}
+
+void GuestOrdersMessageResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:network.GuestOrdersMessageResponse)
+  // repeated .network.GuestOrderInfo orders = 1;
+  for (int i = 0; i < this->orders_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->orders(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:network.GuestOrdersMessageResponse)
+}
+
+::google::protobuf::uint8* GuestOrdersMessageResponse::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:network.GuestOrdersMessageResponse)
+  // repeated .network.GuestOrderInfo orders = 1;
+  for (int i = 0; i < this->orders_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->orders(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:network.GuestOrdersMessageResponse)
+  return target;
+}
+
+int GuestOrdersMessageResponse::ByteSize() const {
+  int total_size = 0;
+
+  // repeated .network.GuestOrderInfo orders = 1;
+  total_size += 1 * this->orders_size();
+  for (int i = 0; i < this->orders_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->orders(i));
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void GuestOrdersMessageResponse::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const GuestOrdersMessageResponse* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const GuestOrdersMessageResponse*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void GuestOrdersMessageResponse::MergeFrom(const GuestOrdersMessageResponse& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  orders_.MergeFrom(from.orders_);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void GuestOrdersMessageResponse::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GuestOrdersMessageResponse::CopyFrom(const GuestOrdersMessageResponse& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GuestOrdersMessageResponse::IsInitialized() const {
+
+  return true;
+}
+
+void GuestOrdersMessageResponse::Swap(GuestOrdersMessageResponse* other) {
+  if (other != this) {
+    orders_.Swap(&other->orders_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata GuestOrdersMessageResponse::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = GuestOrdersMessageResponse_descriptor_;
+  metadata.reflection = GuestOrdersMessageResponse_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int MakeOrderInfo::kStartdateFieldNumber;
 const int MakeOrderInfo::kEnddateFieldNumber;
 const int MakeOrderInfo::kIdroomFieldNumber;
@@ -10157,6 +10957,7 @@ const int ResponseContext::kRoomsFieldNumber;
 const int ResponseContext::kTypesFieldNumber;
 const int ResponseContext::kOrdersFieldNumber;
 const int ResponseContext::kHotelTypesFieldNumber;
+const int ResponseContext::kGuestOrdersFieldNumber;
 #endif  // !_MSC_VER
 
 ResponseContext::ResponseContext()
@@ -10176,6 +10977,7 @@ void ResponseContext::InitAsDefaultInstance() {
   types_ = const_cast< ::network::RoomTypesMessageResponse*>(&::network::RoomTypesMessageResponse::default_instance());
   orders_ = const_cast< ::network::OrdersMessageResponse*>(&::network::OrdersMessageResponse::default_instance());
   hotel_types_ = const_cast< ::network::HotelTypesMessageResponse*>(&::network::HotelTypesMessageResponse::default_instance());
+  guest_orders_ = const_cast< ::network::GuestOrdersMessageResponse*>(&::network::GuestOrdersMessageResponse::default_instance());
 }
 
 ResponseContext::ResponseContext(const ResponseContext& from)
@@ -10199,6 +11001,7 @@ void ResponseContext::SharedCtor() {
   types_ = NULL;
   orders_ = NULL;
   hotel_types_ = NULL;
+  guest_orders_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -10219,6 +11022,7 @@ void ResponseContext::SharedDtor() {
     delete types_;
     delete orders_;
     delete hotel_types_;
+    delete guest_orders_;
   }
 }
 
@@ -10275,7 +11079,7 @@ void ResponseContext::Clear() {
       if (hotels_ != NULL) hotels_->::network::HotelsMessageResponse::Clear();
     }
   }
-  if (_has_bits_[8 / 32] & 3840) {
+  if (_has_bits_[8 / 32] & 7936) {
     if (has_rooms()) {
       if (rooms_ != NULL) rooms_->::network::RoomsMessageResponse::Clear();
     }
@@ -10287,6 +11091,9 @@ void ResponseContext::Clear() {
     }
     if (has_hotel_types()) {
       if (hotel_types_ != NULL) hotel_types_->::network::HotelTypesMessageResponse::Clear();
+    }
+    if (has_guest_orders()) {
+      if (guest_orders_ != NULL) guest_orders_->::network::GuestOrdersMessageResponse::Clear();
     }
   }
 
@@ -10467,6 +11274,19 @@ bool ResponseContext::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(106)) goto parse_guest_orders;
+        break;
+      }
+
+      // optional .network.GuestOrdersMessageResponse guest_orders = 13;
+      case 13: {
+        if (tag == 106) {
+         parse_guest_orders:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_guest_orders()));
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -10567,6 +11387,12 @@ void ResponseContext::SerializeWithCachedSizes(
       12, this->hotel_types(), output);
   }
 
+  // optional .network.GuestOrdersMessageResponse guest_orders = 13;
+  if (has_guest_orders()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      13, this->guest_orders(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -10656,6 +11482,13 @@ void ResponseContext::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         12, this->hotel_types(), target);
+  }
+
+  // optional .network.GuestOrdersMessageResponse guest_orders = 13;
+  if (has_guest_orders()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        13, this->guest_orders(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -10755,6 +11588,13 @@ int ResponseContext::ByteSize() const {
           this->hotel_types());
     }
 
+    // optional .network.GuestOrdersMessageResponse guest_orders = 13;
+    if (has_guest_orders()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->guest_orders());
+    }
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -10820,6 +11660,9 @@ void ResponseContext::MergeFrom(const ResponseContext& from) {
     if (from.has_hotel_types()) {
       mutable_hotel_types()->::network::HotelTypesMessageResponse::MergeFrom(from.hotel_types());
     }
+    if (from.has_guest_orders()) {
+      mutable_guest_orders()->::network::GuestOrdersMessageResponse::MergeFrom(from.guest_orders());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -10855,6 +11698,7 @@ void ResponseContext::Swap(ResponseContext* other) {
     std::swap(types_, other->types_);
     std::swap(orders_, other->orders_);
     std::swap(hotel_types_, other->hotel_types_);
+    std::swap(guest_orders_, other->guest_orders_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

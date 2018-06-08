@@ -15,6 +15,7 @@ ManagerView::ManagerView(std::shared_ptr<MessageManager> message_manager, uint32
     ui->dateBegin->setDate(date);
     ui->dateBegin->setMinimumDate(date);
     ui->dateEnd->setMinimumDate(date);
+    message_manager_->getHotelEmployees(hotelID_);
 }
 
 ManagerView::~ManagerView()
@@ -85,6 +86,36 @@ void ManagerView::onRead(const network::ResponseContext &response)
     case network::HN_GET_VACANT_ROOMS: {
         network::RoomsMessageResponse roomsRes = response.rooms();
         getVacantRooms(roomsRes);
+        break;
+    }
+    case network::HN_GET_CURRENT_GUESTS: {
+        network::GuestOrdersMessageResponse guestOrderRes = response.guest_orders();
+        getGuestOrders(guestOrderRes);
+        break;
+    }
+    case network::HN_COUNT_HOTEL_ROOMS: {
+        network::RegisterMessageResponse res = response.register_response();
+        setCountRooms(res);
+        break;
+    }
+    case network::HN_COUNT_HOTEL_EMPLOYEES: {
+        network::RegisterMessageResponse res = response.register_response();
+        setCountEmployees(res);
+        break;
+    }
+    case network::HN_COUNT_HOTEL_ORDERS: {
+        network::RegisterMessageResponse res = response.register_response();
+        setCountOrders(res);
+        break;
+    }
+    case network::HN_AVG_RESIDENCE_TIME: {
+        network::RegisterMessageResponse res = response.register_response();
+        setAvgResTime(res);
+        break;
+    }
+    case network::HN_AVG_ROOM_RATING: {
+        network::RegisterMessageResponse res = response.register_response();
+        setAvgRoomRating(res);
         break;
     }
     }
@@ -291,6 +322,33 @@ void ManagerView::getHotelOrders(const network::OrdersMessageResponse &response)
     ui->OrdersTbl->resizeRowsToContents();
 }
 
+void ManagerView::getGuestOrders(const network::GuestOrdersMessageResponse &response)
+{
+    ui->currGuestsTbl->clear();
+    ui->currGuestsTbl->setRowCount(response.orders_size());
+    ui->currGuestsTbl->setColumnCount(6);
+    ui->currGuestsTbl->setHorizontalHeaderItem(0, new QTableWidgetItem("FirstName"));
+    ui->currGuestsTbl->setHorizontalHeaderItem(1, new QTableWidgetItem("SecondName"));
+    ui->currGuestsTbl->setHorizontalHeaderItem(2, new QTableWidgetItem("LastName"));
+    ui->currGuestsTbl->setHorizontalHeaderItem(3, new QTableWidgetItem("StartDate"));
+    ui->currGuestsTbl->setHorizontalHeaderItem(4, new QTableWidgetItem("EndDate"));
+    ui->currGuestsTbl->setHorizontalHeaderItem(5, new QTableWidgetItem("IDRoom"));
+    for(size_t i =0; i< response.orders_size(); i++)
+    {
+        network::GuestOrderInfo info = response.orders(i);
+
+        ui->currGuestsTbl->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(info.guest_firstname())));
+        ui->currGuestsTbl->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(info.guest_secondname())));
+        ui->currGuestsTbl->setItem(i, 2, new QTableWidgetItem(QString::fromStdString(info.guest_lastname())));
+        ui->currGuestsTbl->setItem(i, 3, new QTableWidgetItem(QString::fromStdString(info.startdate())));
+        ui->currGuestsTbl->setItem(i, 4, new QTableWidgetItem(QString::fromStdString(info.enddate())));
+        ui->currGuestsTbl->setItem(i, 5, new QTableWidgetItem(QString::fromStdString(std::to_string(info.idroom()))));
+    }
+
+    ui->currGuestsTbl->resizeColumnsToContents();
+    ui->currGuestsTbl->resizeRowsToContents();
+}
+
 void ManagerView::receptionistRegister(const network::RegisterMessageResponse &response)
 {
     ui->regLabel->setText(QString::fromStdString(response.messagetext()));
@@ -319,7 +377,7 @@ void ManagerView::isDeleteEmployee(const network::RegisterMessageResponse &respo
 
 void ManagerView::isDeleteRoom(const network::RegisterMessageResponse &responce)
 {
-    ui->deleteRoomLbl->setText(QString::fromStdString(responce.messagetext()));
+    //ui->deleteRoomLbl->setText(QString::fromStdString(responce.messagetext()));
     LOG_INFO(responce.messagetext());
 }
 
@@ -344,6 +402,31 @@ void ManagerView::setRoomTypes(const network::RoomTypesMessageResponse &responce
     ui->typeCb->setCurrentIndex(0);
     ui->typeCbE->setCurrentIndex(0);    
     ui->orderRoomType->setCurrentIndex(0);
+}
+
+void ManagerView::setCountRooms(const network::RegisterMessageResponse &responce)
+{
+    ui->roomCountLbl->setText(QString::fromStdString(responce.messagetext()));
+}
+
+void ManagerView::setCountEmployees(const network::RegisterMessageResponse &responce)
+{
+    ui->employeeCountLbl->setText(QString::fromStdString(responce.messagetext()));
+}
+
+void ManagerView::setCountOrders(const network::RegisterMessageResponse &responce)
+{
+    ui->orderCountLbl->setText(QString::fromStdString(responce.messagetext()));
+}
+
+void ManagerView::setAvgResTime(const network::RegisterMessageResponse &responce)
+{
+    ui->avgResidenceLbl->setText(QString::fromStdString(responce.messagetext()));
+}
+
+void ManagerView::setAvgRoomRating(const network::RegisterMessageResponse &responce)
+{
+     ui->avgRoomRatingLbl->setText(QString::fromStdString(responce.messagetext()));
 }
 
 void ManagerView::setRoomTypesGen(const network::RoomTypesMessageResponse &responce)
@@ -430,7 +513,7 @@ void ManagerView::on_RoomsTbl_itemClicked(QTableWidgetItem *item)
     int row  = item->row();
     TableItemRooms *item1 = static_cast<TableItemRooms *>(ui->RoomsTbl->item(row, 0));
     currRoom = item1->info;
-    ui->deleteRoomLbl->setText(QString::fromStdString(std::to_string(currRoom.id())));
+    //ui->deleteRoomLbl->setText(QString::fromStdString(std::to_string(currRoom.id())));
     ui->placesCbE->setCurrentText(ui->RoomsTbl->item(row, 0)->text());
     ui->priceRTEE->setPlainText(ui->RoomsTbl->item(row, 1)->text());
     ui->ratingCbE->setCurrentText(ui->RoomsTbl->item(row, 2)->text());
@@ -553,6 +636,14 @@ void ManagerView::on_tabWidget_tabBarClicked(int index)
     message_manager_->getHotelTypes();    
     message_manager_->getHotelOrders(hotelID_);
     message_manager_->getGuests();
+    message_manager_->countHotelRooms(hotelID_);
+    message_manager_->getHotelRooms(hotelID_);
+    message_manager_->getHotelEmployees(hotelID_);
+    message_manager_->countHotelEmployees(hotelID_);
+    message_manager_->countHotelOrders(hotelID_);
+    message_manager_->avgResidenceTime(hotelID_);
+    message_manager_->avgRoomRating(hotelID_);
+
 }
 
 void ManagerView::on_vacantRoms_clicked()
@@ -624,4 +715,9 @@ void ManagerView::on_makeOrderBtn_clicked()
 void ManagerView::on_tabWidget_currentChanged(int index)
 {
 
+}
+
+void ManagerView::on_currentGuests_clicked()
+{
+    message_manager_->getCurrentGuests(hotelID_);
 }
