@@ -254,6 +254,54 @@ void MessageManager::getHotelTypes()
     execute(context.SerializeAsString());
 }
 
+void MessageManager::getVacantRooms(const std::string &datebegin, const std::string &dateend, uint32_t capacity, uint32_t startPrice, uint32_t endPrice,
+                                    uint32_t startRating, uint32_t endRating, const std::string &room_type, uint32_t hotel_id)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_VACANT_ROOMS);
+    network::SessionInfo* session = new network::SessionInfo();
+    session->set_session_id(getSession().session_id());
+
+    network::VacantRooms* info = new network::VacantRooms();
+    info->set_datebegin(datebegin);
+    info->set_dateend(dateend);
+    info->set_places(capacity);
+    info->set_begin_price(startPrice);
+    info->set_end_price(endPrice);
+    info->set_begin_rating(startRating);
+    info->set_end_rating(endRating);
+    info->set_room_type(room_type);
+    info->set_hotelid(hotel_id);
+
+    context.set_allocated_data(info);
+    context.set_allocated_session_info(session);
+
+    execute(context.SerializeAsString());
+}
+
+void MessageManager::makeOrder(const std::string &datebegin, const std::string &dateend, uint32_t idroom, uint32_t idemployee, uint32_t idguest)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_MAKE_ORDER);
+    network::SessionInfo* session = new network::SessionInfo();
+    session->set_session_id(getSession().session_id());
+
+
+    network::MakeOrderInfo* makeOrderInfo = new network::MakeOrderInfo();
+    makeOrderInfo->set_startdate(datebegin);
+    makeOrderInfo->set_enddate(dateend);
+    makeOrderInfo->set_idemployee(idemployee);
+    makeOrderInfo->set_idguest(idguest);
+    makeOrderInfo->set_idroom(idroom);
+
+
+    context.set_allocated_make_order_info(makeOrderInfo);
+    context.set_allocated_session_info(session);
+
+    execute(context.SerializeAsString());
+}
+
+
 void MessageManager::addRoom(uint32_t places, uint32_t price, uint32_t rating, bool status, uint32_t floor, const std::string &type, uint32_t hotel_id)
 {
     network::RequestContext context;

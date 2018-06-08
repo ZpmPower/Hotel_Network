@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1084</width>
-    <height>435</height>
+    <width>607</width>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,151 +16,15 @@
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>0</x>
      <y>0</y>
-     <width>591</width>
-     <height>431</height>
+     <width>601</width>
+     <height>411</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>4</number>
+    <number>0</number>
    </property>
-   <widget class="QWidget" name="tabGuests">
-    <attribute name="title">
-     <string>Guests</string>
-    </attribute>
-    <widget class="QTableWidget" name="GuestTbl">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>80</y>
-       <width>561</width>
-       <height>301</height>
-      </rect>
-     </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="allGuestsBtn">
-     <property name="geometry">
-      <rect>
-       <x>249</x>
-       <y>30</y>
-       <width>81</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>ALL GUESTS</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tabEmployees">
-    <attribute name="title">
-     <string>Employees</string>
-    </attribute>
-    <widget class="QTableWidget" name="EmployeesTbl">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>561</width>
-       <height>301</height>
-      </rect>
-     </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="allEmployeeBtn">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>30</y>
-       <width>111</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>ALL EMPLOYEES</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tabHotels">
-    <attribute name="title">
-     <string>Hotels</string>
-    </attribute>
-    <widget class="QTableWidget" name="HotelsTbl">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>561</width>
-       <height>301</height>
-      </rect>
-     </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="allHotelsBtn">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>30</y>
-       <width>80</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>ALL HOTELS</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tabRooms">
-    <attribute name="title">
-     <string>Rooms</string>
-    </attribute>
-    <widget class="QTableWidget" name="RoomsTbl">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>561</width>
-       <height>301</height>
-      </rect>
-     </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="allRoomsBtn">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>30</y>
-       <width>80</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>ALL ROOMS</string>
-     </property>
-    </widget>
-   </widget>
    <widget class="QWidget" name="tabRegister">
     <attribute name="title">
      <string>Register</string>
@@ -853,89 +717,6 @@
     <zorder>groupBox_2</zorder>
     <zorder>groupBox_3</zorder>
    </widget>
-  </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>30</y>
-     <width>104</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_2">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>70</y>
-     <width>104</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_3">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>110</y>
-     <width>104</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_4">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>150</y>
-     <width>104</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_5">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>190</y>
-     <width>104</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_6">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>230</y>
-     <width>104</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_7">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>270</y>
-     <width>104</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>320</y>
-     <width>80</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PushButton</string>
-   </property>
   </widget>
  </widget>
  <resources/>

@@ -50,11 +50,13 @@ enum message_type {
   HN_ADD_HOTEL_ROOM = 13,
   HN_EDIT_HOTEL_ROOM = 14,
   HN_GET_HOTEL_ORDERS = 15,
-  HN_GET_HOTEL_TYPES = 16
+  HN_GET_HOTEL_TYPES = 16,
+  HN_GET_VACANT_ROOMS = 17,
+  HN_MAKE_ORDER = 18
 };
 bool message_type_IsValid(int value);
 const message_type message_type_MIN = HN_REGISTER;
-const message_type message_type_MAX = HN_GET_HOTEL_TYPES;
+const message_type message_type_MAX = HN_MAKE_ORDER;
 const int message_type_ARRAYSIZE = message_type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* message_type_descriptor();

@@ -46,8 +46,10 @@ class HotelInfo;
 class HotelsMessageResponse;
 class RoomInfo;
 class RoomsMessageResponse;
+class VacantRooms;
 class OrderInfo;
 class OrdersMessageResponse;
+class MakeOrderInfo;
 class RequestContext;
 class RegisterMessageResponse;
 class AuthMessageResponse;
@@ -654,6 +656,13 @@ class GuestInfo : public ::google::protobuf::Message {
   inline ::std::string* release_passport();
   inline void set_allocated_passport(::std::string* passport);
 
+  // optional int32 id = 6;
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 6;
+  inline ::google::protobuf::int32 id() const;
+  inline void set_id(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:network.GuestInfo)
  private:
   inline void set_has_firstname();
@@ -666,6 +675,8 @@ class GuestInfo : public ::google::protobuf::Message {
   inline void clear_has_phonenumber();
   inline void set_has_passport();
   inline void clear_has_passport();
+  inline void set_has_id();
+  inline void clear_has_id();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -676,6 +687,7 @@ class GuestInfo : public ::google::protobuf::Message {
   ::std::string* lastname_;
   ::std::string* phonenumber_;
   ::std::string* passport_;
+  ::google::protobuf::int32 id_;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
   friend void protobuf_ShutdownFile_Message_2eproto();
@@ -1589,6 +1601,180 @@ class RoomsMessageResponse : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class VacantRooms : public ::google::protobuf::Message {
+ public:
+  VacantRooms();
+  virtual ~VacantRooms();
+
+  VacantRooms(const VacantRooms& from);
+
+  inline VacantRooms& operator=(const VacantRooms& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const VacantRooms& default_instance();
+
+  void Swap(VacantRooms* other);
+
+  // implements Message ----------------------------------------------
+
+  VacantRooms* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const VacantRooms& from);
+  void MergeFrom(const VacantRooms& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 places = 1;
+  inline bool has_places() const;
+  inline void clear_places();
+  static const int kPlacesFieldNumber = 1;
+  inline ::google::protobuf::int32 places() const;
+  inline void set_places(::google::protobuf::int32 value);
+
+  // optional int32 begin_price = 2;
+  inline bool has_begin_price() const;
+  inline void clear_begin_price();
+  static const int kBeginPriceFieldNumber = 2;
+  inline ::google::protobuf::int32 begin_price() const;
+  inline void set_begin_price(::google::protobuf::int32 value);
+
+  // optional int32 end_price = 3;
+  inline bool has_end_price() const;
+  inline void clear_end_price();
+  static const int kEndPriceFieldNumber = 3;
+  inline ::google::protobuf::int32 end_price() const;
+  inline void set_end_price(::google::protobuf::int32 value);
+
+  // optional string datebegin = 5;
+  inline bool has_datebegin() const;
+  inline void clear_datebegin();
+  static const int kDatebeginFieldNumber = 5;
+  inline const ::std::string& datebegin() const;
+  inline void set_datebegin(const ::std::string& value);
+  inline void set_datebegin(const char* value);
+  inline void set_datebegin(const char* value, size_t size);
+  inline ::std::string* mutable_datebegin();
+  inline ::std::string* release_datebegin();
+  inline void set_allocated_datebegin(::std::string* datebegin);
+
+  // optional string dateend = 6;
+  inline bool has_dateend() const;
+  inline void clear_dateend();
+  static const int kDateendFieldNumber = 6;
+  inline const ::std::string& dateend() const;
+  inline void set_dateend(const ::std::string& value);
+  inline void set_dateend(const char* value);
+  inline void set_dateend(const char* value, size_t size);
+  inline ::std::string* mutable_dateend();
+  inline ::std::string* release_dateend();
+  inline void set_allocated_dateend(::std::string* dateend);
+
+  // optional int32 hotelID = 7;
+  inline bool has_hotelid() const;
+  inline void clear_hotelid();
+  static const int kHotelIDFieldNumber = 7;
+  inline ::google::protobuf::int32 hotelid() const;
+  inline void set_hotelid(::google::protobuf::int32 value);
+
+  // optional int32 begin_rating = 8;
+  inline bool has_begin_rating() const;
+  inline void clear_begin_rating();
+  static const int kBeginRatingFieldNumber = 8;
+  inline ::google::protobuf::int32 begin_rating() const;
+  inline void set_begin_rating(::google::protobuf::int32 value);
+
+  // optional int32 end_rating = 9;
+  inline bool has_end_rating() const;
+  inline void clear_end_rating();
+  static const int kEndRatingFieldNumber = 9;
+  inline ::google::protobuf::int32 end_rating() const;
+  inline void set_end_rating(::google::protobuf::int32 value);
+
+  // optional string room_type = 10;
+  inline bool has_room_type() const;
+  inline void clear_room_type();
+  static const int kRoomTypeFieldNumber = 10;
+  inline const ::std::string& room_type() const;
+  inline void set_room_type(const ::std::string& value);
+  inline void set_room_type(const char* value);
+  inline void set_room_type(const char* value, size_t size);
+  inline ::std::string* mutable_room_type();
+  inline ::std::string* release_room_type();
+  inline void set_allocated_room_type(::std::string* room_type);
+
+  // @@protoc_insertion_point(class_scope:network.VacantRooms)
+ private:
+  inline void set_has_places();
+  inline void clear_has_places();
+  inline void set_has_begin_price();
+  inline void clear_has_begin_price();
+  inline void set_has_end_price();
+  inline void clear_has_end_price();
+  inline void set_has_datebegin();
+  inline void clear_has_datebegin();
+  inline void set_has_dateend();
+  inline void clear_has_dateend();
+  inline void set_has_hotelid();
+  inline void clear_has_hotelid();
+  inline void set_has_begin_rating();
+  inline void clear_has_begin_rating();
+  inline void set_has_end_rating();
+  inline void clear_has_end_rating();
+  inline void set_has_room_type();
+  inline void clear_has_room_type();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 places_;
+  ::google::protobuf::int32 begin_price_;
+  ::std::string* datebegin_;
+  ::google::protobuf::int32 end_price_;
+  ::google::protobuf::int32 hotelid_;
+  ::std::string* dateend_;
+  ::google::protobuf::int32 begin_rating_;
+  ::google::protobuf::int32 end_rating_;
+  ::std::string* room_type_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static VacantRooms* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class OrderInfo : public ::google::protobuf::Message {
  public:
   OrderInfo();
@@ -1850,6 +2036,135 @@ class OrdersMessageResponse : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class MakeOrderInfo : public ::google::protobuf::Message {
+ public:
+  MakeOrderInfo();
+  virtual ~MakeOrderInfo();
+
+  MakeOrderInfo(const MakeOrderInfo& from);
+
+  inline MakeOrderInfo& operator=(const MakeOrderInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MakeOrderInfo& default_instance();
+
+  void Swap(MakeOrderInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  MakeOrderInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MakeOrderInfo& from);
+  void MergeFrom(const MakeOrderInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string startdate = 1;
+  inline bool has_startdate() const;
+  inline void clear_startdate();
+  static const int kStartdateFieldNumber = 1;
+  inline const ::std::string& startdate() const;
+  inline void set_startdate(const ::std::string& value);
+  inline void set_startdate(const char* value);
+  inline void set_startdate(const char* value, size_t size);
+  inline ::std::string* mutable_startdate();
+  inline ::std::string* release_startdate();
+  inline void set_allocated_startdate(::std::string* startdate);
+
+  // optional string enddate = 2;
+  inline bool has_enddate() const;
+  inline void clear_enddate();
+  static const int kEnddateFieldNumber = 2;
+  inline const ::std::string& enddate() const;
+  inline void set_enddate(const ::std::string& value);
+  inline void set_enddate(const char* value);
+  inline void set_enddate(const char* value, size_t size);
+  inline ::std::string* mutable_enddate();
+  inline ::std::string* release_enddate();
+  inline void set_allocated_enddate(::std::string* enddate);
+
+  // optional int32 idroom = 3;
+  inline bool has_idroom() const;
+  inline void clear_idroom();
+  static const int kIdroomFieldNumber = 3;
+  inline ::google::protobuf::int32 idroom() const;
+  inline void set_idroom(::google::protobuf::int32 value);
+
+  // optional int32 idemployee = 4;
+  inline bool has_idemployee() const;
+  inline void clear_idemployee();
+  static const int kIdemployeeFieldNumber = 4;
+  inline ::google::protobuf::int32 idemployee() const;
+  inline void set_idemployee(::google::protobuf::int32 value);
+
+  // optional int32 idguest = 5;
+  inline bool has_idguest() const;
+  inline void clear_idguest();
+  static const int kIdguestFieldNumber = 5;
+  inline ::google::protobuf::int32 idguest() const;
+  inline void set_idguest(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:network.MakeOrderInfo)
+ private:
+  inline void set_has_startdate();
+  inline void clear_has_startdate();
+  inline void set_has_enddate();
+  inline void clear_has_enddate();
+  inline void set_has_idroom();
+  inline void clear_has_idroom();
+  inline void set_has_idemployee();
+  inline void clear_has_idemployee();
+  inline void set_has_idguest();
+  inline void clear_has_idguest();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* startdate_;
+  ::std::string* enddate_;
+  ::google::protobuf::int32 idroom_;
+  ::google::protobuf::int32 idemployee_;
+  ::google::protobuf::int32 idguest_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static MakeOrderInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class RequestContext : public ::google::protobuf::Message {
  public:
   RequestContext();
@@ -1973,6 +2288,24 @@ class RequestContext : public ::google::protobuf::Message {
   inline ::network::RoomInfo* release_room_info();
   inline void set_allocated_room_info(::network::RoomInfo* room_info);
 
+  // optional .network.VacantRooms data = 9;
+  inline bool has_data() const;
+  inline void clear_data();
+  static const int kDataFieldNumber = 9;
+  inline const ::network::VacantRooms& data() const;
+  inline ::network::VacantRooms* mutable_data();
+  inline ::network::VacantRooms* release_data();
+  inline void set_allocated_data(::network::VacantRooms* data);
+
+  // optional .network.MakeOrderInfo make_order_info = 10;
+  inline bool has_make_order_info() const;
+  inline void clear_make_order_info();
+  static const int kMakeOrderInfoFieldNumber = 10;
+  inline const ::network::MakeOrderInfo& make_order_info() const;
+  inline ::network::MakeOrderInfo* mutable_make_order_info();
+  inline ::network::MakeOrderInfo* release_make_order_info();
+  inline void set_allocated_make_order_info(::network::MakeOrderInfo* make_order_info);
+
   // @@protoc_insertion_point(class_scope:network.RequestContext)
  private:
   inline void set_has_message_type_();
@@ -1991,6 +2324,10 @@ class RequestContext : public ::google::protobuf::Message {
   inline void clear_has_employee_info();
   inline void set_has_room_info();
   inline void clear_has_room_info();
+  inline void set_has_data();
+  inline void clear_has_data();
+  inline void set_has_make_order_info();
+  inline void clear_has_make_order_info();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -2003,6 +2340,8 @@ class RequestContext : public ::google::protobuf::Message {
   ::network::HotelId* hotel_id_;
   ::network::EmployeeInfo* employee_info_;
   ::network::RoomInfo* room_info_;
+  ::network::VacantRooms* data_;
+  ::network::MakeOrderInfo* make_order_info_;
   int message_type__;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
@@ -2193,6 +2532,13 @@ class AuthMessageResponse : public ::google::protobuf::Message {
   inline ::std::string* release_messagetext();
   inline void set_allocated_messagetext(::std::string* messagetext);
 
+  // optional int32 id_user = 5;
+  inline bool has_id_user() const;
+  inline void clear_id_user();
+  static const int kIdUserFieldNumber = 5;
+  inline ::google::protobuf::int32 id_user() const;
+  inline void set_id_user(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:network.AuthMessageResponse)
  private:
   inline void set_has_role();
@@ -2203,6 +2549,8 @@ class AuthMessageResponse : public ::google::protobuf::Message {
   inline void clear_has_status();
   inline void set_has_messagetext();
   inline void clear_has_messagetext();
+  inline void set_has_id_user();
+  inline void clear_has_id_user();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -2212,6 +2560,7 @@ class AuthMessageResponse : public ::google::protobuf::Message {
   ::google::protobuf::int32 id_hotel_;
   ::std::string* messagetext_;
   bool status_;
+  ::google::protobuf::int32 id_user_;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
   friend void protobuf_ShutdownFile_Message_2eproto();
@@ -4468,6 +4817,30 @@ inline void GuestInfo::set_allocated_passport(::std::string* passport) {
   // @@protoc_insertion_point(field_set_allocated:network.GuestInfo.passport)
 }
 
+// optional int32 id = 6;
+inline bool GuestInfo::has_id() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void GuestInfo::set_has_id() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void GuestInfo::clear_has_id() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void GuestInfo::clear_id() {
+  id_ = 0;
+  clear_has_id();
+}
+inline ::google::protobuf::int32 GuestInfo::id() const {
+  // @@protoc_insertion_point(field_get:network.GuestInfo.id)
+  return id_;
+}
+inline void GuestInfo::set_id(::google::protobuf::int32 value) {
+  set_has_id();
+  id_ = value;
+  // @@protoc_insertion_point(field_set:network.GuestInfo.id)
+}
+
 // -------------------------------------------------------------------
 
 // GuestsMessageResponse
@@ -5822,6 +6195,382 @@ RoomsMessageResponse::mutable_rooms() {
 
 // -------------------------------------------------------------------
 
+// VacantRooms
+
+// optional int32 places = 1;
+inline bool VacantRooms::has_places() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void VacantRooms::set_has_places() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void VacantRooms::clear_has_places() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void VacantRooms::clear_places() {
+  places_ = 0;
+  clear_has_places();
+}
+inline ::google::protobuf::int32 VacantRooms::places() const {
+  // @@protoc_insertion_point(field_get:network.VacantRooms.places)
+  return places_;
+}
+inline void VacantRooms::set_places(::google::protobuf::int32 value) {
+  set_has_places();
+  places_ = value;
+  // @@protoc_insertion_point(field_set:network.VacantRooms.places)
+}
+
+// optional int32 begin_price = 2;
+inline bool VacantRooms::has_begin_price() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void VacantRooms::set_has_begin_price() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void VacantRooms::clear_has_begin_price() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void VacantRooms::clear_begin_price() {
+  begin_price_ = 0;
+  clear_has_begin_price();
+}
+inline ::google::protobuf::int32 VacantRooms::begin_price() const {
+  // @@protoc_insertion_point(field_get:network.VacantRooms.begin_price)
+  return begin_price_;
+}
+inline void VacantRooms::set_begin_price(::google::protobuf::int32 value) {
+  set_has_begin_price();
+  begin_price_ = value;
+  // @@protoc_insertion_point(field_set:network.VacantRooms.begin_price)
+}
+
+// optional int32 end_price = 3;
+inline bool VacantRooms::has_end_price() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void VacantRooms::set_has_end_price() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void VacantRooms::clear_has_end_price() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void VacantRooms::clear_end_price() {
+  end_price_ = 0;
+  clear_has_end_price();
+}
+inline ::google::protobuf::int32 VacantRooms::end_price() const {
+  // @@protoc_insertion_point(field_get:network.VacantRooms.end_price)
+  return end_price_;
+}
+inline void VacantRooms::set_end_price(::google::protobuf::int32 value) {
+  set_has_end_price();
+  end_price_ = value;
+  // @@protoc_insertion_point(field_set:network.VacantRooms.end_price)
+}
+
+// optional string datebegin = 5;
+inline bool VacantRooms::has_datebegin() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void VacantRooms::set_has_datebegin() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void VacantRooms::clear_has_datebegin() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void VacantRooms::clear_datebegin() {
+  if (datebegin_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datebegin_->clear();
+  }
+  clear_has_datebegin();
+}
+inline const ::std::string& VacantRooms::datebegin() const {
+  // @@protoc_insertion_point(field_get:network.VacantRooms.datebegin)
+  return *datebegin_;
+}
+inline void VacantRooms::set_datebegin(const ::std::string& value) {
+  set_has_datebegin();
+  if (datebegin_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datebegin_ = new ::std::string;
+  }
+  datebegin_->assign(value);
+  // @@protoc_insertion_point(field_set:network.VacantRooms.datebegin)
+}
+inline void VacantRooms::set_datebegin(const char* value) {
+  set_has_datebegin();
+  if (datebegin_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datebegin_ = new ::std::string;
+  }
+  datebegin_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.VacantRooms.datebegin)
+}
+inline void VacantRooms::set_datebegin(const char* value, size_t size) {
+  set_has_datebegin();
+  if (datebegin_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datebegin_ = new ::std::string;
+  }
+  datebegin_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.VacantRooms.datebegin)
+}
+inline ::std::string* VacantRooms::mutable_datebegin() {
+  set_has_datebegin();
+  if (datebegin_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datebegin_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.VacantRooms.datebegin)
+  return datebegin_;
+}
+inline ::std::string* VacantRooms::release_datebegin() {
+  clear_has_datebegin();
+  if (datebegin_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = datebegin_;
+    datebegin_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void VacantRooms::set_allocated_datebegin(::std::string* datebegin) {
+  if (datebegin_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete datebegin_;
+  }
+  if (datebegin) {
+    set_has_datebegin();
+    datebegin_ = datebegin;
+  } else {
+    clear_has_datebegin();
+    datebegin_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.VacantRooms.datebegin)
+}
+
+// optional string dateend = 6;
+inline bool VacantRooms::has_dateend() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void VacantRooms::set_has_dateend() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void VacantRooms::clear_has_dateend() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void VacantRooms::clear_dateend() {
+  if (dateend_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dateend_->clear();
+  }
+  clear_has_dateend();
+}
+inline const ::std::string& VacantRooms::dateend() const {
+  // @@protoc_insertion_point(field_get:network.VacantRooms.dateend)
+  return *dateend_;
+}
+inline void VacantRooms::set_dateend(const ::std::string& value) {
+  set_has_dateend();
+  if (dateend_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dateend_ = new ::std::string;
+  }
+  dateend_->assign(value);
+  // @@protoc_insertion_point(field_set:network.VacantRooms.dateend)
+}
+inline void VacantRooms::set_dateend(const char* value) {
+  set_has_dateend();
+  if (dateend_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dateend_ = new ::std::string;
+  }
+  dateend_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.VacantRooms.dateend)
+}
+inline void VacantRooms::set_dateend(const char* value, size_t size) {
+  set_has_dateend();
+  if (dateend_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dateend_ = new ::std::string;
+  }
+  dateend_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.VacantRooms.dateend)
+}
+inline ::std::string* VacantRooms::mutable_dateend() {
+  set_has_dateend();
+  if (dateend_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dateend_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.VacantRooms.dateend)
+  return dateend_;
+}
+inline ::std::string* VacantRooms::release_dateend() {
+  clear_has_dateend();
+  if (dateend_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = dateend_;
+    dateend_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void VacantRooms::set_allocated_dateend(::std::string* dateend) {
+  if (dateend_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete dateend_;
+  }
+  if (dateend) {
+    set_has_dateend();
+    dateend_ = dateend;
+  } else {
+    clear_has_dateend();
+    dateend_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.VacantRooms.dateend)
+}
+
+// optional int32 hotelID = 7;
+inline bool VacantRooms::has_hotelid() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void VacantRooms::set_has_hotelid() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void VacantRooms::clear_has_hotelid() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void VacantRooms::clear_hotelid() {
+  hotelid_ = 0;
+  clear_has_hotelid();
+}
+inline ::google::protobuf::int32 VacantRooms::hotelid() const {
+  // @@protoc_insertion_point(field_get:network.VacantRooms.hotelID)
+  return hotelid_;
+}
+inline void VacantRooms::set_hotelid(::google::protobuf::int32 value) {
+  set_has_hotelid();
+  hotelid_ = value;
+  // @@protoc_insertion_point(field_set:network.VacantRooms.hotelID)
+}
+
+// optional int32 begin_rating = 8;
+inline bool VacantRooms::has_begin_rating() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void VacantRooms::set_has_begin_rating() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void VacantRooms::clear_has_begin_rating() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void VacantRooms::clear_begin_rating() {
+  begin_rating_ = 0;
+  clear_has_begin_rating();
+}
+inline ::google::protobuf::int32 VacantRooms::begin_rating() const {
+  // @@protoc_insertion_point(field_get:network.VacantRooms.begin_rating)
+  return begin_rating_;
+}
+inline void VacantRooms::set_begin_rating(::google::protobuf::int32 value) {
+  set_has_begin_rating();
+  begin_rating_ = value;
+  // @@protoc_insertion_point(field_set:network.VacantRooms.begin_rating)
+}
+
+// optional int32 end_rating = 9;
+inline bool VacantRooms::has_end_rating() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void VacantRooms::set_has_end_rating() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void VacantRooms::clear_has_end_rating() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void VacantRooms::clear_end_rating() {
+  end_rating_ = 0;
+  clear_has_end_rating();
+}
+inline ::google::protobuf::int32 VacantRooms::end_rating() const {
+  // @@protoc_insertion_point(field_get:network.VacantRooms.end_rating)
+  return end_rating_;
+}
+inline void VacantRooms::set_end_rating(::google::protobuf::int32 value) {
+  set_has_end_rating();
+  end_rating_ = value;
+  // @@protoc_insertion_point(field_set:network.VacantRooms.end_rating)
+}
+
+// optional string room_type = 10;
+inline bool VacantRooms::has_room_type() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void VacantRooms::set_has_room_type() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void VacantRooms::clear_has_room_type() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void VacantRooms::clear_room_type() {
+  if (room_type_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    room_type_->clear();
+  }
+  clear_has_room_type();
+}
+inline const ::std::string& VacantRooms::room_type() const {
+  // @@protoc_insertion_point(field_get:network.VacantRooms.room_type)
+  return *room_type_;
+}
+inline void VacantRooms::set_room_type(const ::std::string& value) {
+  set_has_room_type();
+  if (room_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    room_type_ = new ::std::string;
+  }
+  room_type_->assign(value);
+  // @@protoc_insertion_point(field_set:network.VacantRooms.room_type)
+}
+inline void VacantRooms::set_room_type(const char* value) {
+  set_has_room_type();
+  if (room_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    room_type_ = new ::std::string;
+  }
+  room_type_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.VacantRooms.room_type)
+}
+inline void VacantRooms::set_room_type(const char* value, size_t size) {
+  set_has_room_type();
+  if (room_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    room_type_ = new ::std::string;
+  }
+  room_type_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.VacantRooms.room_type)
+}
+inline ::std::string* VacantRooms::mutable_room_type() {
+  set_has_room_type();
+  if (room_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    room_type_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.VacantRooms.room_type)
+  return room_type_;
+}
+inline ::std::string* VacantRooms::release_room_type() {
+  clear_has_room_type();
+  if (room_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = room_type_;
+    room_type_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void VacantRooms::set_allocated_room_type(::std::string* room_type) {
+  if (room_type_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete room_type_;
+  }
+  if (room_type) {
+    set_has_room_type();
+    room_type_ = room_type;
+  } else {
+    clear_has_room_type();
+    room_type_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.VacantRooms.room_type)
+}
+
+// -------------------------------------------------------------------
+
 // OrderInfo
 
 // optional int32 id = 1;
@@ -6284,6 +7033,234 @@ OrdersMessageResponse::mutable_orders() {
 
 // -------------------------------------------------------------------
 
+// MakeOrderInfo
+
+// optional string startdate = 1;
+inline bool MakeOrderInfo::has_startdate() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MakeOrderInfo::set_has_startdate() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MakeOrderInfo::clear_has_startdate() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MakeOrderInfo::clear_startdate() {
+  if (startdate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    startdate_->clear();
+  }
+  clear_has_startdate();
+}
+inline const ::std::string& MakeOrderInfo::startdate() const {
+  // @@protoc_insertion_point(field_get:network.MakeOrderInfo.startdate)
+  return *startdate_;
+}
+inline void MakeOrderInfo::set_startdate(const ::std::string& value) {
+  set_has_startdate();
+  if (startdate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    startdate_ = new ::std::string;
+  }
+  startdate_->assign(value);
+  // @@protoc_insertion_point(field_set:network.MakeOrderInfo.startdate)
+}
+inline void MakeOrderInfo::set_startdate(const char* value) {
+  set_has_startdate();
+  if (startdate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    startdate_ = new ::std::string;
+  }
+  startdate_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.MakeOrderInfo.startdate)
+}
+inline void MakeOrderInfo::set_startdate(const char* value, size_t size) {
+  set_has_startdate();
+  if (startdate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    startdate_ = new ::std::string;
+  }
+  startdate_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.MakeOrderInfo.startdate)
+}
+inline ::std::string* MakeOrderInfo::mutable_startdate() {
+  set_has_startdate();
+  if (startdate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    startdate_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.MakeOrderInfo.startdate)
+  return startdate_;
+}
+inline ::std::string* MakeOrderInfo::release_startdate() {
+  clear_has_startdate();
+  if (startdate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = startdate_;
+    startdate_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void MakeOrderInfo::set_allocated_startdate(::std::string* startdate) {
+  if (startdate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete startdate_;
+  }
+  if (startdate) {
+    set_has_startdate();
+    startdate_ = startdate;
+  } else {
+    clear_has_startdate();
+    startdate_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.MakeOrderInfo.startdate)
+}
+
+// optional string enddate = 2;
+inline bool MakeOrderInfo::has_enddate() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MakeOrderInfo::set_has_enddate() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MakeOrderInfo::clear_has_enddate() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MakeOrderInfo::clear_enddate() {
+  if (enddate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    enddate_->clear();
+  }
+  clear_has_enddate();
+}
+inline const ::std::string& MakeOrderInfo::enddate() const {
+  // @@protoc_insertion_point(field_get:network.MakeOrderInfo.enddate)
+  return *enddate_;
+}
+inline void MakeOrderInfo::set_enddate(const ::std::string& value) {
+  set_has_enddate();
+  if (enddate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    enddate_ = new ::std::string;
+  }
+  enddate_->assign(value);
+  // @@protoc_insertion_point(field_set:network.MakeOrderInfo.enddate)
+}
+inline void MakeOrderInfo::set_enddate(const char* value) {
+  set_has_enddate();
+  if (enddate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    enddate_ = new ::std::string;
+  }
+  enddate_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.MakeOrderInfo.enddate)
+}
+inline void MakeOrderInfo::set_enddate(const char* value, size_t size) {
+  set_has_enddate();
+  if (enddate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    enddate_ = new ::std::string;
+  }
+  enddate_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.MakeOrderInfo.enddate)
+}
+inline ::std::string* MakeOrderInfo::mutable_enddate() {
+  set_has_enddate();
+  if (enddate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    enddate_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.MakeOrderInfo.enddate)
+  return enddate_;
+}
+inline ::std::string* MakeOrderInfo::release_enddate() {
+  clear_has_enddate();
+  if (enddate_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = enddate_;
+    enddate_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void MakeOrderInfo::set_allocated_enddate(::std::string* enddate) {
+  if (enddate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete enddate_;
+  }
+  if (enddate) {
+    set_has_enddate();
+    enddate_ = enddate;
+  } else {
+    clear_has_enddate();
+    enddate_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.MakeOrderInfo.enddate)
+}
+
+// optional int32 idroom = 3;
+inline bool MakeOrderInfo::has_idroom() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MakeOrderInfo::set_has_idroom() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MakeOrderInfo::clear_has_idroom() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MakeOrderInfo::clear_idroom() {
+  idroom_ = 0;
+  clear_has_idroom();
+}
+inline ::google::protobuf::int32 MakeOrderInfo::idroom() const {
+  // @@protoc_insertion_point(field_get:network.MakeOrderInfo.idroom)
+  return idroom_;
+}
+inline void MakeOrderInfo::set_idroom(::google::protobuf::int32 value) {
+  set_has_idroom();
+  idroom_ = value;
+  // @@protoc_insertion_point(field_set:network.MakeOrderInfo.idroom)
+}
+
+// optional int32 idemployee = 4;
+inline bool MakeOrderInfo::has_idemployee() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void MakeOrderInfo::set_has_idemployee() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void MakeOrderInfo::clear_has_idemployee() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void MakeOrderInfo::clear_idemployee() {
+  idemployee_ = 0;
+  clear_has_idemployee();
+}
+inline ::google::protobuf::int32 MakeOrderInfo::idemployee() const {
+  // @@protoc_insertion_point(field_get:network.MakeOrderInfo.idemployee)
+  return idemployee_;
+}
+inline void MakeOrderInfo::set_idemployee(::google::protobuf::int32 value) {
+  set_has_idemployee();
+  idemployee_ = value;
+  // @@protoc_insertion_point(field_set:network.MakeOrderInfo.idemployee)
+}
+
+// optional int32 idguest = 5;
+inline bool MakeOrderInfo::has_idguest() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void MakeOrderInfo::set_has_idguest() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void MakeOrderInfo::clear_has_idguest() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void MakeOrderInfo::clear_idguest() {
+  idguest_ = 0;
+  clear_has_idguest();
+}
+inline ::google::protobuf::int32 MakeOrderInfo::idguest() const {
+  // @@protoc_insertion_point(field_get:network.MakeOrderInfo.idguest)
+  return idguest_;
+}
+inline void MakeOrderInfo::set_idguest(::google::protobuf::int32 value) {
+  set_has_idguest();
+  idguest_ = value;
+  // @@protoc_insertion_point(field_set:network.MakeOrderInfo.idguest)
+}
+
+// -------------------------------------------------------------------
+
 // RequestContext
 
 // optional .network.message_type message_type_ = 1;
@@ -6598,6 +7575,88 @@ inline void RequestContext::set_allocated_room_info(::network::RoomInfo* room_in
   // @@protoc_insertion_point(field_set_allocated:network.RequestContext.room_info)
 }
 
+// optional .network.VacantRooms data = 9;
+inline bool RequestContext::has_data() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void RequestContext::set_has_data() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void RequestContext::clear_has_data() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void RequestContext::clear_data() {
+  if (data_ != NULL) data_->::network::VacantRooms::Clear();
+  clear_has_data();
+}
+inline const ::network::VacantRooms& RequestContext::data() const {
+  // @@protoc_insertion_point(field_get:network.RequestContext.data)
+  return data_ != NULL ? *data_ : *default_instance_->data_;
+}
+inline ::network::VacantRooms* RequestContext::mutable_data() {
+  set_has_data();
+  if (data_ == NULL) data_ = new ::network::VacantRooms;
+  // @@protoc_insertion_point(field_mutable:network.RequestContext.data)
+  return data_;
+}
+inline ::network::VacantRooms* RequestContext::release_data() {
+  clear_has_data();
+  ::network::VacantRooms* temp = data_;
+  data_ = NULL;
+  return temp;
+}
+inline void RequestContext::set_allocated_data(::network::VacantRooms* data) {
+  delete data_;
+  data_ = data;
+  if (data) {
+    set_has_data();
+  } else {
+    clear_has_data();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RequestContext.data)
+}
+
+// optional .network.MakeOrderInfo make_order_info = 10;
+inline bool RequestContext::has_make_order_info() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void RequestContext::set_has_make_order_info() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void RequestContext::clear_has_make_order_info() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void RequestContext::clear_make_order_info() {
+  if (make_order_info_ != NULL) make_order_info_->::network::MakeOrderInfo::Clear();
+  clear_has_make_order_info();
+}
+inline const ::network::MakeOrderInfo& RequestContext::make_order_info() const {
+  // @@protoc_insertion_point(field_get:network.RequestContext.make_order_info)
+  return make_order_info_ != NULL ? *make_order_info_ : *default_instance_->make_order_info_;
+}
+inline ::network::MakeOrderInfo* RequestContext::mutable_make_order_info() {
+  set_has_make_order_info();
+  if (make_order_info_ == NULL) make_order_info_ = new ::network::MakeOrderInfo;
+  // @@protoc_insertion_point(field_mutable:network.RequestContext.make_order_info)
+  return make_order_info_;
+}
+inline ::network::MakeOrderInfo* RequestContext::release_make_order_info() {
+  clear_has_make_order_info();
+  ::network::MakeOrderInfo* temp = make_order_info_;
+  make_order_info_ = NULL;
+  return temp;
+}
+inline void RequestContext::set_allocated_make_order_info(::network::MakeOrderInfo* make_order_info) {
+  delete make_order_info_;
+  make_order_info_ = make_order_info;
+  if (make_order_info) {
+    set_has_make_order_info();
+  } else {
+    clear_has_make_order_info();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RequestContext.make_order_info)
+}
+
 // -------------------------------------------------------------------
 
 // RegisterMessageResponse
@@ -6852,6 +7911,30 @@ inline void AuthMessageResponse::set_allocated_messagetext(::std::string* messag
     messagetext_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   // @@protoc_insertion_point(field_set_allocated:network.AuthMessageResponse.messageText)
+}
+
+// optional int32 id_user = 5;
+inline bool AuthMessageResponse::has_id_user() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void AuthMessageResponse::set_has_id_user() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void AuthMessageResponse::clear_has_id_user() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void AuthMessageResponse::clear_id_user() {
+  id_user_ = 0;
+  clear_has_id_user();
+}
+inline ::google::protobuf::int32 AuthMessageResponse::id_user() const {
+  // @@protoc_insertion_point(field_get:network.AuthMessageResponse.id_user)
+  return id_user_;
+}
+inline void AuthMessageResponse::set_id_user(::google::protobuf::int32 value) {
+  set_has_id_user();
+  id_user_ = value;
+  // @@protoc_insertion_point(field_set:network.AuthMessageResponse.id_user)
 }
 
 // -------------------------------------------------------------------

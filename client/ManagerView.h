@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QTableWidgetItem>
 #include "MessageManager.h"
+#include "QDateTimeEdit"
+
 
 namespace Ui {
 class ManagerView;
@@ -42,13 +44,23 @@ public:
     }
     network::OrderInfo info;
 };
+class TableItemGuest: public QTableWidgetItem
+{
+public:
+    TableItemGuest();
+    TableItemGuest(QString str)
+        :QTableWidgetItem(str){
+
+    }
+    network::GuestInfo info;
+};
 
 class ManagerView : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ManagerView(std::shared_ptr<MessageManager> message_manager, uint32_t hoteid, QWidget *parent = 0);
+    explicit ManagerView(std::shared_ptr<MessageManager> message_manager, uint32_t hoteid, uint32_t employee_id, QWidget *parent = 0);
     ~ManagerView();
     void onRead(const network::ResponseContext &response);
 
@@ -81,13 +93,28 @@ private slots:
 
     void on_tabWidget_tabBarClicked(int index);
 
+    void on_vacantRoms_clicked();
+
+    void on_orderRatingStartCb_currentIndexChanged(const QString &arg1);
+    void on_vacantRoomsTbl_itemClicked(QTableWidgetItem *item);
+
+    void on_GuestsTbl_itemClicked(QTableWidgetItem *item);
+
+    void on_regGuestBnt_2_clicked();
+
+    void on_makeOrderBtn_clicked();
+
+    void on_tabWidget_currentChanged(int index);
+
 private:
     Ui::ManagerView *ui;
     uint32_t hotelID_;
+    uint32_t manager_id;
     network::SessionInfo sessionInfo_;
     std::shared_ptr<MessageManager> message_manager_;
     void getHotelEmployees(const network::EmployeesMessageResponse& response);
     void getHotelRooms(const network::RoomsMessageResponse &response);
+    void getVacantRooms(const network::RoomsMessageResponse &response);
     void getGuests(const network::GuestsMessageResponse &response);
     void getHotels(const network::HotelsMessageResponse &response);
     void getHotelTypes(const network::HotelTypesMessageResponse &response);
@@ -100,9 +127,12 @@ private:
     std::string statusToString(uint32_t status);
     void setRoomTypes(const network::RoomTypesMessageResponse &responce);
     void setRoomTypesGen(const network::RoomTypesMessageResponse &responce);
+    //void setRoomTypesOrders(const network::RoomTypesMessageResponse &responce);
+    std::string getStringDate(QDate date);
 
     network::EmployeeInfo currEmployee;
     network::RoomInfo currRoom;
+    network::GuestInfo currGuest;
 };
 
 #endif // MANAGERVIEW_H
