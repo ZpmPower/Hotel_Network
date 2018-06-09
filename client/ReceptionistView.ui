@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tabRooms">
     <attribute name="title">
@@ -34,7 +34,7 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>561</width>
+       <width>861</width>
        <height>411</height>
       </rect>
      </property>
@@ -48,7 +48,7 @@
     <widget class="QPushButton" name="hotelRoomsBtn">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>400</x>
        <y>430</y>
        <width>91</width>
        <height>25</height>
@@ -56,19 +56,6 @@
      </property>
      <property name="text">
       <string>Refresh</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="deleteRoomLbl">
-     <property name="geometry">
-      <rect>
-       <x>480</x>
-       <y>440</y>
-       <width>54</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>TextLabel</string>
      </property>
     </widget>
    </widget>
@@ -763,9 +750,9 @@
     <widget class="QTableWidget" name="HotelsTbl">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>10</x>
        <y>40</y>
-       <width>791</width>
+       <width>691</width>
        <height>151</height>
       </rect>
      </property>
@@ -779,9 +766,9 @@
     <widget class="QTableWidget" name="HotelTypesTbl">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>10</x>
        <y>260</y>
-       <width>291</width>
+       <width>261</width>
        <height>171</height>
       </rect>
      </property>
@@ -795,8 +782,8 @@
     <widget class="QLabel" name="label_9">
      <property name="geometry">
       <rect>
-       <x>360</x>
-       <y>230</y>
+       <x>750</x>
+       <y>20</y>
        <width>71</width>
        <height>17</height>
       </rect>
@@ -808,8 +795,8 @@
     <widget class="QLabel" name="label_10">
      <property name="geometry">
       <rect>
-       <x>410</x>
-       <y>10</y>
+       <x>320</x>
+       <y>20</y>
        <width>71</width>
        <height>17</height>
       </rect>
@@ -821,10 +808,10 @@
     <widget class="QTableWidget" name="RoomTypesTbl">
      <property name="geometry">
       <rect>
-       <x>320</x>
-       <y>260</y>
-       <width>171</width>
-       <height>171</height>
+       <x>720</x>
+       <y>40</y>
+       <width>161</width>
+       <height>151</height>
       </rect>
      </property>
      <property name="editTriggers">
@@ -837,7 +824,7 @@
     <widget class="QLabel" name="label_11">
      <property name="geometry">
       <rect>
-       <x>110</x>
+       <x>100</x>
        <y>230</y>
        <width>71</width>
        <height>17</height>
@@ -850,9 +837,9 @@
     <widget class="QTableWidget" name="OrdersTbl">
      <property name="geometry">
       <rect>
-       <x>500</x>
+       <x>350</x>
        <y>260</y>
-       <width>401</width>
+       <width>491</width>
        <height>171</height>
       </rect>
      </property>
@@ -866,7 +853,7 @@
     <widget class="QLabel" name="label_14">
      <property name="geometry">
       <rect>
-       <x>650</x>
+       <x>560</x>
        <y>230</y>
        <width>71</width>
        <height>17</height>
@@ -920,8 +907,8 @@
     <widget class="QGroupBox" name="groupBox">
      <property name="geometry">
       <rect>
-       <x>660</x>
-       <y>90</y>
+       <x>650</x>
+       <y>130</y>
        <width>221</width>
        <height>201</height>
       </rect>

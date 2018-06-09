@@ -60,34 +60,41 @@ void authReg::userAuth(const network::AuthMessageResponse &responce, const netwo
     Roles role = static_cast<Roles>(responce.role());
     message_manager_->setSession(sessionInfo);
     switch (role) {
-    case Roles::role_admin:
+    case Roles::role_admin:{
         adminView_ = std::make_shared<AdminView>(message_manager_);
         connect(adminView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
         adminView_->setAttribute(Qt::WA_DeleteOnClose, true);
         adminView_->show();
         this->hide();
         break;
-    case Roles::role_guest:
-        guestView_ = std::make_shared<GuestView>(message_manager_);
+    }
+    case Roles::role_guest:{
+        QMessageBox msgBox;
+        msgBox.setText(QString::fromStdString(std::to_string(responce.id_user())));
+        msgBox.exec();
+        guestView_ = std::make_shared<GuestView>(message_manager_,responce.id_user());
         connect(guestView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
         guestView_->setAttribute(Qt::WA_DeleteOnClose, true);
         guestView_->show();
         this->hide();
         break;
-    case Roles::role_manager:
+    }
+    case Roles::role_manager:{
         managerView_ = std::make_shared<ManagerView>(message_manager_,responce.id_hotel(),responce.id_user());
         connect(managerView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
         managerView_->setAttribute(Qt::WA_DeleteOnClose, true);
         managerView_->show();
         this->hide();
         break;
-    case Roles::role_receptionist:
+    }
+    case Roles::role_receptionist:{
         receptionistView_ = std::make_shared<ReceptionistView>(message_manager_,responce.id_hotel(),responce.id_user());
         connect(receptionistView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
         receptionistView_->setAttribute(Qt::WA_DeleteOnClose, true);
         receptionistView_->show();
         this->hide();
         break;
+    }
     default:
         break;
     }

@@ -13,6 +13,9 @@ AdminView::AdminView(std::shared_ptr<MessageManager> message_manager, QWidget *p
         message_manager_->setOnReadCB(std::bind(&AdminView::onRead, this, std::placeholders::_1));
     }
     connect(ui->okBtn, SIGNAL(clicked()), this, SLOT(onClick()));
+    ui->groupBox->setVisible(false);
+    ui->groupBox_2->setVisible(false);
+    ui->groupBox_3->setVisible(false);
 
 }
 

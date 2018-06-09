@@ -31,6 +31,14 @@ private slots:
 
     void on_tabWidget_tabBarClicked(int index);
 
+    void on_currentGuests_clicked();
+
+    void on_vacantRoomsTbl_itemClicked(QTableWidgetItem *item);
+
+    void on_GuestsTbl_itemClicked(QTableWidgetItem *item);
+
+    void on_guestBtn_clicked();
+
 signals:
     void enableGb();
 private:

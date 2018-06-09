@@ -47,6 +47,7 @@ class HotelsMessageResponse;
 class RoomInfo;
 class RoomsMessageResponse;
 class VacantRooms;
+class VacantRoomsGuest;
 class OrderInfo;
 class OrdersMessageResponse;
 class GuestOrderInfo;
@@ -1777,6 +1778,185 @@ class VacantRooms : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class VacantRoomsGuest : public ::google::protobuf::Message {
+ public:
+  VacantRoomsGuest();
+  virtual ~VacantRoomsGuest();
+
+  VacantRoomsGuest(const VacantRoomsGuest& from);
+
+  inline VacantRoomsGuest& operator=(const VacantRoomsGuest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const VacantRoomsGuest& default_instance();
+
+  void Swap(VacantRoomsGuest* other);
+
+  // implements Message ----------------------------------------------
+
+  VacantRoomsGuest* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const VacantRoomsGuest& from);
+  void MergeFrom(const VacantRoomsGuest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 places = 1;
+  inline bool has_places() const;
+  inline void clear_places();
+  static const int kPlacesFieldNumber = 1;
+  inline ::google::protobuf::int32 places() const;
+  inline void set_places(::google::protobuf::int32 value);
+
+  // optional int32 begin_price = 2;
+  inline bool has_begin_price() const;
+  inline void clear_begin_price();
+  static const int kBeginPriceFieldNumber = 2;
+  inline ::google::protobuf::int32 begin_price() const;
+  inline void set_begin_price(::google::protobuf::int32 value);
+
+  // optional int32 end_price = 3;
+  inline bool has_end_price() const;
+  inline void clear_end_price();
+  static const int kEndPriceFieldNumber = 3;
+  inline ::google::protobuf::int32 end_price() const;
+  inline void set_end_price(::google::protobuf::int32 value);
+
+  // optional string datebegin = 5;
+  inline bool has_datebegin() const;
+  inline void clear_datebegin();
+  static const int kDatebeginFieldNumber = 5;
+  inline const ::std::string& datebegin() const;
+  inline void set_datebegin(const ::std::string& value);
+  inline void set_datebegin(const char* value);
+  inline void set_datebegin(const char* value, size_t size);
+  inline ::std::string* mutable_datebegin();
+  inline ::std::string* release_datebegin();
+  inline void set_allocated_datebegin(::std::string* datebegin);
+
+  // optional string dateend = 6;
+  inline bool has_dateend() const;
+  inline void clear_dateend();
+  static const int kDateendFieldNumber = 6;
+  inline const ::std::string& dateend() const;
+  inline void set_dateend(const ::std::string& value);
+  inline void set_dateend(const char* value);
+  inline void set_dateend(const char* value, size_t size);
+  inline ::std::string* mutable_dateend();
+  inline ::std::string* release_dateend();
+  inline void set_allocated_dateend(::std::string* dateend);
+
+  // optional string hotel_type = 7;
+  inline bool has_hotel_type() const;
+  inline void clear_hotel_type();
+  static const int kHotelTypeFieldNumber = 7;
+  inline const ::std::string& hotel_type() const;
+  inline void set_hotel_type(const ::std::string& value);
+  inline void set_hotel_type(const char* value);
+  inline void set_hotel_type(const char* value, size_t size);
+  inline ::std::string* mutable_hotel_type();
+  inline ::std::string* release_hotel_type();
+  inline void set_allocated_hotel_type(::std::string* hotel_type);
+
+  // optional int32 begin_rating = 8;
+  inline bool has_begin_rating() const;
+  inline void clear_begin_rating();
+  static const int kBeginRatingFieldNumber = 8;
+  inline ::google::protobuf::int32 begin_rating() const;
+  inline void set_begin_rating(::google::protobuf::int32 value);
+
+  // optional int32 end_rating = 9;
+  inline bool has_end_rating() const;
+  inline void clear_end_rating();
+  static const int kEndRatingFieldNumber = 9;
+  inline ::google::protobuf::int32 end_rating() const;
+  inline void set_end_rating(::google::protobuf::int32 value);
+
+  // optional string room_type = 10;
+  inline bool has_room_type() const;
+  inline void clear_room_type();
+  static const int kRoomTypeFieldNumber = 10;
+  inline const ::std::string& room_type() const;
+  inline void set_room_type(const ::std::string& value);
+  inline void set_room_type(const char* value);
+  inline void set_room_type(const char* value, size_t size);
+  inline ::std::string* mutable_room_type();
+  inline ::std::string* release_room_type();
+  inline void set_allocated_room_type(::std::string* room_type);
+
+  // @@protoc_insertion_point(class_scope:network.VacantRoomsGuest)
+ private:
+  inline void set_has_places();
+  inline void clear_has_places();
+  inline void set_has_begin_price();
+  inline void clear_has_begin_price();
+  inline void set_has_end_price();
+  inline void clear_has_end_price();
+  inline void set_has_datebegin();
+  inline void clear_has_datebegin();
+  inline void set_has_dateend();
+  inline void clear_has_dateend();
+  inline void set_has_hotel_type();
+  inline void clear_has_hotel_type();
+  inline void set_has_begin_rating();
+  inline void clear_has_begin_rating();
+  inline void set_has_end_rating();
+  inline void clear_has_end_rating();
+  inline void set_has_room_type();
+  inline void clear_has_room_type();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 places_;
+  ::google::protobuf::int32 begin_price_;
+  ::std::string* datebegin_;
+  ::std::string* dateend_;
+  ::google::protobuf::int32 end_price_;
+  ::google::protobuf::int32 begin_rating_;
+  ::std::string* hotel_type_;
+  ::std::string* room_type_;
+  ::google::protobuf::int32 end_rating_;
+  friend void  protobuf_AddDesc_Message_2eproto();
+  friend void protobuf_AssignDesc_Message_2eproto();
+  friend void protobuf_ShutdownFile_Message_2eproto();
+
+  void InitAsDefaultInstance();
+  static VacantRoomsGuest* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class OrderInfo : public ::google::protobuf::Message {
  public:
   OrderInfo();
@@ -2544,6 +2724,15 @@ class RequestContext : public ::google::protobuf::Message {
   inline ::network::MakeOrderInfo* release_make_order_info();
   inline void set_allocated_make_order_info(::network::MakeOrderInfo* make_order_info);
 
+  // optional .network.VacantRoomsGuest vacant_rooms_guest = 11;
+  inline bool has_vacant_rooms_guest() const;
+  inline void clear_vacant_rooms_guest();
+  static const int kVacantRoomsGuestFieldNumber = 11;
+  inline const ::network::VacantRoomsGuest& vacant_rooms_guest() const;
+  inline ::network::VacantRoomsGuest* mutable_vacant_rooms_guest();
+  inline ::network::VacantRoomsGuest* release_vacant_rooms_guest();
+  inline void set_allocated_vacant_rooms_guest(::network::VacantRoomsGuest* vacant_rooms_guest);
+
   // @@protoc_insertion_point(class_scope:network.RequestContext)
  private:
   inline void set_has_message_type_();
@@ -2566,6 +2755,8 @@ class RequestContext : public ::google::protobuf::Message {
   inline void clear_has_data();
   inline void set_has_make_order_info();
   inline void clear_has_make_order_info();
+  inline void set_has_vacant_rooms_guest();
+  inline void clear_has_vacant_rooms_guest();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -2580,6 +2771,7 @@ class RequestContext : public ::google::protobuf::Message {
   ::network::RoomInfo* room_info_;
   ::network::VacantRooms* data_;
   ::network::MakeOrderInfo* make_order_info_;
+  ::network::VacantRoomsGuest* vacant_rooms_guest_;
   int message_type__;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
@@ -6821,6 +7013,434 @@ inline void VacantRooms::set_allocated_room_type(::std::string* room_type) {
 
 // -------------------------------------------------------------------
 
+// VacantRoomsGuest
+
+// optional int32 places = 1;
+inline bool VacantRoomsGuest::has_places() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void VacantRoomsGuest::set_has_places() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void VacantRoomsGuest::clear_has_places() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void VacantRoomsGuest::clear_places() {
+  places_ = 0;
+  clear_has_places();
+}
+inline ::google::protobuf::int32 VacantRoomsGuest::places() const {
+  // @@protoc_insertion_point(field_get:network.VacantRoomsGuest.places)
+  return places_;
+}
+inline void VacantRoomsGuest::set_places(::google::protobuf::int32 value) {
+  set_has_places();
+  places_ = value;
+  // @@protoc_insertion_point(field_set:network.VacantRoomsGuest.places)
+}
+
+// optional int32 begin_price = 2;
+inline bool VacantRoomsGuest::has_begin_price() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void VacantRoomsGuest::set_has_begin_price() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void VacantRoomsGuest::clear_has_begin_price() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void VacantRoomsGuest::clear_begin_price() {
+  begin_price_ = 0;
+  clear_has_begin_price();
+}
+inline ::google::protobuf::int32 VacantRoomsGuest::begin_price() const {
+  // @@protoc_insertion_point(field_get:network.VacantRoomsGuest.begin_price)
+  return begin_price_;
+}
+inline void VacantRoomsGuest::set_begin_price(::google::protobuf::int32 value) {
+  set_has_begin_price();
+  begin_price_ = value;
+  // @@protoc_insertion_point(field_set:network.VacantRoomsGuest.begin_price)
+}
+
+// optional int32 end_price = 3;
+inline bool VacantRoomsGuest::has_end_price() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void VacantRoomsGuest::set_has_end_price() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void VacantRoomsGuest::clear_has_end_price() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void VacantRoomsGuest::clear_end_price() {
+  end_price_ = 0;
+  clear_has_end_price();
+}
+inline ::google::protobuf::int32 VacantRoomsGuest::end_price() const {
+  // @@protoc_insertion_point(field_get:network.VacantRoomsGuest.end_price)
+  return end_price_;
+}
+inline void VacantRoomsGuest::set_end_price(::google::protobuf::int32 value) {
+  set_has_end_price();
+  end_price_ = value;
+  // @@protoc_insertion_point(field_set:network.VacantRoomsGuest.end_price)
+}
+
+// optional string datebegin = 5;
+inline bool VacantRoomsGuest::has_datebegin() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void VacantRoomsGuest::set_has_datebegin() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void VacantRoomsGuest::clear_has_datebegin() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void VacantRoomsGuest::clear_datebegin() {
+  if (datebegin_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datebegin_->clear();
+  }
+  clear_has_datebegin();
+}
+inline const ::std::string& VacantRoomsGuest::datebegin() const {
+  // @@protoc_insertion_point(field_get:network.VacantRoomsGuest.datebegin)
+  return *datebegin_;
+}
+inline void VacantRoomsGuest::set_datebegin(const ::std::string& value) {
+  set_has_datebegin();
+  if (datebegin_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datebegin_ = new ::std::string;
+  }
+  datebegin_->assign(value);
+  // @@protoc_insertion_point(field_set:network.VacantRoomsGuest.datebegin)
+}
+inline void VacantRoomsGuest::set_datebegin(const char* value) {
+  set_has_datebegin();
+  if (datebegin_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datebegin_ = new ::std::string;
+  }
+  datebegin_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.VacantRoomsGuest.datebegin)
+}
+inline void VacantRoomsGuest::set_datebegin(const char* value, size_t size) {
+  set_has_datebegin();
+  if (datebegin_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datebegin_ = new ::std::string;
+  }
+  datebegin_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.VacantRoomsGuest.datebegin)
+}
+inline ::std::string* VacantRoomsGuest::mutable_datebegin() {
+  set_has_datebegin();
+  if (datebegin_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    datebegin_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.VacantRoomsGuest.datebegin)
+  return datebegin_;
+}
+inline ::std::string* VacantRoomsGuest::release_datebegin() {
+  clear_has_datebegin();
+  if (datebegin_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = datebegin_;
+    datebegin_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void VacantRoomsGuest::set_allocated_datebegin(::std::string* datebegin) {
+  if (datebegin_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete datebegin_;
+  }
+  if (datebegin) {
+    set_has_datebegin();
+    datebegin_ = datebegin;
+  } else {
+    clear_has_datebegin();
+    datebegin_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.VacantRoomsGuest.datebegin)
+}
+
+// optional string dateend = 6;
+inline bool VacantRoomsGuest::has_dateend() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void VacantRoomsGuest::set_has_dateend() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void VacantRoomsGuest::clear_has_dateend() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void VacantRoomsGuest::clear_dateend() {
+  if (dateend_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dateend_->clear();
+  }
+  clear_has_dateend();
+}
+inline const ::std::string& VacantRoomsGuest::dateend() const {
+  // @@protoc_insertion_point(field_get:network.VacantRoomsGuest.dateend)
+  return *dateend_;
+}
+inline void VacantRoomsGuest::set_dateend(const ::std::string& value) {
+  set_has_dateend();
+  if (dateend_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dateend_ = new ::std::string;
+  }
+  dateend_->assign(value);
+  // @@protoc_insertion_point(field_set:network.VacantRoomsGuest.dateend)
+}
+inline void VacantRoomsGuest::set_dateend(const char* value) {
+  set_has_dateend();
+  if (dateend_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dateend_ = new ::std::string;
+  }
+  dateend_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.VacantRoomsGuest.dateend)
+}
+inline void VacantRoomsGuest::set_dateend(const char* value, size_t size) {
+  set_has_dateend();
+  if (dateend_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dateend_ = new ::std::string;
+  }
+  dateend_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.VacantRoomsGuest.dateend)
+}
+inline ::std::string* VacantRoomsGuest::mutable_dateend() {
+  set_has_dateend();
+  if (dateend_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    dateend_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.VacantRoomsGuest.dateend)
+  return dateend_;
+}
+inline ::std::string* VacantRoomsGuest::release_dateend() {
+  clear_has_dateend();
+  if (dateend_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = dateend_;
+    dateend_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void VacantRoomsGuest::set_allocated_dateend(::std::string* dateend) {
+  if (dateend_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete dateend_;
+  }
+  if (dateend) {
+    set_has_dateend();
+    dateend_ = dateend;
+  } else {
+    clear_has_dateend();
+    dateend_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.VacantRoomsGuest.dateend)
+}
+
+// optional string hotel_type = 7;
+inline bool VacantRoomsGuest::has_hotel_type() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void VacantRoomsGuest::set_has_hotel_type() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void VacantRoomsGuest::clear_has_hotel_type() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void VacantRoomsGuest::clear_hotel_type() {
+  if (hotel_type_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    hotel_type_->clear();
+  }
+  clear_has_hotel_type();
+}
+inline const ::std::string& VacantRoomsGuest::hotel_type() const {
+  // @@protoc_insertion_point(field_get:network.VacantRoomsGuest.hotel_type)
+  return *hotel_type_;
+}
+inline void VacantRoomsGuest::set_hotel_type(const ::std::string& value) {
+  set_has_hotel_type();
+  if (hotel_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    hotel_type_ = new ::std::string;
+  }
+  hotel_type_->assign(value);
+  // @@protoc_insertion_point(field_set:network.VacantRoomsGuest.hotel_type)
+}
+inline void VacantRoomsGuest::set_hotel_type(const char* value) {
+  set_has_hotel_type();
+  if (hotel_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    hotel_type_ = new ::std::string;
+  }
+  hotel_type_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.VacantRoomsGuest.hotel_type)
+}
+inline void VacantRoomsGuest::set_hotel_type(const char* value, size_t size) {
+  set_has_hotel_type();
+  if (hotel_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    hotel_type_ = new ::std::string;
+  }
+  hotel_type_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.VacantRoomsGuest.hotel_type)
+}
+inline ::std::string* VacantRoomsGuest::mutable_hotel_type() {
+  set_has_hotel_type();
+  if (hotel_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    hotel_type_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.VacantRoomsGuest.hotel_type)
+  return hotel_type_;
+}
+inline ::std::string* VacantRoomsGuest::release_hotel_type() {
+  clear_has_hotel_type();
+  if (hotel_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = hotel_type_;
+    hotel_type_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void VacantRoomsGuest::set_allocated_hotel_type(::std::string* hotel_type) {
+  if (hotel_type_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete hotel_type_;
+  }
+  if (hotel_type) {
+    set_has_hotel_type();
+    hotel_type_ = hotel_type;
+  } else {
+    clear_has_hotel_type();
+    hotel_type_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.VacantRoomsGuest.hotel_type)
+}
+
+// optional int32 begin_rating = 8;
+inline bool VacantRoomsGuest::has_begin_rating() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void VacantRoomsGuest::set_has_begin_rating() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void VacantRoomsGuest::clear_has_begin_rating() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void VacantRoomsGuest::clear_begin_rating() {
+  begin_rating_ = 0;
+  clear_has_begin_rating();
+}
+inline ::google::protobuf::int32 VacantRoomsGuest::begin_rating() const {
+  // @@protoc_insertion_point(field_get:network.VacantRoomsGuest.begin_rating)
+  return begin_rating_;
+}
+inline void VacantRoomsGuest::set_begin_rating(::google::protobuf::int32 value) {
+  set_has_begin_rating();
+  begin_rating_ = value;
+  // @@protoc_insertion_point(field_set:network.VacantRoomsGuest.begin_rating)
+}
+
+// optional int32 end_rating = 9;
+inline bool VacantRoomsGuest::has_end_rating() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void VacantRoomsGuest::set_has_end_rating() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void VacantRoomsGuest::clear_has_end_rating() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void VacantRoomsGuest::clear_end_rating() {
+  end_rating_ = 0;
+  clear_has_end_rating();
+}
+inline ::google::protobuf::int32 VacantRoomsGuest::end_rating() const {
+  // @@protoc_insertion_point(field_get:network.VacantRoomsGuest.end_rating)
+  return end_rating_;
+}
+inline void VacantRoomsGuest::set_end_rating(::google::protobuf::int32 value) {
+  set_has_end_rating();
+  end_rating_ = value;
+  // @@protoc_insertion_point(field_set:network.VacantRoomsGuest.end_rating)
+}
+
+// optional string room_type = 10;
+inline bool VacantRoomsGuest::has_room_type() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void VacantRoomsGuest::set_has_room_type() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void VacantRoomsGuest::clear_has_room_type() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void VacantRoomsGuest::clear_room_type() {
+  if (room_type_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    room_type_->clear();
+  }
+  clear_has_room_type();
+}
+inline const ::std::string& VacantRoomsGuest::room_type() const {
+  // @@protoc_insertion_point(field_get:network.VacantRoomsGuest.room_type)
+  return *room_type_;
+}
+inline void VacantRoomsGuest::set_room_type(const ::std::string& value) {
+  set_has_room_type();
+  if (room_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    room_type_ = new ::std::string;
+  }
+  room_type_->assign(value);
+  // @@protoc_insertion_point(field_set:network.VacantRoomsGuest.room_type)
+}
+inline void VacantRoomsGuest::set_room_type(const char* value) {
+  set_has_room_type();
+  if (room_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    room_type_ = new ::std::string;
+  }
+  room_type_->assign(value);
+  // @@protoc_insertion_point(field_set_char:network.VacantRoomsGuest.room_type)
+}
+inline void VacantRoomsGuest::set_room_type(const char* value, size_t size) {
+  set_has_room_type();
+  if (room_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    room_type_ = new ::std::string;
+  }
+  room_type_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:network.VacantRoomsGuest.room_type)
+}
+inline ::std::string* VacantRoomsGuest::mutable_room_type() {
+  set_has_room_type();
+  if (room_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    room_type_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:network.VacantRoomsGuest.room_type)
+  return room_type_;
+}
+inline ::std::string* VacantRoomsGuest::release_room_type() {
+  clear_has_room_type();
+  if (room_type_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = room_type_;
+    room_type_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void VacantRoomsGuest::set_allocated_room_type(::std::string* room_type) {
+  if (room_type_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete room_type_;
+  }
+  if (room_type) {
+    set_has_room_type();
+    room_type_ = room_type;
+  } else {
+    clear_has_room_type();
+    room_type_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.VacantRoomsGuest.room_type)
+}
+
+// -------------------------------------------------------------------
+
 // OrderInfo
 
 // optional int32 id = 1;
@@ -8347,6 +8967,47 @@ inline void RequestContext::set_allocated_make_order_info(::network::MakeOrderIn
     clear_has_make_order_info();
   }
   // @@protoc_insertion_point(field_set_allocated:network.RequestContext.make_order_info)
+}
+
+// optional .network.VacantRoomsGuest vacant_rooms_guest = 11;
+inline bool RequestContext::has_vacant_rooms_guest() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void RequestContext::set_has_vacant_rooms_guest() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void RequestContext::clear_has_vacant_rooms_guest() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void RequestContext::clear_vacant_rooms_guest() {
+  if (vacant_rooms_guest_ != NULL) vacant_rooms_guest_->::network::VacantRoomsGuest::Clear();
+  clear_has_vacant_rooms_guest();
+}
+inline const ::network::VacantRoomsGuest& RequestContext::vacant_rooms_guest() const {
+  // @@protoc_insertion_point(field_get:network.RequestContext.vacant_rooms_guest)
+  return vacant_rooms_guest_ != NULL ? *vacant_rooms_guest_ : *default_instance_->vacant_rooms_guest_;
+}
+inline ::network::VacantRoomsGuest* RequestContext::mutable_vacant_rooms_guest() {
+  set_has_vacant_rooms_guest();
+  if (vacant_rooms_guest_ == NULL) vacant_rooms_guest_ = new ::network::VacantRoomsGuest;
+  // @@protoc_insertion_point(field_mutable:network.RequestContext.vacant_rooms_guest)
+  return vacant_rooms_guest_;
+}
+inline ::network::VacantRoomsGuest* RequestContext::release_vacant_rooms_guest() {
+  clear_has_vacant_rooms_guest();
+  ::network::VacantRoomsGuest* temp = vacant_rooms_guest_;
+  vacant_rooms_guest_ = NULL;
+  return temp;
+}
+inline void RequestContext::set_allocated_vacant_rooms_guest(::network::VacantRoomsGuest* vacant_rooms_guest) {
+  delete vacant_rooms_guest_;
+  vacant_rooms_guest_ = vacant_rooms_guest;
+  if (vacant_rooms_guest) {
+    set_has_vacant_rooms_guest();
+  } else {
+    clear_has_vacant_rooms_guest();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RequestContext.vacant_rooms_guest)
 }
 
 // -------------------------------------------------------------------

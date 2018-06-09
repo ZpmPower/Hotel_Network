@@ -13,7 +13,7 @@ ReceptionistView::ReceptionistView(std::shared_ptr<MessageManager> message_manag
     ui->dateBegin->setDate(date);
     ui->dateBegin->setMinimumDate(date);
     ui->dateEnd->setMinimumDate(date);
-    message_manager_->getHotelEmployees(hotelID_);
+    message_manager_->getHotelRooms(hotelID_);
 }
 
 ReceptionistView::~ReceptionistView()
@@ -153,7 +153,7 @@ void ReceptionistView::getHotelRooms(const network::RoomsMessageResponse &respon
     ui->RoomsTbl->setHorizontalHeaderItem(3, new QTableWidgetItem("Status"));
     ui->RoomsTbl->setHorizontalHeaderItem(4, new QTableWidgetItem("Floor"));
     ui->RoomsTbl->setHorizontalHeaderItem(5, new QTableWidgetItem("Type"));
-    ui->RoomsTbl->setHorizontalHeaderItem(5, new QTableWidgetItem("ID"));
+    ui->RoomsTbl->setHorizontalHeaderItem(6, new QTableWidgetItem("ID"));
     for(size_t i =0; i< response.rooms_size(); i++)
     {
         network::RoomInfo info = response.rooms(i);
@@ -165,7 +165,8 @@ void ReceptionistView::getHotelRooms(const network::RoomsMessageResponse &respon
         ui->RoomsTbl->setItem(i, 2, new QTableWidgetItem(QString::fromStdString(std::to_string(info.rating()))));
         ui->RoomsTbl->setItem(i, 3, new QTableWidgetItem(QString::fromStdString(statusToString(info.status()))));
         ui->RoomsTbl->setItem(i, 4, new QTableWidgetItem(QString::fromStdString(std::to_string(info.floor()))));
-        ui->RoomsTbl->setItem(i, 5, new QTableWidgetItem(QString::fromStdString(std::to_string(info.id()))));
+        ui->RoomsTbl->setItem(i, 5, new QTableWidgetItem(QString::fromStdString(info.type())));
+        ui->RoomsTbl->setItem(i, 6, new QTableWidgetItem(QString::fromStdString(std::to_string(info.id()))));
     }
 
     ui->RoomsTbl->resizeColumnsToContents();
@@ -407,4 +408,28 @@ void ReceptionistView::on_deleteRoomBtn_clicked()
     {
       // do something else
     }
+}
+
+void ReceptionistView::on_currentGuests_clicked()
+{
+    message_manager_->getCurrentGuests(hotelID_);
+}
+
+void ReceptionistView::on_vacantRoomsTbl_itemClicked(QTableWidgetItem *item)
+{
+    int row  = item->row();
+    TableItemRooms *item1 = static_cast<TableItemRooms *>(ui->vacantRoomsTbl->item(row, 0));
+    currRoom = item1->info;
+}
+
+void ReceptionistView::on_GuestsTbl_itemClicked(QTableWidgetItem *item)
+{
+    int row  = item->row();
+    TableItemGuest *item1 = static_cast<TableItemGuest *>(ui->GuestsTbl->item(row, 0));
+    currGuest= item1->info;
+}
+
+void ReceptionistView::on_guestBtn_clicked()
+{
+    message_manager_->getGuests();
 }

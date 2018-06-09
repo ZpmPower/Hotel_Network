@@ -357,6 +357,30 @@ void MessageManager::getVacantRooms(const std::string &datebegin, const std::str
     execute(context.SerializeAsString());
 }
 
+void MessageManager::getVacantRoomsGuest(const std::string &datebegin, const std::string &dateend, uint32_t capacity, uint32_t startPrice, uint32_t endPrice, uint32_t startRating, uint32_t endRating, const std::string &room_type, const std::string &hotel_name)
+{
+    network::RequestContext context;
+    context.set_message_type_(network::message_type::HN_GET_VACANT_ROOMS_GUEST);
+    network::SessionInfo* session = new network::SessionInfo();
+    session->set_session_id(getSession().session_id());
+
+    network::VacantRoomsGuest* info = new network::VacantRoomsGuest();
+    info->set_datebegin(datebegin);
+    info->set_dateend(dateend);
+    info->set_places(capacity);
+    info->set_begin_price(startPrice);
+    info->set_end_price(endPrice);
+    info->set_begin_rating(startRating);
+    info->set_end_rating(endRating);
+    info->set_room_type(room_type);
+    info->set_hotel_type(hotel_name);
+
+    context.set_allocated_vacant_rooms_guest(info);
+    context.set_allocated_session_info(session);
+
+    execute(context.SerializeAsString());
+}
+
 void MessageManager::makeOrder(const std::string &datebegin, const std::string &dateend, uint32_t idroom, uint32_t idemployee, uint32_t idguest)
 {
     network::RequestContext context;

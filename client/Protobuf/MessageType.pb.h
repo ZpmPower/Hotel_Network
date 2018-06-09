@@ -58,11 +58,12 @@ enum message_type {
   HN_COUNT_HOTEL_EMPLOYEES = 21,
   HN_COUNT_HOTEL_ORDERS = 22,
   HN_AVG_RESIDENCE_TIME = 23,
-  HN_AVG_ROOM_RATING = 24
+  HN_AVG_ROOM_RATING = 24,
+  HN_GET_VACANT_ROOMS_GUEST = 25
 };
 bool message_type_IsValid(int value);
 const message_type message_type_MIN = HN_REGISTER;
-const message_type message_type_MAX = HN_AVG_ROOM_RATING;
+const message_type message_type_MAX = HN_GET_VACANT_ROOMS_GUEST;
 const int message_type_ARRAYSIZE = message_type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* message_type_descriptor();

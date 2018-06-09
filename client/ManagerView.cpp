@@ -169,7 +169,7 @@ void ManagerView::getHotelRooms(const network::RoomsMessageResponse &response)
     ui->RoomsTbl->setHorizontalHeaderItem(3, new QTableWidgetItem("Status"));
     ui->RoomsTbl->setHorizontalHeaderItem(4, new QTableWidgetItem("Floor"));
     ui->RoomsTbl->setHorizontalHeaderItem(5, new QTableWidgetItem("Type"));
-    ui->RoomsTbl->setHorizontalHeaderItem(5, new QTableWidgetItem("ID"));
+    ui->RoomsTbl->setHorizontalHeaderItem(6, new QTableWidgetItem("ID"));
     for(size_t i =0; i< response.rooms_size(); i++)
     {
         network::RoomInfo info = response.rooms(i);
@@ -180,8 +180,9 @@ void ManagerView::getHotelRooms(const network::RoomsMessageResponse &response)
         ui->RoomsTbl->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(std::to_string(info.price()))));
         ui->RoomsTbl->setItem(i, 2, new QTableWidgetItem(QString::fromStdString(std::to_string(info.rating()))));
         ui->RoomsTbl->setItem(i, 3, new QTableWidgetItem(QString::fromStdString(statusToString(info.status()))));
-        ui->RoomsTbl->setItem(i, 4, new QTableWidgetItem(QString::fromStdString(std::to_string(info.floor()))));
-        ui->RoomsTbl->setItem(i, 5, new QTableWidgetItem(QString::fromStdString(std::to_string(info.id()))));
+        ui->RoomsTbl->setItem(i, 4, new QTableWidgetItem(QString::fromStdString(std::to_string(info.floor()))));        
+        ui->RoomsTbl->setItem(i, 5, new QTableWidgetItem(QString::fromStdString(info.type())));
+        ui->RoomsTbl->setItem(i, 6, new QTableWidgetItem(QString::fromStdString(std::to_string(info.id()))));
     }
 
     ui->RoomsTbl->resizeColumnsToContents();
