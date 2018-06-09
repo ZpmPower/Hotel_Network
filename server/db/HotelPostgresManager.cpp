@@ -435,7 +435,7 @@ ResponseCode HotelPostgresManager::getHotels(std::vector<HotelInfo> &hotels)
             {
                 connection->prepare("getHotels",
                                     "SELECT hotel.id,hotel.name,city,street,phonenumber,email, stars, hoteltype.name AS type from hotel "
-                                    "JOIN hoteltype ON idtype=hoteltype.id;");
+                                    "JOIN hoteltype ON idtype=hoteltype.id ORDER BY hotel.id;");
             }
 
             pqxx::work work(*connection, "getHotels");
@@ -846,6 +846,65 @@ ResponseCode HotelPostgresManager::getVacantRooms(std::vector<RoomInfo> &rooms, 
     return result;
 }
 
+ResponseCode HotelPostgresManager::getVacantRoomsGuest(std::vector<RoomInfo> &rooms, const std::string &datebegin, const std::string &dateend, uint32_t capacity, uint32_t startPrice, uint32_t endPrice, uint32_t startRating, uint32_t endRating, const std::string &room_type, const std::string &hotel_type, uint32_t role)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        try
+        {
+
+            db_connection_ptr connection = checkConnection(role);
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("getVacantRooms"))
+            {
+                connection->prepare("getVacantRooms",
+                                    "select id,places,price,rating,status,floor,idhotel, (Select name from roomtype where name = $8) as type from room "
+                                    "where id not in (select distinct on(room.id) idroom from room join roomorder as ro on room.id = ro.idroom where "
+                                    "to_timestamp($1::varchar,'YYYY-MM-DD') BETWEEN ro.startdate AND ro.enddate OR "
+                                    "to_timestamp($2::varchar,'YYYY-MM-DD') BETWEEN ro.startdate AND ro.enddate OR "
+                                    "to_timestamp($1::varchar,'YYYY-MM-DD') <= ro.startdate and "
+                                    "to_timestamp($2::varchar,'YYYY-MM-DD') >= ro.enddate) "
+                                    "and places=$3 and "
+                                    "price BETWEEN $4 AND $5 and "
+                                    "rating BETWEEN $6 and $7 and "
+                                    "idtype = (Select id from roomtype WHERE name=$8::varchar) and "
+                                    "idhotel = (Select id from hotel where name=$9::varchar);");
+            }
+
+            pqxx::work work(*connection, "getVacantRooms");
+
+            pqxx::result res = work.prepared("getVacantRooms")(datebegin)(dateend)(capacity)(startPrice)(endPrice)(startRating)(endRating)(room_type)(hotel_type).exec();
+            if(res.empty())
+            {
+                result = ResponseCode::status_does_not_exist;
+                break;
+            }
+            for(const pqxx::tuple& value: res)
+            {
+                RoomInfo rInfo;
+                rInfo.parse_from_hn_room(value);
+                rooms.emplace_back(rInfo);
+            }
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query getVacantRooms err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+
+    return result;
+}
+
 
 ResponseCode HotelPostgresManager::getHotelOrders(std::vector<OrderInfo> &orders, uint32_t hotelid, uint32_t role)
 {
@@ -1210,7 +1269,7 @@ ResponseCode HotelPostgresManager::makeOrder(const std::string &datebegin, const
             if(!DBHelper::getDBHelper().isPrepared("makeOrder"))
             {
                 connection->prepare("makeOrder",
-                                    "INSERT INTO roomorder VALUES (DEFAULT,to_timestamp($1::varchar,'YYYY-MM-DD'),to_timestamp($2::varchar,'YYYY-MM-DD'),$3,$4,$5);");
+                                    "INSERT INTO roomorder VALUES (DEFAULT,to_timestamp($1::varchar,'YYYY-MM-DD'),to_timestamp($2::varchar,'YYYY-MM-DD'),$3,NULLIF($4,0),$5);");
             }
 
             pqxx::work work(*connection, "makeOrder");

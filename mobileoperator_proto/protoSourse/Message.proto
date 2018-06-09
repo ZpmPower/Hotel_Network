@@ -115,6 +115,20 @@ message VacantRooms {
     optional string room_type = 10;
 }
 
+message VacantRoomsGuest {
+
+    optional int32 places = 1;
+    optional int32 begin_price = 2;
+    optional int32 end_price = 3;
+    optional string datebegin = 5;
+    optional string dateend = 6;
+    optional string hotel_type = 7;
+    optional int32 begin_rating = 8;
+    optional int32 end_rating = 9;
+    optional string room_type = 10;
+}
+
+
 message OrderInfo {
 
     optional int32 id = 1;
@@ -169,6 +183,7 @@ message RequestContext {
     optional RoomInfo room_info = 8;
     optional VacantRooms data = 9;
     optional MakeOrderInfo make_order_info = 10;
+    optional VacantRoomsGuest vacant_rooms_guest = 11;
 }
 
 message RegisterMessageResponse

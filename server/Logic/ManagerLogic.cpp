@@ -93,6 +93,35 @@ ResponseCode ManagerLogic::getVacantRooms(network::RoomsMessageResponse *responc
      return result;
 }
 
+ResponseCode ManagerLogic::getVacantRoomsGuest(network::RoomsMessageResponse *responce, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        std::vector<RoomInfo> rooms;
+        uint32_t role;
+        network::VacantRoomsGuest vacant = request.vacant_rooms_guest();
+        SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
+        result = HotelPostgresManager::getVacantRoomsGuest(rooms,vacant.datebegin(),vacant.dateend(),vacant.places(),vacant.begin_price(),vacant.end_price(),
+                                                      vacant.begin_rating(),vacant.end_rating(),vacant.room_type(),vacant.hotel_type(),role);
+        for(RoomInfo info: rooms)
+        {
+
+            network::RoomInfo* room = responce->add_rooms();
+            room->set_places(info.places);
+            room->set_price(info.price);
+            room->set_rating(info.rating);
+            room->set_status(info.status);
+            room->set_floor(info.floor);
+            room->set_type(info.type);
+            room->set_hotelid(info.hotelID);
+            room->set_id(info.room_id);
+        }
+    }
+     while(false);
+     return result;
+}
+
 ResponseCode ManagerLogic::editEmployee(network::RegisterMessageResponse *responce, const network::RequestContext &request)
 {
     ResponseCode result = ResponseCode::status_internal_error;

@@ -25,6 +25,7 @@ private:
     ResponseCode getRoomsRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getHotelRoomsRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getVacantRoomsRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode getVacantRoomsGuestRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getHotelEmployeesRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getRoomTypesRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getHotelTypesRR(const network::RequestContext& request, network::ResponseContext &response);

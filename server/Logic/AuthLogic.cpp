@@ -187,6 +187,7 @@ ResponseCode AuthLogic::authUser(const network::AuthMessage &authData, network::
            {
                ResponseCode resGuest = h_manager.getGuestInfo(uInfo.user_id,gInfo);
                response->set_messagetext("Succes Guest");
+               response->set_id_user(gInfo.guest_id);
                break;
            }
            case Roles::role_admin:

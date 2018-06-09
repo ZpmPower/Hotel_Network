@@ -89,6 +89,9 @@ void RRManager::readSessionBuffer(std::shared_ptr<ClientChannel> session, ByteBu
     case network::HN_GET_VACANT_ROOMS:
         responseCode = getVacantRoomsRR(reqContext, resContext);
         break;
+    case network::HN_GET_VACANT_ROOMS_GUEST:
+        responseCode = getVacantRoomsGuestRR(reqContext, resContext);
+        break;
     case network::HN_MAKE_ORDER:
         responseCode = makeOrderRR(reqContext, resContext);
         break;
@@ -588,6 +591,22 @@ ResponseCode RRManager::getVacantRoomsRR(const network::RequestContext &request,
         network::RoomsMessageResponse* roomsRes = new network::RoomsMessageResponse();
 
         resultStatus = ManagerLogic::getVacantRooms(roomsRes,request);
+        response.set_allocated_rooms(roomsRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::getVacantRoomsGuestRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RoomsMessageResponse* roomsRes = new network::RoomsMessageResponse();
+
+        resultStatus = ManagerLogic::getVacantRoomsGuest(roomsRes,request);
         response.set_allocated_rooms(roomsRes);
     }
     while(false);
