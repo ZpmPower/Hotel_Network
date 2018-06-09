@@ -806,9 +806,11 @@ ResponseCode HotelPostgresManager::getVacantRooms(std::vector<RoomInfo> &rooms, 
             {
                 connection->prepare("getVacantRooms",
                                     "select id,places,price,rating,status,floor,idhotel, (Select name from roomtype where name = $8) as type from room "
-                                    "where id not in (select distinct on(room.id) idroom from room join roomorder as ro on room.id = ro.id "
-                                    "where to_timestamp($1::varchar,'YYYY-MM-DD') >= ro.startdate and "
-                                    "to_timestamp($1::varchar,'YYYY-MM-DD') <= ro.enddate and to_timestamp($2::varchar,'YYYY-MM-DD') >= ro.startdate and to_timestamp($2::varchar,'YYYY-MM-DD') <= ro.enddate)"
+                                    "where id not in (select distinct on(room.id) idroom from room join roomorder as ro on room.id = ro.idroom where "
+                                    "to_timestamp($1::varchar,'YYYY-MM-DD') BETWEEN ro.startdate AND ro.enddate OR "
+                                    "to_timestamp($2::varchar,'YYYY-MM-DD') BETWEEN ro.startdate AND ro.enddate OR "
+                                    "to_timestamp($1::varchar,'YYYY-MM-DD') <= ro.startdate and "
+                                    "to_timestamp($2::varchar,'YYYY-MM-DD') >= ro.enddate) "
                                     "and places=$3 and "
                                     "price BETWEEN $4 AND $5 and "
                                     "rating BETWEEN $6 and $7 and "
