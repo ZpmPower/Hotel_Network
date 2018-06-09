@@ -65,24 +65,28 @@ void authReg::userAuth(const network::AuthMessageResponse &responce, const netwo
         connect(adminView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
         adminView_->setAttribute(Qt::WA_DeleteOnClose, true);
         adminView_->show();
+        this->hide();
         break;
     case Roles::role_guest:
         guestView_ = std::make_shared<GuestView>(message_manager_);
         connect(guestView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
         guestView_->setAttribute(Qt::WA_DeleteOnClose, true);
         guestView_->show();
+        this->hide();
         break;
     case Roles::role_manager:
         managerView_ = std::make_shared<ManagerView>(message_manager_,responce.id_hotel(),responce.id_user());
         connect(managerView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
         managerView_->setAttribute(Qt::WA_DeleteOnClose, true);
         managerView_->show();
+        this->hide();
         break;
     case Roles::role_receptionist:
         receptionistView_ = std::make_shared<ReceptionistView>(message_manager_,responce.id_hotel(),responce.id_user());
         connect(receptionistView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
         receptionistView_->setAttribute(Qt::WA_DeleteOnClose, true);
         receptionistView_->show();
+        this->hide();
         break;
     default:
         break;

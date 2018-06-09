@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "MessageManager.h"
+#include "ManagerView.h"
 
 namespace Ui {
 class ReceptionistView;
@@ -20,6 +21,16 @@ public:
 private slots:
     void on_ReceptionistView_destroyed();
 
+    void on_hotelRoomsBtn_clicked();
+
+    void on_deleteRoomBtn_clicked();
+
+    void on_vacantRoms_clicked();
+
+    void on_makeOrderBtn_clicked();
+
+    void on_tabWidget_tabBarClicked(int index);
+
 signals:
     void enableGb();
 private:
@@ -28,6 +39,25 @@ private:
     uint32_t receptionist_id;
     network::SessionInfo sessionInfo_;
     std::shared_ptr<MessageManager> message_manager_;
+    std::string getStringDate(QDate date);
+    void getHotelRooms(const network::RoomsMessageResponse &response);
+    void getVacantRooms(const network::RoomsMessageResponse &response);
+    void getGuests(const network::GuestsMessageResponse &response);
+    void getHotels(const network::HotelsMessageResponse &response);
+    void getHotelTypes(const network::HotelTypesMessageResponse &response);
+    void getHotelOrders(const network::OrdersMessageResponse &response);
+    void getGuestOrders(const network::GuestOrdersMessageResponse &response);
+    void setRoomTypes(const network::RoomTypesMessageResponse &responce);
+    void setCountRooms(const network::RegisterMessageResponse &responce);
+    void setCountEmployees(const network::RegisterMessageResponse &responce);
+    void setCountOrders(const network::RegisterMessageResponse &responce);
+    void setAvgResTime(const network::RegisterMessageResponse &responce);
+    void setAvgRoomRating(const network::RegisterMessageResponse &responce);
+    void setRoomTypesGen(const network::RoomTypesMessageResponse &responce);
+    std::string statusToString(uint32_t status);
+
+    network::RoomInfo currRoom;
+    network::GuestInfo currGuest;
 };
 
 #endif // RECEPTIONISTVIEW_H
