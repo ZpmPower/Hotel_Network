@@ -10,6 +10,8 @@ GuestView::GuestView(std::shared_ptr<MessageManager> message_manager, uint32_t g
 
     message_manager_->getRoomTypes();
     message_manager_->getHotels();
+
+    ui->tabWidget->setCurrentIndex(0);
 }
 
 GuestView::~GuestView()

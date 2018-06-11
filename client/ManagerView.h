@@ -85,8 +85,6 @@ private slots:
 
     void on_addRoomBtn_clicked();
 
-    void on_addRoomBtn_2_clicked();
-
     void on_chooseBtn_clicked();
 
     void on_guestBtn_clicked();
@@ -107,6 +105,10 @@ private slots:
     void on_tabWidget_currentChanged(int index);
 
     void on_currentGuests_clicked();
+
+    void on_editRoomBtn_clicked();
+
+    void on_dateBegin_dateChanged(const QDate &date);
 
 private:
     Ui::ManagerView *ui;

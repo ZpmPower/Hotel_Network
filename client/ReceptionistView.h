@@ -39,6 +39,8 @@ private slots:
 
     void on_guestBtn_clicked();
 
+    void on_dateBegin_dateChanged(const QDate &date);
+
 signals:
     void enableGb();
 private:

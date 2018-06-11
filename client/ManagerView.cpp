@@ -1,6 +1,7 @@
 #include "ManagerView.h"
 #include "ui_ManagerView.h"
 #include "QMessageBox"
+#include "regex"
 
 ManagerView::ManagerView(std::shared_ptr<MessageManager> message_manager, uint32_t hoteid,uint32_t employee_id, QWidget *parent) :
     message_manager_(message_manager), hotelID_(hoteid),manager_id(employee_id),QWidget(parent),
@@ -12,10 +13,12 @@ ManagerView::ManagerView(std::shared_ptr<MessageManager> message_manager, uint32
     ui->editRoomBox->setVisible(false);
     message_manager->getRoomTypes();
     QDate date = QDate::currentDate();
+    QDate nextday(date.year(),date.month(),date.day()+1);
     ui->dateBegin->setDate(date);
     ui->dateBegin->setMinimumDate(date);
-    ui->dateEnd->setMinimumDate(date);
+    ui->dateEnd->setMinimumDate(nextday);
     message_manager_->getHotelEmployees(hotelID_);
+    ui->tabWidget->setCurrentIndex(0);
 }
 
 ManagerView::~ManagerView()
@@ -44,6 +47,11 @@ void ManagerView::onRead(const network::ResponseContext &response)
     case network::HN_DELETE_EMPLOYEE: {
         network::RegisterMessageResponse regRes = response.register_response();
         isDeleteEmployee(regRes);
+        break;
+    }
+    case network::HN_ADD_HOTEL_ROOM: {
+        network::RegisterMessageResponse regRes = response.register_response();
+        ui->addRoomlbl->setText(QString::fromStdString(regRes.messagetext()));
         break;
     }
     case network::HN_DELETE_ROOM: {
@@ -116,6 +124,11 @@ void ManagerView::onRead(const network::ResponseContext &response)
     case network::HN_AVG_ROOM_RATING: {
         network::RegisterMessageResponse res = response.register_response();
         setAvgRoomRating(res);
+        break;
+    }
+    case network::HN_MAKE_ORDER: {
+        network::RegisterMessageResponse res = response.register_response();
+        if(res.status() == true) QMessageBox::information(this, "Order status","Your order's processed succesfull");
         break;
     }
     }
@@ -366,7 +379,7 @@ uint32_t ManagerView::stringToRole(const std::string &role)
 
 void ManagerView::isUpdated(const network::RegisterMessageResponse &responce)
 {
-    ui->label->setText(QString::fromStdString(responce.messagetext()));
+    ui->editLbl->setText(QString::fromStdString(responce.messagetext()));
     LOG_INFO(responce.messagetext());
 }
 
@@ -465,18 +478,93 @@ std::string ManagerView::getStringDate(QDate date)
 
 void ManagerView::on_regReceptBtn_clicked()
 {
-    if(!ui->loginRPT->toPlainText().isEmpty() && !ui->passwordRPT->toPlainText().isEmpty())
+    if(!ui->loginRPT->toPlainText().isEmpty() && !ui->passwordRPT->toPlainText().isEmpty() && !ui->firstNRPT->toPlainText().isEmpty() && !ui->secondNRPT->toPlainText().isEmpty() && !ui->salaryRPT->toPlainText().isEmpty())
     {
         std::string login = ui->loginRPT->toPlainText().toStdString();
-        std::string password = ui->passwordRPT->toPlainText().toStdString();
         std::string fname = ui->firstNRPT->toPlainText().toStdString();
         std::string sname = ui->secondNRPT->toPlainText().toStdString();
         std::string lname = ui->lastNRPT->toPlainText().toStdString();
         std::string phone = ui->phoneRPT->toPlainText().toStdString();
+        std::string password = ui->passwordRPT->toPlainText().toStdString();
         uint32_t position = 3;
-        uint64_t salary = ui->salaryRPT->toPlainText().toInt(new bool,10);
-        message_manager_->createEmployee(login, password, fname,sname,lname,phone,salary,position,hotelID_,static_cast<uint32_t>(Roles::role_receptionist));
-        message_manager_->getHotelEmployees(hotelID_);
+        std::regex regexLogin("^[a-zA-Z][a-zA-Z0-9-_\\.]{1,20}$");
+        if(std::regex_match(login,regexLogin))
+        {
+            bool salaryOK;
+            int64_t salary = ui->salaryRPT->toPlainText().toInt(&salaryOK);
+            if(salaryOK && salary > 0)
+            {
+                if(std::regex_match(fname, std::regex("^[a-zA-Z]+$")) && std::regex_match(sname, std::regex("^[a-zA-Z]+$")))
+                {
+                    if(!lname.empty() || !phone.empty())
+                    {
+                        std::regex regexPhone("^(\\s*)?(\\+)?([- _():=+]?\\d[- _():=+]?){10,14}(\\s*)?$");
+                        std::regex regexLastN("^[a-zA-Z]+$");
+                        if(!phone.empty() && lname.empty())
+                        {
+                            if(std::regex_match(phone,regexPhone))
+                            {
+                                message_manager_->createEmployee(login, password, fname,sname,lname,phone,salary,position,hotelID_,static_cast<uint32_t>(Roles::role_receptionist));
+                                message_manager_->getHotelEmployees(hotelID_);
+
+                            }
+                            else
+                            {
+                                ui->regLabel->setText(QString::fromStdString("Enter corrent Phone_Number"));
+                            }
+                        }
+                        if(phone.empty() && !lname.empty())
+                        {
+                            if(std::regex_match(lname,regexLastN))
+                            {
+                                message_manager_->createEmployee(login, password, fname,sname,lname,phone,salary,position,hotelID_,static_cast<uint32_t>(Roles::role_receptionist));
+                                message_manager_->getHotelEmployees(hotelID_);
+
+                            }
+                            else
+                            {
+                                ui->regLabel->setText(QString::fromStdString("Enter corrent Last_Name"));
+                            }
+                        }
+                        if(!phone.empty() && !lname.empty())
+                        {
+                            if(std::regex_match(lname,regexLastN) && std::regex_match(phone,regexPhone))
+                            {
+                                message_manager_->createEmployee(login, password, fname,sname,lname,phone,salary,position,hotelID_,static_cast<uint32_t>(Roles::role_receptionist));
+                                message_manager_->getHotelEmployees(hotelID_);
+
+                            }
+                            else
+                            {
+                                 ui->regLabel->setText(QString::fromStdString("Enter corrent Last_Name\nand phone"));
+                            }
+                        }
+                    }
+                    else
+                    {
+
+                        message_manager_->createEmployee(login, password, fname,sname,lname,phone,salary,position,hotelID_,static_cast<uint32_t>(Roles::role_receptionist));
+                        message_manager_->getHotelEmployees(hotelID_);
+                    }
+                }
+                else
+                {
+                    ui->regLabel->setText(QString::fromStdString("Check First_Name and Second_Name"));
+                }
+            }
+            else
+            {
+                ui->regLabel->setText(QString::fromStdString("Enter corrent value of salary"));
+            }
+        }
+        else
+        {
+            ui->regLabel->setText(QString::fromStdString("Login must be 2-20 chars\nStart from letter"));
+        }
+    }
+    else
+    {
+        ui->regLabel->setText(QString::fromStdString("Enter all required fields"));
     }
 }
 
@@ -500,7 +588,6 @@ void ManagerView::on_EmployeesTbl_itemClicked(QTableWidgetItem *item)
     TableItemEmployees *item1 = static_cast<TableItemEmployees *>(ui->EmployeesTbl->item(row, 0));
     //LOG_INFO(item1->info.name());
     currEmployee = item1->info;
-    ui->label->setText(QString::fromStdString(std::to_string(currEmployee.id())));
     ui->firstNEdit->setPlainText(ui->EmployeesTbl->item(row, 0)->text());
     ui->secondNEdit->setPlainText(ui->EmployeesTbl->item(row, 1)->text());
     ui->lastNEdit->setPlainText(ui->EmployeesTbl->item(row, 2)->text());
@@ -526,14 +613,86 @@ void ManagerView::on_RoomsTbl_itemClicked(QTableWidgetItem *item)
 
 void ManagerView::on_editBtn_clicked()
 {
+    if(!ui->firstNEdit->toPlainText().isEmpty() && !ui->secondNEdit->toPlainText().isEmpty() && !ui->salaryEdit->toPlainText().isEmpty())
+    {
     std::string fname = ui->firstNEdit->toPlainText().toStdString();
     std::string sname = ui->secondNEdit->toPlainText().toStdString();
     std::string lname = ui->lastNEdit->toPlainText().toStdString();
-    std::string phone = ui->phoneEdit->toPlainText().toStdString();
-    uint64_t salary = ui->salaryEdit->toPlainText().toInt(new bool,10);
-    message_manager_->editEmployee(currEmployee.id(),fname,sname,lname,phone,salary,currEmployee.position(),currEmployee.hotelid());
-    message_manager_->getHotelEmployees(hotelID_);
+    std::string phone = ui->phoneEdit->toPlainText().toStdString();    
+    bool salaryOK;
+    int64_t salary = ui->salaryEdit->toPlainText().toInt(&salaryOK);
+    if(salaryOK && salary > 0)
+    {
+        if(std::regex_match(fname, std::regex("^[a-zA-Z]+$")) && std::regex_match(sname, std::regex("^[a-zA-Z]+$")))
+        {
+            if(!lname.empty() || !phone.empty())
+            {
+                std::regex regexPhone("^(\\s*)?(\\+)?([- _():=+]?\\d[- _():=+]?){10,14}(\\s*)?$");
+                std::regex regexLastN("^[a-zA-Z]+$");
+                if(!phone.empty() && lname.empty())
+                {
+                    if(std::regex_match(phone,regexPhone))
+                    {
+                        message_manager_->editEmployee(currEmployee.id(),fname,sname,lname,phone,salary,currEmployee.position(),currEmployee.hotelid());
+                        message_manager_->getHotelEmployees(hotelID_);
+
+                    }
+                    else
+                    {
+                        ui->editLbl->setText(QString::fromStdString("Enter corrent Phone_Number"));
+                    }
+                }
+                if(phone.empty() && !lname.empty())
+                {
+                    if(std::regex_match(lname,regexLastN))
+                    {
+                        message_manager_->editEmployee(currEmployee.id(),fname,sname,lname,phone,salary,currEmployee.position(),currEmployee.hotelid());
+                        message_manager_->getHotelEmployees(hotelID_);
+
+                    }
+                    else
+                    {
+                        ui->editLbl->setText(QString::fromStdString("Enter corrent Last_Name"));
+                    }
+                }
+                if(!phone.empty() && !lname.empty())
+                {
+                    if(std::regex_match(lname,regexLastN) && std::regex_match(lname,regexLastN))
+                    {
+                        message_manager_->editEmployee(currEmployee.id(),fname,sname,lname,phone,salary,currEmployee.position(),currEmployee.hotelid());
+                        message_manager_->getHotelEmployees(hotelID_);
+
+                    }
+                    else
+                    {
+                         ui->editLbl->setText(QString::fromStdString("Enter corrent Last_Name\nand phone"));
+                    }
+                }
+            }
+            else
+            {
+
+                message_manager_->editEmployee(currEmployee.id(),fname,sname,lname,phone,salary,currEmployee.position(),currEmployee.hotelid());
+                message_manager_->getHotelEmployees(hotelID_);
+            }
+        }
+        else
+        {
+            ui->editLbl->setText(QString::fromStdString("Check First_Name and Second_Name"));
+        }
+    }
+    else
+    {
+        ui->editLbl->setText(QString::fromStdString("Enter corrent value of salary"));
+    }
+    }
+    else
+    {
+        ui->editLbl->setText(QString::fromStdString("Enter all required fields"));
+    }
 }
+
+
 
 
 void ManagerView::on_deleteBtn_clicked()
@@ -587,27 +746,35 @@ void ManagerView::on_addRoomBtn_clicked()
     if(!ui->priceRTE->toPlainText().isEmpty() && !ui->floorRTE->toPlainText().isEmpty())
     {
         uint32_t places = ui->placesCb->currentText().toInt();
-        uint32_t price = ui->priceRTE->toPlainText().toInt();
         uint32_t rating = ui->ratingCb->currentText().toInt();
-        bool status = ui->statusCb->currentIndex();
-        uint32_t floor = ui->floorRTE->toPlainText().toInt(new bool,10);
         std::string type = ui->typeCb->currentText().toStdString();
-        message_manager_->addRoom(places,price,rating,status,floor,type, hotelID_);
-        message_manager_->getHotelRooms(hotelID_);
+        bool status = ui->statusCb->currentIndex();
+        bool floorStatus, priceStatus;
+        int32_t floor = ui->floorRTE->toPlainText().toInt(&floorStatus,10);
+        int32_t price = ui->priceRTE->toPlainText().toInt(&priceStatus,10);
+        if(floorStatus && floor > 0)
+        {
+            if(priceStatus && price > 0)
+            {
+                message_manager_->addRoom(places,price,rating,status,floor,type, hotelID_);
+                message_manager_->getHotelRooms(hotelID_);
+            }
+            else
+            {
+                ui->addRoomlbl->setText(QString::fromStdString("Price isn't correct"));
+            }
+        }
+        else
+        {
+            ui->addRoomlbl->setText(QString::fromStdString("Floor isn't correct"));
+        }
+    }
+    else
+    {
+        ui->addRoomlbl->setText(QString::fromStdString("Enter all fields"));
     }
 }
 
-void ManagerView::on_addRoomBtn_2_clicked()
-{
-    uint32_t places = ui->placesCbE->currentText().toInt();
-    uint32_t price = ui->priceRTEE->toPlainText().toInt();
-    uint32_t rating = ui->ratingCbE->currentText().toInt();
-    bool status = ui->statusCbE->currentIndex();
-    uint32_t floor = ui->floorRTEE->toPlainText().toInt(new bool,10);
-    std::string type = ui->typeCbE->currentText().toStdString();
-    message_manager_->editRoom(currRoom.id(),places,price,rating,status,floor,type, hotelID_);
-    message_manager_->getHotelRooms(hotelID_);
-}
 
 
 void ManagerView::on_chooseBtn_clicked()
@@ -632,6 +799,7 @@ void ManagerView::on_guestBtn_clicked()
 
 void ManagerView::on_tabWidget_tabBarClicked(int index)
 {
+    //QMessageBox::information(this, "Order status", QString::fromStdString("X="+ std::to_string(ui->tabWidget->geometry().x())));
     message_manager_->getHotels();
     message_manager_->getRoomTypes();
     message_manager_->getHotelTypes();    
@@ -644,7 +812,17 @@ void ManagerView::on_tabWidget_tabBarClicked(int index)
     message_manager_->countHotelOrders(hotelID_);
     message_manager_->avgResidenceTime(hotelID_);
     message_manager_->avgRoomRating(hotelID_);
-
+    message_manager_->getCurrentGuests(hotelID_);
+    if(index==2)
+    {
+        ui->tabWidget->setGeometry(ui->tabWidget->geometry().x(),ui->tabWidget->geometry().y(),901,331);
+        this->setGeometry(ui->tabWidget->geometry().x(),ui->tabWidget->geometry().y(),909,336);
+    }
+    else
+    {
+        ui->tabWidget->setGeometry(ui->tabWidget->geometry().x(),ui->tabWidget->geometry().y(),901,501);
+        this->setGeometry(ui->tabWidget->geometry().x(),ui->tabWidget->geometry().y(),909,511);
+    }
 }
 
 void ManagerView::on_vacantRoms_clicked()
@@ -669,7 +847,6 @@ void ManagerView::on_orderRatingStartCb_currentIndexChanged(const QString &arg1)
     {
         std::string type = std::to_string(i);
         ui->orderRatingEndCb->addItem(QString::fromStdString(type));
-        //ui->typeCbE->addItem(QString::fromStdString(type));
     }
     ui->orderRatingEndCb->setCurrentIndex(0);
     //ui->typeCbE->setCurrentIndex(0);
@@ -702,8 +879,78 @@ void ManagerView::on_regGuestBnt_2_clicked()
         std::string lname = ui->lastNGPT_2->toPlainText().toStdString();
         std::string phone = ui->phoneGPT_2->toPlainText().toStdString();
         std::string passport = ui->passportGPT_2->toPlainText().toStdString();
-        message_manager_->createGuest(login, password, fname,sname,lname,phone,passport,static_cast<uint32_t>(Roles::role_manager));
-        message_manager_->getGuests();
+        std::regex regexLogin("^[a-zA-Z][a-zA-Z0-9-_\\.]{1,20}$");
+        if(std::regex_match(login,regexLogin))
+        {
+            if(std::regex_match(passport,std::regex("^[A-Z]{2}\\d[0-9]{5}$")))
+            {
+                if(std::regex_match(fname, std::regex("^[a-zA-Z]+$")) && std::regex_match(sname, std::regex("^[a-zA-Z]+$")))
+                {
+                    if(!lname.empty() || !phone.empty())
+                    {
+                        std::regex regexPhone("^(\\s*)?(\\+)?([- _():=+]?\\d[- _():=+]?){10,14}(\\s*)?$");
+                        std::regex regexLastN("^[a-zA-Z]+$");
+                        if(!phone.empty() && lname.empty())
+                        {
+                            if(std::regex_match(phone,regexPhone))
+                            {
+                                message_manager_->createGuest(login, password, fname,sname,lname,phone,passport,static_cast<uint32_t>(Roles::role_manager));
+                                message_manager_->getGuests();
+                            }
+                            else
+                            {
+                                ui->registerGuestLbl->setText(QString::fromStdString("Enter corrent Phone_Number"));
+                            }
+                        }
+                        if(phone.empty() && !lname.empty())
+                        {
+                            if(std::regex_match(lname,regexLastN))
+                            {
+                                message_manager_->createGuest(login, password, fname,sname,lname,phone,passport,static_cast<uint32_t>(Roles::role_manager));
+                                message_manager_->getGuests();
+                            }
+                            else
+                            {
+                                ui->registerGuestLbl->setText(QString::fromStdString("Enter corrent Last_Name"));
+                            }
+                        }
+                        if(!phone.empty() && !lname.empty())
+                        {
+                            if(std::regex_match(phone,regexPhone) && std::regex_match(lname,regexLastN))
+                            {
+                                message_manager_->createGuest(login, password, fname,sname,lname,phone,passport,static_cast<uint32_t>(Roles::role_manager));
+                                message_manager_->getGuests();
+                            }
+                            else
+                            {
+                                 ui->registerGuestLbl->setText(QString::fromStdString("Enter corrent Last_Name\nand phone"));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        message_manager_->createGuest(login, password, fname,sname,lname,phone,passport,static_cast<uint32_t>(Roles::role_manager));
+                        message_manager_->getGuests();
+                    }
+                }
+                else
+                {
+                    ui->registerGuestLbl->setText(QString::fromStdString("Check First_Name and Second_Name"));
+                }
+            }
+            else
+            {
+                ui->registerGuestLbl->setText(QString::fromStdString("Passport must have 2 letter\nand 6 numbers"));
+            }
+        }
+        else
+        {
+            ui->registerGuestLbl->setText(QString::fromStdString("Login must be 2-20 chars\nStart from letter"));
+        }
+    }
+    else
+    {
+        ui->registerGuestLbl->setText(QString::fromStdString("Enter all required fields"));
     }
 }
 
@@ -721,4 +968,44 @@ void ManagerView::on_tabWidget_currentChanged(int index)
 void ManagerView::on_currentGuests_clicked()
 {
     message_manager_->getCurrentGuests(hotelID_);
+}
+
+void ManagerView::on_editRoomBtn_clicked()
+{
+    if(!ui->priceRTEE->toPlainText().isEmpty() && !ui->floorRTEE->toPlainText().isEmpty())
+    {
+        uint32_t places = ui->placesCbE->currentText().toInt();
+        uint32_t rating = ui->ratingCbE->currentText().toInt();
+        std::string type = ui->typeCbE->currentText().toStdString();
+        bool status = ui->statusCbE->currentIndex();
+        bool floorStatus, priceStatus;
+        int32_t floor = ui->floorRTEE->toPlainText().toInt(&floorStatus,10);
+        int32_t price = ui->priceRTEE->toPlainText().toInt(&priceStatus,10);
+        if(floorStatus && floor >0)
+        {
+            if(priceStatus && price > 0)
+            {
+                message_manager_->editRoom(currRoom.id(),places,price,rating,status,floor,type, hotelID_);
+                message_manager_->getHotelRooms(hotelID_);
+            }
+            else
+            {
+                ui->editRoomLbl->setText(QString::fromStdString("Price isn't correct"));
+            }
+        }
+        else
+        {
+            ui->editRoomLbl->setText(QString::fromStdString("Floor isn't correct"));
+        }
+    }
+    else
+    {
+        ui->editRoomLbl->setText(QString::fromStdString("Enter all fields"));
+    }
+}
+
+void ManagerView::on_dateBegin_dateChanged(const QDate &date)
+{
+    QDate newDate(date.year(),date.month(),date.day()+1);
+    ui->dateEnd->setMinimumDate(newDate);
 }

@@ -10,10 +10,12 @@ ReceptionistView::ReceptionistView(std::shared_ptr<MessageManager> message_manag
     ui->setupUi(this);
     message_manager->getRoomTypes();
     QDate date = QDate::currentDate();
+    QDate nextday(date.year(),date.month(),date.day()+1);
     ui->dateBegin->setDate(date);
     ui->dateBegin->setMinimumDate(date);
-    ui->dateEnd->setMinimumDate(date);
-    message_manager_->getHotelRooms(hotelID_);
+    ui->dateEnd->setMinimumDate(nextday);
+    message_manager_->getHotelRooms(hotelID_);   
+    ui->tabWidget->setCurrentIndex(0);
 }
 
 ReceptionistView::~ReceptionistView()
@@ -89,6 +91,11 @@ void ReceptionistView::onRead(const network::ResponseContext &response)
     case network::HN_AVG_ROOM_RATING: {
         network::RegisterMessageResponse res = response.register_response();
         setAvgRoomRating(res);
+        break;
+    }
+    case network::HN_MAKE_ORDER: {
+        network::RegisterMessageResponse res = response.register_response();
+        if(res.status() == true) QMessageBox::information(this, "Order status","Your order's processed succesfull");
         break;
     }
     }
@@ -432,4 +439,10 @@ void ReceptionistView::on_GuestsTbl_itemClicked(QTableWidgetItem *item)
 void ReceptionistView::on_guestBtn_clicked()
 {
     message_manager_->getGuests();
+}
+
+void ReceptionistView::on_dateBegin_dateChanged(const QDate &date)
+{
+    QDate newDate(date.year(),date.month(),date.day()+1);
+    ui->dateEnd->setMinimumDate(newDate);
 }
