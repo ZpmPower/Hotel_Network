@@ -139,6 +139,22 @@ ResponseCode ManagerLogic::editEmployee(network::RegisterMessageResponse *respon
      return result;
 }
 
+ResponseCode ManagerLogic::editGuest(network::RegisterMessageResponse *responce, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        uint32_t role;
+        SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
+        network::GuestInfo info = request.guest_info();
+
+        result = HotelPostgresManager::editGuest(info.id(),info.firstname(),info.secondname(),info.lastname(),info.phonenumber(),info.passport(),role);
+        responce->set_messagetext("Success");
+    }
+     while(false);
+     return result;
+}
+
 ResponseCode ManagerLogic::editHotelRoom(network::RegisterMessageResponse *responce, const network::RequestContext &request)
 {
     ResponseCode result = ResponseCode::status_internal_error;
@@ -234,6 +250,25 @@ ResponseCode ManagerLogic::getHotelTypes(network::HotelTypesMessageResponse *res
             type->set_id(info.id);
             type->set_name(info.name);
         }
+    }
+     while(false);
+     return result;
+}
+
+ResponseCode ManagerLogic::getGuestById(network::GuestInfo *responce, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        uint32_t role;
+        SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
+        GuestInfo guestInfo;
+        result = HotelPostgresManager::getGuestInfo(request.hotel_id().hotelid(),guestInfo);
+        responce->set_firstname(guestInfo.firstN);
+        responce->set_secondname(guestInfo.secondN);
+        responce->set_lastname(guestInfo.lastN);
+        responce->set_phonenumber(guestInfo.phone);
+        responce->set_passport(guestInfo.passport);
     }
      while(false);
      return result;

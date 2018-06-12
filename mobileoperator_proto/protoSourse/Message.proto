@@ -184,6 +184,7 @@ message RequestContext {
     optional VacantRooms data = 9;
     optional MakeOrderInfo make_order_info = 10;
     optional VacantRoomsGuest vacant_rooms_guest = 11;
+    optional GuestInfo guest_info = 12;
 }
 
 message RegisterMessageResponse
@@ -241,4 +242,5 @@ message ResponseContext {
     optional OrdersMessageResponse orders = 11;
     optional HotelTypesMessageResponse hotel_types = 12;
     optional GuestOrdersMessageResponse guest_orders = 13;
+    optional GuestInfo guest_info = 14;
 }

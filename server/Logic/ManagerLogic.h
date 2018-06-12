@@ -12,11 +12,13 @@ public:
     static ResponseCode getVacantRooms(network::RoomsMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode getVacantRoomsGuest(network::RoomsMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode editEmployee(network::RegisterMessageResponse *responce, const network::RequestContext &request);
+    static ResponseCode editGuest(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode editHotelRoom(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode deleteEmployee(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode deleteRoom(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode getRoomTypes(network::RoomTypesMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode getHotelTypes(network::HotelTypesMessageResponse *responce, const network::RequestContext &request);
+    static ResponseCode getGuestById(network::GuestInfo *responce, const network::RequestContext &request);
     static ResponseCode getHotelOrders(network::OrdersMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode addHotelRoom(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode makeOrder(network::RegisterMessageResponse *responce, const network::RequestContext &request);

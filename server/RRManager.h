@@ -23,6 +23,7 @@ private:
     ResponseCode getEmployeesRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getHotelsRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getRoomsRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode getGuestByIdRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getHotelRoomsRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getVacantRoomsRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getVacantRoomsGuestRR(const network::RequestContext& request, network::ResponseContext &response);
@@ -31,6 +32,7 @@ private:
     ResponseCode getHotelTypesRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getHotelOrdersRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode editEmployeeRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode editGuestRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode editHotelRoomRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode deleteEmployeeRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode deleteRoomRR(const network::RequestContext& request, network::ResponseContext &response);

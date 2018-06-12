@@ -517,6 +517,8 @@ ResponseCode HotelPostgresManager::getRooms(std::vector<RoomInfo> &rooms)
     return result;
 }
 
+
+
 ResponseCode HotelPostgresManager::countHotelRooms(uint32_t& countRooms,uint32_t hotelid, uint32_t role)
 {
     ResponseCode result = ResponseCode::status_internal_error;
@@ -989,6 +991,46 @@ ResponseCode HotelPostgresManager::editEmployee(int64_t user_id, const std::stri
         catch(const std::exception& e)
         {
             LOG_ERR("Failure: trying to query editEmployee err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+
+    return result;
+}
+
+ResponseCode HotelPostgresManager::editGuest(int64_t user_id, const std::string fname, const std::string sname, const std::string lname, const std::string phone, const std::string &passport, uint32_t role)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+
+    do
+    {
+        try
+        {
+            db_connection_ptr connection = checkConnection(role);
+
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("editGuest"))
+            {
+                connection->prepare("editGuest",
+                                    "UPDATE guest SET firstname = $2::varchar, secondname = $3::varchar, lastname= $4::varchar,"
+                                    "phonenumber = $5::varchar, passportnumber = $6::varchar WHERE id = $1;");
+            }
+
+            pqxx::work work(*connection, "editGuest");
+
+            pqxx::result res = work.prepared("editGuest")(user_id)(fname)(sname)(lname)(phone)(passport).exec();
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query editGuest err: " << e.what());
             break;
         }
     }

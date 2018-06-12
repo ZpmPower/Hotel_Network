@@ -41,6 +41,8 @@ public:
     static ResponseCode getHotelOrders(std::vector<OrderInfo> &orders, uint32_t hotelid, uint32_t role);
     static ResponseCode editEmployee(int64_t user_id, const std::string fname, const std::string sname, const std::string lname,
                                      const std::string phone, int64_t salary, uint32_t position, int32_t hotelid, uint32_t role);
+    static ResponseCode editGuest(int64_t user_id, const std::string fname, const std::string sname, const std::string lname,
+                                     const std::string phone, const std::string& passport, uint32_t role);
     static ResponseCode editHotelRoom(uint32_t id, uint32_t places, uint32_t price, uint32_t rating, bool status, uint32_t floor, const std::string &type, uint32_t hotel_id, uint32_t role);
     static ResponseCode deleteEmployee(int64_t user_id, uint32_t role);
     static ResponseCode deleteRoom(int64_t hotel_id, uint32_t role);

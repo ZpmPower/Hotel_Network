@@ -113,6 +113,12 @@ void RRManager::readSessionBuffer(std::shared_ptr<ClientChannel> session, ByteBu
     case network::HN_AVG_ROOM_RATING:
         responseCode = avgRoomRatingRR(reqContext, resContext);
         break;
+    case network::HN_GET_GUEST_BY_ID:
+        responseCode = getGuestByIdRR(reqContext, resContext);
+        break;
+    case network::HN_EDIT_GUEST:
+        responseCode = editGuestRR(reqContext, resContext);
+        break;
     default:
         responseCode = ResponseCode::status_unknown_command;
         break;
@@ -359,6 +365,21 @@ ResponseCode RRManager::editEmployeeRR(const network::RequestContext &request, n
     return resultStatus;
 }
 
+ResponseCode RRManager::editGuestRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+    do
+    {
+        network::RegisterMessageResponse* regRes = new network::RegisterMessageResponse();
+
+        resultStatus = ManagerLogic::editGuest(regRes,request);
+        response.set_allocated_register_response(regRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
 ResponseCode RRManager::editHotelRoomRR(const network::RequestContext &request, network::ResponseContext &response)
 {
     ResponseCode resultStatus = ResponseCode::status_internal_error;
@@ -560,6 +581,22 @@ ResponseCode RRManager::getRoomsRR(const network::RequestContext &request, netwo
 
         resultStatus = AdminLogic::getRooms(roomsRes);
         response.set_allocated_rooms(roomsRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::getGuestByIdRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::GuestInfo* guestRes = new network::GuestInfo();
+
+        resultStatus = ManagerLogic::getGuestById(guestRes,request);
+        response.set_allocated_guest_info(guestRes);
     }
     while(false);
 
