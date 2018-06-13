@@ -2733,6 +2733,15 @@ class RequestContext : public ::google::protobuf::Message {
   inline ::network::VacantRoomsGuest* release_vacant_rooms_guest();
   inline void set_allocated_vacant_rooms_guest(::network::VacantRoomsGuest* vacant_rooms_guest);
 
+  // optional .network.GuestInfo guest_info = 12;
+  inline bool has_guest_info() const;
+  inline void clear_guest_info();
+  static const int kGuestInfoFieldNumber = 12;
+  inline const ::network::GuestInfo& guest_info() const;
+  inline ::network::GuestInfo* mutable_guest_info();
+  inline ::network::GuestInfo* release_guest_info();
+  inline void set_allocated_guest_info(::network::GuestInfo* guest_info);
+
   // @@protoc_insertion_point(class_scope:network.RequestContext)
  private:
   inline void set_has_message_type_();
@@ -2757,6 +2766,8 @@ class RequestContext : public ::google::protobuf::Message {
   inline void clear_has_make_order_info();
   inline void set_has_vacant_rooms_guest();
   inline void clear_has_vacant_rooms_guest();
+  inline void set_has_guest_info();
+  inline void clear_has_guest_info();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -2772,6 +2783,7 @@ class RequestContext : public ::google::protobuf::Message {
   ::network::VacantRooms* data_;
   ::network::MakeOrderInfo* make_order_info_;
   ::network::VacantRoomsGuest* vacant_rooms_guest_;
+  ::network::GuestInfo* guest_info_;
   int message_type__;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
@@ -3547,6 +3559,15 @@ class ResponseContext : public ::google::protobuf::Message {
   inline ::network::GuestOrdersMessageResponse* release_guest_orders();
   inline void set_allocated_guest_orders(::network::GuestOrdersMessageResponse* guest_orders);
 
+  // optional .network.GuestInfo guest_info = 14;
+  inline bool has_guest_info() const;
+  inline void clear_guest_info();
+  static const int kGuestInfoFieldNumber = 14;
+  inline const ::network::GuestInfo& guest_info() const;
+  inline ::network::GuestInfo* mutable_guest_info();
+  inline ::network::GuestInfo* release_guest_info();
+  inline void set_allocated_guest_info(::network::GuestInfo* guest_info);
+
   // @@protoc_insertion_point(class_scope:network.ResponseContext)
  private:
   inline void set_has_error_code();
@@ -3575,6 +3596,8 @@ class ResponseContext : public ::google::protobuf::Message {
   inline void clear_has_hotel_types();
   inline void set_has_guest_orders();
   inline void clear_has_guest_orders();
+  inline void set_has_guest_info();
+  inline void clear_has_guest_info();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -3593,6 +3616,7 @@ class ResponseContext : public ::google::protobuf::Message {
   ::network::OrdersMessageResponse* orders_;
   ::network::HotelTypesMessageResponse* hotel_types_;
   ::network::GuestOrdersMessageResponse* guest_orders_;
+  ::network::GuestInfo* guest_info_;
   friend void  protobuf_AddDesc_Message_2eproto();
   friend void protobuf_AssignDesc_Message_2eproto();
   friend void protobuf_ShutdownFile_Message_2eproto();
@@ -9010,6 +9034,47 @@ inline void RequestContext::set_allocated_vacant_rooms_guest(::network::VacantRo
   // @@protoc_insertion_point(field_set_allocated:network.RequestContext.vacant_rooms_guest)
 }
 
+// optional .network.GuestInfo guest_info = 12;
+inline bool RequestContext::has_guest_info() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void RequestContext::set_has_guest_info() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void RequestContext::clear_has_guest_info() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void RequestContext::clear_guest_info() {
+  if (guest_info_ != NULL) guest_info_->::network::GuestInfo::Clear();
+  clear_has_guest_info();
+}
+inline const ::network::GuestInfo& RequestContext::guest_info() const {
+  // @@protoc_insertion_point(field_get:network.RequestContext.guest_info)
+  return guest_info_ != NULL ? *guest_info_ : *default_instance_->guest_info_;
+}
+inline ::network::GuestInfo* RequestContext::mutable_guest_info() {
+  set_has_guest_info();
+  if (guest_info_ == NULL) guest_info_ = new ::network::GuestInfo;
+  // @@protoc_insertion_point(field_mutable:network.RequestContext.guest_info)
+  return guest_info_;
+}
+inline ::network::GuestInfo* RequestContext::release_guest_info() {
+  clear_has_guest_info();
+  ::network::GuestInfo* temp = guest_info_;
+  guest_info_ = NULL;
+  return temp;
+}
+inline void RequestContext::set_allocated_guest_info(::network::GuestInfo* guest_info) {
+  delete guest_info_;
+  guest_info_ = guest_info;
+  if (guest_info) {
+    set_has_guest_info();
+  } else {
+    clear_has_guest_info();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.RequestContext.guest_info)
+}
+
 // -------------------------------------------------------------------
 
 // RegisterMessageResponse
@@ -10192,6 +10257,47 @@ inline void ResponseContext::set_allocated_guest_orders(::network::GuestOrdersMe
     clear_has_guest_orders();
   }
   // @@protoc_insertion_point(field_set_allocated:network.ResponseContext.guest_orders)
+}
+
+// optional .network.GuestInfo guest_info = 14;
+inline bool ResponseContext::has_guest_info() const {
+  return (_has_bits_[0] & 0x00002000u) != 0;
+}
+inline void ResponseContext::set_has_guest_info() {
+  _has_bits_[0] |= 0x00002000u;
+}
+inline void ResponseContext::clear_has_guest_info() {
+  _has_bits_[0] &= ~0x00002000u;
+}
+inline void ResponseContext::clear_guest_info() {
+  if (guest_info_ != NULL) guest_info_->::network::GuestInfo::Clear();
+  clear_has_guest_info();
+}
+inline const ::network::GuestInfo& ResponseContext::guest_info() const {
+  // @@protoc_insertion_point(field_get:network.ResponseContext.guest_info)
+  return guest_info_ != NULL ? *guest_info_ : *default_instance_->guest_info_;
+}
+inline ::network::GuestInfo* ResponseContext::mutable_guest_info() {
+  set_has_guest_info();
+  if (guest_info_ == NULL) guest_info_ = new ::network::GuestInfo;
+  // @@protoc_insertion_point(field_mutable:network.ResponseContext.guest_info)
+  return guest_info_;
+}
+inline ::network::GuestInfo* ResponseContext::release_guest_info() {
+  clear_has_guest_info();
+  ::network::GuestInfo* temp = guest_info_;
+  guest_info_ = NULL;
+  return temp;
+}
+inline void ResponseContext::set_allocated_guest_info(::network::GuestInfo* guest_info) {
+  delete guest_info_;
+  guest_info_ = guest_info;
+  if (guest_info) {
+    set_has_guest_info();
+  } else {
+    clear_has_guest_info();
+  }
+  // @@protoc_insertion_point(field_set_allocated:network.ResponseContext.guest_info)
 }
 
 

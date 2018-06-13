@@ -110,6 +110,14 @@ private slots:
 
     void on_dateBegin_dateChanged(const QDate &date);
 
+
+    void on_orderPriceStartCb_currentIndexChanged(int index);
+    void onReadData(std::string data);
+
+signals:
+    void readData(std::string);
+
+
 private:
     Ui::ManagerView *ui;
     uint32_t hotelID_;
@@ -131,6 +139,7 @@ private:
     void isDeleteRoom(const network::RegisterMessageResponse &responce);
     std::string statusToString(uint32_t status);
     void setRoomTypes(const network::RoomTypesMessageResponse &responce);
+    void setHotelFloors(const network::RegisterMessageResponse &responce);
     void setCountRooms(const network::RegisterMessageResponse &responce);
     void setCountEmployees(const network::RegisterMessageResponse &responce);
     void setCountOrders(const network::RegisterMessageResponse &responce);

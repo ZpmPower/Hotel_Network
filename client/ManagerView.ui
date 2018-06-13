@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>909</width>
+    <width>910</width>
     <height>509</height>
    </rect>
   </property>
@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tabEmployee">
     <attribute name="title">
@@ -333,8 +333,8 @@
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>600</x>
-       <y>420</y>
+       <x>590</x>
+       <y>440</y>
        <width>141</width>
        <height>17</height>
       </rect>
@@ -357,7 +357,7 @@
      <property name="geometry">
       <rect>
        <x>580</x>
-       <y>30</y>
+       <y>40</y>
        <width>301</width>
        <height>391</height>
       </rect>
@@ -663,8 +663,8 @@
     <widget class="QComboBox" name="comboBox_2">
      <property name="geometry">
       <rect>
-       <x>600</x>
-       <y>30</y>
+       <x>580</x>
+       <y>10</y>
        <width>121</width>
        <height>25</height>
       </rect>
@@ -683,8 +683,8 @@
     <widget class="QPushButton" name="chooseBtn">
      <property name="geometry">
       <rect>
-       <x>760</x>
-       <y>30</y>
+       <x>750</x>
+       <y>10</y>
        <width>91</width>
        <height>25</height>
       </rect>
@@ -713,16 +713,6 @@
        <rect>
         <x>130</x>
         <y>70</y>
-        <width>151</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="floorRTE">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>190</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -1044,6 +1034,16 @@
        <string/>
       </property>
      </widget>
+     <widget class="QComboBox" name="floorsNumberCb">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>190</y>
+        <width>151</width>
+        <height>25</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QGroupBox" name="editRoomBox">
      <property name="enabled">
@@ -1051,8 +1051,8 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>580</x>
-       <y>50</y>
+       <x>590</x>
+       <y>30</y>
        <width>301</width>
        <height>341</height>
       </rect>
@@ -1166,16 +1166,6 @@
       </property>
       <property name="text">
        <string>Floor :</string>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="floorRTEE">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>180</y>
-        <width>151</width>
-        <height>31</height>
-       </rect>
       </property>
      </widget>
      <widget class="QPushButton" name="editRoomBtn">
@@ -1397,6 +1387,16 @@
       </property>
       <property name="text">
        <string>Message:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="floorsNumberCbE">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>190</y>
+        <width>151</width>
+        <height>25</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -1978,6 +1978,26 @@
      <item>
       <property name="text">
        <string>6000</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7000</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8000</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>9000</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10000</string>
       </property>
      </item>
     </widget>

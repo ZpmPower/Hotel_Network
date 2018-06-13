@@ -27,6 +27,19 @@ private slots:
 
     void on_vacantRoomsTbl_itemClicked(QTableWidgetItem *item);
 
+    void on_orderPriceStartCb_currentIndexChanged(int index);
+
+    void onReadData(std::string data);
+
+    void on_editBtn_clicked();
+
+    void on_orderRatingStartCb_currentTextChanged(const QString &arg1);
+
+    void on_dateBegin_dateChanged(const QDate &date);
+
+signals:
+    void readData(std::string);
+
 private:
     Ui::GuestView *ui;
     network::SessionInfo sessionInfo_;
@@ -34,10 +47,12 @@ private:
     std::string statusToString(uint32_t status);
     std::string getStringDate(QDate date);
     void getHotels(const network::HotelsMessageResponse &response);
+    void getGuestOrders(const network::OrdersMessageResponse &response);
     void getVacantRooms(const network::RoomsMessageResponse &response);
     void setRoomTypes(const network::RoomTypesMessageResponse &responce);
 
     network::RoomInfo currRoom;
+    network::GuestInfo thisGuest;
     uint32_t guestId_;
 };
 

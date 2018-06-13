@@ -17,8 +17,11 @@ ManagerView::ManagerView(std::shared_ptr<MessageManager> message_manager, uint32
     ui->dateBegin->setDate(date);
     ui->dateBegin->setMinimumDate(date);
     ui->dateEnd->setMinimumDate(nextday);
-    message_manager_->getHotelEmployees(hotelID_);
     ui->tabWidget->setCurrentIndex(0);
+    message_manager_->getHotelEmployees(hotelID_);
+    message_manager_->getHotelFloors(hotelID_);
+    connect(this, SIGNAL(readData(std::string)), this, SLOT(onReadData(std::string)));
+
 }
 
 ManagerView::~ManagerView()
@@ -127,8 +130,12 @@ void ManagerView::onRead(const network::ResponseContext &response)
         break;
     }
     case network::HN_MAKE_ORDER: {
+        emit readData(response.SerializeAsString());
+        break;
+    }
+    case network::HN_GET_HOTEL_FLOORS: {
         network::RegisterMessageResponse res = response.register_response();
-        if(res.status() == true) QMessageBox::information(this, "Order status","Your order's processed succesfull");
+        setHotelFloors(res);
         break;
     }
     }
@@ -418,6 +425,21 @@ void ManagerView::setRoomTypes(const network::RoomTypesMessageResponse &responce
     ui->orderRoomType->setCurrentIndex(0);
 }
 
+void ManagerView::setHotelFloors(const network::RegisterMessageResponse &responce)
+{
+    ui->floorsNumberCb->clear();
+    ui->floorsNumberCbE->clear();
+    uint32_t size = std::stoi(responce.messagetext());
+    for (size_t i =1; i<= size; i++)
+    {
+        std::string type = std::to_string(i);
+        ui->floorsNumberCb->addItem(QString::fromStdString(type));
+        ui->floorsNumberCbE->addItem(QString::fromStdString(type));
+    }
+    ui->floorsNumberCb->setCurrentIndex(0);
+    ui->floorsNumberCbE->setCurrentIndex(0);
+}
+
 void ManagerView::setCountRooms(const network::RegisterMessageResponse &responce)
 {
     ui->roomCountLbl->setText(QString::fromStdString(responce.messagetext()));
@@ -606,7 +628,7 @@ void ManagerView::on_RoomsTbl_itemClicked(QTableWidgetItem *item)
     ui->priceRTEE->setPlainText(ui->RoomsTbl->item(row, 1)->text());
     ui->ratingCbE->setCurrentText(ui->RoomsTbl->item(row, 2)->text());
     ui->statusCbE->setCurrentText(ui->RoomsTbl->item(row, 3)->text());
-    ui->floorRTEE->setPlainText(ui->RoomsTbl->item(row, 4)->text());
+    ui->floorsNumberCbE->setCurrentText(ui->RoomsTbl->item(row, 4)->text());
     ui->typeCbE->setCurrentText(ui->RoomsTbl->item(row, 5)->text());
 }
 
@@ -743,21 +765,21 @@ void ManagerView::on_deleteRoomBtn_clicked()
 
 void ManagerView::on_addRoomBtn_clicked()
 {
-    if(!ui->priceRTE->toPlainText().isEmpty() && !ui->floorRTE->toPlainText().isEmpty())
+    if(!ui->priceRTE->toPlainText().isEmpty())
     {
         uint32_t places = ui->placesCb->currentText().toInt();
         uint32_t rating = ui->ratingCb->currentText().toInt();
         std::string type = ui->typeCb->currentText().toStdString();
         bool status = ui->statusCb->currentIndex();
         bool floorStatus, priceStatus;
-        int32_t floor = ui->floorRTE->toPlainText().toInt(&floorStatus,10);
+        int32_t floor = ui->floorsNumberCb->currentText().toInt(&floorStatus,10);
         int32_t price = ui->priceRTE->toPlainText().toInt(&priceStatus,10);
         if(floorStatus && floor > 0)
         {
             if(priceStatus && price > 0)
             {
                 message_manager_->addRoom(places,price,rating,status,floor,type, hotelID_);
-                message_manager_->getHotelRooms(hotelID_);
+
             }
             else
             {
@@ -773,6 +795,7 @@ void ManagerView::on_addRoomBtn_clicked()
     {
         ui->addRoomlbl->setText(QString::fromStdString("Enter all fields"));
     }
+    message_manager_->getHotelRooms(hotelID_);
 }
 
 
@@ -803,6 +826,7 @@ void ManagerView::on_tabWidget_tabBarClicked(int index)
     message_manager_->getHotels();
     message_manager_->getRoomTypes();
     message_manager_->getHotelTypes();    
+    message_manager_->getHotelFloors(hotelID_);
     message_manager_->getHotelOrders(hotelID_);
     message_manager_->getGuests();
     message_manager_->countHotelRooms(hotelID_);
@@ -813,16 +837,16 @@ void ManagerView::on_tabWidget_tabBarClicked(int index)
     message_manager_->avgResidenceTime(hotelID_);
     message_manager_->avgRoomRating(hotelID_);
     message_manager_->getCurrentGuests(hotelID_);
-    if(index==2)
-    {
-        ui->tabWidget->setGeometry(ui->tabWidget->geometry().x(),ui->tabWidget->geometry().y(),901,331);
-        this->setGeometry(ui->tabWidget->geometry().x(),ui->tabWidget->geometry().y(),909,336);
-    }
-    else
-    {
-        ui->tabWidget->setGeometry(ui->tabWidget->geometry().x(),ui->tabWidget->geometry().y(),901,501);
-        this->setGeometry(ui->tabWidget->geometry().x(),ui->tabWidget->geometry().y(),909,511);
-    }
+//    if(index==2)
+//    {
+//        ui->tabWidget->setGeometry(ui->tabWidget->geometry().x(),ui->tabWidget->geometry().y(),901,331);
+//        this->setGeometry(ui->tabWidget->geometry().x(),ui->tabWidget->geometry().y(),909,336);
+//    }
+//    else
+//    {
+//        ui->tabWidget->setGeometry(ui->tabWidget->geometry().x(),ui->tabWidget->geometry().y(),901,501);
+//        this->setGeometry(ui->tabWidget->geometry().x(),ui->tabWidget->geometry().y(),909,511);
+//    }
 }
 
 void ManagerView::on_vacantRoms_clicked()
@@ -842,7 +866,6 @@ void ManagerView::on_orderRatingStartCb_currentIndexChanged(const QString &arg1)
 {
     ui->orderRatingEndCb->clear();
     uint32_t value = arg1.toInt(new bool,10);
-    LOG_INFO(value);
     for (size_t i = value; i< 11; i++)
     {
         std::string type = std::to_string(i);
@@ -972,14 +995,14 @@ void ManagerView::on_currentGuests_clicked()
 
 void ManagerView::on_editRoomBtn_clicked()
 {
-    if(!ui->priceRTEE->toPlainText().isEmpty() && !ui->floorRTEE->toPlainText().isEmpty())
+    if(!ui->priceRTEE->toPlainText().isEmpty())
     {
         uint32_t places = ui->placesCbE->currentText().toInt();
         uint32_t rating = ui->ratingCbE->currentText().toInt();
         std::string type = ui->typeCbE->currentText().toStdString();
         bool status = ui->statusCbE->currentIndex();
         bool floorStatus, priceStatus;
-        int32_t floor = ui->floorRTEE->toPlainText().toInt(&floorStatus,10);
+        int32_t floor = ui->floorsNumberCbE->currentText().toInt(&floorStatus,10);
         int32_t price = ui->priceRTEE->toPlainText().toInt(&priceStatus,10);
         if(floorStatus && floor >0)
         {
@@ -1009,3 +1032,23 @@ void ManagerView::on_dateBegin_dateChanged(const QDate &date)
     QDate newDate(date.year(),date.month(),date.day()+1);
     ui->dateEnd->setMinimumDate(newDate);
 }
+
+void ManagerView::onReadData(std::string data)
+{
+    network::ResponseContext response;
+    response.ParseFromString(data);
+    network::RegisterMessageResponse res = response.register_response();
+    if(res.status() == true) QMessageBox::information(this, "Order status","Your order's processed succesfull");
+    else QMessageBox::information(this, "Order status","Something wrong");
+}
+
+
+void ManagerView::on_orderPriceStartCb_currentIndexChanged(int index)
+{
+    ui->orderPriceEndCb->clear();
+    for (size_t i=index; i<ui->orderPriceStartCb->count();i++)
+    {
+        ui->orderPriceEndCb->addItem(ui->orderPriceStartCb->itemText(i));
+    }
+}
+

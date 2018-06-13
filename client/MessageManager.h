@@ -21,11 +21,14 @@ public:
                         const std::string &lname, const std::string &phone, int64_t salary, int32_t position, int32_t hotelid, uint32_t role);
     bool editEmployee(uint32_t employeeId, const std::string &fname, const std::string &sname,
                       const std::string &lname, const std::string &phone, int64_t salary, const std::string &position, int32_t hotelid);
+    bool editGuest(uint32_t guestId, const std::string &fname, const std::string &sname,
+                      const std::string &lname, const std::string &phone, const std::string &passport);
     void getGuests();
     void getEmployees();
     void getHotelEmployees(uint32_t hotelid);
     void getHotels();
     void getRooms();
+    void getGuestbyId(uint32_t id);
 
     void countHotelRooms(uint32_t hotelid);
     void countHotelEmployees(uint32_t hotelid);
@@ -35,6 +38,8 @@ public:
 
     void getHotelRooms(uint32_t hotelid);
     void getHotelOrders(uint32_t hotelid);
+    void getHotelFloors(uint32_t hotelid);
+    void getGuestsOrders(uint32_t guest_id);
     void deleteEmployee(uint32_t employeeId);
     void deleteRoom(uint32_t roomId);
     network::SessionInfo& getSession() {return sessionInfo_;}

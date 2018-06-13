@@ -40,8 +40,16 @@ private slots:
     void on_guestBtn_clicked();
 
     void on_dateBegin_dateChanged(const QDate &date);
+    void onReadData(std::string data);
+
+    void on_orderRatingStartCb_currentIndexChanged(const QString &arg1);
+
+    void on_orderPriceStartCb_currentIndexChanged(int index);
+
+    void on_orderRatingStartCb_currentIndexChanged(int index);
 
 signals:
+    void readData(std::string);
     void enableGb();
 private:
     Ui::ReceptionistView *ui;

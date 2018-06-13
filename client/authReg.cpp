@@ -69,9 +69,6 @@ void authReg::userAuth(const network::AuthMessageResponse &responce, const netwo
         break;
     }
     case Roles::role_guest:{
-        QMessageBox msgBox;
-        msgBox.setText(QString::fromStdString(std::to_string(responce.id_user())));
-        msgBox.exec();
         guestView_ = std::make_shared<GuestView>(message_manager_,responce.id_user());
         connect(guestView_.get(), SIGNAL(onClose()), this, SLOT(logout()));
         guestView_->setAttribute(Qt::WA_DeleteOnClose, true);

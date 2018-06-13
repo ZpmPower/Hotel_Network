@@ -1,5 +1,5 @@
 QT += gui
-QT += widgets
+QT += widgets printsupport
 QT += sql
 
 TARGET = client
@@ -41,7 +41,8 @@ SOURCES += main.cpp \
     AdminView.cpp \
     ManagerView.cpp \
     ReceptionistView.cpp \
-    RegisterView.cpp
+    RegisterView.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
     ../common/Worker.h \
@@ -60,7 +61,8 @@ HEADERS += \
     AdminView.h \
     ManagerView.h \
     ReceptionistView.h \
-    RegisterView.h
+    RegisterView.h \
+    qcustomplot.h
 
 system(cp $$PWD/SSL/* $PWD/../build/MOBILE_CLIENT/debugs)
 system(cp $$PWD/Config/config.cfg $PWD/../build/MOBILE_CLIENT/debugs)

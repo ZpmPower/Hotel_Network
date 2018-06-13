@@ -472,7 +472,7 @@ void protobuf_AssignDesc_Message_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MakeOrderInfo));
   RequestContext_descriptor_ = file->message_type(19);
-  static const int RequestContext_offsets_[11] = {
+  static const int RequestContext_offsets_[12] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RequestContext, message_type__),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RequestContext, auth_message__),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RequestContext, register_message__),
@@ -484,6 +484,7 @@ void protobuf_AssignDesc_Message_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RequestContext, data_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RequestContext, make_order_info_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RequestContext, vacant_rooms_guest_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RequestContext, guest_info_),
   };
   RequestContext_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -596,7 +597,7 @@ void protobuf_AssignDesc_Message_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(HotelTypesMessageResponse));
   ResponseContext_descriptor_ = file->message_type(26);
-  static const int ResponseContext_offsets_[13] = {
+  static const int ResponseContext_offsets_[14] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, error_code_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, message_type__),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, register_response_),
@@ -610,6 +611,7 @@ void protobuf_AssignDesc_Message_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, orders_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, hotel_types_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, guest_orders_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ResponseContext, guest_info_),
   };
   ResponseContext_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -812,7 +814,7 @@ void protobuf_AddDesc_Message_2eproto() {
     "\0132\027.network.GuestOrderInfo\"h\n\rMakeOrderI"
     "nfo\022\021\n\tstartdate\030\001 \001(\t\022\017\n\007enddate\030\002 \001(\t\022"
     "\016\n\006idroom\030\003 \001(\005\022\022\n\nidemployee\030\004 \001(\005\022\017\n\007i"
-    "dguest\030\005 \001(\005\"\226\004\n\016RequestContext\022,\n\rmessa"
+    "dguest\030\005 \001(\005\"\276\004\n\016RequestContext\022,\n\rmessa"
     "ge_type_\030\001 \001(\0162\025.network.message_type\022+\n"
     "\rauth_message_\030\002 \001(\0132\024.network.AuthMessa"
     "ge\0223\n\021register_message_\030\003 \001(\0132\030.network."
@@ -825,7 +827,8 @@ void protobuf_AddDesc_Message_2eproto() {
     ".RoomInfo\022\"\n\004data\030\t \001(\0132\024.network.Vacant"
     "Rooms\022/\n\017make_order_info\030\n \001(\0132\026.network"
     ".MakeOrderInfo\0225\n\022vacant_rooms_guest\030\013 \001"
-    "(\0132\031.network.VacantRoomsGuest\">\n\027Registe"
+    "(\0132\031.network.VacantRoomsGuest\022&\n\nguest_i"
+    "nfo\030\014 \001(\0132\022.network.GuestInfo\">\n\027Registe"
     "rMessageResponse\022\023\n\013messageText\030\001 \001(\t\022\016\n"
     "\006status\030\002 \001(\010\"k\n\023AuthMessageResponse\022\014\n\004"
     "role\030\001 \001(\005\022\020\n\010id_hotel\030\002 \001(\005\022\016\n\006status\030\003"
@@ -835,7 +838,7 @@ void protobuf_AddDesc_Message_2eproto() {
     "(\t\")\n\030RoomTypesMessageResponse\022\r\n\005types\030"
     "\001 \003(\t\"%\n\tHotelType\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002"
     " \001(\t\">\n\031HotelTypesMessageResponse\022!\n\005typ"
-    "es\030\001 \003(\0132\022.network.HotelType\"\213\005\n\017Respons"
+    "es\030\001 \003(\0132\022.network.HotelType\"\263\005\n\017Respons"
     "eContext\022\022\n\nerror_code\030\001 \001(\005\022,\n\rmessage_"
     "type_\030\002 \001(\0162\025.network.message_type\022;\n\021re"
     "gister_response\030\003 \001(\0132 .network.Register"
@@ -852,7 +855,8 @@ void protobuf_AddDesc_Message_2eproto() {
     "sponse\0227\n\013hotel_types\030\014 \001(\0132\".network.Ho"
     "telTypesMessageResponse\0229\n\014guest_orders\030"
     "\r \001(\0132#.network.GuestOrdersMessageRespon"
-    "se", 3802);
+    "se\022&\n\nguest_info\030\016 \001(\0132\022.network.GuestIn"
+    "fo", 3882);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Message.proto", &protobuf_RegisterTypes);
   AuthMessage::default_instance_ = new AuthMessage();
@@ -9188,6 +9192,7 @@ const int RequestContext::kRoomInfoFieldNumber;
 const int RequestContext::kDataFieldNumber;
 const int RequestContext::kMakeOrderInfoFieldNumber;
 const int RequestContext::kVacantRoomsGuestFieldNumber;
+const int RequestContext::kGuestInfoFieldNumber;
 #endif  // !_MSC_VER
 
 RequestContext::RequestContext()
@@ -9207,6 +9212,7 @@ void RequestContext::InitAsDefaultInstance() {
   data_ = const_cast< ::network::VacantRooms*>(&::network::VacantRooms::default_instance());
   make_order_info_ = const_cast< ::network::MakeOrderInfo*>(&::network::MakeOrderInfo::default_instance());
   vacant_rooms_guest_ = const_cast< ::network::VacantRoomsGuest*>(&::network::VacantRoomsGuest::default_instance());
+  guest_info_ = const_cast< ::network::GuestInfo*>(&::network::GuestInfo::default_instance());
 }
 
 RequestContext::RequestContext(const RequestContext& from)
@@ -9229,6 +9235,7 @@ void RequestContext::SharedCtor() {
   data_ = NULL;
   make_order_info_ = NULL;
   vacant_rooms_guest_ = NULL;
+  guest_info_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -9249,6 +9256,7 @@ void RequestContext::SharedDtor() {
     delete data_;
     delete make_order_info_;
     delete vacant_rooms_guest_;
+    delete guest_info_;
   }
 }
 
@@ -9298,7 +9306,7 @@ void RequestContext::Clear() {
       if (room_info_ != NULL) room_info_->::network::RoomInfo::Clear();
     }
   }
-  if (_has_bits_[8 / 32] & 1792) {
+  if (_has_bits_[8 / 32] & 3840) {
     if (has_data()) {
       if (data_ != NULL) data_->::network::VacantRooms::Clear();
     }
@@ -9307,6 +9315,9 @@ void RequestContext::Clear() {
     }
     if (has_vacant_rooms_guest()) {
       if (vacant_rooms_guest_ != NULL) vacant_rooms_guest_->::network::VacantRoomsGuest::Clear();
+    }
+    if (has_guest_info()) {
+      if (guest_info_ != NULL) guest_info_->::network::GuestInfo::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -9468,6 +9479,19 @@ bool RequestContext::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(98)) goto parse_guest_info;
+        break;
+      }
+
+      // optional .network.GuestInfo guest_info = 12;
+      case 12: {
+        if (tag == 98) {
+         parse_guest_info:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_guest_info()));
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -9563,6 +9587,12 @@ void RequestContext::SerializeWithCachedSizes(
       11, this->vacant_rooms_guest(), output);
   }
 
+  // optional .network.GuestInfo guest_info = 12;
+  if (has_guest_info()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      12, this->guest_info(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -9647,6 +9677,13 @@ void RequestContext::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         11, this->vacant_rooms_guest(), target);
+  }
+
+  // optional .network.GuestInfo guest_info = 12;
+  if (has_guest_info()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        12, this->guest_info(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -9739,6 +9776,13 @@ int RequestContext::ByteSize() const {
           this->vacant_rooms_guest());
     }
 
+    // optional .network.GuestInfo guest_info = 12;
+    if (has_guest_info()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->guest_info());
+    }
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -9801,6 +9845,9 @@ void RequestContext::MergeFrom(const RequestContext& from) {
     if (from.has_vacant_rooms_guest()) {
       mutable_vacant_rooms_guest()->::network::VacantRoomsGuest::MergeFrom(from.vacant_rooms_guest());
     }
+    if (from.has_guest_info()) {
+      mutable_guest_info()->::network::GuestInfo::MergeFrom(from.guest_info());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -9835,6 +9882,7 @@ void RequestContext::Swap(RequestContext* other) {
     std::swap(data_, other->data_);
     std::swap(make_order_info_, other->make_order_info_);
     std::swap(vacant_rooms_guest_, other->vacant_rooms_guest_);
+    std::swap(guest_info_, other->guest_info_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -11675,6 +11723,7 @@ const int ResponseContext::kTypesFieldNumber;
 const int ResponseContext::kOrdersFieldNumber;
 const int ResponseContext::kHotelTypesFieldNumber;
 const int ResponseContext::kGuestOrdersFieldNumber;
+const int ResponseContext::kGuestInfoFieldNumber;
 #endif  // !_MSC_VER
 
 ResponseContext::ResponseContext()
@@ -11695,6 +11744,7 @@ void ResponseContext::InitAsDefaultInstance() {
   orders_ = const_cast< ::network::OrdersMessageResponse*>(&::network::OrdersMessageResponse::default_instance());
   hotel_types_ = const_cast< ::network::HotelTypesMessageResponse*>(&::network::HotelTypesMessageResponse::default_instance());
   guest_orders_ = const_cast< ::network::GuestOrdersMessageResponse*>(&::network::GuestOrdersMessageResponse::default_instance());
+  guest_info_ = const_cast< ::network::GuestInfo*>(&::network::GuestInfo::default_instance());
 }
 
 ResponseContext::ResponseContext(const ResponseContext& from)
@@ -11719,6 +11769,7 @@ void ResponseContext::SharedCtor() {
   orders_ = NULL;
   hotel_types_ = NULL;
   guest_orders_ = NULL;
+  guest_info_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -11740,6 +11791,7 @@ void ResponseContext::SharedDtor() {
     delete orders_;
     delete hotel_types_;
     delete guest_orders_;
+    delete guest_info_;
   }
 }
 
@@ -11796,7 +11848,7 @@ void ResponseContext::Clear() {
       if (hotels_ != NULL) hotels_->::network::HotelsMessageResponse::Clear();
     }
   }
-  if (_has_bits_[8 / 32] & 7936) {
+  if (_has_bits_[8 / 32] & 16128) {
     if (has_rooms()) {
       if (rooms_ != NULL) rooms_->::network::RoomsMessageResponse::Clear();
     }
@@ -11811,6 +11863,9 @@ void ResponseContext::Clear() {
     }
     if (has_guest_orders()) {
       if (guest_orders_ != NULL) guest_orders_->::network::GuestOrdersMessageResponse::Clear();
+    }
+    if (has_guest_info()) {
+      if (guest_info_ != NULL) guest_info_->::network::GuestInfo::Clear();
     }
   }
 
@@ -12004,6 +12059,19 @@ bool ResponseContext::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(114)) goto parse_guest_info;
+        break;
+      }
+
+      // optional .network.GuestInfo guest_info = 14;
+      case 14: {
+        if (tag == 114) {
+         parse_guest_info:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_guest_info()));
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -12110,6 +12178,12 @@ void ResponseContext::SerializeWithCachedSizes(
       13, this->guest_orders(), output);
   }
 
+  // optional .network.GuestInfo guest_info = 14;
+  if (has_guest_info()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      14, this->guest_info(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -12206,6 +12280,13 @@ void ResponseContext::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         13, this->guest_orders(), target);
+  }
+
+  // optional .network.GuestInfo guest_info = 14;
+  if (has_guest_info()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        14, this->guest_info(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -12312,6 +12393,13 @@ int ResponseContext::ByteSize() const {
           this->guest_orders());
     }
 
+    // optional .network.GuestInfo guest_info = 14;
+    if (has_guest_info()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->guest_info());
+    }
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -12380,6 +12468,9 @@ void ResponseContext::MergeFrom(const ResponseContext& from) {
     if (from.has_guest_orders()) {
       mutable_guest_orders()->::network::GuestOrdersMessageResponse::MergeFrom(from.guest_orders());
     }
+    if (from.has_guest_info()) {
+      mutable_guest_info()->::network::GuestInfo::MergeFrom(from.guest_info());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -12416,6 +12507,7 @@ void ResponseContext::Swap(ResponseContext* other) {
     std::swap(orders_, other->orders_);
     std::swap(hotel_types_, other->hotel_types_);
     std::swap(guest_orders_, other->guest_orders_);
+    std::swap(guest_info_, other->guest_info_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

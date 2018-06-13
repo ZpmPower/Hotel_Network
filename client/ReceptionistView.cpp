@@ -94,8 +94,7 @@ void ReceptionistView::onRead(const network::ResponseContext &response)
         break;
     }
     case network::HN_MAKE_ORDER: {
-        network::RegisterMessageResponse res = response.register_response();
-        if(res.status() == true) QMessageBox::information(this, "Order status","Your order's processed succesfull");
+        emit readData(response.SerializeAsString());
         break;
     }
     }
@@ -139,6 +138,7 @@ void ReceptionistView::on_tabWidget_tabBarClicked(int index)
     message_manager_->countHotelRooms(hotelID_);
     message_manager_->getHotelRooms(hotelID_);
     message_manager_->countHotelOrders(hotelID_);
+    message_manager_->countHotelEmployees(hotelID_);
     message_manager_->avgResidenceTime(hotelID_);
     message_manager_->avgRoomRating(hotelID_);
 }
@@ -445,4 +445,39 @@ void ReceptionistView::on_dateBegin_dateChanged(const QDate &date)
 {
     QDate newDate(date.year(),date.month(),date.day()+1);
     ui->dateEnd->setMinimumDate(newDate);
+}
+
+void ReceptionistView::onReadData(std::string data)
+{
+    network::ResponseContext response;
+    response.ParseFromString(data);
+    network::RegisterMessageResponse res = response.register_response();
+    if(res.status() == true) QMessageBox::information(this, "Order status","Your order's processed succesfull");
+    else QMessageBox::information(this, "Order status","Something wrong");
+}
+
+void ReceptionistView::on_orderRatingStartCb_currentIndexChanged(const QString &arg1)
+{
+    ui->orderRatingEndCb->clear();
+    uint32_t value = arg1.toInt(new bool,10);
+    for (size_t i = value; i< 11; i++)
+    {
+        std::string type = std::to_string(i);
+        ui->orderRatingEndCb->addItem(QString::fromStdString(type));
+    }
+    ui->orderRatingEndCb->setCurrentIndex(0);
+}
+
+void ReceptionistView::on_orderRatingStartCb_currentIndexChanged(int index)
+{
+
+}
+
+void ReceptionistView::on_orderPriceStartCb_currentIndexChanged(int index)
+{
+    ui->orderPriceEndCb->clear();
+    for (size_t i=index; i<ui->orderPriceStartCb->count();i++)
+    {
+        ui->orderPriceEndCb->addItem(ui->orderPriceStartCb->itemText(i));
+    }
 }
