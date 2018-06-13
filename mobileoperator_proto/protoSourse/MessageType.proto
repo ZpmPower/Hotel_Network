@@ -29,4 +29,6 @@ enum message_type{
     HN_GET_VACANT_ROOMS_GUEST = 25;
     HN_GET_GUEST_BY_ID = 26;
     HN_EDIT_GUEST = 27;
+    HN_GET_GUEST_ALL_ORDERS=28;
+    HN_GET_HOTEL_FLOORS = 29;
 }

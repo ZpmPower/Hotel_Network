@@ -17,9 +17,11 @@ public:
     static ResponseCode deleteEmployee(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode deleteRoom(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode getRoomTypes(network::RoomTypesMessageResponse *responce, const network::RequestContext &request);
+    static ResponseCode getHotelFloors(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode getHotelTypes(network::HotelTypesMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode getGuestById(network::GuestInfo *responce, const network::RequestContext &request);
     static ResponseCode getHotelOrders(network::OrdersMessageResponse *responce, const network::RequestContext &request);
+    static ResponseCode getGuestOrders(network::OrdersMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode addHotelRoom(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode makeOrder(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode countHotelRooms(network::RegisterMessageResponse *responce, const network::RequestContext &request);
@@ -28,7 +30,6 @@ public:
     static ResponseCode getCurrentGuestsRR(network::GuestOrdersMessageResponse *response, const network::RequestContext &request);
     static ResponseCode avgResidenceTime(network::RegisterMessageResponse *responce, const network::RequestContext &request);
     static ResponseCode avgRoomRating(network::RegisterMessageResponse *responce, const network::RequestContext &request);
-
     static uint32_t positionToInt(const std::string& pos);
 };
 

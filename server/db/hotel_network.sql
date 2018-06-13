@@ -20,6 +20,7 @@ CREATE TABLE Hotel(
 	PhoneNumber VARCHAR(20) NOT NULL,
 	Email VARCHAR(100),
 	Stars INTEGER NOT NULL DEFAULT(3),
+    Floors INTEGER NOT NULL DEFAULT(3),
 	IdType INTEGER REFERENCES HotelType(Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -83,13 +84,13 @@ INSERT INTO HotelType(Name) VALUES('Timeshare and destination clubs');
 INSERT INTO HotelType(Name) VALUES('Motel');
 INSERT INTO HotelType(Name) VALUES('Microstay');
 
-INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,IdType) VALUES('Pasazh','Odessa','Deribasivska','+380939853628','pasag@gmail.com',5,3);
-INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,IdType) VALUES('Chernoye more','Odessa','Malaya Arnautskaya','+38048123456','blacksea@gmail.com',3,4);
-INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,IdType) VALUES('Nemo','Odessa','Langironovskaya','+380501434321','nemo@gmail.com',4,4);
-INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,IdType) VALUES('Something','Odessa','Dovjenka','+380971434321','myhotel@gmail.com',3,8);
-INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,IdType) VALUES('Dnipro','Kiev','Hreshatic','+380934534321','dnipro@gmail.com',3,5);
-INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,IdType) VALUES('GoldenKolos','Moscow','Yaroslavskiy','+380951994321','kolosgolden@gmail.com',4,4);
-INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,IdType) VALUES('RegentWarsawHotel','Warsaw','Belwederska','+380599434321','regentwarsawhotel@gmail.com',5,1);
+INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,Floors,IdType) VALUES('Pasazh','Odessa','Deribasivska','+380939853628','pasag@gmail.com',3,5,1);
+INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,Floors,IdType) VALUES('Chernoye more','Odessa','Malaya Arnautskaya','+38048123456','blacksea@gmail.com',3,4,4);
+INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,Floors,IdType) VALUES('Nemo','Odessa','Langironovskaya','+380501434321','nemo@gmail.com',4,3,4);
+INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,Floors,IdType) VALUES('Something','Odessa','Dovjenka','+380971434321','myhotel@gmail.com',3,3,8);
+INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,Floors,IdType) VALUES('Dnipro','Kiev','Hreshatic','+380934534321','dnipro@gmail.com',3,2,5);
+INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,Floors,IdType) VALUES('GoldenKolos','Moscow','Yaroslavskiy','+380951994321','kolosgolden@gmail.com',4,5,4);
+INSERT INTO Hotel(Name,City,Street,PhoneNumber,Email,Stars,Floors,IdType) VALUES('RegentWarsawHotel','Warsaw','Belwederska','+380599434321','regentwarsawhotel@gmail.com',5,4,1);
 
 INSERT INTO EmployeePosition(Name) VALUES('Director');
 INSERT INTO EmployeePosition(Name) VALUES('Manager');

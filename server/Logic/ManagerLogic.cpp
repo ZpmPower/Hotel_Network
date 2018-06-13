@@ -7,6 +7,7 @@
 #include "Types/OrderInfo.h"
 #include "Types/HotelType.h"
 #include "Types/GuestOrder.h"
+#include "Types/GuestOrderInfo.h"
 #include "db/SessionManagerPostgres.h"
 #include "db/AuthPostgresManager.h"
 
@@ -234,6 +235,21 @@ ResponseCode ManagerLogic::getRoomTypes(network::RoomTypesMessageResponse *respo
      return result;
 }
 
+ResponseCode ManagerLogic::getHotelFloors(network::RegisterMessageResponse *responce, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        uint32_t floors;
+        uint32_t role;
+        SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
+        result = HotelPostgresManager::getHotelFloors(floors,request.hotel_id().hotelid(),role);
+        responce->set_messagetext(std::to_string(floors));;
+    }
+     while(false);
+     return result;
+}
+
 ResponseCode ManagerLogic::getHotelTypes(network::HotelTypesMessageResponse *responce, const network::RequestContext &request)
 {
     ResponseCode result = ResponseCode::status_internal_error;
@@ -296,6 +312,29 @@ ResponseCode ManagerLogic::getHotelOrders(network::OrdersMessageResponse *respon
             order->set_hotelid(info.idhotel);
             order->set_employee_secondname(info.employee_secondname);
             order->set_guest_secondname(info.guest_secondname);
+        }
+    }
+     while(false);
+     return result;
+}
+
+ResponseCode ManagerLogic::getGuestOrders(network::OrdersMessageResponse *responce, const network::RequestContext &request)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        std::vector<GuestOrderInfo> orders;
+        uint32_t role;
+        SessionManagerPostgres::getRoleBySession(request.session_info().session_id(),role);
+        result = HotelPostgresManager::getGuestOrders(orders,request.hotel_id().hotelid(),role);
+        for(GuestOrderInfo info: orders)
+        {
+
+            network::OrderInfo* order = responce->add_orders();
+            order->set_startdate(info.startdate);
+            order->set_enddate(info.enddate);
+            order->set_idroom(info.idroom);
+            order->set_hotelid(info.idhotel);
         }
     }
      while(false);

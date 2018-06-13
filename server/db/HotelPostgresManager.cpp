@@ -6,7 +6,7 @@
 #include "Types/OrderInfo.h"
 #include "Types/HotelType.h"
 #include "Types/GuestOrder.h"
-
+#include "Types/GuestOrderInfo.h"
 
 db_connection_ptr HotelPostgresManager::checkConnection(uint32_t role)
 {
@@ -785,6 +785,50 @@ ResponseCode HotelPostgresManager::getHotelRooms(std::vector<RoomInfo> &rooms, u
     return result;
 }
 
+ResponseCode HotelPostgresManager::getHotelFloors(uint32_t &floors, uint32_t hotelid, uint32_t role)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        try
+        {
+
+            db_connection_ptr connection = checkConnection(role);
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("getHotelFloors"))
+            {
+                connection->prepare("getHotelFloors",
+                                    "SELECT floors from hotel where id=$1");
+            }
+
+            pqxx::work work(*connection, "getHotelFloors");
+
+            pqxx::result res = work.prepared("getHotelFloors")(hotelid).exec();
+            if(res.empty())
+            {
+                result = ResponseCode::status_does_not_exist;
+                break;
+            }
+            floors = res[0][0].as<uint32_t>();
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query getHotelRooms err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+
+    return result;
+}
+
 ResponseCode HotelPostgresManager::getVacantRooms(std::vector<RoomInfo> &rooms, const std::string &datebegin, const std::string &dateend, uint32_t capacity,
                                                   uint32_t startPrice, uint32_t endPrice,
                                                   uint32_t startRating, uint32_t endRating, const std::string &room_type, uint32_t hotel_id, uint32_t role)
@@ -941,6 +985,56 @@ ResponseCode HotelPostgresManager::getHotelOrders(std::vector<OrderInfo> &orders
             for(const pqxx::tuple& value: res)
             {
                 OrderInfo oInfo;
+                oInfo.parse_from_hn_order(value);
+                orders.emplace_back(oInfo);
+            }
+            work.commit();
+            result = ResponseCode::status_success;
+        }
+        catch(const std::exception& e)
+        {
+            LOG_ERR("Failure: trying to query getHotelOrders err: " << e.what());
+            break;
+        }
+    }
+    while(false);
+
+    return result;
+}
+
+ResponseCode HotelPostgresManager::getGuestOrders(std::vector<GuestOrderInfo> &orders, uint32_t guest_id, uint32_t role)
+{
+    ResponseCode result = ResponseCode::status_internal_error;
+    do
+    {
+        try
+        {
+
+            db_connection_ptr connection = checkConnection(role);
+            if(!connection)
+            {
+                LOG_ERR("Cannot create connection to auth bd!");
+                break;
+            }
+
+            if(!DBHelper::getDBHelper().isPrepared("getGuestOrders"))
+            {
+                connection->prepare("getGuestOrders",
+                                    "SELECT roomorder.id, startdate, enddate, idroom,idguest,guest.secondname AS guest, idhotel "
+                                    "from roomorder JOIN guest ON guest.id=idguest JOIN room ON room.id=idroom WHERE idguest = $1;");
+            }
+
+            pqxx::work work(*connection, "getGuestOrders");
+
+            pqxx::result res = work.prepared("getGuestOrders")(guest_id).exec();
+            if(res.empty())
+            {
+                result = ResponseCode::status_does_not_exist;
+                break;
+            }
+            for(const pqxx::tuple& value: res)
+            {
+                GuestOrderInfo oInfo;
                 oInfo.parse_from_hn_order(value);
                 orders.emplace_back(oInfo);
             }
@@ -1189,7 +1283,6 @@ ResponseCode HotelPostgresManager::getRoomTypes(std::vector<std::string> &types,
             for(const pqxx::tuple& value: res)
             {
                 std::string type = value["name"].as<std::string>();
-                LOG_INFO(type);
                 types.emplace_back(type);
             }
             work.commit();

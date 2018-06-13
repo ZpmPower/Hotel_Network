@@ -119,6 +119,12 @@ void RRManager::readSessionBuffer(std::shared_ptr<ClientChannel> session, ByteBu
     case network::HN_EDIT_GUEST:
         responseCode = editGuestRR(reqContext, resContext);
         break;
+    case network::HN_GET_GUEST_ALL_ORDERS:
+        responseCode = getGuestOrdersRR(reqContext, resContext);
+        break;
+    case network::HN_GET_HOTEL_FLOORS:
+        responseCode = getHotelFloorsRR(reqContext, resContext);
+        break;
     default:
         responseCode = ResponseCode::status_unknown_command;
         break;
@@ -334,6 +340,22 @@ ResponseCode RRManager::getHotelTypesRR(const network::RequestContext &request, 
     return resultStatus;
 }
 
+ResponseCode RRManager::getHotelFloorsRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::RegisterMessageResponse* floorsRes = new network::RegisterMessageResponse();
+
+        resultStatus = ManagerLogic::getHotelFloors(floorsRes,request);
+        response.set_allocated_register_response(floorsRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
 ResponseCode RRManager::getHotelOrdersRR(const network::RequestContext &request, network::ResponseContext &response)
 {
     ResponseCode resultStatus = ResponseCode::status_internal_error;
@@ -343,6 +365,22 @@ ResponseCode RRManager::getHotelOrdersRR(const network::RequestContext &request,
         network::OrdersMessageResponse* ordersRes = new network::OrdersMessageResponse();
 
         resultStatus = ManagerLogic::getHotelOrders(ordersRes,request);
+        response.set_allocated_orders(ordersRes);
+    }
+    while(false);
+
+    return resultStatus;
+}
+
+ResponseCode RRManager::getGuestOrdersRR(const network::RequestContext &request, network::ResponseContext &response)
+{
+    ResponseCode resultStatus = ResponseCode::status_internal_error;
+
+    do
+    {
+        network::OrdersMessageResponse* ordersRes = new network::OrdersMessageResponse();
+
+        resultStatus = ManagerLogic::getGuestOrders(ordersRes,request);
         response.set_allocated_orders(ordersRes);
     }
     while(false);

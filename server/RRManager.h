@@ -30,7 +30,9 @@ private:
     ResponseCode getHotelEmployeesRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getRoomTypesRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getHotelTypesRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode getHotelFloorsRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode getHotelOrdersRR(const network::RequestContext& request, network::ResponseContext &response);
+    ResponseCode getGuestOrdersRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode editEmployeeRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode editGuestRR(const network::RequestContext& request, network::ResponseContext &response);
     ResponseCode editHotelRoomRR(const network::RequestContext& request, network::ResponseContext &response);

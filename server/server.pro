@@ -48,7 +48,8 @@ SOURCES += main.cpp \
     Logic/ManagerLogic.cpp \
     Types/OrderInfo.cpp \
     Types/HotelType.cpp \
-    Types/GuestOrder.cpp
+    Types/GuestOrder.cpp \
+    Types/GuestOrderInfo.cpp
 
 HEADERS += \
     ../common/Worker.h \
@@ -77,7 +78,8 @@ HEADERS += \
     Logic/ManagerLogic.h \
     Types/OrderInfo.h \
     Types/HotelType.h \
-    Types/GuestOrder.h
+    Types/GuestOrder.h \
+    Types/GuestOrderInfo.h
 
 system(cp $$PWD/Config/config.cfg $PWD/../build/MOBILE_SERVER/debugs)
 system(cp $$PWD/SSL/* $PWD/../build/MOBILE_SERVER/debugs)
